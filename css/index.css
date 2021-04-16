@@ -4630,10 +4630,8 @@ blockquote.pullquote.right {
   position: relative;
   margin: 0 0 1rem;
   padding: 15px;
-  border: initial;
-  color: #4c4948;
-  border-left: 5px solid #eee;
-  background-color: #f9f9f9;
+  border: 1px solid transparent;
+  background-color: var(--white) smoke;
   border-radius: 3px;
 }
 .note h2,
@@ -4677,94 +4675,88 @@ blockquote.pullquote.right {
   font-size: larger;
 }
 .note.default {
-  background: #f7f7f7;
-  border-left-color: #777;
+  border-color: #e1e1e1;
+  background: #f3f3f3;
+  color: #666;
 }
-.note.default h2,
-.note.default h3,
-.note.default h4,
-.note.default h5,
-.note.default h6 {
-  color: #777;
+.note.default a:not(.btn) {
+  color: #666;
+}
+.note.default a:not(.btn):hover {
+  color: #454545;
 }
 .note.default:not(.no-icon)::before {
   content: '\f0a9';
-  color: #777;
 }
 .note.primary {
-  background: #f5f0fa;
-  border-left-color: #6f42c1;
-}
-.note.primary h2,
-.note.primary h3,
-.note.primary h4,
-.note.primary h5,
-.note.primary h6 {
+  border-color: #e1c2ff;
+  background: #f3daff;
   color: #6f42c1;
+}
+.note.primary a:not(.btn) {
+  color: #6f42c1;
+}
+.note.primary a:not(.btn):hover {
+  color: #453298;
 }
 .note.primary:not(.no-icon)::before {
   content: '\f055';
-  color: #6f42c1;
 }
 .note.info {
-  background: #eef7fa;
-  border-left-color: #428bca;
+  border-color: #b3e5ef;
+  background: #d9edf7;
+  color: #31708f;
 }
-.note.info h2,
-.note.info h3,
-.note.info h4,
-.note.info h5,
-.note.info h6 {
-  color: #428bca;
+.note.info a:not(.btn) {
+  color: #31708f;
+}
+.note.info a:not(.btn):hover {
+  color: #215761;
 }
 .note.info:not(.no-icon)::before {
   content: '\f05a';
-  color: #428bca;
 }
 .note.success {
-  background: #eff8f0;
-  border-left-color: #5cb85c;
+  border-color: #d0e6be;
+  background: #dff0d8;
+  color: #3c763d;
 }
-.note.success h2,
-.note.success h3,
-.note.success h4,
-.note.success h5,
-.note.success h6 {
-  color: #5cb85c;
+.note.success a:not(.btn) {
+  color: #3c763d;
+}
+.note.success a:not(.btn):hover {
+  color: #32562c;
 }
 .note.success:not(.no-icon)::before {
   content: '\f058';
-  color: #5cb85c;
 }
 .note.warning {
-  background: #fdf8ea;
-  border-left-color: #f0ad4e;
+  border-color: #fae4cd;
+  background: #fcf4e3;
+  color: #8a6d3b;
 }
-.note.warning h2,
-.note.warning h3,
-.note.warning h4,
-.note.warning h5,
-.note.warning h6 {
-  color: #f0ad4e;
+.note.warning a:not(.btn) {
+  color: #8a6d3b;
+}
+.note.warning a:not(.btn):hover {
+  color: #714f30;
 }
 .note.warning:not(.no-icon)::before {
   content: '\f06a';
-  color: #f0ad4e;
 }
 .note.danger {
-  background: #fcf1f2;
-  border-left-color: #d9534f;
+  border-color: #ebcdd2;
+  background: #f2dfdf;
+  color: #a94442;
 }
-.note.danger h2,
-.note.danger h3,
-.note.danger h4,
-.note.danger h5,
-.note.danger h6 {
-  color: #d9534f;
+.note.danger a:not(.btn) {
+  color: #a94442;
+}
+.note.danger a:not(.btn):hover {
+  color: #84333f;
 }
 .note.danger:not(.no-icon)::before {
   content: '\f056';
-  color: #d9534f;
 }
 #article-container .tabs {
   position: relative;
