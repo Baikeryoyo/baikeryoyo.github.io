@@ -21,11 +21,15 @@
 
 /* 页脚透明 */
 
-#footer {
+/*#footer {
     background: transparent !important;
 }
+*/
+#footer{
+  opacity: 0.5;
+}
 
-div#post{
+/*div#post{
   background: rgba(255, 255, 255, 0.9) !important;
 }
 div#page{
@@ -40,3 +44,4 @@ div#tag{
 div#category{
   background: rgba(255, 255, 255, 0.9) !important;
 }
+*/
