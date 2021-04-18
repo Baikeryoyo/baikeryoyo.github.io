@@ -26,17 +26,17 @@
 }
 
 div#post{
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#page{
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#archive{
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#tag{
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#category{
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
