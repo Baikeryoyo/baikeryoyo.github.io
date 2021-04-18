@@ -2,7 +2,7 @@
 /* 隐藏回到顶部按钮，替换为up酱 */
 
 #go-up i {
-    display: none;
+    display: none !important;
     background-color: transparent !important;
 }
 
@@ -27,17 +27,17 @@
 
 /* 页面透明 */
 div#post{
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#page{
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#archive{
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#tag{
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 div#category{
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
 }
