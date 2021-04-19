@@ -38,6 +38,32 @@
       </tags>
   </entry>
   <entry>
+    <title>文件上传漏洞</title>
+    <url>//346f4f3fc8dd.html</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="0c4ac95353b4f38e1bf4970ea8e0524ad8cf10f8cb704e76d041c64e190ad273">d462d3485278d509c7ee38c4f5bfc4ec5e31c07bae5a28ea762713ea34b569ac864e67a2e89268552cf8724089cb84e5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>渗透测试</category>
+        <category>文件类漏洞</category>
+        <category>文件上传</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>文件上传漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
     <url>//cc781664c436.html</url>
     <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
