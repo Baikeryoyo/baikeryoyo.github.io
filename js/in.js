@@ -3,12 +3,13 @@ var top_up = "<img id='upj' class='upj' style='max-width: 1000%; transform: tran
 /*添加到返回顶部按钮下*/
 // 当网页向下滑动 20px 出现"返回顶部" 按钮
 window.onscroll = function() {scrollFunction()};
- 
+document.getElementById("go-up") += top_up;
+
 function scrollFunction() {console.log(121);
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("top_up").style.display = "block";
+        document.getElementById("go-up").style.display = "block";
     } else {
-        document.getElementById("top_up").style.display = "none";
+        document.getElementById("go-up").style.display = "none";
     }
 }
  
