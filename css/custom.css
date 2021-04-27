@@ -1,7 +1,7 @@
 
 /* 隐藏回到顶部按钮，替换为up酱 */
 
-#go-up i {
+/*#go-up i {
     display: none;
     background-color: transparent !important;
 }
@@ -13,13 +13,13 @@
 #upj {
     transform: translate(-70px, -80px) !important;
 }
-
+*/
 
 /*新版3.0.0以上添加up酱置顶ico图标上移问题*/
-.fas.fa-arrow-up {
+/*.fas.fa-arrow-up {
     line-height: 2;
 }
-
+*/
 /* 页脚透明 */
 #footer{
   background: transparent!important;
