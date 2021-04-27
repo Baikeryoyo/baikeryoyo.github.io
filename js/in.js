@@ -1,22 +1,21 @@
 /*添加图片top*/
-var top_up = "<img id='upj' class='upj' style='max-width: 1000%; transform: translate(-70px,-80px);' src='https://cdn.jsdelivr.net/gh/lete114/CDN/Use/up.gif' title='回到顶部' >";
-/*添加到返回顶部按钮下*/
-// 当网页向下滑动 20px 出现"返回顶部" 按钮
-document.getElementById("go-up").innerHTML += top_up;
-window.onscroll = function() {scrollFunction()};
+// 判断移动端设备
+browserRedirect();
 
-function scrollFunction() {console.log(121);
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("upj").style.display = "block";
-    } else {
-        document.getElementById("upj").style.display = "none";
+function browserRedirect() {
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
+        var top_up = "<img class='upj' src='https://cdn.jsdelivr.net/gh/lete114/CDN/Use/up.gif'>";
+        /*添加到返回顶部按钮下*/
+        document.getElementById("go-up").innerHTML += top_up;
     }
+    
 }
- 
-// 点击按钮，返回顶部
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-// document.getElementById("go-up").innerHTML += top_up;
-// document.getElementById("go-up").innerHTML += rightSideFn.scrollToTop();
