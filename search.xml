@@ -5,19 +5,19 @@
     <url>//ac27f8d7fbb9.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
 
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>​        同源策略（SOP）限制了网络应用之间的信息共享，仅允许同域内进行数据共享。这是很久以前就定下的浏览器安全防护措施。但是，随着网络世界的快速发展，在很多应用场景下，我们都需要将信息从一个子域传递到另一个子域，又或者需要在不同域之间传递数据。这其中可能涉及非常敏感且重要的功能，例如将访问令牌和session标识符传递给另一个应用。</p>
-<p>​        为了在有SOP的情况下实现跨域通信，开发人员必须使用不同的技术绕过SOP来传递数据。此时，“绕过”既是一个正常的技术问题，又是一个敏感的安全问题。为了在不影响应用安全状态的情况下实现信息共享，HTML5中引入了跨域资源共享（CORS）。但是，很多开发者在使用时没有考虑到其中蕴含安全风险，容易出现配置错误，导致出现安全漏洞。</p>
-<p>​        跨域资源共享（CORS）是一种网络机制，使Web浏览器在受控的情况下通过xmlHttpRequest API执行跨域请求。这些跨域请求具有Origin标头，用于标识发起请求的域。它定义了在Web浏览器和服务器之间使用的协议，以确定是否允许跨域请求。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p> 　　同源策略（SOP）限制了网络应用之间的信息共享，仅允许同域内进行数据共享。这是很久以前就定下的浏览器安全防护措施。但是，随着网络世界的快速发展，在很多应用场景下，我们都需要将信息从一个子域传递到另一个子域，又或者需要在不同域之间传递数据。这其中可能涉及非常敏感且重要的功能，例如将访问令牌和session标识符传递给另一个应用。</p>
+<p>　　为了在有SOP的情况下实现跨域通信，开发人员必须使用不同的技术绕过SOP来传递数据。此时，“绕过”既是一个正常的技术问题，又是一个敏感的安全问题。为了在不影响应用安全状态的情况下实现信息共享，HTML5中引入了跨域资源共享（CORS）。但是，很多开发者在使用时没有考虑到其中蕴含安全风险，容易出现配置错误，导致出现安全漏洞。</p>
+<p>　　跨域资源共享（CORS）是一种网络机制，使Web浏览器在受控的情况下通过xmlHttpRequest API执行跨域请求。这些跨域请求具有Origin标头，用于标识发起请求的域。它定义了在Web浏览器和服务器之间使用的协议，以确定是否允许跨域请求。</p>
 <h2 id="关键的CORS-header"><a href="#关键的CORS-header" class="headerlink" title="关键的CORS header"></a>关键的CORS header</h2><figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Access-Control-Allow-Origin</span><span class="punctuation">: </span>https://www.baidu1.com</span><br></pre></td></tr></table></figure>
 
-<p> 指定哪些域可以访问本域的资源。例如，如果baidu1.com想要访问baidu.com的资源，那么开发人员可以用此授予baidu1.com访问baidu.com资源的权限。</p>
+<p>指定哪些域可以访问本域的资源。例如，如果baidu1.com想要访问baidu.com的资源，那么开发人员可以用此授予baidu1.com访问baidu.com资源的权限。</p>
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Access-Control-Allow-Credentials</span><span class="punctuation">: </span>true</span><br></pre></td></tr></table></figure>
 
 <p>指定浏览器是否将使用请求发送cookie。仅当allow-credentials标头设置为true时，才会发送cookie。</p>
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Access-Control-Allow-Methods</span><span class="punctuation">: </span>GET</span><br></pre></td></tr></table></figure>
 
-<p> 指定可以使用哪些HTTP请求方法（GET，PUT，DELETE等）来访问资源。开发人员可用其进一步加强控制力，增强安全性。</p>
-<h2 id="CORS-基本用法"><a href="#CORS-基本用法" class="headerlink" title="CORS 基本用法"></a>CORS 基本用法</h2><p>​        当 b.com 服务器想要与 a.com 共享资源内容时，它只需要在 HTTP 响应中添加如下响应头。这个响应头告诉浏览器放宽 SOP 限制，允许a.com脚本读取响应内容：</p>
+<p>指定可以使用哪些HTTP请求方法（GET，PUT，DELETE等）来访问资源。开发人员可用其进一步加强控制力，增强安全性。</p>
+<h2 id="CORS-基本用法"><a href="#CORS-基本用法" class="headerlink" title="CORS 基本用法"></a>CORS 基本用法</h2><p>当 b.com 服务器想要与 a.com 共享资源内容时，它只需要在 HTTP 响应中添加如下响应头。这个响应头告诉浏览器放宽 SOP 限制，允许a.com脚本读取响应内容：</p>
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Access-Control-Allow-Origin</span><span class="punctuation">: </span>http://a.com</span><br><span class="line"><span class="attribute">Access-Control-Allow-Credentials</span><span class="punctuation">: </span>true</span><br></pre></td></tr></table></figure>
 
 
@@ -27,21 +27,21 @@
 
 
 
-<h2 id="常见的错误配置"><a href="#常见的错误配置" class="headerlink" title="常见的错误配置"></a>常见的错误配置</h2><h3 id="Origin-与-Credentials-true-共用"><a href="#Origin-与-Credentials-true-共用" class="headerlink" title="Origin:*与 Credentials:true 共用"></a>Origin:*与 Credentials:true 共用</h3><p> 有一些偷懒的程序员，将Access-Control-Allow-Origin设置为允许来自所有域*的跨域请求，实例如下:</p>
+<h2 id="常见的错误配置"><a href="#常见的错误配置" class="headerlink" title="常见的错误配置"></a>常见的错误配置</h2><h3 id="Origin-与-Credentials-true-共用"><a href="#Origin-与-Credentials-true-共用" class="headerlink" title="Origin:*与 Credentials:true 共用"></a>Origin:*与 Credentials:true 共用</h3><p>有一些偷懒的程序员，将Access-Control-Allow-Origin设置为允许来自所有域*的跨域请求，实例如下:</p>
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET /api/index.php</span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>www.baidu.com</span><br><span class="line"><span class="attribute">Origin</span><span class="punctuation">: </span>www.baidu.com</span><br></pre></td></tr></table></figure>
 
 <p>当发送上述请求时，将获得具有Access-Control-Allow-Origin标头设置的响应</p>
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line"> HTTP/1.0 200 OK</span><br><span class="line"> Access-Control-Allow-Origin: *</span><br><span class="line"><span class="attribute">Access-Control-Allow-Credentials</span><span class="punctuation">: </span>true</span><br></pre></td></tr></table></figure>
 
-<p>​        这意味着该站点允许访问来自所有站点的资源，考虑到这种权限过于宽松，CORS又规定，<code>Access-Control-Allow-Origin:*</code>与 <code>Access-Control-Allow-Credentials:true</code> 不能同时使用。所以这种配置是错误的，浏览器不允许这两种配置同时出现，这种配置只能用于共享公开资源。(对于共享公开资源，不应该需要身份认证)，浏览器会对这种误配置报错，所以该配置不能作为漏洞进行利用。</p>
-<h3 id="反射-Origin头"><a href="#反射-Origin头" class="headerlink" title="反射 Origin头"></a>反射 Origin头</h3><p>​        根据前面的 CORS基本用法，开发者可以很容易实现与其它单个网站共享数据。假如一个开发者想要与多个网站共享数据，应该如何配置CORS呢？也许直觉告诉你应该如下配置：</p>
+<p>这意味着该站点允许访问来自所有站点的资源，考虑到这种权限过于宽松，CORS又规定，<code>Access-Control-Allow-Origin:*</code>与 <code>Access-Control-Allow-Credentials:true</code> 不能同时使用。所以这种配置是错误的，浏览器不允许这两种配置同时出现，这种配置只能用于共享公开资源。(对于共享公开资源，不应该需要身份认证)，浏览器会对这种误配置报错，所以该配置不能作为漏洞进行利用。</p>
+<h3 id="反射-Origin头"><a href="#反射-Origin头" class="headerlink" title="反射 Origin头"></a>反射 Origin头</h3><p>根据前面的 CORS基本用法，开发者可以很容易实现与其它单个网站共享数据。假如一个开发者想要与多个网站共享数据，应该如何配置CORS呢？也许直觉告诉你应该如下配置：</p>
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Access-Control-Allow-Origin</span><span class="punctuation">: </span>http://a.com, http://c.com</span><br><span class="line"><span class="attribute">Access-Control-Allow-Origin</span><span class="punctuation">: </span>http://*.a.com</span><br></pre></td></tr></table></figure>
 
-<p>​        但事实上这两种域名配置是错误的，因为CORS标准规定，<code>Access-Control-Allow-Origin</code>只能配置为单个origin, null或*。如果开发者想要实现同时与多个域名共享域名的需求，则需要专门编写代码或者使用框架来协助动态生成访问控制策略。这种动态生成的做法增加了开发者配置难度，导致实际网络中出现各种不安全的误配置。</p>
-<p>&emsp;&emsp;最简单地动态生成访问控制策略的方法，就是在<code>Access-Control-Allow-Origin</code>中反射请求的Origin值。例如，下面是一个错误 Nginx 配置示例：</p>
+<p>但事实上这两种域名配置是错误的，因为CORS标准规定，<code>Access-Control-Allow-Origin</code>只能配置为单个origin, null或*。如果开发者想要实现同时与多个域名共享域名的需求，则需要专门编写代码或者使用框架来协助动态生成访问控制策略。这种动态生成的做法增加了开发者配置难度，导致实际网络中出现各种不安全的误配置。</p>
+<p>最简单地动态生成访问控制策略的方法，就是在<code>Access-Control-Allow-Origin</code>中反射请求的Origin值。例如，下面是一个错误 Nginx 配置示例：</p>
 <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">add_header</span> <span class="string">&quot;Access-Control-Allow-Origin&quot;</span> $http_origin;</span><br><span class="line"><span class="attribute">add_header</span> “Access-Control-Allow-Credentials” “<span class="literal">true</span>”;</span><br></pre></td></tr></table></figure>
 
-<p>&emsp;&emsp;这种配置非常危险，相当于信任任意网站，给攻击者网站敞开了大门。任意攻击者网站可以直接跨域读取其资源内容。</p>
+<p>这种配置非常危险，相当于信任任意网站，给攻击者网站敞开了大门。任意攻击者网站可以直接跨域读取其资源内容。</p>
 <h3 id="Origin-校验错误"><a href="#Origin-校验错误" class="headerlink" title="Origin 校验错误"></a>Origin 校验错误</h3><p>​        由于前面那种反射 Origin 的做法过于宽松，另一些开发人员试图在生成访问控制策略时校验Origin头，我们发现这个校验过程实际中也出现许多错误。这些错误可以分为四类：</p>
 <p><strong>前缀匹配</strong>: 资源服务器在检查请求中Origin值时，只匹配了前缀。例如<code>www.example.com</code> 想要允许<code>example.com</code>访问，但是只做了前缀匹配，导致同时信任了<code>example.com.attack.com</code>的访问，而<code>example.com.attack.com</code> 是攻击者可以控制的网站。</p>
 <p><strong>后缀匹配</strong>: 资源服务器在检查请求中Origin值时，只做了后缀匹配。例如<code>www.example.com</code> 想要允许<code>example.com</code>访问，由于后缀匹配出错，导致允许<code>attackexample.com</code>访问。</p>
