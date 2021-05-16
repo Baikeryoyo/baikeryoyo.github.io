@@ -532,63 +532,6 @@
       </tags>
   </entry>
   <entry>
-    <title>jQuery库版本过低</title>
-    <url>//b475e6de3de1.html</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><p>　　jQuery是一个快速、简洁的JavaScript框架,是一个丰富的JavaScript代码库。jQuery设计的目的是为了写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
-<p>　　在JQuery的诸多发行版本中，存在着DOM-based XSS（跨站脚本攻击的一种)漏洞，易被攻击者利用。漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致LOCATION.HASH跨站漏洞。这也是最为被大众熟知的jQuery的一个漏洞。</p>
-<h2 id="DOM-based-XSS-漏洞"><a href="#DOM-based-XSS-漏洞" class="headerlink" title="DOM-based XSS 漏洞"></a>DOM-based XSS 漏洞</h2><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
-<li><p> jquery-1.7.1~1.8.3</p>
-</li>
-<li><p> jquery-1.6.min.js，jquery-1.6.1.min.js，jquery-1.6.2.min.js</p>
-</li>
-<li><p> jquery-1.5所有版本</p>
-</li>
-<li><p> jquery-1.4所有版本</p>
-</li>
-<li><p> jquery-1.3所有版本</p>
-</li>
-<li><p> jquery-1.2所有版本</p>
-</li>
-</ul>
-<p>影响版本不全面，建议升级到jquery-3.4.0以上</p>
-<h2 id="漏洞测试方法"><a href="#漏洞测试方法" class="headerlink" title="漏洞测试方法"></a>漏洞测试方法</h2><p>F12打开Console窗口，输入以下代码显示jquery版本号</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.fn.jquery</span><br></pre></td></tr></table></figure>
-
-<p>输入以下代码,如果有弹窗出现说明存在XSS漏洞</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;element[attribute=&#x27;&lt;img src=123123 οnerrοr=alert(123)&gt;&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h2><p>升级jQuery库到jquery-3.4.0以上或者最新版本</p>
-<p>更新版本有可能存在众多问题，所以在不改变版本的情况下避免漏洞的利用（或者使用插件jQuery Migrate）</p>
-<h3 id="临时修复方案"><a href="#临时修复方案" class="headerlink" title="临时修复方案"></a>临时修复方案</h3><ul>
-<li><p> jquery文件重命名</p>
-</li>
-<li><p>把jquery文件里头部带有版本号的注释删除</p>
-</li>
-<li><p>把jquery文件内版本号清除（不推荐）</p>
-</li>
-<li><p> 在 jquery文件中重写版本号</p>
-</li>
-</ul>
-<p>一部分调用的插件失效了，所以在这里是重写jquery版本而不是清除jquery版本</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gqat654fwcj30dz02nmx4.jpg" alt="jQuery库版本过低.png"></p>
-<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="http://research.insecurelabs.org/jquery/test/">JQuery跨站脚本在线测试</a></p>
-<p><a href="https://blog.csdn.net/kang1011/article/details/109682718?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-3-109682718&spm=3001.4430">解决jquery版本过低引发的XSS跨站安全漏洞</a></p>
-<p><a href="https://blog.csdn.net/adminhui/article/details/103035516?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-4-103035516&spm=3001.4430">jquery版本安全漏洞问题</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-      </categories>
-      <tags>
-        <tag>中危漏洞</tag>
-        <tag>跨站类漏洞</tag>
-        <tag>第三方库漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>文件上传漏洞</title>
     <url>//346f4f3fc8dd.html</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
@@ -651,6 +594,63 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>代码执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jQuery库版本过低</title>
+    <url>//b475e6de3de1.html</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><p>　　jQuery是一个快速、简洁的JavaScript框架,是一个丰富的JavaScript代码库。jQuery设计的目的是为了写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
+<p>　　在JQuery的诸多发行版本中，存在着DOM-based XSS（跨站脚本攻击的一种)漏洞，易被攻击者利用。漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致LOCATION.HASH跨站漏洞。这也是最为被大众熟知的jQuery的一个漏洞。</p>
+<h2 id="DOM-based-XSS-漏洞"><a href="#DOM-based-XSS-漏洞" class="headerlink" title="DOM-based XSS 漏洞"></a>DOM-based XSS 漏洞</h2><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
+<li><p> jquery-1.7.1~1.8.3</p>
+</li>
+<li><p> jquery-1.6.min.js，jquery-1.6.1.min.js，jquery-1.6.2.min.js</p>
+</li>
+<li><p> jquery-1.5所有版本</p>
+</li>
+<li><p> jquery-1.4所有版本</p>
+</li>
+<li><p> jquery-1.3所有版本</p>
+</li>
+<li><p> jquery-1.2所有版本</p>
+</li>
+</ul>
+<p>影响版本不全面，建议升级到jquery-3.4.0以上</p>
+<h2 id="漏洞测试方法"><a href="#漏洞测试方法" class="headerlink" title="漏洞测试方法"></a>漏洞测试方法</h2><p>F12打开Console窗口，输入以下代码显示jquery版本号</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.fn.jquery</span><br></pre></td></tr></table></figure>
+
+<p>输入以下代码,如果有弹窗出现说明存在XSS漏洞</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;element[attribute=&#x27;&lt;img src=123123 οnerrοr=alert(123)&gt;&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h2><p>升级jQuery库到jquery-3.4.0以上或者最新版本</p>
+<p>更新版本有可能存在众多问题，所以在不改变版本的情况下避免漏洞的利用（或者使用插件jQuery Migrate）</p>
+<h3 id="临时修复方案"><a href="#临时修复方案" class="headerlink" title="临时修复方案"></a>临时修复方案</h3><ul>
+<li><p> jquery文件重命名</p>
+</li>
+<li><p>把jquery文件里头部带有版本号的注释删除</p>
+</li>
+<li><p>把jquery文件内版本号清除（不推荐）</p>
+</li>
+<li><p> 在 jquery文件中重写版本号</p>
+</li>
+</ul>
+<p>一部分调用的插件失效了，所以在这里是重写jquery版本而不是清除jquery版本</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gqat654fwcj30dz02nmx4.jpg" alt="jQuery库版本过低.png"></p>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="http://research.insecurelabs.org/jquery/test/">JQuery跨站脚本在线测试</a></p>
+<p><a href="https://blog.csdn.net/kang1011/article/details/109682718?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-3-109682718&spm=3001.4430">解决jquery版本过低引发的XSS跨站安全漏洞</a></p>
+<p><a href="https://blog.csdn.net/adminhui/article/details/103035516?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-4-103035516&spm=3001.4430">jquery版本安全漏洞问题</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>中危漏洞</tag>
+        <tag>跨站类漏洞</tag>
+        <tag>第三方库漏洞</tag>
       </tags>
   </entry>
 </search>
