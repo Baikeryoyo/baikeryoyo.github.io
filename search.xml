@@ -373,285 +373,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3数组</title>
-    <url>//f837cb37fb57.html</url>
-    <content><![CDATA[<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li>列表(list): 是序列中的可变序列</li>
-<li>元组(tuple): 是序列中的不可变序列</li>
-<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
-<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
-</ul>
-<h2 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h2><p>列表是可变序列</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 &#x3D; [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br></pre></td></tr></table></figure>
-
-<p>通过索引（index）来获取列表里面的元素<br>索引是从0开始的整数，列表第一个位置索引为0，第二个位置索引为1，第三个位置索引为2，以此类推<br>获取多个索引称为切片</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-1:-len(a)-1:-1]</span><br></pre></td></tr></table></figure>
-
-<p>可以用切片修改列表<br>对象名[起始索引:结束索引:步长] = [元素1,元素2……]<br>a[len(a):]=[11]    结尾增加<br>a[0:0]=[1,2,3] 固定位置或者开头增加<br>a[0:3] = [1,2,3] 修改前三个</p>
-<p>通过for循环遍历列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">for 变量 in 序列 :</span><br><span class="line">	代码块</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python3基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3字符串</title>
-    <url>//03e31e69f196.html</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<h2 id="Python3字符串"><a href="#Python3字符串" class="headerlink" title="Python3字符串"></a>Python3字符串</h2><p>字符串可以用单引号，双引号，三引号表示<br>字符串是序列，可使用所有序列的方法<br>字符串是不可改变的</p>
-<h2 id="字符串编码"><a href="#字符串编码" class="headerlink" title="字符串编码"></a>字符串编码</h2><p>Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Phthon3的字符默认就是16位的Unicode编码，ASCII码是Unicode编码的子集。</p>
-<p>使用内置函数<code>ord()</code>可以把字符串转换成对应的Unicode码；</p>
-<p>使用内置函数<code>chr()</code>可以把十进制数字转换成对应的字符；</p>
-<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>用来访问字符串中的值</p>
-<p>语法格式为：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">变量[头下标:尾下标:步长]</span><br></pre></td></tr></table></figure>
-
-<p>索引值以0为开始值，-1为从末尾的开始位置</p>
-<p>步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</p>
-<p><strong>str = ‘abcde’</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">字符串</th>
-<th align="center">a</th>
-<th align="center">b</th>
-<th align="center">c</th>
-<th align="center">d</th>
-<th align="center">e</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">下标</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">4</td>
-</tr>
-<tr>
-<td align="center">末尾为开始位置</td>
-<td align="center">-5</td>
-<td align="center">-4</td>
-<td align="center">-3</td>
-<td align="center">-2</td>
-<td align="center">-1</td>
-</tr>
-</tbody></table>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;abced&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">1</span>] = <span class="string">&#x27;b&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">2</span>] = <span class="string">&#x27;c&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">3</span>] = <span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">4</span>] = <span class="string">&#x27;e&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[:] = <span class="string">&#x27;abced&#x27;</span> </span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>:] = <span class="string">&#x27;abced&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[:<span class="number">5</span>] = <span class="string">&#x27;abced&#x27;</span> </span><br><span class="line"><span class="built_in">str</span>[:<span class="number">3</span>] = <span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>:<span class="number">2</span>] = <span class="string">&#x27;ab&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">1</span>:<span class="number">4</span>] = <span class="string">&#x27;bcd&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>:<span class="number">5</span>:<span class="number">2</span>] = <span class="string">&#x27;ace&#x27;</span> </span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>使用不同的方式把变量代入到字符串中输出</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拼串</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;欢迎 &#x27;</span>+name+<span class="string">&#x27; 光临！&#x27;</span>)</span><br><span class="line"><span class="comment"># 多个参数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;欢迎&#x27;</span>,name,<span class="string">&#x27;光临！&#x27;</span>)</span><br><span class="line"><span class="comment"># 占位符</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;欢迎 %s 光临！&#x27;</span>%name)</span><br><span class="line"><span class="comment"># 格式化字符串</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;欢迎 <span class="subst">&#123;name&#125;</span> 光临！&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Python转义字符"><a href="#Python转义字符" class="headerlink" title="Python转义字符"></a>Python转义字符</h2><p>可以使用 <code>\</code> 作为转义字符，通过转义字符，可以在字符串中使用一些特殊的内容</p>
-<table>
-<thead>
-<tr>
-<th align="center">转义字符</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">\ (在结尾时)</td>
-<td align="center">续航符，连接下一行为同一行语句</td>
-</tr>
-<tr>
-<td align="center">\‘</td>
-<td align="center">转义单引号</td>
-</tr>
-<tr>
-<td align="center">\\</td>
-<td align="center">转义斜杠</td>
-</tr>
-<tr>
-<td align="center">\“</td>
-<td align="center">转义双引号</td>
-</tr>
-<tr>
-<td align="center">\t</td>
-<td align="center">转义制表符(TAB)</td>
-</tr>
-<tr>
-<td align="center">\v</td>
-<td align="center">转义纵向制表符(TAB)</td>
-</tr>
-<tr>
-<td align="center">\n</td>
-<td align="center">转义换行符</td>
-</tr>
-<tr>
-<td align="center">\b</td>
-<td align="center">转义删除键</td>
-</tr>
-<tr>
-<td align="center">\r</td>
-<td align="center">转义回车</td>
-</tr>
-<tr>
-<td align="center">\000</td>
-<td align="center">转义为空</td>
-</tr>
-<tr>
-<td align="center">\uxxxx</td>
-<td align="center">表示Unicode编码</td>
-</tr>
-</tbody></table>
-<h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">描述</th>
-<th align="center">实例</th>
-<th align="center">结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">%s</td>
-<td align="center">格式化字符串（采用str()的显示）</td>
-<td align="center">print(‘this is %s’ %(‘abcde’))</td>
-<td align="center">this is abcde</td>
-</tr>
-<tr>
-<td align="center">%r</td>
-<td align="center">格式化字符串（采用repr()的显示）</td>
-<td align="center">print(‘this is %r’ %(‘abcde’))</td>
-<td align="center">this is ‘abcde’</td>
-</tr>
-<tr>
-<td align="center">%c</td>
-<td align="center">格式化字符及其ASCII码</td>
-<td align="center">print(‘this is %c’ %34)</td>
-<td align="center">this is “</td>
-</tr>
-<tr>
-<td align="center">%d</td>
-<td align="center">格式化整数</td>
-<td align="center">print(‘this is %d’ %10.7)</td>
-<td align="center">this is 10</td>
-</tr>
-<tr>
-<td align="center">%o</td>
-<td align="center">格式化无符号八进制数</td>
-<td align="center">print(‘this is %o’ %8)</td>
-<td align="center">this is 10</td>
-</tr>
-<tr>
-<td align="center">%x</td>
-<td align="center">格式化无符号十六进制数</td>
-<td align="center">print(‘this is %x’ %10)</td>
-<td align="center">this is a</td>
-</tr>
-<tr>
-<td align="center">%e</td>
-<td align="center">用科学计数法格式化浮点数</td>
-<td align="center">print(‘this is %e’ %10)</td>
-<td align="center">this is 1.000000e+01</td>
-</tr>
-<tr>
-<td align="center">%f</td>
-<td align="center">格式化浮点数；第三位开始会四舍五入</td>
-<td align="center">print(‘this is %.3f’ %10.777777)</td>
-<td align="center">this is 10.778</td>
-</tr>
-</tbody></table>
-<p>format()方法占位组合字符串和数字</p>
-<table>
-<thead>
-<tr>
-<th align="center">数字</th>
-<th align="center">格式</th>
-<th align="center">输出</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">3.1415926</td>
-<td align="center">{ : .2f}</td>
-<td align="center">3.14</td>
-<td align="center">保留小数两位</td>
-</tr>
-<tr>
-<td align="center">3.1415926</td>
-<td align="center">{: +.2f}</td>
-<td align="center">3.14</td>
-<td align="center">带符号保留小数两位</td>
-</tr>
-<tr>
-<td align="center">2.718</td>
-<td align="center">{: .0f}</td>
-<td align="center">3</td>
-<td align="center">不带小数</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">{: 0&gt;2d}</td>
-<td align="center">05</td>
-<td align="center">数字补0(填充左边，宽度为2)</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">{: x&lt;4d}</td>
-<td align="center">5xxx</td>
-<td align="center">数字补x(填充左边，宽度为4)</td>
-</tr>
-<tr>
-<td align="center">100000</td>
-<td align="center">{: ,}</td>
-<td align="center">100,000</td>
-<td align="center">以逗号分割数字</td>
-</tr>
-<tr>
-<td align="center">0.25</td>
-<td align="center">{: .2%}</td>
-<td align="center">25.00%</td>
-<td align="center">百分比格式</td>
-</tr>
-<tr>
-<td align="center">1000000000</td>
-<td align="center">{: .2e}</td>
-<td align="center">1.00E+09</td>
-<td align="center">指数记法</td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td align="center">{:10d}</td>
-<td align="center">13</td>
-<td align="center">右对齐（默认，宽度为10）</td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td align="center">{:&lt;10d}</td>
-<td align="center">13</td>
-<td align="center">左对齐（宽度为10）</td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td align="center">{:^10d}</td>
-<td align="center">13</td>
-<td align="center">居中（宽度为10）</td>
-</tr>
-</tbody></table>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a1 = <span class="number">3</span></span><br><span class="line">a2 = <span class="number">567</span></span><br><span class="line">a3 = <span class="number">49.95</span></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&quot;I want &#123;2&#125; pieces of item &#123;0&#125; for &#123;1&#125; dollars.&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>.<span class="built_in">format</span>(a1,a2,a3))</span><br><span class="line"></span><br><span class="line">I want <span class="number">49.95</span> pieces of item <span class="number">3</span> <span class="keyword">for</span> <span class="number">567</span> dollars.</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字符串内置方法"><a href="#字符串内置方法" class="headerlink" title="字符串内置方法"></a>字符串内置方法</h2><p>所有字符串方法都返回新值，不会更改原始字符串<br>使用说明：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(x.方法名(条件))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">capitalize()	把首字符转换为大写。</span><br><span class="line">casefold()		把字符串转换为小写。</span><br><span class="line">center()		返回居中的字符串。</span><br><span class="line">count()			返回指定值在字符串中出现的次数。</span><br><span class="line">encode()		返回字符串的编码版本。</span><br><span class="line">endswith()		如果字符串以指定值结尾，则返回 true。</span><br><span class="line">expandtabs()	设置字符串的 tab 尺寸。</span><br><span class="line">find()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line"><span class="built_in">format</span>()		格式化字符串中的指定值。</span><br><span class="line">format_map()	格式化字符串中的指定值。</span><br><span class="line">index()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line">isalnum()		如果字符串中的所有字符都是字母数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isalpha()		如果字符串中的所有字符都在字母表中，则返回 <span class="literal">True</span>。</span><br><span class="line">isdecimal()		如果字符串中的所有字符都是小数，则返回 <span class="literal">True</span>。</span><br><span class="line">isdigit()		如果字符串中的所有字符都是数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isidentifier()	如果字符串是标识符，则返回 <span class="literal">True</span>。</span><br><span class="line">islower()		如果字符串中的所有字符都是小写，则返回 <span class="literal">True</span>。</span><br><span class="line">isnumeric()		如果字符串中的所有字符都是数，则返回 <span class="literal">True</span>。</span><br><span class="line">isprintable()	如果字符串中的所有字符都是可打印的，则返回 <span class="literal">True</span>。</span><br><span class="line">isspace()		如果字符串中的所有字符都是空白字符，则返回 <span class="literal">True</span>。</span><br><span class="line">istitle()		如果字符串遵循标题规则，则返回 <span class="literal">True</span>。</span><br><span class="line">isupper()		如果字符串中的所有字符都是大写，则返回 <span class="literal">True</span>。</span><br><span class="line">join()			把可迭代对象的元素连接到字符串的末尾。</span><br><span class="line">ljust()			返回字符串的左对齐版本。</span><br><span class="line">lower()			把字符串转换为小写。</span><br><span class="line">lstrip()		返回字符串的左修剪版本。</span><br><span class="line">maketrans()		返回在转换中使用的转换表。</span><br><span class="line">partition()		返回元组，其中的字符串被分为三部分。</span><br><span class="line">replace()		返回字符串，其中指定的值被替换为指定的值。</span><br><span class="line">rfind()			在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rindex()		在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rjust()			返回字符串的右对齐版本。</span><br><span class="line">rpartition()	返回元组，其中字符串分为三部分。</span><br><span class="line">rsplit()		在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">rstrip()		返回字符串的右边修剪版本。</span><br><span class="line">split()			在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">splitlines()	在换行符处拆分字符串并返回列表。</span><br><span class="line">startswith()	如果以指定值开头的字符串，则返回 true。</span><br><span class="line">strip()			返回字符串的剪裁版本。</span><br><span class="line">swapcase()		切换大小写，小写成为大写，反之亦然。</span><br><span class="line">title()			把每个单词的首字符转换为大写。</span><br><span class="line">translate()		返回被转换的字符串。</span><br><span class="line">upper()			把字符串转换为大写。</span><br><span class="line">zfill()			在字符串的开头填充指定数量的 <span class="number">0</span> 值。</span><br></pre></td></tr></table></figure>
-
-]]></content>
+    <title>Python3-类与对象</title>
+    <url>//a13158d81337.html</url>
+    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是内存中专门存储数据的一块区域</p>
+<p>对象由三部分：对象的标识（id），对象的类型（type），对象的值（value）</p>
+<p>1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数<code>id(obj)</code>可返回对象obj的标识</p>
+<p>2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用<code>type(obj)</code>获得对象的所属类型。</p>
+<p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
+<p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2>]]></content>
       <categories>
         <category>Python3</category>
       </categories>
@@ -1010,15 +740,285 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-类与对象</title>
-    <url>//a13158d81337.html</url>
-    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是内存中专门存储数据的一块区域</p>
-<p>对象由三部分：对象的标识（id），对象的类型（type），对象的值（value）</p>
-<p>1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数<code>id(obj)</code>可返回对象obj的标识</p>
-<p>2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用<code>type(obj)</code>获得对象的所属类型。</p>
-<p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
-<p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2>]]></content>
+    <title>Python3数组</title>
+    <url>//f837cb37fb57.html</url>
+    <content><![CDATA[<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>列表(list): 是序列中的可变序列</li>
+<li>元组(tuple): 是序列中的不可变序列</li>
+<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
+<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
+</ul>
+<h2 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h2><p>列表是可变序列</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 &#x3D; [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br></pre></td></tr></table></figure>
+
+<p>通过索引（index）来获取列表里面的元素<br>索引是从0开始的整数，列表第一个位置索引为0，第二个位置索引为1，第三个位置索引为2，以此类推<br>获取多个索引称为切片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-1:-len(a)-1:-1]</span><br></pre></td></tr></table></figure>
+
+<p>可以用切片修改列表<br>对象名[起始索引:结束索引:步长] = [元素1,元素2……]<br>a[len(a):]=[11]    结尾增加<br>a[0:0]=[1,2,3] 固定位置或者开头增加<br>a[0:3] = [1,2,3] 修改前三个</p>
+<p>通过for循环遍历列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">for 变量 in 序列 :</span><br><span class="line">	代码块</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python3基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3字符串</title>
+    <url>//03e31e69f196.html</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h2 id="Python3字符串"><a href="#Python3字符串" class="headerlink" title="Python3字符串"></a>Python3字符串</h2><p>字符串可以用单引号，双引号，三引号表示<br>字符串是序列，可使用所有序列的方法<br>字符串是不可改变的</p>
+<h2 id="字符串编码"><a href="#字符串编码" class="headerlink" title="字符串编码"></a>字符串编码</h2><p>Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Phthon3的字符默认就是16位的Unicode编码，ASCII码是Unicode编码的子集。</p>
+<p>使用内置函数<code>ord()</code>可以把字符串转换成对应的Unicode码；</p>
+<p>使用内置函数<code>chr()</code>可以把十进制数字转换成对应的字符；</p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>用来访问字符串中的值</p>
+<p>语法格式为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">变量[头下标:尾下标:步长]</span><br></pre></td></tr></table></figure>
+
+<p>索引值以0为开始值，-1为从末尾的开始位置</p>
+<p>步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</p>
+<p><strong>str = ‘abcde’</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字符串</th>
+<th align="center">a</th>
+<th align="center">b</th>
+<th align="center">c</th>
+<th align="center">d</th>
+<th align="center">e</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">下标</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">末尾为开始位置</td>
+<td align="center">-5</td>
+<td align="center">-4</td>
+<td align="center">-3</td>
+<td align="center">-2</td>
+<td align="center">-1</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;abced&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">1</span>] = <span class="string">&#x27;b&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">2</span>] = <span class="string">&#x27;c&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">3</span>] = <span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">4</span>] = <span class="string">&#x27;e&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[:] = <span class="string">&#x27;abced&#x27;</span> </span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>:] = <span class="string">&#x27;abced&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[:<span class="number">5</span>] = <span class="string">&#x27;abced&#x27;</span> </span><br><span class="line"><span class="built_in">str</span>[:<span class="number">3</span>] = <span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>:<span class="number">2</span>] = <span class="string">&#x27;ab&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">1</span>:<span class="number">4</span>] = <span class="string">&#x27;bcd&#x27;</span></span><br><span class="line"><span class="built_in">str</span>[<span class="number">0</span>:<span class="number">5</span>:<span class="number">2</span>] = <span class="string">&#x27;ace&#x27;</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>使用不同的方式把变量代入到字符串中输出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拼串</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;欢迎 &#x27;</span>+name+<span class="string">&#x27; 光临！&#x27;</span>)</span><br><span class="line"><span class="comment"># 多个参数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;欢迎&#x27;</span>,name,<span class="string">&#x27;光临！&#x27;</span>)</span><br><span class="line"><span class="comment"># 占位符</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;欢迎 %s 光临！&#x27;</span>%name)</span><br><span class="line"><span class="comment"># 格式化字符串</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;欢迎 <span class="subst">&#123;name&#125;</span> 光临！&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Python转义字符"><a href="#Python转义字符" class="headerlink" title="Python转义字符"></a>Python转义字符</h2><p>可以使用 <code>\</code> 作为转义字符，通过转义字符，可以在字符串中使用一些特殊的内容</p>
+<table>
+<thead>
+<tr>
+<th align="center">转义字符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\ (在结尾时)</td>
+<td align="center">续航符，连接下一行为同一行语句</td>
+</tr>
+<tr>
+<td align="center">\‘</td>
+<td align="center">转义单引号</td>
+</tr>
+<tr>
+<td align="center">\\</td>
+<td align="center">转义斜杠</td>
+</tr>
+<tr>
+<td align="center">\“</td>
+<td align="center">转义双引号</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="center">转义制表符(TAB)</td>
+</tr>
+<tr>
+<td align="center">\v</td>
+<td align="center">转义纵向制表符(TAB)</td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td align="center">转义换行符</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">转义删除键</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="center">转义回车</td>
+</tr>
+<tr>
+<td align="center">\000</td>
+<td align="center">转义为空</td>
+</tr>
+<tr>
+<td align="center">\uxxxx</td>
+<td align="center">表示Unicode编码</td>
+</tr>
+</tbody></table>
+<h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">描述</th>
+<th align="center">实例</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%s</td>
+<td align="center">格式化字符串（采用str()的显示）</td>
+<td align="center">print(‘this is %s’ %(‘abcde’))</td>
+<td align="center">this is abcde</td>
+</tr>
+<tr>
+<td align="center">%r</td>
+<td align="center">格式化字符串（采用repr()的显示）</td>
+<td align="center">print(‘this is %r’ %(‘abcde’))</td>
+<td align="center">this is ‘abcde’</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="center">格式化字符及其ASCII码</td>
+<td align="center">print(‘this is %c’ %34)</td>
+<td align="center">this is “</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="center">格式化整数</td>
+<td align="center">print(‘this is %d’ %10.7)</td>
+<td align="center">this is 10</td>
+</tr>
+<tr>
+<td align="center">%o</td>
+<td align="center">格式化无符号八进制数</td>
+<td align="center">print(‘this is %o’ %8)</td>
+<td align="center">this is 10</td>
+</tr>
+<tr>
+<td align="center">%x</td>
+<td align="center">格式化无符号十六进制数</td>
+<td align="center">print(‘this is %x’ %10)</td>
+<td align="center">this is a</td>
+</tr>
+<tr>
+<td align="center">%e</td>
+<td align="center">用科学计数法格式化浮点数</td>
+<td align="center">print(‘this is %e’ %10)</td>
+<td align="center">this is 1.000000e+01</td>
+</tr>
+<tr>
+<td align="center">%f</td>
+<td align="center">格式化浮点数；第三位开始会四舍五入</td>
+<td align="center">print(‘this is %.3f’ %10.777777)</td>
+<td align="center">this is 10.778</td>
+</tr>
+</tbody></table>
+<p>format()方法占位组合字符串和数字</p>
+<table>
+<thead>
+<tr>
+<th align="center">数字</th>
+<th align="center">格式</th>
+<th align="center">输出</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">3.1415926</td>
+<td align="center">{ : .2f}</td>
+<td align="center">3.14</td>
+<td align="center">保留小数两位</td>
+</tr>
+<tr>
+<td align="center">3.1415926</td>
+<td align="center">{: +.2f}</td>
+<td align="center">3.14</td>
+<td align="center">带符号保留小数两位</td>
+</tr>
+<tr>
+<td align="center">2.718</td>
+<td align="center">{: .0f}</td>
+<td align="center">3</td>
+<td align="center">不带小数</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">{: 0&gt;2d}</td>
+<td align="center">05</td>
+<td align="center">数字补0(填充左边，宽度为2)</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">{: x&lt;4d}</td>
+<td align="center">5xxx</td>
+<td align="center">数字补x(填充左边，宽度为4)</td>
+</tr>
+<tr>
+<td align="center">100000</td>
+<td align="center">{: ,}</td>
+<td align="center">100,000</td>
+<td align="center">以逗号分割数字</td>
+</tr>
+<tr>
+<td align="center">0.25</td>
+<td align="center">{: .2%}</td>
+<td align="center">25.00%</td>
+<td align="center">百分比格式</td>
+</tr>
+<tr>
+<td align="center">1000000000</td>
+<td align="center">{: .2e}</td>
+<td align="center">1.00E+09</td>
+<td align="center">指数记法</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">{:10d}</td>
+<td align="center">13</td>
+<td align="center">右对齐（默认，宽度为10）</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">{:&lt;10d}</td>
+<td align="center">13</td>
+<td align="center">左对齐（宽度为10）</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">{:^10d}</td>
+<td align="center">13</td>
+<td align="center">居中（宽度为10）</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a1 = <span class="number">3</span></span><br><span class="line">a2 = <span class="number">567</span></span><br><span class="line">a3 = <span class="number">49.95</span></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&quot;I want &#123;2&#125; pieces of item &#123;0&#125; for &#123;1&#125; dollars.&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>.<span class="built_in">format</span>(a1,a2,a3))</span><br><span class="line"></span><br><span class="line">I want <span class="number">49.95</span> pieces of item <span class="number">3</span> <span class="keyword">for</span> <span class="number">567</span> dollars.</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串内置方法"><a href="#字符串内置方法" class="headerlink" title="字符串内置方法"></a>字符串内置方法</h2><p>所有字符串方法都返回新值，不会更改原始字符串<br>使用说明：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(x.方法名(条件))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">capitalize()	把首字符转换为大写。</span><br><span class="line">casefold()		把字符串转换为小写。</span><br><span class="line">center()		返回居中的字符串。</span><br><span class="line">count()			返回指定值在字符串中出现的次数。</span><br><span class="line">encode()		返回字符串的编码版本。</span><br><span class="line">endswith()		如果字符串以指定值结尾，则返回 true。</span><br><span class="line">expandtabs()	设置字符串的 tab 尺寸。</span><br><span class="line">find()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line"><span class="built_in">format</span>()		格式化字符串中的指定值。</span><br><span class="line">format_map()	格式化字符串中的指定值。</span><br><span class="line">index()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line">isalnum()		如果字符串中的所有字符都是字母数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isalpha()		如果字符串中的所有字符都在字母表中，则返回 <span class="literal">True</span>。</span><br><span class="line">isdecimal()		如果字符串中的所有字符都是小数，则返回 <span class="literal">True</span>。</span><br><span class="line">isdigit()		如果字符串中的所有字符都是数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isidentifier()	如果字符串是标识符，则返回 <span class="literal">True</span>。</span><br><span class="line">islower()		如果字符串中的所有字符都是小写，则返回 <span class="literal">True</span>。</span><br><span class="line">isnumeric()		如果字符串中的所有字符都是数，则返回 <span class="literal">True</span>。</span><br><span class="line">isprintable()	如果字符串中的所有字符都是可打印的，则返回 <span class="literal">True</span>。</span><br><span class="line">isspace()		如果字符串中的所有字符都是空白字符，则返回 <span class="literal">True</span>。</span><br><span class="line">istitle()		如果字符串遵循标题规则，则返回 <span class="literal">True</span>。</span><br><span class="line">isupper()		如果字符串中的所有字符都是大写，则返回 <span class="literal">True</span>。</span><br><span class="line">join()			把可迭代对象的元素连接到字符串的末尾。</span><br><span class="line">ljust()			返回字符串的左对齐版本。</span><br><span class="line">lower()			把字符串转换为小写。</span><br><span class="line">lstrip()		返回字符串的左修剪版本。</span><br><span class="line">maketrans()		返回在转换中使用的转换表。</span><br><span class="line">partition()		返回元组，其中的字符串被分为三部分。</span><br><span class="line">replace()		返回字符串，其中指定的值被替换为指定的值。</span><br><span class="line">rfind()			在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rindex()		在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rjust()			返回字符串的右对齐版本。</span><br><span class="line">rpartition()	返回元组，其中字符串分为三部分。</span><br><span class="line">rsplit()		在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">rstrip()		返回字符串的右边修剪版本。</span><br><span class="line">split()			在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">splitlines()	在换行符处拆分字符串并返回列表。</span><br><span class="line">startswith()	如果以指定值开头的字符串，则返回 true。</span><br><span class="line">strip()			返回字符串的剪裁版本。</span><br><span class="line">swapcase()		切换大小写，小写成为大写，反之亦然。</span><br><span class="line">title()			把每个单词的首字符转换为大写。</span><br><span class="line">translate()		返回被转换的字符串。</span><br><span class="line">upper()			把字符串转换为大写。</span><br><span class="line">zfill()			在字符串的开头填充指定数量的 <span class="number">0</span> 值。</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>Python3</category>
       </categories>
