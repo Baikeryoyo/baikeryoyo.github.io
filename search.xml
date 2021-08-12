@@ -848,141 +848,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-数组</title>
-    <url>//dff4ce1f2267.html</url>
-    <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li>列表(list): 是序列中的可变序列</li>
-<li>元组(tuple): 是序列中的不可变序列</li>
-<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
-<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
-</ul>
-<h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>​    序列是一块用于存放多个值的连续内存空间，并且按一定顺序排列，每个值（称为元素）都分配一个数字，称为索引或位置。通过该索引可以取出相应的值。</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>Python中的列表是由一系列按特定顺序排列的元素组成。它是Python中内置的可变序列。</p>
-<p>在形式上，列表的所有元素都放在一对中括号“[]”中，两个相邻元素间使用逗号“,”分隔。</p>
-<p>在内容上，可以将整数、实数、字符串、列表、元组等任何类型的内容放入列表中，并且同一个列表中，元素的类型可以不同，因为它们之间没有任何关系。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 = [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">type</span>(a) = <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
-<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>])</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(a[-<span class="number">1</span>])</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p>获取多个索引称为切片</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为<span class="number">1</span>，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-<span class="number">1</span>:-<span class="built_in">len</span>(a)-<span class="number">1</span>:-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">4</span>]</span><br><span class="line"><span class="built_in">print</span>(a[:])</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="修改列表"><a href="#修改列表" class="headerlink" title="修改列表"></a>修改列表</h3><p>可以用切片修改列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">对象名[起始索引:结束索引:步长] = [元素<span class="number">1</span>,元素<span class="number">2.</span>.....]</span><br><span class="line">a[<span class="built_in">len</span>(a):]=[<span class="number">11</span>]	结尾增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">0</span>]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 固定位置或者开头增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">3</span>] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 修改前三个</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="遍历列表"><a href="#遍历列表" class="headerlink" title="遍历列表"></a>遍历列表</h3><p>通过for循环遍历列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历列表和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; [表达式 for 变量 in 序列]</span><br><span class="line">import random</span><br><span class="line">a &#x3D; [random.randint(1,100) for i in range(10)]</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; [表达式 for 变量 in 序列 条件语句]</span><br><span class="line">a &#x3D; [1,2,3,4,5,6]</span><br><span class="line">b &#x3D; [i+1 for i in a if i&gt;0]</span><br><span class="line">print(b)</span><br><span class="line">[2,3,4,5,6,7]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法-method"><a href="#方法-method" class="headerlink" title="方法(method)"></a>方法(method)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">append()方法:添加元素</span><br><span class="line">对象名.append(新元素)</span><br><span class="line"></span><br><span class="line">index()方法:返回具有指定值的第一个元素的索引</span><br><span class="line">print(对象名.index(元素,起始索引,结束索引))	#起始和结束位置可以省略</span><br><span class="line"></span><br><span class="line">count()方法:统计指定元素出现的次数</span><br><span class="line">对象名.count(元素)</span><br><span class="line"></span><br><span class="line">insert()方法:按指定位置添加元素</span><br><span class="line">对象名.insert(索引,新元素)</span><br><span class="line"></span><br><span class="line">remove()方法:删除指定元素，有多个相同元素只会删除第一个</span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line">pop()方法:删除指定索引，如未指定索引，默认删除最后一个</span><br><span class="line">对象名.pop(索引)</span><br><span class="line"></span><br><span class="line">del 方法:删除列表</span><br><span class="line">del 列表名    #也可以用 del 列表名[索引] 来删除指定索引</span><br><span class="line"></span><br><span class="line">clear()方法:清空列表</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制列表</span><br><span class="line">变量 &#x3D; 对象名.copy()</span><br><span class="line"></span><br><span class="line">list()方法:复制列表	#也可以使用此函数把其他序列转换为列表</span><br><span class="line">变量 &#x3D; list(对象名)</span><br><span class="line"></span><br><span class="line">extend()方法:合并列表</span><br><span class="line">对象1.extend(对象2&#x2F;元素)</span><br><span class="line"></span><br><span class="line">reverse()方法:颠倒列表顺序</span><br><span class="line">对象名.reverse()</span><br><span class="line"></span><br><span class="line">sort()方法:对列表排序</span><br><span class="line">对象名.sort()				#默认为升序</span><br><span class="line">对象名.sort(reverse&#x3D;True)	#降序</span><br><span class="line"></span><br><span class="line">sorted()方法:对列表排序</span><br><span class="line">对象名.sorted()				#默认为升序</span><br><span class="line">对象名.sorted(reverse&#x3D;True)	#降序</span><br><span class="line">列表对象的sort()方法和内置sorted()函数的作用基本相同</span><br><span class="line">所不同的就是使用sort()方法时，会改变原列表的元素排列顺序</span><br><span class="line">但是使用sorted()函数时，会建立一个原列表的副本，该副本为排序后的列表</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>​        元组（tuple）是Python中另一个重要的序列结构，与列表类似，也是由一系列按特定顺序排列的元素组成。但是它是不可变序列。因此，元组也可以称为不可变的列表。</p>
-<p>元组不能重新赋值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象名 = (元素<span class="number">1</span>,元素<span class="number">2.</span>.....)	</span><br><span class="line">当不是空元组时，括号可以省略，但必须有逗号，比如：对象名 = 元素<span class="number">1</span>,</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解包（解构）"><a href="#解包（解构）" class="headerlink" title="解包（解构）"></a>解包（解构）</h3><p>解包指就是将元组当中每一个元素都赋值给一个变量<br>在对一个元组进行解包时，变量的数量必须和元组中的元素的数量一致<br>也可以在变量前边添加一个<code>*</code>，这样变量将会获取元组中所有剩余的元素<br>不能同时出现两个或以上的<code>*</code>变量</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = 对象名</span><br><span class="line">a,b,*c = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="索引-1"><a href="#索引-1" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
-<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>])</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(-<span class="number">2</span>)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h3><p>把元组转换为列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">y = <span class="built_in">list</span>(x)</span><br><span class="line">y[<span class="number">0</span>] = <span class="string">&quot;hello&quot;</span></span><br><span class="line">x = <span class="built_in">tuple</span>(y)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line">(<span class="string">&quot;yello&quot;</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="遍历元组"><a href="#遍历元组" class="headerlink" title="遍历元组"></a>遍历元组</h3><p>通过for循环遍历列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历元组和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="元组推导式"><a href="#元组推导式" class="headerlink" title="元组推导式"></a>元组推导式</h3><p>和列表推导式一样，只是把<code>[]</code>变成<code>()</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; (表达式 for 变量 in 序列)</span><br><span class="line">import random</span><br><span class="line">a &#x3D; (random.randint(1,100) for i in range(10))</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; (表达式 for 变量 in 序列 条件语句)</span><br><span class="line">a &#x3D; (1,2,3,4,5,6)</span><br><span class="line">b &#x3D; (i+1 for i in a if i&gt;0)</span><br><span class="line">print(b)</span><br><span class="line">(2,3,4,5,6,7)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span>(x)</span><br><span class="line">创建元组,把x的内容转换为元组,x多为表达式</span><br><span class="line"><span class="built_in">tuple</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 变量</span><br><span class="line">对于已经创建的元组，不在使用时，可以使用<span class="keyword">del</span>删除</span><br><span class="line"></span><br><span class="line"><span class="built_in">len</span>(x)</span><br><span class="line">通过<span class="built_in">len</span>()函数确定元组的长度</span><br><span class="line"></span><br><span class="line">对象名.index(x)</span><br><span class="line">在元组中搜索x的值并返回它的索引位置</span><br><span class="line"></span><br><span class="line">对象名.count(x)</span><br><span class="line">返回元组中指定值x出现的次数</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="列表和元组的区别"><a href="#列表和元组的区别" class="headerlink" title="列表和元组的区别"></a>列表和元组的区别</h3><ul>
-<li>列表属于可变序列，元素可以修改；元组属于不可变序列，元素不可以修改，除非整体替换。</li>
-<li>列表可以使用很多方法添加和修改元素，而元组没有</li>
-<li>列表可以使用切片访问和修改元素，而元组只可以通过切片访问元素</li>
-<li>元组比列表的访问速度要快，如果不对元素进行修改的时候，建议使用元组</li>
-<li>列表不能作为字典的键，而元组可以</li>
-</ul>
-<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>​        字典（dictionary）和列表类似，也是可变序列，不过与列表不同，它是无序的可变序列，保存的内容是以“键-值对”的形式存放的。</p>
-<p>字典属于一种新的数据结构，称为映射（mapping）</p>
-<p>字典，我们也称为叫做键值对（key-value）结构</p>
-<p>每个字典中都可以有多个键值对，而每一个键值对我们称其为一项（item）</p>
-<p>字典的key不能重复</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;key:value,key:value,key:value.......&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">这里不论是key还是value，只要是字符串，要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">通过<span class="built_in">dict</span>函数创建字典，这里字符串不需要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>([(<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>),(<span class="string">&#x27;b&#x27;</span>,<span class="number">2</span>),(<span class="string">&#x27;c&#x27;</span>,<span class="number">3</span>)])</span><br><span class="line">双值序列创建字典</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="获取字典的值"><a href="#获取字典的值" class="headerlink" title="获取字典的值"></a>获取字典的值</h3><p>通过key获取字典的值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">a[<span class="string">&#x27;a&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">通过遍历 keys()来获取所有的键</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a.keys():</span><br><span class="line">	<span class="built_in">print</span>(i,a[i])</span><br><span class="line">a <span class="number">1</span></span><br><span class="line">b <span class="number">2</span></span><br><span class="line">c <span class="number">3</span></span><br><span class="line"></span><br><span class="line">通过遍历 values()返回字典的值</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">通过遍历 items()该方法会返回字典中所有的项</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.items():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> 对象名.items():</span><br><span class="line">	<span class="built_in">print</span>(k , <span class="string">&#x27;=&#x27;</span> , v)</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">对象名.get(key，默认值) 该方法用来根据键来获取字典中的值，获取不到会返回默认值</span><br><span class="line"><span class="built_in">print</span>(对象名.get(key))</span><br><span class="line"></span><br><span class="line">修改字典，如果key存在则覆盖，不存在则添加</span><br><span class="line">对象名[key] = value</span><br><span class="line"></span><br><span class="line">setdefault(key[, default]) 可以用来向字典中添加key-value</span><br><span class="line">  如果key已经存在于字典中，则返回key的值，不会对字典做任何操作</span><br><span class="line">  如果key不存在，则向字典中添加这个key，并设置value</span><br><span class="line">对象名.setdefault(key,value)</span><br><span class="line"></span><br><span class="line">update([other])</span><br><span class="line">将其他的字典中的key-value添加到当前字典中</span><br><span class="line">如果有重复的key，则后边的会替换到当前的</span><br><span class="line">d = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">d2 = &#123;<span class="string">&#x27;d&#x27;</span>:<span class="number">4</span>,<span class="string">&#x27;e&#x27;</span>:<span class="number">5</span>,<span class="string">&#x27;f&#x27;</span>:<span class="number">6</span>, <span class="string">&#x27;a&#x27;</span>:<span class="number">7</span>&#125;</span><br><span class="line">d.update(d2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 用来删除key-value</span><br><span class="line"><span class="keyword">del</span> 对象名[key]</span><br><span class="line"></span><br><span class="line">popitem()随机删除字典中的一个键值对，一般都会删除最后一个键值对，并返回删除的键值对</span><br><span class="line">变量 = 对象名.popitem()</span><br><span class="line"></span><br><span class="line">pop()根据key删除key-value并返回，指定默认值若不存在Key则返回默认值</span><br><span class="line">变量 = 对象名.pop(key,默认值)</span><br><span class="line"></span><br><span class="line">clear()用来清空字典</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制</span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line">fromkeys()	返回拥有指定键和值的字典</span><br><span class="line">x = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line">y = <span class="number">1</span></span><br><span class="line">z = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">b = <span class="built_in">dict</span>.fromkeys(x,z)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;b&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;c&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)&#125;</span><br><span class="line"></span><br><span class="line">a.fromkeys(a)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;b&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;c&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">a.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>​        Python中的集合（set）与数学中的集合概念类似，也是用于保存不重复的元素。它有可变集合（set）和不可变集合（frozenset）两种。</p>
-<p>​        在形式上，集合的所有元素都放在一对大括号“{}”中，两个相邻元素间使用逗号“,”分隔。集合最好的应用就是去重，因为集合中的每个元素都是唯一的。</p>
-<p>集合和序列非常相似：</p>
-<p>不同点：</p>
-<p>1.集合中只能存储不可变对象<br>2.集合中存储的对象是无序（不是按照元素的插入顺序保存）<br>3.集合中不能出现重复的元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;元素<span class="number">1</span>,元素<span class="number">2.</span>.....&#125;</span><br><span class="line">	</span><br><span class="line">可以通过<span class="built_in">set</span>()来将序列和字典转换为集合</span><br><span class="line">变量 = <span class="built_in">set</span>([元素<span class="number">1</span>,元素<span class="number">2.</span>.....])</span><br><span class="line">变量 = <span class="built_in">set</span>(&#123;key:value,key:value.......&#125;)</span><br><span class="line">使用<span class="built_in">set</span>()将字典转换为集合时，只会包含字典中的键</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-正则表达式</title>
     <url>//ad2d1877a42a.html</url>
     <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>​        正则表达式（Regular Expression，常简写为regex或者RE），又称规则表达式，它不是某个编程语言所特有的，是计算机科学的一个概念，通常被用来检索和替换符合某些规则的文本。</p>
@@ -1145,6 +1010,141 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-数组</title>
+    <url>//dff4ce1f2267.html</url>
+    <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>列表(list): 是序列中的可变序列</li>
+<li>元组(tuple): 是序列中的不可变序列</li>
+<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
+<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
+</ul>
+<h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>​    序列是一块用于存放多个值的连续内存空间，并且按一定顺序排列，每个值（称为元素）都分配一个数字，称为索引或位置。通过该索引可以取出相应的值。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>Python中的列表是由一系列按特定顺序排列的元素组成。它是Python中内置的可变序列。</p>
+<p>在形式上，列表的所有元素都放在一对中括号“[]”中，两个相邻元素间使用逗号“,”分隔。</p>
+<p>在内容上，可以将整数、实数、字符串、列表、元组等任何类型的内容放入列表中，并且同一个列表中，元素的类型可以不同，因为它们之间没有任何关系。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 = [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">type</span>(a) = <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
+<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>])</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(a[-<span class="number">1</span>])</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p>获取多个索引称为切片</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为<span class="number">1</span>，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-<span class="number">1</span>:-<span class="built_in">len</span>(a)-<span class="number">1</span>:-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">4</span>]</span><br><span class="line"><span class="built_in">print</span>(a[:])</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改列表"><a href="#修改列表" class="headerlink" title="修改列表"></a>修改列表</h3><p>可以用切片修改列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">对象名[起始索引:结束索引:步长] = [元素<span class="number">1</span>,元素<span class="number">2.</span>.....]</span><br><span class="line">a[<span class="built_in">len</span>(a):]=[<span class="number">11</span>]	结尾增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">0</span>]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 固定位置或者开头增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">3</span>] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 修改前三个</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历列表"><a href="#遍历列表" class="headerlink" title="遍历列表"></a>遍历列表</h3><p>通过for循环遍历列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历列表和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; [表达式 for 变量 in 序列]</span><br><span class="line">import random</span><br><span class="line">a &#x3D; [random.randint(1,100) for i in range(10)]</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; [表达式 for 变量 in 序列 条件语句]</span><br><span class="line">a &#x3D; [1,2,3,4,5,6]</span><br><span class="line">b &#x3D; [i+1 for i in a if i&gt;0]</span><br><span class="line">print(b)</span><br><span class="line">[2,3,4,5,6,7]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法-method"><a href="#方法-method" class="headerlink" title="方法(method)"></a>方法(method)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">append()方法:添加元素</span><br><span class="line">对象名.append(新元素)</span><br><span class="line"></span><br><span class="line">index()方法:返回具有指定值的第一个元素的索引</span><br><span class="line">print(对象名.index(元素,起始索引,结束索引))	#起始和结束位置可以省略</span><br><span class="line"></span><br><span class="line">count()方法:统计指定元素出现的次数</span><br><span class="line">对象名.count(元素)</span><br><span class="line"></span><br><span class="line">insert()方法:按指定位置添加元素</span><br><span class="line">对象名.insert(索引,新元素)</span><br><span class="line"></span><br><span class="line">remove()方法:删除指定元素，有多个相同元素只会删除第一个</span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line">pop()方法:删除指定索引，如未指定索引，默认删除最后一个</span><br><span class="line">对象名.pop(索引)</span><br><span class="line"></span><br><span class="line">del 方法:删除列表</span><br><span class="line">del 列表名    #也可以用 del 列表名[索引] 来删除指定索引</span><br><span class="line"></span><br><span class="line">clear()方法:清空列表</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制列表</span><br><span class="line">变量 &#x3D; 对象名.copy()</span><br><span class="line"></span><br><span class="line">list()方法:复制列表	#也可以使用此函数把其他序列转换为列表</span><br><span class="line">变量 &#x3D; list(对象名)</span><br><span class="line"></span><br><span class="line">extend()方法:合并列表</span><br><span class="line">对象1.extend(对象2&#x2F;元素)</span><br><span class="line"></span><br><span class="line">reverse()方法:颠倒列表顺序</span><br><span class="line">对象名.reverse()</span><br><span class="line"></span><br><span class="line">sort()方法:对列表排序</span><br><span class="line">对象名.sort()				#默认为升序</span><br><span class="line">对象名.sort(reverse&#x3D;True)	#降序</span><br><span class="line"></span><br><span class="line">sorted()方法:对列表排序</span><br><span class="line">对象名.sorted()				#默认为升序</span><br><span class="line">对象名.sorted(reverse&#x3D;True)	#降序</span><br><span class="line">列表对象的sort()方法和内置sorted()函数的作用基本相同</span><br><span class="line">所不同的就是使用sort()方法时，会改变原列表的元素排列顺序</span><br><span class="line">但是使用sorted()函数时，会建立一个原列表的副本，该副本为排序后的列表</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>​        元组（tuple）是Python中另一个重要的序列结构，与列表类似，也是由一系列按特定顺序排列的元素组成。但是它是不可变序列。因此，元组也可以称为不可变的列表。</p>
+<p>元组不能重新赋值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象名 = (元素<span class="number">1</span>,元素<span class="number">2.</span>.....)	</span><br><span class="line">当不是空元组时，括号可以省略，但必须有逗号，比如：对象名 = 元素<span class="number">1</span>,</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解包（解构）"><a href="#解包（解构）" class="headerlink" title="解包（解构）"></a>解包（解构）</h3><p>解包指就是将元组当中每一个元素都赋值给一个变量<br>在对一个元组进行解包时，变量的数量必须和元组中的元素的数量一致<br>也可以在变量前边添加一个<code>*</code>，这样变量将会获取元组中所有剩余的元素<br>不能同时出现两个或以上的<code>*</code>变量</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = 对象名</span><br><span class="line">a,b,*c = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="索引-1"><a href="#索引-1" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
+<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>])</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(-<span class="number">2</span>)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h3><p>把元组转换为列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">y = <span class="built_in">list</span>(x)</span><br><span class="line">y[<span class="number">0</span>] = <span class="string">&quot;hello&quot;</span></span><br><span class="line">x = <span class="built_in">tuple</span>(y)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line">(<span class="string">&quot;yello&quot;</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历元组"><a href="#遍历元组" class="headerlink" title="遍历元组"></a>遍历元组</h3><p>通过for循环遍历列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历元组和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="元组推导式"><a href="#元组推导式" class="headerlink" title="元组推导式"></a>元组推导式</h3><p>和列表推导式一样，只是把<code>[]</code>变成<code>()</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; (表达式 for 变量 in 序列)</span><br><span class="line">import random</span><br><span class="line">a &#x3D; (random.randint(1,100) for i in range(10))</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; (表达式 for 变量 in 序列 条件语句)</span><br><span class="line">a &#x3D; (1,2,3,4,5,6)</span><br><span class="line">b &#x3D; (i+1 for i in a if i&gt;0)</span><br><span class="line">print(b)</span><br><span class="line">(2,3,4,5,6,7)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span>(x)</span><br><span class="line">创建元组,把x的内容转换为元组,x多为表达式</span><br><span class="line"><span class="built_in">tuple</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 变量</span><br><span class="line">对于已经创建的元组，不在使用时，可以使用<span class="keyword">del</span>删除</span><br><span class="line"></span><br><span class="line"><span class="built_in">len</span>(x)</span><br><span class="line">通过<span class="built_in">len</span>()函数确定元组的长度</span><br><span class="line"></span><br><span class="line">对象名.index(x)</span><br><span class="line">在元组中搜索x的值并返回它的索引位置</span><br><span class="line"></span><br><span class="line">对象名.count(x)</span><br><span class="line">返回元组中指定值x出现的次数</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="列表和元组的区别"><a href="#列表和元组的区别" class="headerlink" title="列表和元组的区别"></a>列表和元组的区别</h3><ul>
+<li>列表属于可变序列，元素可以修改；元组属于不可变序列，元素不可以修改，除非整体替换。</li>
+<li>列表可以使用很多方法添加和修改元素，而元组没有</li>
+<li>列表可以使用切片访问和修改元素，而元组只可以通过切片访问元素</li>
+<li>元组比列表的访问速度要快，如果不对元素进行修改的时候，建议使用元组</li>
+<li>列表不能作为字典的键，而元组可以</li>
+</ul>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>​        字典（dictionary）和列表类似，也是可变序列，不过与列表不同，它是无序的可变序列，保存的内容是以“键-值对”的形式存放的。</p>
+<p>字典属于一种新的数据结构，称为映射（mapping）</p>
+<p>字典，我们也称为叫做键值对（key-value）结构</p>
+<p>每个字典中都可以有多个键值对，而每一个键值对我们称其为一项（item）</p>
+<p>字典的key不能重复</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;key:value,key:value,key:value.......&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">这里不论是key还是value，只要是字符串，要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">通过<span class="built_in">dict</span>函数创建字典，这里字符串不需要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>([(<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>),(<span class="string">&#x27;b&#x27;</span>,<span class="number">2</span>),(<span class="string">&#x27;c&#x27;</span>,<span class="number">3</span>)])</span><br><span class="line">双值序列创建字典</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="获取字典的值"><a href="#获取字典的值" class="headerlink" title="获取字典的值"></a>获取字典的值</h3><p>通过key获取字典的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">a[<span class="string">&#x27;a&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">通过遍历 keys()来获取所有的键</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a.keys():</span><br><span class="line">	<span class="built_in">print</span>(i,a[i])</span><br><span class="line">a <span class="number">1</span></span><br><span class="line">b <span class="number">2</span></span><br><span class="line">c <span class="number">3</span></span><br><span class="line"></span><br><span class="line">通过遍历 values()返回字典的值</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">通过遍历 items()该方法会返回字典中所有的项</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.items():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> 对象名.items():</span><br><span class="line">	<span class="built_in">print</span>(k , <span class="string">&#x27;=&#x27;</span> , v)</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">对象名.get(key，默认值) 该方法用来根据键来获取字典中的值，获取不到会返回默认值</span><br><span class="line"><span class="built_in">print</span>(对象名.get(key))</span><br><span class="line"></span><br><span class="line">修改字典，如果key存在则覆盖，不存在则添加</span><br><span class="line">对象名[key] = value</span><br><span class="line"></span><br><span class="line">setdefault(key[, default]) 可以用来向字典中添加key-value</span><br><span class="line">  如果key已经存在于字典中，则返回key的值，不会对字典做任何操作</span><br><span class="line">  如果key不存在，则向字典中添加这个key，并设置value</span><br><span class="line">对象名.setdefault(key,value)</span><br><span class="line"></span><br><span class="line">update([other])</span><br><span class="line">将其他的字典中的key-value添加到当前字典中</span><br><span class="line">如果有重复的key，则后边的会替换到当前的</span><br><span class="line">d = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">d2 = &#123;<span class="string">&#x27;d&#x27;</span>:<span class="number">4</span>,<span class="string">&#x27;e&#x27;</span>:<span class="number">5</span>,<span class="string">&#x27;f&#x27;</span>:<span class="number">6</span>, <span class="string">&#x27;a&#x27;</span>:<span class="number">7</span>&#125;</span><br><span class="line">d.update(d2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 用来删除key-value</span><br><span class="line"><span class="keyword">del</span> 对象名[key]</span><br><span class="line"></span><br><span class="line">popitem()随机删除字典中的一个键值对，一般都会删除最后一个键值对，并返回删除的键值对</span><br><span class="line">变量 = 对象名.popitem()</span><br><span class="line"></span><br><span class="line">pop()根据key删除key-value并返回，指定默认值若不存在Key则返回默认值</span><br><span class="line">变量 = 对象名.pop(key,默认值)</span><br><span class="line"></span><br><span class="line">clear()用来清空字典</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制</span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line">fromkeys()	返回拥有指定键和值的字典</span><br><span class="line">x = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line">y = <span class="number">1</span></span><br><span class="line">z = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">b = <span class="built_in">dict</span>.fromkeys(x,z)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;b&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;c&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)&#125;</span><br><span class="line"></span><br><span class="line">a.fromkeys(a)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;b&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;c&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">a.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>​        Python中的集合（set）与数学中的集合概念类似，也是用于保存不重复的元素。它有可变集合（set）和不可变集合（frozenset）两种。</p>
+<p>​        在形式上，集合的所有元素都放在一对大括号“{}”中，两个相邻元素间使用逗号“,”分隔。集合最好的应用就是去重，因为集合中的每个元素都是唯一的。</p>
+<p>集合和序列非常相似：</p>
+<p>不同点：</p>
+<p>1.集合中只能存储不可变对象<br>2.集合中存储的对象是无序（不是按照元素的插入顺序保存）<br>3.集合中不能出现重复的元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;元素<span class="number">1</span>,元素<span class="number">2.</span>.....&#125;</span><br><span class="line">	</span><br><span class="line">可以通过<span class="built_in">set</span>()来将序列和字典转换为集合</span><br><span class="line">变量 = <span class="built_in">set</span>([元素<span class="number">1</span>,元素<span class="number">2.</span>.....])</span><br><span class="line">变量 = <span class="built_in">set</span>(&#123;key:value,key:value.......&#125;)</span><br><span class="line">使用<span class="built_in">set</span>()将字典转换为集合时，只会包含字典中的键</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-流程控制语句</title>
     <url>//3e612c0e2f45.html</url>
     <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
@@ -1178,31 +1178,6 @@
 <p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
 <p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
 <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2>]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-编码</title>
-    <url>//97794e195a92.html</url>
-    <content><![CDATA[<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>计算机在设计时采用8个比特（bit）作为一个字节（byte），<br>所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），<br>如果要表示更大的整数，就必须用更多的字节</p>
-<h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><p>计算机是美国人发明的，因此，最早只有127个字符被编码到计算机里，<br>也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码</p>
-<h3 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h3><p>为了更好的处理中文，不和ASCII冲突，中国制定了GB2312编码，用来把中文编进去</p>
-<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了<br>Unicode编码转化为“可变长编码”的UTF-8编码。<br>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，<br>常用的英文字母被编码成1个字节，汉字通常是3个字节，<br>如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间</p>
-<p>在计算机内存中，统一使用Unicode编码，保存或者传输的时候使用UTF-8编码<br>用记事本编辑的时候从文件读取的UTF-8字符被转换为Unicode字符到内存里，<br>编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件<br>对于单个字符的编码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python提供了：</span><br><span class="line"><span class="built_in">ord</span>()函数获取字符的整数表示，<span class="built_in">chr</span>()函数把编码转换为对应的字符</span><br><span class="line"><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) <span class="comment">#65</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">66</span>)	<span class="comment">#&#x27;B&#x27;</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">25991</span>)	<span class="comment">#&#x27;文&#x27;</span></span><br><span class="line">如果知道字符的整数编码，还可以用十六进制这么写<span class="built_in">str</span></span><br><span class="line"><span class="string">&#x27;\u4e2d\u6587&#x27;</span>	<span class="comment"># &#x27;中文&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>python中，字符串类型是str，在内存中以Unicode表示，一个字符对应若干字节<br>如果要保存或者传输，就需要把str变为以字节为单位的bytes</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">b&#x27;xxx&#x27;</span> <span class="comment">#用来表示bytes类型的数据</span></span><br><span class="line"></span><br><span class="line">以Unicode 表示的<span class="built_in">str</span>通过 encode()方法可以编码为指定的<span class="built_in">bytes</span></span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)	<span class="comment"># b&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)	<span class="comment"># b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">要把<span class="built_in">bytes</span>变为<span class="built_in">str</span>，就需要用decode()方法</span><br><span class="line"><span class="string">b&#x27;ABC&#x27;</span>.decode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;中文&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>个中文字符经过UTF-<span class="number">8</span>编码后通常会占用<span class="number">3</span>个字节，而<span class="number">1</span>个英文字符只占用<span class="number">1</span>个字节</span><br></pre></td></tr></table></figure>
-
-]]></content>
       <categories>
         <category>Python3</category>
         <category>Python3基础</category>
@@ -1553,6 +1528,31 @@
 <td align="center">逻辑运算符</td>
 </tr>
 </tbody></table>
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-编码</title>
+    <url>//97794e195a92.html</url>
+    <content><![CDATA[<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>计算机在设计时采用8个比特（bit）作为一个字节（byte），<br>所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），<br>如果要表示更大的整数，就必须用更多的字节</p>
+<h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><p>计算机是美国人发明的，因此，最早只有127个字符被编码到计算机里，<br>也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码</p>
+<h3 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h3><p>为了更好的处理中文，不和ASCII冲突，中国制定了GB2312编码，用来把中文编进去</p>
+<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了<br>Unicode编码转化为“可变长编码”的UTF-8编码。<br>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，<br>常用的英文字母被编码成1个字节，汉字通常是3个字节，<br>如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间</p>
+<p>在计算机内存中，统一使用Unicode编码，保存或者传输的时候使用UTF-8编码<br>用记事本编辑的时候从文件读取的UTF-8字符被转换为Unicode字符到内存里，<br>编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件<br>对于单个字符的编码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python提供了：</span><br><span class="line"><span class="built_in">ord</span>()函数获取字符的整数表示，<span class="built_in">chr</span>()函数把编码转换为对应的字符</span><br><span class="line"><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) <span class="comment">#65</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">66</span>)	<span class="comment">#&#x27;B&#x27;</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">25991</span>)	<span class="comment">#&#x27;文&#x27;</span></span><br><span class="line">如果知道字符的整数编码，还可以用十六进制这么写<span class="built_in">str</span></span><br><span class="line"><span class="string">&#x27;\u4e2d\u6587&#x27;</span>	<span class="comment"># &#x27;中文&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>python中，字符串类型是str，在内存中以Unicode表示，一个字符对应若干字节<br>如果要保存或者传输，就需要把str变为以字节为单位的bytes</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">b&#x27;xxx&#x27;</span> <span class="comment">#用来表示bytes类型的数据</span></span><br><span class="line"></span><br><span class="line">以Unicode 表示的<span class="built_in">str</span>通过 encode()方法可以编码为指定的<span class="built_in">bytes</span></span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)	<span class="comment"># b&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)	<span class="comment"># b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">要把<span class="built_in">bytes</span>变为<span class="built_in">str</span>，就需要用decode()方法</span><br><span class="line"><span class="string">b&#x27;ABC&#x27;</span>.decode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;中文&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>个中文字符经过UTF-<span class="number">8</span>编码后通常会占用<span class="number">3</span>个字节，而<span class="number">1</span>个英文字符只占用<span class="number">1</span>个字节</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Python3</category>
@@ -2430,6 +2430,30 @@
       </tags>
   </entry>
   <entry>
+    <title>中国移动-禹路由 ExportSettings.sh 敏感信息泄露漏</title>
+    <url>//f0a3ef61fe99.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>中国移动 禹路由 <code>ExportSettings.sh</code> 存在敏感信息泄露漏洞，攻击者通过漏洞获取配置文件，其中包含账号密码等敏感信息</p>
+<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;互联世界 物联未来-登录&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;cgi-bin&#x2F;ExportSettings.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5pozofyvj612v0e00y402.jpg" alt="中国移动禹路由敏感信息泄露漏洞.png"></p>
+<p>存在账号密码等敏感信息</p>
+<h2 id="防御建议"><a href="#防御建议" class="headerlink" title="防御建议"></a>防御建议</h2><p>禁止外部访问<code>ExportSettings.sh</code>文件</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>网络设备漏洞</category>
+        <category>中国移动</category>
+      </categories>
+      <tags>
+        <tag>信息泄露</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Openssh命令注入漏洞（CVE-2020-15778）</title>
     <url>//6d1490659228.html</url>
     <content><![CDATA[<h2 id="Openssh命令注入漏洞（CVE-2020-15778）"><a href="#Openssh命令注入漏洞（CVE-2020-15778）" class="headerlink" title="Openssh命令注入漏洞（CVE-2020-15778）"></a>Openssh命令注入漏洞（CVE-2020-15778）</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>OpenSSH是用于使用SSH协议进行远程登录的一个开源实现。通过对交互的流量进行加密防止窃听，连接劫持以及其他攻击。OpenSSH由OpenBSD项目的一些开发人员开发， 并以BSD样式的许可证提供，且已被集成到许多商业产品中。</p>
@@ -2467,30 +2491,6 @@
       </categories>
       <tags>
         <tag>命令注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>中国移动-禹路由 ExportSettings.sh 敏感信息泄露漏</title>
-    <url>//f0a3ef61fe99.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>中国移动 禹路由 <code>ExportSettings.sh</code> 存在敏感信息泄露漏洞，攻击者通过漏洞获取配置文件，其中包含账号密码等敏感信息</p>
-<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;互联世界 物联未来-登录&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;cgi-bin&#x2F;ExportSettings.sh</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5pozofyvj612v0e00y402.jpg" alt="中国移动禹路由敏感信息泄露漏洞.png"></p>
-<p>存在账号密码等敏感信息</p>
-<h2 id="防御建议"><a href="#防御建议" class="headerlink" title="防御建议"></a>防御建议</h2><p>禁止外部访问<code>ExportSettings.sh</code>文件</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>网络设备漏洞</category>
-        <category>中国移动</category>
-      </categories>
-      <tags>
-        <tag>信息泄露</tag>
       </tags>
   </entry>
 </search>
