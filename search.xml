@@ -285,6 +285,130 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-函数</title>
+    <url>//286133dd9f48.html</url>
+    <content><![CDATA[<h2 id="函数（function）"><a href="#函数（function）" class="headerlink" title="函数（function）"></a>函数（function）</h2><p>​        通过将一段有规律的、重复的代码定义为函数，来达到一次编写、多次调用的目的。使用函数可以提高代码的重复利用率。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="function"><span class="keyword">def</span> 函数名(<span class="params">形参<span class="number">1</span>,形参<span class="number">2</span>,形参<span class="number">3.</span>..形参n</span>)</span></span><br><span class="line"><span class="function">	代码块</span></span><br><span class="line"><span class="function"># 定义形参就相当于声明了变量，但是不赋值</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">调用函数</span></span><br><span class="line"><span class="function">函数对象(<span class="params">实参</span>)</span></span><br><span class="line"><span class="function"># 形参可以指定默认值，当用户没有指定形参时，默认值才会生效</span></span><br><span class="line"><span class="function"># 在定义函数时，可以在形参前面加上一个*，这样这个形参就会获取到所有的实参，保存在一个元组中</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="实参的传递方式"><a href="#实参的传递方式" class="headerlink" title="实参的传递方式"></a>实参的传递方式</h2><h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><p>位置参数就是将对应位置的实参复制给对应位置的形参</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>当形参指定了默认值，并且该形参没有赋值，使用默认值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c=<span class="number">10</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(a=<span class="number">1</span>,b=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 当c没有赋值时，使用默认值c=10</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>使用形式参数的名字来确定输入的参数值。通过此方式指定函数实参时，不再需要与形参的位置完全一致，只要将参数名写正确即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(c=<span class="number">3</span>,b=<span class="number">2</span>,a=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数"></a>不定长参数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *形参只能接收位置参数，而不能接收关键字参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,*c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># **形参可以接收其他的关键字参数，它会将这些参数统一保存到一个字典中</span></span><br><span class="line"><span class="function"><span class="title">def</span> <span class="title">fn</span>(<span class="params">a,b,**c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params">a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>,d=<span class="number">4</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line">d = &#123;&#x27;a&#x27;:100,&#x27;b&#x27;:200,&#x27;c&#x27;:300&#125;</span><br><span class="line">fn(**d)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>)</span></span><br><span class="line">变量 = (1,2,3)</span><br><span class="line">fn(*变量)</span><br><span class="line">变量 = (a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">fn(**变量)</span><br><span class="line"><span class="comment">#可以是任意序列或者字典，个数与形参一样，字典用**表示</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>​        在Python中，可以在函数体内使用return语句为函数指定返回值，为函数设置返回值的作用就是将函数的处理结果返回给调用它的函数。该返回值可以是任意类型，并且无论return语句出现在函数的什么位置，只要得到执行，就会直接结束函数的执行。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn2</span>() :</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> fn2()</span><br><span class="line">fn()</span><br><span class="line"><span class="comment"># 这个函数的执行结果就是它的返回值，也可以 变量 = fn()</span></span><br><span class="line"><span class="comment"># return后面可以跟任意形式的值，return后的代码都不会执行，可以用来结束函数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文档字符串"><a href="#文档字符串" class="headerlink" title="文档字符串"></a>文档字符串</h2><p>文档字符串就是一个函数的使用说明</p>
+<p>可以使用<code>help()</code>函数查看该函数的使用说明</p>
+<p>使用三引号创建文档字符串</p>
+<h2 id="作用域（scope）"><a href="#作用域（scope）" class="headerlink" title="作用域（scope）"></a>作用域（scope）</h2><p>作用域就是指变量生效的区域，在执行时创建，在执行结束时销毁</p>
+<p><strong>全局作用域</strong></p>
+<p>所有函数以外的区域都是全局作用域，可以在程序的任意位置被访问</p>
+<p><strong>函数作用域</strong></p>
+<p>在函数作用域中定义的变量，都是局部变量，它只能在函数内部被访问</p>
+<p><strong>可以使用 global 变量，来声明变量是全局变量</strong></p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>每一个作用域都会有一个它对应的命名空间，是一个专门用来存储变量的字典</p>
+<p>全局命名空间，用于保存全局变量。函数命名空间用来保存函数中的变量</p>
+<p><code>locals()</code>用来获取当前作用域的命名空间，返回的是一个字典</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">变量 = <span class="built_in">locals</span>()</span><br><span class="line"><span class="comment"># 当前命名空间</span></span><br><span class="line"><span class="built_in">globals</span>()</span><br><span class="line"><span class="comment"># 函数可以用来在任意位置获取全局命名空间</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归（Recursion），就是指在函数的定义中使用函数自身的方法</p>
+<p>如果函数中包含了对自身的调用，该函数就是使用了递归的方法</p>
+<p>函数自己调用自己，和循环类似</p>
+<p>它的整体思想是，将一个大问题分解为一个个的小问题，直到问题无法分解时，再去解决问题</p>
+<p>递归函数的两个要件</p>
+<ul>
+<li>基线条件：确定递归到何时终止，函数不在调用自己</li>
+<li>递归条件：将问题继续分解的条件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 例1：判断任意数的阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">n</span>):</span></span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> n * fn(n-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例2：判断是否为回文</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">n</span>) :</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(n) &lt; <span class="number">2</span> :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">	<span class="keyword">elif</span> n[<span class="number">0</span>] != n[-<span class="number">1</span>] :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">	<span class="keyword">return</span> fn1(n[<span class="number">1</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(fn1(<span class="string">&#x27;abcdcba&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="匿名函数（lambda）"><a href="#匿名函数（lambda）" class="headerlink" title="匿名函数（lambda）"></a>匿名函数（lambda）</h2><p>lambda函数表达式专门用来创建一些简单的函数，可以创建一次性的函数，不需要为函数命名</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">lambda</span> 参数列表 : 返回值</span><br><span class="line"></span><br><span class="line">r = (<span class="keyword">lambda</span> a,b : a+b)(<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">fn = <span class="keyword">lambda</span> a,b : a+b</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>,<span class="number">20</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>接收函数作为参数，或者将函数作为返回值的函数是高阶函数</p>
+<p>当我们使用一个函数作为参数时，实际上是将指定的代码传递进了目标函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">    	<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="comment"># 把判断传参是否是2的倍数，如果是返回True，否则返回False</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">func,lst</span>):</span></span><br><span class="line">    new_list = []</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> lst:</span><br><span class="line">        <span class="keyword">if</span> func(n):</span><br><span class="line">            new_list.append(n)</span><br><span class="line">    <span class="keyword">return</span> new_list</span><br><span class="line"><span class="comment"># 遍历形参lst,如果n传入形参func函数的结果为True,则把n传入新列表，最后返回新列表</span></span><br><span class="line"><span class="built_in">print</span>(fn(fn2,l))</span><br><span class="line"><span class="comment"># 调用函数fn,把函数fn2传入形参func,把列表l传入形参lst</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="过滤函数"><a href="#过滤函数" class="headerlink" title="过滤函数"></a>过滤函数</h2><p><code>filter()</code>用于过滤序列，过滤掉不符合条件的元素</p>
+<p><code>filter()</code>函数本身不对序列作任何修改</p>
+<p><code>filter()</code>函数返回的结果是一个迭代器对象</p>
+<p>接收两个参数，第一个为函数，第二个为序列，序列的每个元素作为参数传递给函数进行判断，然后返回 True 或 False，最后将返回 True 的元素放到新列表中</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 参数：</span></span><br><span class="line"><span class="comment">#  1.函数，根据该函数来过滤序列（可迭代的结构）</span></span><br><span class="line"><span class="comment">#  2.需要过滤的序列（可迭代的结构）</span></span><br><span class="line"><span class="comment"># 返回值：</span></span><br><span class="line"><span class="comment">#   过滤后的新序列（可迭代的结构）</span></span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>) :</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">0</span></span><br><span class="line">r = <span class="built_in">filter</span>(fn2,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(r))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h2><p><code>map()</code>会根据提供的函数对指定序列做映射</p>
+<p><code>map()</code>函数返回的结果是一个迭代器对象</p>
+<p>用来通过函数修改列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="built_in">map</span>(函数,列表)</span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line">a = <span class="keyword">lambda</span> x:x+<span class="number">1</span></span><br><span class="line">b = <span class="built_in">map</span>(a,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(b))</span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h2><p>通过<code>sort()</code>函数对序列排序</p>
+<p>在<code>sort()</code>可以接收一个关键字参数 ，key</p>
+<p>key需要一个函数作为参数，当设置了函数作为参数</p>
+<p>每次都会以列表中的一个元素作为参数来调用函数，并且使用函数的返回值来比较元素的大小</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [(<span class="number">2</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="number">4</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a.sort(key=fn)</span><br><span class="line"><span class="comment"># 这里通过函数fn()获取到列表的第二位</span></span><br><span class="line"><span class="comment"># 2,4,1,3</span></span><br><span class="line"><span class="comment"># 然后通过列表的sort()方法对2,4,1,3做默认升序排序</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">[(<span class="number">4</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">3</span>), (<span class="number">3</span>, <span class="number">4</span>)]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h2><p>这个函数和<code>sort()</code>的用法基本一致，但是sorted()可以对任意的序列进行排序</p>
+<p>并且使用sorted()排序不会影响原来的对象，而是返回一个新对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">2</span>,<span class="number">5</span>,<span class="string">&#x27;1&#x27;</span>,<span class="number">3</span>,<span class="string">&#x27;6&#x27;</span>,<span class="string">&#x27;4&#x27;</span>]</span><br><span class="line">l = <span class="string">&quot;123765816742634781&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>(l,key=<span class="built_in">int</span>))</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;4&#x27;</span>, <span class="number">5</span>, <span class="string">&#x27;6&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;8&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>将函数作为返回值返回，也是一种高阶函数,叫做闭包</p>
+<p>通过闭包可以创建一些只有当前函数能访问的变量</p>
+<p>可以将一些私有的数据藏到的闭包中</p>
+<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">直接调用函数</button></li><li class="tab"><button type="button" data-href="#-2">返回函数名称</button></li><li class="tab"><button type="button" data-href="#-3">利用闭包保存变量的值</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    fn1(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line">fn(<span class="string">&quot;name&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">	<span class="comment"># 此处不直接调用，而是返回函数名称（Python中一切皆对象）</span></span><br><span class="line">fn2 = fn(<span class="string">&quot;name&quot;</span>)</span><br><span class="line"><span class="comment"># 调用包装器</span></span><br><span class="line">fn2(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line"><span class="comment"># 调用内部函数</span></span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用闭包之前</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a</span>):</span></span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line">    num = num + a</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="comment"># 当我们不希望num这个序列被更改时，可以添加一个函数（闭包），让作用域变成函数作用域</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = <span class="number">1</span>	<span class="comment"># 这里num只能通过fn1()来看到</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num	<span class="comment"># 因为作用域，num不能直接被更改，使用nonlocal使上级作用域可以被更改</span></span><br><span class="line">        num = num + a	</span><br><span class="line">        <span class="built_in">print</span>(num)</span><br><span class="line">    <span class="keyword">return</span> fn1	<span class="comment">#让函数fn1作为返回值返回</span></span><br><span class="line">fn2 = fn()	<span class="comment"># 这里fn2的作用是调用fn()后返回的函数</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn2(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="comment"># 使用闭包后,局部变量num的值就会保存下来,而不是每次调用函数后销</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = []	<span class="comment"># 如果num是列表，可以使用列表方法来更改，不需要nonlocal</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        num.append(a)</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">fn2 = fn()</span><br><span class="line"><span class="built_in">print</span>(fn2(<span class="number">10</span>))</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>在不修改原函数的情况下，对原函数进行修改</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn_1</span>(<span class="params">old</span>):</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">fn_2</span>():</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		result = old()	<span class="comment"># 调用传入的参数</span></span><br><span class="line">        <span class="comment"># 这里使用变量保存，如果直接return会直接结束函数，后面的语句就不能执行</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		<span class="keyword">return</span> result</span><br><span class="line">	<span class="keyword">return</span> fn_2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@fn_1	</span><span class="comment"># 把函数fn3传入fn_1，利用fn_1装饰fn3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn3</span>():</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;大家好&#x27;</span>)</span><br><span class="line">fn3()</span><br><span class="line">--------------------</span><br><span class="line">大家好</span><br><span class="line">--------------------</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python3-基础语法</title>
     <url>//08be3fd6d7b6.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -432,130 +556,6 @@
 
 <p>**from…import…**导入模块</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#test1.py</span></span><br><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> run,data</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">data[<span class="number">0</span>]=<span class="number">5</span> <span class="comment">#类似赋值，b里面的data和a里面的data指向同一个对象，这么做对两者都有影响</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出[5,2,3] </span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br><span class="line"> </span><br><span class="line">data=<span class="number">100</span> <span class="comment">#由于直接改变了data的指向，所以不会影响源模块a</span></span><br><span class="line"><span class="built_in">print</span>(data) <span class="comment">#输出100</span></span><br><span class="line">run()<span class="comment">#输出[5,2,3]</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-函数</title>
-    <url>//286133dd9f48.html</url>
-    <content><![CDATA[<h2 id="函数（function）"><a href="#函数（function）" class="headerlink" title="函数（function）"></a>函数（function）</h2><p>​        通过将一段有规律的、重复的代码定义为函数，来达到一次编写、多次调用的目的。使用函数可以提高代码的重复利用率。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="function"><span class="keyword">def</span> 函数名(<span class="params">形参<span class="number">1</span>,形参<span class="number">2</span>,形参<span class="number">3.</span>..形参n</span>)</span></span><br><span class="line"><span class="function">	代码块</span></span><br><span class="line"><span class="function"># 定义形参就相当于声明了变量，但是不赋值</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">调用函数</span></span><br><span class="line"><span class="function">函数对象(<span class="params">实参</span>)</span></span><br><span class="line"><span class="function"># 形参可以指定默认值，当用户没有指定形参时，默认值才会生效</span></span><br><span class="line"><span class="function"># 在定义函数时，可以在形参前面加上一个*，这样这个形参就会获取到所有的实参，保存在一个元组中</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="实参的传递方式"><a href="#实参的传递方式" class="headerlink" title="实参的传递方式"></a>实参的传递方式</h2><h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><p>位置参数就是将对应位置的实参复制给对应位置的形参</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>当形参指定了默认值，并且该形参没有赋值，使用默认值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c=<span class="number">10</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(a=<span class="number">1</span>,b=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 当c没有赋值时，使用默认值c=10</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>使用形式参数的名字来确定输入的参数值。通过此方式指定函数实参时，不再需要与形参的位置完全一致，只要将参数名写正确即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(c=<span class="number">3</span>,b=<span class="number">2</span>,a=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数"></a>不定长参数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *形参只能接收位置参数，而不能接收关键字参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,*c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># **形参可以接收其他的关键字参数，它会将这些参数统一保存到一个字典中</span></span><br><span class="line"><span class="function"><span class="title">def</span> <span class="title">fn</span>(<span class="params">a,b,**c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params">a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>,d=<span class="number">4</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line">d = &#123;&#x27;a&#x27;:100,&#x27;b&#x27;:200,&#x27;c&#x27;:300&#125;</span><br><span class="line">fn(**d)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>)</span></span><br><span class="line">变量 = (1,2,3)</span><br><span class="line">fn(*变量)</span><br><span class="line">变量 = (a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">fn(**变量)</span><br><span class="line"><span class="comment">#可以是任意序列或者字典，个数与形参一样，字典用**表示</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>​        在Python中，可以在函数体内使用return语句为函数指定返回值，为函数设置返回值的作用就是将函数的处理结果返回给调用它的函数。该返回值可以是任意类型，并且无论return语句出现在函数的什么位置，只要得到执行，就会直接结束函数的执行。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn2</span>() :</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> fn2()</span><br><span class="line">fn()</span><br><span class="line"><span class="comment"># 这个函数的执行结果就是它的返回值，也可以 变量 = fn()</span></span><br><span class="line"><span class="comment"># return后面可以跟任意形式的值，return后的代码都不会执行，可以用来结束函数</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文档字符串"><a href="#文档字符串" class="headerlink" title="文档字符串"></a>文档字符串</h2><p>文档字符串就是一个函数的使用说明</p>
-<p>可以使用<code>help()</code>函数查看该函数的使用说明</p>
-<p>使用三引号创建文档字符串</p>
-<h2 id="作用域（scope）"><a href="#作用域（scope）" class="headerlink" title="作用域（scope）"></a>作用域（scope）</h2><p>作用域就是指变量生效的区域，在执行时创建，在执行结束时销毁</p>
-<p><strong>全局作用域</strong></p>
-<p>所有函数以外的区域都是全局作用域，可以在程序的任意位置被访问</p>
-<p><strong>函数作用域</strong></p>
-<p>在函数作用域中定义的变量，都是局部变量，它只能在函数内部被访问</p>
-<p><strong>可以使用 global 变量，来声明变量是全局变量</strong></p>
-<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>每一个作用域都会有一个它对应的命名空间，是一个专门用来存储变量的字典</p>
-<p>全局命名空间，用于保存全局变量。函数命名空间用来保存函数中的变量</p>
-<p><code>locals()</code>用来获取当前作用域的命名空间，返回的是一个字典</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">变量 = <span class="built_in">locals</span>()</span><br><span class="line"><span class="comment"># 当前命名空间</span></span><br><span class="line"><span class="built_in">globals</span>()</span><br><span class="line"><span class="comment"># 函数可以用来在任意位置获取全局命名空间</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归（Recursion），就是指在函数的定义中使用函数自身的方法</p>
-<p>如果函数中包含了对自身的调用，该函数就是使用了递归的方法</p>
-<p>函数自己调用自己，和循环类似</p>
-<p>它的整体思想是，将一个大问题分解为一个个的小问题，直到问题无法分解时，再去解决问题</p>
-<p>递归函数的两个要件</p>
-<ul>
-<li>基线条件：确定递归到何时终止，函数不在调用自己</li>
-<li>递归条件：将问题继续分解的条件</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 例1：判断任意数的阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">n</span>):</span></span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> n * fn(n-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例2：判断是否为回文</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">n</span>) :</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(n) &lt; <span class="number">2</span> :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">	<span class="keyword">elif</span> n[<span class="number">0</span>] != n[-<span class="number">1</span>] :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">	<span class="keyword">return</span> fn1(n[<span class="number">1</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(fn1(<span class="string">&#x27;abcdcba&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="匿名函数（lambda）"><a href="#匿名函数（lambda）" class="headerlink" title="匿名函数（lambda）"></a>匿名函数（lambda）</h2><p>lambda函数表达式专门用来创建一些简单的函数，可以创建一次性的函数，不需要为函数命名</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">lambda</span> 参数列表 : 返回值</span><br><span class="line"></span><br><span class="line">r = (<span class="keyword">lambda</span> a,b : a+b)(<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">fn = <span class="keyword">lambda</span> a,b : a+b</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>,<span class="number">20</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>接收函数作为参数，或者将函数作为返回值的函数是高阶函数</p>
-<p>当我们使用一个函数作为参数时，实际上是将指定的代码传递进了目标函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">    	<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="comment"># 把判断传参是否是2的倍数，如果是返回True，否则返回False</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">func,lst</span>):</span></span><br><span class="line">    new_list = []</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> lst:</span><br><span class="line">        <span class="keyword">if</span> func(n):</span><br><span class="line">            new_list.append(n)</span><br><span class="line">    <span class="keyword">return</span> new_list</span><br><span class="line"><span class="comment"># 遍历形参lst,如果n传入形参func函数的结果为True,则把n传入新列表，最后返回新列表</span></span><br><span class="line"><span class="built_in">print</span>(fn(fn2,l))</span><br><span class="line"><span class="comment"># 调用函数fn,把函数fn2传入形参func,把列表l传入形参lst</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="过滤函数"><a href="#过滤函数" class="headerlink" title="过滤函数"></a>过滤函数</h2><p><code>filter()</code>用于过滤序列，过滤掉不符合条件的元素</p>
-<p><code>filter()</code>函数本身不对序列作任何修改</p>
-<p><code>filter()</code>函数返回的结果是一个迭代器对象</p>
-<p>接收两个参数，第一个为函数，第二个为序列，序列的每个元素作为参数传递给函数进行判断，然后返回 True 或 False，最后将返回 True 的元素放到新列表中</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 参数：</span></span><br><span class="line"><span class="comment">#  1.函数，根据该函数来过滤序列（可迭代的结构）</span></span><br><span class="line"><span class="comment">#  2.需要过滤的序列（可迭代的结构）</span></span><br><span class="line"><span class="comment"># 返回值：</span></span><br><span class="line"><span class="comment">#   过滤后的新序列（可迭代的结构）</span></span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>) :</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">0</span></span><br><span class="line">r = <span class="built_in">filter</span>(fn2,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(r))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h2><p><code>map()</code>会根据提供的函数对指定序列做映射</p>
-<p><code>map()</code>函数返回的结果是一个迭代器对象</p>
-<p>用来通过函数修改列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="built_in">map</span>(函数,列表)</span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line">a = <span class="keyword">lambda</span> x:x+<span class="number">1</span></span><br><span class="line">b = <span class="built_in">map</span>(a,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(b))</span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h2><p>通过<code>sort()</code>函数对序列排序</p>
-<p>在<code>sort()</code>可以接收一个关键字参数 ，key</p>
-<p>key需要一个函数作为参数，当设置了函数作为参数</p>
-<p>每次都会以列表中的一个元素作为参数来调用函数，并且使用函数的返回值来比较元素的大小</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [(<span class="number">2</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="number">4</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a.sort(key=fn)</span><br><span class="line"><span class="comment"># 这里通过函数fn()获取到列表的第二位</span></span><br><span class="line"><span class="comment"># 2,4,1,3</span></span><br><span class="line"><span class="comment"># 然后通过列表的sort()方法对2,4,1,3做默认升序排序</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">[(<span class="number">4</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">3</span>), (<span class="number">3</span>, <span class="number">4</span>)]</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h2><p>这个函数和<code>sort()</code>的用法基本一致，但是sorted()可以对任意的序列进行排序</p>
-<p>并且使用sorted()排序不会影响原来的对象，而是返回一个新对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">2</span>,<span class="number">5</span>,<span class="string">&#x27;1&#x27;</span>,<span class="number">3</span>,<span class="string">&#x27;6&#x27;</span>,<span class="string">&#x27;4&#x27;</span>]</span><br><span class="line">l = <span class="string">&quot;123765816742634781&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>(l,key=<span class="built_in">int</span>))</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;4&#x27;</span>, <span class="number">5</span>, <span class="string">&#x27;6&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;8&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>将函数作为返回值返回，也是一种高阶函数,叫做闭包</p>
-<p>通过闭包可以创建一些只有当前函数能访问的变量</p>
-<p>可以将一些私有的数据藏到的闭包中</p>
-<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">直接调用函数</button></li><li class="tab"><button type="button" data-href="#-2">返回函数名称</button></li><li class="tab"><button type="button" data-href="#-3">利用闭包保存变量的值</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    fn1(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line">fn(<span class="string">&quot;name&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">	<span class="comment"># 此处不直接调用，而是返回函数名称（Python中一切皆对象）</span></span><br><span class="line">fn2 = fn(<span class="string">&quot;name&quot;</span>)</span><br><span class="line"><span class="comment"># 调用包装器</span></span><br><span class="line">fn2(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line"><span class="comment"># 调用内部函数</span></span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用闭包之前</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a</span>):</span></span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line">    num = num + a</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="comment"># 当我们不希望num这个序列被更改时，可以添加一个函数（闭包），让作用域变成函数作用域</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = <span class="number">1</span>	<span class="comment"># 这里num只能通过fn1()来看到</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num	<span class="comment"># 因为作用域，num不能直接被更改，使用nonlocal使上级作用域可以被更改</span></span><br><span class="line">        num = num + a	</span><br><span class="line">        <span class="built_in">print</span>(num)</span><br><span class="line">    <span class="keyword">return</span> fn1	<span class="comment">#让函数fn1作为返回值返回</span></span><br><span class="line">fn2 = fn()	<span class="comment"># 这里fn2的作用是调用fn()后返回的函数</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn2(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="comment"># 使用闭包后,局部变量num的值就会保存下来,而不是每次调用函数后销</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = []	<span class="comment"># 如果num是列表，可以使用列表方法来更改，不需要nonlocal</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        num.append(a)</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">fn2 = fn()</span><br><span class="line"><span class="built_in">print</span>(fn2(<span class="number">10</span>))</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>在不修改原函数的情况下，对原函数进行修改</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn_1</span>(<span class="params">old</span>):</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">fn_2</span>():</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		result = old()	<span class="comment"># 调用传入的参数</span></span><br><span class="line">        <span class="comment"># 这里使用变量保存，如果直接return会直接结束函数，后面的语句就不能执行</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		<span class="keyword">return</span> result</span><br><span class="line">	<span class="keyword">return</span> fn_2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@fn_1	</span><span class="comment"># 把函数fn3传入fn_1，利用fn_1装饰fn3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn3</span>():</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;大家好&#x27;</span>)</span><br><span class="line">fn3()</span><br><span class="line">--------------------</span><br><span class="line">大家好</span><br><span class="line">--------------------</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1930,6 +1930,64 @@
       </tags>
   </entry>
   <entry>
+    <title>jQuery库版本过低</title>
+    <url>//c7d50197fdce.html</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><p>　　jQuery是一个快速、简洁的JavaScript框架,是一个丰富的JavaScript代码库。jQuery设计的目的是为了写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
+<p>　　在JQuery的诸多发行版本中，存在着DOM-based XSS（跨站脚本攻击的一种)漏洞，易被攻击者利用。漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致LOCATION.HASH跨站漏洞。这也是最为被大众熟知的jQuery的一个漏洞。</p>
+<h2 id="DOM-based-XSS-漏洞"><a href="#DOM-based-XSS-漏洞" class="headerlink" title="DOM-based XSS 漏洞"></a>DOM-based XSS 漏洞</h2><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
+<li><p> jquery-1.7.1~1.8.3</p>
+</li>
+<li><p> jquery-1.6.min.js，jquery-1.6.1.min.js，jquery-1.6.2.min.js</p>
+</li>
+<li><p> jquery-1.5所有版本</p>
+</li>
+<li><p> jquery-1.4所有版本</p>
+</li>
+<li><p> jquery-1.3所有版本</p>
+</li>
+<li><p> jquery-1.2所有版本</p>
+</li>
+</ul>
+<p>影响版本不全面，建议升级到jquery-3.4.0以上</p>
+<h2 id="漏洞测试方法"><a href="#漏洞测试方法" class="headerlink" title="漏洞测试方法"></a>漏洞测试方法</h2><p>F12打开Console窗口，输入以下代码显示jquery版本号</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.fn.jquery</span><br></pre></td></tr></table></figure>
+
+<p>输入以下代码,如果有弹窗出现说明存在XSS漏洞</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;element[attribute=&#x27;&lt;img src=123123 οnerrοr=alert(123)&gt;&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h2><p>升级jQuery库到jquery-3.4.0以上或者最新版本</p>
+<p>更新版本有可能存在众多问题，所以在不改变版本的情况下避免漏洞的利用（或者使用插件jQuery Migrate）</p>
+<h3 id="临时修复方案"><a href="#临时修复方案" class="headerlink" title="临时修复方案"></a>临时修复方案</h3><ul>
+<li><p> jquery文件重命名</p>
+</li>
+<li><p>把jquery文件里头部带有版本号的注释删除</p>
+</li>
+<li><p>把jquery文件内版本号清除（不推荐）</p>
+</li>
+<li><p> 在 jquery文件中重写版本号</p>
+</li>
+</ul>
+<p>一部分调用的插件失效了，所以在这里是重写jquery版本而不是清除jquery版本</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gqat654fwcj30dz02nmx4.jpg" alt="jQuery库版本过低.png"></p>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="http://research.insecurelabs.org/jquery/test/">JQuery跨站脚本在线测试</a></p>
+<p><a href="https://blog.csdn.net/kang1011/article/details/109682718?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-3-109682718&spm=3001.4430">解决jquery版本过低引发的XSS跨站安全漏洞</a></p>
+<p><a href="https://blog.csdn.net/adminhui/article/details/103035516?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-4-103035516&spm=3001.4430">jquery版本安全漏洞问题</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>跨站类漏洞</tag>
+        <tag>中危漏洞</tag>
+        <tag>第三方库漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文件上传漏洞</title>
     <url>//0053789dab3b.html</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
@@ -2024,64 +2082,6 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>逻辑漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jQuery库版本过低</title>
-    <url>//c7d50197fdce.html</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><p>　　jQuery是一个快速、简洁的JavaScript框架,是一个丰富的JavaScript代码库。jQuery设计的目的是为了写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
-<p>　　在JQuery的诸多发行版本中，存在着DOM-based XSS（跨站脚本攻击的一种)漏洞，易被攻击者利用。漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致LOCATION.HASH跨站漏洞。这也是最为被大众熟知的jQuery的一个漏洞。</p>
-<h2 id="DOM-based-XSS-漏洞"><a href="#DOM-based-XSS-漏洞" class="headerlink" title="DOM-based XSS 漏洞"></a>DOM-based XSS 漏洞</h2><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
-<li><p> jquery-1.7.1~1.8.3</p>
-</li>
-<li><p> jquery-1.6.min.js，jquery-1.6.1.min.js，jquery-1.6.2.min.js</p>
-</li>
-<li><p> jquery-1.5所有版本</p>
-</li>
-<li><p> jquery-1.4所有版本</p>
-</li>
-<li><p> jquery-1.3所有版本</p>
-</li>
-<li><p> jquery-1.2所有版本</p>
-</li>
-</ul>
-<p>影响版本不全面，建议升级到jquery-3.4.0以上</p>
-<h2 id="漏洞测试方法"><a href="#漏洞测试方法" class="headerlink" title="漏洞测试方法"></a>漏洞测试方法</h2><p>F12打开Console窗口，输入以下代码显示jquery版本号</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.fn.jquery</span><br></pre></td></tr></table></figure>
-
-<p>输入以下代码,如果有弹窗出现说明存在XSS漏洞</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;element[attribute=&#x27;&lt;img src=123123 οnerrοr=alert(123)&gt;&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h2><p>升级jQuery库到jquery-3.4.0以上或者最新版本</p>
-<p>更新版本有可能存在众多问题，所以在不改变版本的情况下避免漏洞的利用（或者使用插件jQuery Migrate）</p>
-<h3 id="临时修复方案"><a href="#临时修复方案" class="headerlink" title="临时修复方案"></a>临时修复方案</h3><ul>
-<li><p> jquery文件重命名</p>
-</li>
-<li><p>把jquery文件里头部带有版本号的注释删除</p>
-</li>
-<li><p>把jquery文件内版本号清除（不推荐）</p>
-</li>
-<li><p> 在 jquery文件中重写版本号</p>
-</li>
-</ul>
-<p>一部分调用的插件失效了，所以在这里是重写jquery版本而不是清除jquery版本</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gqat654fwcj30dz02nmx4.jpg" alt="jQuery库版本过低.png"></p>
-<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="http://research.insecurelabs.org/jquery/test/">JQuery跨站脚本在线测试</a></p>
-<p><a href="https://blog.csdn.net/kang1011/article/details/109682718?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-3-109682718&spm=3001.4430">解决jquery版本过低引发的XSS跨站安全漏洞</a></p>
-<p><a href="https://blog.csdn.net/adminhui/article/details/103035516?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-4-103035516&spm=3001.4430">jquery版本安全漏洞问题</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>跨站类漏洞</tag>
-        <tag>中危漏洞</tag>
-        <tag>第三方库漏洞</tag>
       </tags>
   </entry>
   <entry>
