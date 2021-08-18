@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python3-异常 | BaiKer</title><meta name="keywords" content="Python3"><meta name="author" content="BaiKer"><meta name="copyright" content="BaiKer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="异常程序运行过程当中，不可避免的会出现一些错误 这些错误在过程中，我们称之为异常 处理异常程序运行时出现异常，目的并不是让我们的程序直接终止我们可以在出现异常时，编写代码对异常进行处理避免因为一个异常导致程序的终止 123456789101112131415161718try 语句	try:		代码块（可能出现错误的语句）	# 如果except后不跟任何内容，会捕获所有的异常	# 如果跟着异常的类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3-异常">
+<meta property="og:url" content="http://baiker.top/44917d227716.html">
+<meta property="og:site_name" content="BaiKer">
+<meta property="og:description" content="异常程序运行过程当中，不可避免的会出现一些错误 这些错误在过程中，我们称之为异常 处理异常程序运行时出现异常，目的并不是让我们的程序直接终止我们可以在出现异常时，编写代码对异常进行处理避免因为一个异常导致程序的终止 123456789101112131415161718try 语句	try:		代码块（可能出现错误的语句）	# 如果except后不跟任何内容，会捕获所有的异常	# 如果跟着异常的类">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://baiker.top/img/wallhaven-gj977q.png">
+<meta property="article:published_time" content="2021-08-17T01:21:37.000Z">
+<meta property="article:modified_time" content="2021-08-17T08:37:06.572Z">
+<meta property="article:author" content="BaiKer">
+<meta property="article:tag" content="Python3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://baiker.top/img/wallhaven-gj977q.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://baiker.top/44917d227716"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"TWYY6OLZHR","apiKey":"55f52a4f27b68086a202f7f911366f0d","indexName":"boke","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python3-异常',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-17 16:37:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><link rel="stylesheet" href="https://baiker.top/css/essay.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">BaiKer</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python3-异常</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-17T01:21:37.000Z" title="发表于 2021-08-17 09:21:37">2021-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-17T08:37:06.572Z" title="更新于 2021-08-17 16:37:06">2021-08-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python3/">Python3</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python3/Python3%E5%9F%BA%E7%A1%80/">Python3基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python3-异常"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
+<p>这些错误在过程中，我们称之为异常</p>
+<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
+<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
+<li>Exception：所有异常的父类<ul>
+<li>SystemExit：解释器请求退出</li>
+<li>KeyboardInterrupt：用户中断执行</li>
+<li>GeneratorExit：生成器发生异常来通知退出</li>
+<li>Exception：常规错误的父类<ul>
+<li>StopIteration：迭代器没有更多的值</li>
+<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
+<li>ArithmeticError：所有数值计算错误的基类<ul>
+<li>FloatingPointError：浮点数计算错误</li>
+<li>OverflowError：数值运算超出最大限制</li>
+<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
+</ul>
+</li>
+<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
+<li>AttributeError：对象中没有这个属性</li>
+<li>BufferError：与缓冲区相关的操作引发</li>
+<li>EOFError：没有内建输入，到达EOF标记</li>
+<li>ImportError：导入模块失败<ul>
+<li>ModuleNotFoundError：找不到模块</li>
+</ul>
+</li>
+<li>LookupError：无效数据查询<ul>
+<li>IndexError：序列中没有此索引</li>
+<li>KeyError：映射中没有这个键</li>
+</ul>
+</li>
+<li>MemoryError：内存溢出错误</li>
+<li>NameError：未声明，初始化对象<ul>
+<li>UnboundLocalError：访问未初始化的本地变量</li>
+</ul>
+</li>
+<li>OSError：操作系统错误<ul>
+<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
+<li>ChildProcessError：子进程上的操作失败</li>
+<li>ConnectionError：与链接相关的异常<ul>
+<li>BrokenPipeError：在关闭写入的套接字上写入</li>
+<li>ConnectionAbortedError：链接被对方终止</li>
+<li>ConnectionRefusedError：链接被对方拒绝</li>
+<li>ConnectionResetError：链接被对方重置</li>
+</ul>
+</li>
+<li>FileExistsError：创建已存在的文件或者目录</li>
+<li>FileNotFoundError：请求文件或者目录不存在</li>
+<li>InterruptedError：系统调用被输入信号中断</li>
+<li>IsADirectoryError：在目录上请求文件</li>
+<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
+<li>PermissionError：没有访问权限</li>
+<li>ProcessLookupError：进程不存在</li>
+<li>TimeoutError：系统函数在系统级别超时</li>
+</ul>
+</li>
+<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
+<li>RuntimeError：一般的运行时错误<ul>
+<li>NotImplementedError：尚未实现的方法</li>
+<li>RecursionError：解释器检测到超出最大递归深度</li>
+</ul>
+</li>
+<li>SyntaxError：Python语法错误<ul>
+<li>IndentationError：缩进错误<ul>
+<li>TabError：Tab和空格混用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SystemError：系统错误</li>
+<li>TypeError：类型错误</li>
+<li>ValueError：传入无效的参数<ul>
+<li>UnicodeError：Unicode 相关的错误<ul>
+<li>UnicodeDecodeError：Unicode 解码时的错误</li>
+<li>UnicodeEncodeError：Unicode 编码时错误</li>
+<li>UnicodeTranslateError：Unicode 转换时错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Warning：警告的错误<ul>
+<li>DeprecationWarning：关于被弃用的特征的警告</li>
+<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
+<li>RuntimeWarning：可疑的运行行为的警告</li>
+<li>SyntaxWarning：可疑的语法的警告</li>
+<li>UserWarning：用户代码生成的警告</li>
+<li>FutureWarning：有关已弃用功能的警告的基类</li>
+<li>ImportWarning：模块导入时可能出错的警告的基类</li>
+<li>UnicodeWarning：与Unicode相关的警告的基类</li>
+<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
+<li>ResourceWarning：与资源使用相关的警告的基类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">BaiKer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://baiker.top/44917d227716.html">http://baiker.top/44917d227716.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://baiker.top" target="_blank">BaiKer</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python3/">Python3</a></div><div class="post_share"><div class="social-share" data-image="https://baiker.top/img/wallhaven-gj977q.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/0571043783b3.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Python3-文件与目录</div></div></a></div><div class="next-post pull-right"><a href="/286133dd9f48.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python3-函数</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a target="_blank" rel="noopener" href="//286133dd9f48.html" title="Python3-函数"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-11</div><div class="title">Python3-函数</div></div></a></div><div><a target="_blank" rel="noopener" href="//08be3fd6d7b6.html" title="python3-基础语法"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-11</div><div class="title">python3-基础语法</div></div></a></div><div><a target="_blank" rel="noopener" href="//958713fc29fc.html" title="Python3-字符串"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-17</div><div class="title">Python3-字符串</div></div></a></div><div><a target="_blank" rel="noopener" href="//dff4ce1f2267.html" title="Python3-数组"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-19</div><div class="title">Python3-数组</div></div></a></div><div><a target="_blank" rel="noopener" href="//0571043783b3.html" title="Python3-文件与目录"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-17</div><div class="title">Python3-文件与目录</div></div></a></div><div><a target="_blank" rel="noopener" href="//ad2d1877a42a.html" title="Python3-正则表达式"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-09</div><div class="title">Python3-正则表达式</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">BaiKer</div><div class="author-info__description">网络安全</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Baikeryoyo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/baiker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2425206200@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8"><span class="toc-number">1.</span> <span class="toc-text">异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8"><span class="toc-number">2.</span> <span class="toc-text">处理异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%9B%E5%87%BA%E5%BC%82%E5%B8%B8"><span class="toc-number">3.</span> <span class="toc-text">抛出异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E8%A8%80"><span class="toc-number">4.</span> <span class="toc-text">断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E5%BC%82%E5%B8%B8"><span class="toc-number">5.</span> <span class="toc-text">内置异常</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By BaiKer</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'B4CWJLUwBNNEjD2SoNxuy03K-gzGzoHsz',
+      appKey: '6vo75MB0241puEkTNHhBsuv9',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回復',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><link rel="stylesheet" href="https://baiker.top/css/custom.css"><script async data-pjax src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
