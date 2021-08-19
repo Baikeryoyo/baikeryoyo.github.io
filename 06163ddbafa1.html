@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python3-类与对象 | BaiKer</title><meta name="keywords" content="Python3"><meta name="author" content="BaiKer"><meta name="copyright" content="BaiKer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="对象(object)对象是内存中专门存储数据的一块区域 对象中可以存储各种数据（比如：数字，布尔值，代码） 对象由三部分组成：对象的标识（id），对象的类型（type），对象的值（value） 1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数id(obj)可返回对象obj的标识 2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3-类与对象">
+<meta property="og:url" content="http://baiker.top/06163ddbafa1.html">
+<meta property="og:site_name" content="BaiKer">
+<meta property="og:description" content="对象(object)对象是内存中专门存储数据的一块区域 对象中可以存储各种数据（比如：数字，布尔值，代码） 对象由三部分组成：对象的标识（id），对象的类型（type），对象的值（value） 1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数id(obj)可返回对象obj的标识 2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://baiker.top/img/wallhaven-gj977q.png">
+<meta property="article:published_time" content="2021-06-15T07:03:22.000Z">
+<meta property="article:modified_time" content="2021-08-16T14:50:02.339Z">
+<meta property="article:author" content="BaiKer">
+<meta property="article:tag" content="Python3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://baiker.top/img/wallhaven-gj977q.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://baiker.top/06163ddbafa1"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"TWYY6OLZHR","apiKey":"55f52a4f27b68086a202f7f911366f0d","indexName":"boke","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python3-类与对象',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-16 22:50:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><link rel="stylesheet" href="https://baiker.top/css/essay.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.css"/><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">BaiKer</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python3-类与对象</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-15T07:03:22.000Z" title="发表于 2021-06-15 15:03:22">2021-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-16T14:50:02.339Z" title="更新于 2021-08-16 22:50:02">2021-08-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python3/">Python3</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python3/Python3%E5%9F%BA%E7%A1%80/">Python3基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python3-类与对象"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="对象-object"><a href="#对象-object" class="headerlink" title="对象(object)"></a>对象(object)</h2><p>对象是内存中专门存储数据的一块区域</p>
+<p>对象中可以存储各种数据（比如：数字，布尔值，代码）</p>
+<p>对象由三部分组成：对象的标识（id），对象的类型（type），对象的值（value）</p>
+<p>1.标识用于唯一标识对象，通常对应于对象在计算机内存中的地址。使用内置函数<code>id(obj)</code>可返回对象obj的标识</p>
+<p>2.类型用于表示对象存储的“数据”的类型。类型可以限制对象的取值范围以及可执行的操作。可以使用<code>type(obj)</code>获得对象的所属类型。</p>
+<p>3.值表示对象所存储的数据的信息，使用<code>print(obj)</code>可以直接打印出值。</p>
+<p>对象就是：一个内存块，拥有特定的值，支持特点类型的相关操作</p>
+<h2 id="面向对象-oop"><a href="#面向对象-oop" class="headerlink" title="面向对象(oop)"></a>面向对象(oop)</h2><p>python是一门面向对象的编程语言</p>
+<p>一切操作都是通过对象来进行的</p>
+<p>通过将功能分解为一个个小步骤，用一个个步骤完成程序<br>把相关步骤保存在对象里面，想完成某个功能，直接找到相应对象<br>面向对象的编程语言，关注的是对象，而不是关注过程</p>
+<p>面向对象的三大特征：</p>
+<ul>
+<li>封装：确保对象中的数据安全</li>
+<li>继承：保证了对象的可扩展性</li>
+<li>多态：保证了程序的灵活性</li>
+</ul>
+<h2 id="类-class"><a href="#类-class" class="headerlink" title="类(class)"></a>类(class)</h2><p>用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。</p>
+<ul>
+<li>类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。</li>
+<li>数据成员：类变量或者实例变量, 用于处理类及其实例对象的相关的数据。</li>
+<li>方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</li>
+<li>局部变量：定义在方法中的变量，只作用于当前实例的类。</li>
+<li>实例变量：在类的声明中，属性是用变量来表示的。这种变量就称为实例变量，是在类声明的内部但是在类的其他成员方法之外声明的。</li>
+<li>继承：即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟”是一个（is-a）”关系（例图，Dog是一个Animal）。</li>
+<li>实例化：创建一个类的实例，类的具体对象。</li>
+<li>方法：类中定义的函数。</li>
+<li>对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。</li>
+</ul>
+<p>内置对象不能满足所有的要求，所以我们需要自定义一些对象<br>在程序中我们需要根据类创建对象，对象是类的实例</p>
+<p>类就是一个用来创建对象的对象，类是type类型的对象</p>
+<p>像 <code>int()</code>,<code>folat()</code>,<code>bool()</code>,<code>str()</code>,<code>list()</code>,<code>dict()</code>…都是类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">语法：</span><br><span class="line">	<span class="class"><span class="keyword">class</span> 类名(<span class="params">父类</span>):</span></span><br><span class="line">		代码块</span><br><span class="line">		<span class="comment"># 对象的初始化方法</span></span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">_init_</span>(<span class="params">self,...</span>):</span></span><br><span class="line">			<span class="keyword">pass</span></span><br><span class="line">		<span class="comment"># 其他的方法</span></span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">xxx</span>(<span class="params">self,...</span>):</span></span><br><span class="line">			<span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 使用类创建一个对象，x是MyClass()的实例</span></span><br><span class="line">x = MyClass()</span><br><span class="line"><span class="comment"># 自定义的类推荐首字母大写</span></span><br><span class="line"><span class="comment"># 类是type类型的对象</span></span><br><span class="line"><span class="comment"># 没有父类括号可以省略</span></span><br><span class="line"><span class="comment"># 类的属性只能通过类对象修改，无法通过实例对象修改</span></span><br><span class="line"><span class="comment"># 在类中定义的变量，是所有实例的公共属性</span></span><br><span class="line"><span class="comment"># 在类中定义的函数，是类的方法，至少定义一个形参</span></span><br><span class="line"><span class="comment"># 第一个参数就是调用方法的对象本身</span></span><br><span class="line"><span class="comment"># 一般我们都会将这个参数命名为self（本身）</span></span><br><span class="line"><span class="comment"># 每次创建新的对象时，都会自动调用_init_()函数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>当我们调用一个对象的属性时，解析器会在当前对象中寻找是否含有该属性</p>
+<p>如果没有，则去当前类的类对象中去寻找</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">创建对象</span><br><span class="line">x = MyClass()</span><br><span class="line">调用方法</span><br><span class="line"><span class="comment"># 对象.方法名</span></span><br><span class="line"><span class="comment"># 方法调用会默认传递一个参数</span></span><br><span class="line">x.name = <span class="string">&quot;xxx&quot;</span></span><br><span class="line"></span><br><span class="line">对象的初始化</span><br><span class="line"><span class="comment"># 我们希望在创建对象时，必须设置name属性，不设置就无法创建，而且属性的创建应该是自动完成的</span></span><br><span class="line"><span class="comment"># 创建对象的流程</span></span><br><span class="line"><span class="comment">#	1.创建一个变量</span></span><br><span class="line"><span class="comment"># 	2.创建一个新对象</span></span><br><span class="line"><span class="comment"># 	3.__init__（self）方法执行</span></span><br><span class="line"><span class="comment"># 	4.将对象的id赋值给变量</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="comment"># 在类中可以定义一些特殊方法（魔术方法）</span></span><br><span class="line">	<span class="comment"># 特殊方法都是以__开头，__结尾的方法</span></span><br><span class="line">	<span class="comment"># 特殊方法不需要我们自己调用</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">    	<span class="comment"># print(self)</span></span><br><span class="line">    	<span class="comment"># 通过self向新建的对象中初始化属性</span></span><br><span class="line">        self._name = name <span class="comment">#在实例中定义而不是在类中</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;大家好，我是%s&#x27;</span>%self.a.name)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># p1 = Person()</span></span><br><span class="line">p1 = Person(<span class="string">&#x27;孙悟空&#x27;</span>)</span><br><span class="line">p2 = Person(<span class="string">&#x27;猪八戒&#x27;</span>)</span><br><span class="line">p1.say_hello()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法：</span></span><br><span class="line"><span class="built_in">isinstance</span>() 用来检查一个对象是否是一个类的实例，也可以检查是否是一个父类的子类</span><br><span class="line">变量 = <span class="built_in">isinstance</span>(对象名,类名)</span><br><span class="line"><span class="built_in">issubclass</span>(子类，父类) 检查一个类是否是另一个类的子类</span><br><span class="line"></span><br><span class="line">result = <span class="built_in">isinstance</span>(x,MyClass)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;result=&quot;</span>,result)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>封装是面向对象的的三大特性之一</p>
+<p>封装指的是隐藏对象中一些不希望被外部所访问的属性或者方法</p>
+<p>在类的内部可以定义属性和方法，而在类的外部则可以直接调用属性或方法来操作数据，从而隐藏了类内部的复杂逻辑。</p>
+<p>但是，Python并没有对属性和方法的访问权限进行限制。</p>
+<p>为了保证类内部的某些属性或方法不被外部访问，可以在属性或方法名前面添加单下划线<code>_foo</code>、双下划线<code>__foo</code>或首尾加双下划线<code>__foo__</code>，从而限制访问权限。</p>
+<p><code>_foo</code>：以单下划线开头的表示<code>protected</code>（保护）类型的成员，只允许类本身和字类进行访问，但不能使用 <code>from module import *</code>语句导入</p>
+<p><code>__foo</code>：双下划线表示<code>private</code>（私有）类型的成员，只允许定义该方法的类本身进行访问，而且也不能通过类的实例访问，但是可以通过<code>类的实例名.类名__xxx</code>方式访问</p>
+<p><code>__foo__</code>：首尾双下划线表示定义特殊方法，一般是系统定义名字，如<code>__init__</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">获取（修改）对象中的属性</span><br><span class="line"><span class="comment">#   - 需要提供一个getter和setter方法使外部可以访问到属性</span></span><br><span class="line"><span class="comment">#   - getter 获取对象中的指定属性（get_属性名）</span></span><br><span class="line"><span class="comment">#   - setter 用来设置对象的指定属性（set_属性名）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.hidden_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self.hidden_name = name</span><br><span class="line"></span><br><span class="line">p1 = MyClass()</span><br><span class="line">p1.set_name(<span class="string">&quot;孙悟空&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(p1.get_name())</span><br><span class="line"></span><br><span class="line">隐藏属性</span><br><span class="line"><span class="comment"># 可以为对象的属性使用双下划线开头，__xxx</span></span><br><span class="line"><span class="comment"># 双下划线开头的属性，是对象的隐藏属性，隐藏属性只能在类的内部访问，无法通过对象访问</span></span><br><span class="line"><span class="comment"># 其实隐藏属性只不过是Python自动为属性改了一个名字</span></span><br><span class="line"><span class="comment"># 实际上是将名字修改为了，_类名__属性名 比如 __name -&gt; _Person__name</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用__开头的属性，实际上依然可以在外部访问，所以这种方式我们一般不用</span></span><br><span class="line"><span class="comment"># 一般我们会将一些私有属性（不希望被外部访问的属性）以_开头</span></span><br><span class="line"><span class="comment"># 一般情况下，使用_开头的属性都是私有属性，没有特殊需要不要修改私有属性</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>在Python中，可以通过<code>@property</code>（装饰器）将一个方法转换为属性，从而实现用于计算的属性。</p>
+<p>将方法转换为属性后，可以直接通过方法名来访问方法，而不需要再添加一对小括号<code>()</code>，这样可以让代码更加简洁</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name,age</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">    <span class="comment"># property装饰器，用来将一个get方法，转换为对象的属性</span></span><br><span class="line">    <span class="comment"># 添加为property装饰器以后，我们就可以像调用属性一样使用get方法</span></span><br><span class="line">    <span class="comment"># 使用property装饰的方法，必须和属性名是一样的</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line">    <span class="comment"># setter方法的装饰器：@属性名.setter</span></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">p1 = MyClass(<span class="string">&quot;猪八戒&quot;</span>,<span class="number">17</span>)</span><br><span class="line">p1.name = <span class="string">&quot;孙悟空&quot;</span></span><br><span class="line">p1.age = <span class="number">18</span></span><br><span class="line"><span class="built_in">print</span>(p1.name,p1.age)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承是面向对象的三大特性之一<br>在定义类时，可以在类名后的括号中指定当前类的父类<br>子类可以直接继承父类中的属性和方法<br>子类的实例也是父类的实例，即子类属于父类<br>如果省略父类，默认父类为object</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># super()可以获取当前类的父类来初始化父类中定义的属性</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">a</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;AAA&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">b</span>(<span class="params">a</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test1</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().test1(self)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;BBB&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 类名.__bases__ 这个属性可以用来获取当前类的所有父类</span></span><br><span class="line"><span class="built_in">print</span>(b.__bases__)</span><br><span class="line">c = b()</span><br><span class="line"><span class="built_in">print</span>(c.test())</span><br><span class="line"></span><br><span class="line">(&lt;class &#x27;__main__.a&#x27;&gt;,)</span><br><span class="line">AAA</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是面向对象的三大特征之一<br>一个对象可以以不同形态呈现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">a = A(<span class="string">&#x27;孙悟空&#x27;</span>)</span><br><span class="line">b = B(<span class="string">&#x27;猪八戒&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_hello</span>(<span class="params">obj</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;你好 %s&#x27;</span>%obj.name)</span><br><span class="line"></span><br><span class="line">say_hello(a)</span><br><span class="line">say_hello(b)</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">BaiKer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://baiker.top/06163ddbafa1.html">http://baiker.top/06163ddbafa1.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://baiker.top" target="_blank">BaiKer</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python3/">Python3</a></div><div class="post_share"><div class="social-share" data-image="https://baiker.top/img/wallhaven-gj977q.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/7e65569ca276.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">越权漏洞</div></div></a></div><div class="next-post pull-right"><a href="/560821a385be.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python3-argparse</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a target="_blank" rel="noopener" href="//bc0a390cf17d.html" title="Python3-多线程"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-19</div><div class="title">Python3-多线程</div></div></a></div><div><a target="_blank" rel="noopener" href="//a7d380d29206.html" title="Python3-函数"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-11</div><div class="title">Python3-函数</div></div></a></div><div><a target="_blank" rel="noopener" href="//3df47f907de1.html" title="python3-基础语法"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-11</div><div class="title">python3-基础语法</div></div></a></div><div><a target="_blank" rel="noopener" href="//098f54875b2d.html" title="Python3-字符串"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-17</div><div class="title">Python3-字符串</div></div></a></div><div><a target="_blank" rel="noopener" href="//fc7cf6eade53.html" title="Python3-异常"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-17</div><div class="title">Python3-异常</div></div></a></div><div><a target="_blank" rel="noopener" href="//ecee3d177b80.html" title="Python3-数组"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-19</div><div class="title">Python3-数组</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">BaiKer</div><div class="author-info__description">网络安全</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Baikeryoyo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/baiker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2425206200@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1-object"><span class="toc-number">1.</span> <span class="toc-text">对象(object)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-oop"><span class="toc-number">2.</span> <span class="toc-text">面向对象(oop)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB-class"><span class="toc-number">3.</span> <span class="toc-text">类(class)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">封装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">4.1.</span> <span class="toc-text">装饰器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">5.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">6.</span> <span class="toc-text">多态</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By BaiKer</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'B4CWJLUwBNNEjD2SoNxuy03K-gzGzoHsz',
+      appKey: '6vo75MB0241puEkTNHhBsuv9',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回復',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><link rel="stylesheet" href="https://baiker.top/css/custom.css"><script async data-pjax src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
