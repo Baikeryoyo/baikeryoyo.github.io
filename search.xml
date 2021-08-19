@@ -920,6 +920,130 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-异常</title>
+    <url>//fc7cf6eade53.html</url>
+    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
+<p>这些错误在过程中，我们称之为异常</p>
+<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
+<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
+<li>Exception：所有异常的父类<ul>
+<li>SystemExit：解释器请求退出</li>
+<li>KeyboardInterrupt：用户中断执行</li>
+<li>GeneratorExit：生成器发生异常来通知退出</li>
+<li>Exception：常规错误的父类<ul>
+<li>StopIteration：迭代器没有更多的值</li>
+<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
+<li>ArithmeticError：所有数值计算错误的基类<ul>
+<li>FloatingPointError：浮点数计算错误</li>
+<li>OverflowError：数值运算超出最大限制</li>
+<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
+</ul>
+</li>
+<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
+<li>AttributeError：对象中没有这个属性</li>
+<li>BufferError：与缓冲区相关的操作引发</li>
+<li>EOFError：没有内建输入，到达EOF标记</li>
+<li>ImportError：导入模块失败<ul>
+<li>ModuleNotFoundError：找不到模块</li>
+</ul>
+</li>
+<li>LookupError：无效数据查询<ul>
+<li>IndexError：序列中没有此索引</li>
+<li>KeyError：映射中没有这个键</li>
+</ul>
+</li>
+<li>MemoryError：内存溢出错误</li>
+<li>NameError：未声明，初始化对象<ul>
+<li>UnboundLocalError：访问未初始化的本地变量</li>
+</ul>
+</li>
+<li>OSError：操作系统错误<ul>
+<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
+<li>ChildProcessError：子进程上的操作失败</li>
+<li>ConnectionError：与链接相关的异常<ul>
+<li>BrokenPipeError：在关闭写入的套接字上写入</li>
+<li>ConnectionAbortedError：链接被对方终止</li>
+<li>ConnectionRefusedError：链接被对方拒绝</li>
+<li>ConnectionResetError：链接被对方重置</li>
+</ul>
+</li>
+<li>FileExistsError：创建已存在的文件或者目录</li>
+<li>FileNotFoundError：请求文件或者目录不存在</li>
+<li>InterruptedError：系统调用被输入信号中断</li>
+<li>IsADirectoryError：在目录上请求文件</li>
+<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
+<li>PermissionError：没有访问权限</li>
+<li>ProcessLookupError：进程不存在</li>
+<li>TimeoutError：系统函数在系统级别超时</li>
+</ul>
+</li>
+<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
+<li>RuntimeError：一般的运行时错误<ul>
+<li>NotImplementedError：尚未实现的方法</li>
+<li>RecursionError：解释器检测到超出最大递归深度</li>
+</ul>
+</li>
+<li>SyntaxError：Python语法错误<ul>
+<li>IndentationError：缩进错误<ul>
+<li>TabError：Tab和空格混用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SystemError：系统错误</li>
+<li>TypeError：类型错误</li>
+<li>ValueError：传入无效的参数<ul>
+<li>UnicodeError：Unicode 相关的错误<ul>
+<li>UnicodeDecodeError：Unicode 解码时的错误</li>
+<li>UnicodeEncodeError：Unicode 编码时错误</li>
+<li>UnicodeTranslateError：Unicode 转换时错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Warning：警告的错误<ul>
+<li>DeprecationWarning：关于被弃用的特征的警告</li>
+<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
+<li>RuntimeWarning：可疑的运行行为的警告</li>
+<li>SyntaxWarning：可疑的语法的警告</li>
+<li>UserWarning：用户代码生成的警告</li>
+<li>FutureWarning：有关已弃用功能的警告的基类</li>
+<li>ImportWarning：模块导入时可能出错的警告的基类</li>
+<li>UnicodeWarning：与Unicode相关的警告的基类</li>
+<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
+<li>ResourceWarning：与资源使用相关的警告的基类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-数组</title>
     <url>//ecee3d177b80.html</url>
     <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
@@ -1045,130 +1169,6 @@
 
 <h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-异常</title>
-    <url>//fc7cf6eade53.html</url>
-    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
-<p>这些错误在过程中，我们称之为异常</p>
-<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>程序运行时出现异常，目的并不是让我们的程序直接终止<br>我们可以在出现异常时，编写代码对异常进行处理<br>避免因为一个异常导致程序的终止</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> 语句</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		代码块（可能出现错误的语句）</span><br><span class="line">	<span class="comment"># 如果except后不跟任何内容，会捕获所有的异常</span></span><br><span class="line">	<span class="comment"># 如果跟着异常的类型，只会捕获相关异常</span></span><br><span class="line">	<span class="comment"># 如果既想捕获所有异常，又想捕获某一异常，可以写多个except语句</span></span><br><span class="line">	<span class="comment"># Exception 是所有异常的父类，如果except后跟的是Exception，他也会捕获到所有的异常</span></span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">except</span> 异常类型 <span class="keyword">as</span> 异常名:</span><br><span class="line">		代码块（出现错误以后的处理方式）</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		代码块（没出现错误时执行的语句）</span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		代码块（无论是否有异常，该代码总会执行）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把异常用as的方式赋值给变量</span></span><br><span class="line"><span class="keyword">except</span> 异常 <span class="keyword">as</span> x</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果在函数中对异常进行处理，异常便不会影响程序<br>如果不对函数的异常进行处理，异常会传递到函数的调用处<br>出现异常后，所有异常信息会保存在一个专门保存异常的对象中<br>异常传播时，会调用这个保存异常的对象<br>比如 ：<br>    ZeroDivisionError类的对象专门用来表示除0的异常<br>    NameError类的对象专门用来处理变量错误的异常</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">可以使用 <span class="keyword">raise</span> 语句来抛出异常</span><br><span class="line"><span class="comment"># raise用于向外部抛出异常，后边可以跟一个异常类，或异常类的实例</span></span><br><span class="line"><span class="comment"># raise Exception</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a &lt; <span class="number">0</span> <span class="keyword">or</span> b &lt; <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">raise</span> Exception(<span class="string">&#x27;两个参数中不能有负数&#x27;</span>)</span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 也可以自定义异常类，只需要创建一个类继承Exception即可</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span>(<span class="params">Exception</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>一般用于对程序某个时刻必须满足的条件进行验证</p>
-<p>因为<code>assert</code>条件为<code>False</code>才会执行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">	<span class="keyword">assert</span> a &lt; <span class="number">0</span> <span class="keyword">and</span> b &lt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"><span class="built_in">print</span>(add(-<span class="number">123</span>,<span class="number">456</span>))</span><br><span class="line"><span class="comment"># 这里or是找True，所以不合适，应该使用and，找False</span></span><br><span class="line"><span class="comment"># a &lt; 0为True,所以不抛出异常,b&lt;0为False，所以抛出异常</span></span><br><span class="line">可以写成</span><br><span class="line"><span class="keyword">assert</span> a &gt; <span class="number">0</span> <span class="keyword">and</span> b &gt; <span class="number">0</span>,<span class="string">&quot;两个参数中不能有负数&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用try语句控制</span></span><br><span class="line">a = -<span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    add(a,b)</span><br><span class="line"><span class="keyword">except</span> AssertionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入有误：&quot;</span>, e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(add(a,b))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="内置异常"><a href="#内置异常" class="headerlink" title="内置异常"></a>内置异常</h2><ul>
-<li>Exception：所有异常的父类<ul>
-<li>SystemExit：解释器请求退出</li>
-<li>KeyboardInterrupt：用户中断执行</li>
-<li>GeneratorExit：生成器发生异常来通知退出</li>
-<li>Exception：常规错误的父类<ul>
-<li>StopIteration：迭代器没有更多的值</li>
-<li>StopAsyncIteration：必须通过异步迭代器对象的__anext__()方法引发以停止迭代</li>
-<li>ArithmeticError：所有数值计算错误的基类<ul>
-<li>FloatingPointError：浮点数计算错误</li>
-<li>OverflowError：数值运算超出最大限制</li>
-<li>ZeroDivisionError：除(或取模)零所有数据类型</li>
-</ul>
-</li>
-<li>AssertionError：当<code>assert</code>语句判定<code>False</code>，断言失败</li>
-<li>AttributeError：对象中没有这个属性</li>
-<li>BufferError：与缓冲区相关的操作引发</li>
-<li>EOFError：没有内建输入，到达EOF标记</li>
-<li>ImportError：导入模块失败<ul>
-<li>ModuleNotFoundError：找不到模块</li>
-</ul>
-</li>
-<li>LookupError：无效数据查询<ul>
-<li>IndexError：序列中没有此索引</li>
-<li>KeyError：映射中没有这个键</li>
-</ul>
-</li>
-<li>MemoryError：内存溢出错误</li>
-<li>NameError：未声明，初始化对象<ul>
-<li>UnboundLocalError：访问未初始化的本地变量</li>
-</ul>
-</li>
-<li>OSError：操作系统错误<ul>
-<li>BlockingIOError：操作将阻塞对象设置为非阻塞操作</li>
-<li>ChildProcessError：子进程上的操作失败</li>
-<li>ConnectionError：与链接相关的异常<ul>
-<li>BrokenPipeError：在关闭写入的套接字上写入</li>
-<li>ConnectionAbortedError：链接被对方终止</li>
-<li>ConnectionRefusedError：链接被对方拒绝</li>
-<li>ConnectionResetError：链接被对方重置</li>
-</ul>
-</li>
-<li>FileExistsError：创建已存在的文件或者目录</li>
-<li>FileNotFoundError：请求文件或者目录不存在</li>
-<li>InterruptedError：系统调用被输入信号中断</li>
-<li>IsADirectoryError：在目录上请求文件</li>
-<li>NotADirectoryError：在不是目录事物上请求目录操作</li>
-<li>PermissionError：没有访问权限</li>
-<li>ProcessLookupError：进程不存在</li>
-<li>TimeoutError：系统函数在系统级别超时</li>
-</ul>
-</li>
-<li>ReferenceError：弱引用试图访问已经垃圾回收了的对象</li>
-<li>RuntimeError：一般的运行时错误<ul>
-<li>NotImplementedError：尚未实现的方法</li>
-<li>RecursionError：解释器检测到超出最大递归深度</li>
-</ul>
-</li>
-<li>SyntaxError：Python语法错误<ul>
-<li>IndentationError：缩进错误<ul>
-<li>TabError：Tab和空格混用</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SystemError：系统错误</li>
-<li>TypeError：类型错误</li>
-<li>ValueError：传入无效的参数<ul>
-<li>UnicodeError：Unicode 相关的错误<ul>
-<li>UnicodeDecodeError：Unicode 解码时的错误</li>
-<li>UnicodeEncodeError：Unicode 编码时错误</li>
-<li>UnicodeTranslateError：Unicode 转换时错误</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Warning：警告的错误<ul>
-<li>DeprecationWarning：关于被弃用的特征的警告</li>
-<li>PendingDeprecationWarning：关于构造将来语义会有改变的警告</li>
-<li>RuntimeWarning：可疑的运行行为的警告</li>
-<li>SyntaxWarning：可疑的语法的警告</li>
-<li>UserWarning：用户代码生成的警告</li>
-<li>FutureWarning：有关已弃用功能的警告的基类</li>
-<li>ImportWarning：模块导入时可能出错的警告的基类</li>
-<li>UnicodeWarning：与Unicode相关的警告的基类</li>
-<li>BytesWarning：bytes和bytearray相关的警告的基类</li>
-<li>ResourceWarning：与资源使用相关的警告的基类</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>Python3</category>
@@ -1309,30 +1309,6 @@
 
 
 <h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">path = os.listdir()</span><br><span class="line"><span class="comment"># os.listdir()获取指定目录的结构，默认获取当前路径，返回一个列表</span></span><br><span class="line">path1 = os.getcwd()</span><br><span class="line"><span class="comment"># os.getcwd()获取当前所在的路径</span></span><br><span class="line">os.chdir(<span class="string">&quot;c:\\xxx\\xxx&quot;</span>)</span><br><span class="line"><span class="comment"># os.chdir(&quot;c:\\&quot;&quot;)修改当前路径为xxx</span></span><br><span class="line">pprint.pprint(path1)</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下创建一个目录</span></span><br><span class="line">os.rmdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除一个目录</span></span><br><span class="line">os.remove(<span class="string">&quot;xxx.txt&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除文件</span></span><br><span class="line">os.rename(<span class="string">&quot;旧名字&quot;</span>,<span class="string">&quot;新名字&quot;</span>)</span><br><span class="line"><span class="comment"># 对文件重命名</span></span><br><span class="line">os.rename(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;路径/文件名&quot;</span>)</span><br><span class="line"><span class="comment"># 也可以用来移动文件</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-流程控制语句</title>
-    <url>//f68e861f37cd.html</url>
-    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
-
-<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1506,6 +1482,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-流程控制语句</title>
+    <url>//f68e861f37cd.html</url>
+    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-类与对象</title>
     <url>//06163ddbafa1.html</url>
     <content><![CDATA[<h2 id="对象-object"><a href="#对象-object" class="headerlink" title="对象(object)"></a>对象(object)</h2><p>对象是内存中专门存储数据的一块区域</p>
@@ -1574,31 +1574,6 @@
 
 <h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是面向对象的三大特征之一<br>一个对象可以以不同形态呈现</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">a = A(<span class="string">&#x27;孙悟空&#x27;</span>)</span><br><span class="line">b = B(<span class="string">&#x27;猪八戒&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_hello</span>(<span class="params">obj</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;你好 %s&#x27;</span>%obj.name)</span><br><span class="line"></span><br><span class="line">say_hello(a)</span><br><span class="line">say_hello(b)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-编码</title>
-    <url>//609542bd1343.html</url>
-    <content><![CDATA[<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>计算机在设计时采用8个比特（bit）作为一个字节（byte），<br>所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），<br>如果要表示更大的整数，就必须用更多的字节</p>
-<h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><p>计算机是美国人发明的，因此，最早只有127个字符被编码到计算机里，<br>也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码</p>
-<h3 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h3><p>为了更好的处理中文，不和ASCII冲突，中国制定了GB2312编码，用来把中文编进去</p>
-<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了<br>Unicode编码转化为“可变长编码”的UTF-8编码。<br>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，<br>常用的英文字母被编码成1个字节，汉字通常是3个字节，<br>如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间</p>
-<p>在计算机内存中，统一使用Unicode编码，保存或者传输的时候使用UTF-8编码<br>用记事本编辑的时候从文件读取的UTF-8字符被转换为Unicode字符到内存里，<br>编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件<br>对于单个字符的编码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python提供了：</span><br><span class="line"><span class="built_in">ord</span>()函数获取字符的整数表示，<span class="built_in">chr</span>()函数把编码转换为对应的字符</span><br><span class="line"><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) <span class="comment">#65</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">66</span>)	<span class="comment">#&#x27;B&#x27;</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">25991</span>)	<span class="comment">#&#x27;文&#x27;</span></span><br><span class="line">如果知道字符的整数编码，还可以用十六进制这么写<span class="built_in">str</span></span><br><span class="line"><span class="string">&#x27;\u4e2d\u6587&#x27;</span>	<span class="comment"># &#x27;中文&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>python中，字符串类型是str，在内存中以Unicode表示，一个字符对应若干字节<br>如果要保存或者传输，就需要把str变为以字节为单位的bytes</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">b&#x27;xxx&#x27;</span> <span class="comment">#用来表示bytes类型的数据</span></span><br><span class="line"></span><br><span class="line">以Unicode 表示的<span class="built_in">str</span>通过 encode()方法可以编码为指定的<span class="built_in">bytes</span></span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)	<span class="comment"># b&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)	<span class="comment"># b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">要把<span class="built_in">bytes</span>变为<span class="built_in">str</span>，就需要用decode()方法</span><br><span class="line"><span class="string">b&#x27;ABC&#x27;</span>.decode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;中文&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>个中文字符经过UTF-<span class="number">8</span>编码后通常会占用<span class="number">3</span>个字节，而<span class="number">1</span>个英文字符只占用<span class="number">1</span>个字节</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1951,6 +1926,31 @@
 <td align="center">逻辑运算符</td>
 </tr>
 </tbody></table>
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-编码</title>
+    <url>//609542bd1343.html</url>
+    <content><![CDATA[<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>计算机在设计时采用8个比特（bit）作为一个字节（byte），<br>所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），<br>如果要表示更大的整数，就必须用更多的字节</p>
+<h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><p>计算机是美国人发明的，因此，最早只有127个字符被编码到计算机里，<br>也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码</p>
+<h3 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h3><p>为了更好的处理中文，不和ASCII冲突，中国制定了GB2312编码，用来把中文编进去</p>
+<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了<br>Unicode编码转化为“可变长编码”的UTF-8编码。<br>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，<br>常用的英文字母被编码成1个字节，汉字通常是3个字节，<br>如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间</p>
+<p>在计算机内存中，统一使用Unicode编码，保存或者传输的时候使用UTF-8编码<br>用记事本编辑的时候从文件读取的UTF-8字符被转换为Unicode字符到内存里，<br>编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件<br>对于单个字符的编码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python提供了：</span><br><span class="line"><span class="built_in">ord</span>()函数获取字符的整数表示，<span class="built_in">chr</span>()函数把编码转换为对应的字符</span><br><span class="line"><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) <span class="comment">#65</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">66</span>)	<span class="comment">#&#x27;B&#x27;</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">25991</span>)	<span class="comment">#&#x27;文&#x27;</span></span><br><span class="line">如果知道字符的整数编码，还可以用十六进制这么写<span class="built_in">str</span></span><br><span class="line"><span class="string">&#x27;\u4e2d\u6587&#x27;</span>	<span class="comment"># &#x27;中文&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>python中，字符串类型是str，在内存中以Unicode表示，一个字符对应若干字节<br>如果要保存或者传输，就需要把str变为以字节为单位的bytes</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">b&#x27;xxx&#x27;</span> <span class="comment">#用来表示bytes类型的数据</span></span><br><span class="line"></span><br><span class="line">以Unicode 表示的<span class="built_in">str</span>通过 encode()方法可以编码为指定的<span class="built_in">bytes</span></span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)	<span class="comment"># b&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)	<span class="comment"># b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">要把<span class="built_in">bytes</span>变为<span class="built_in">str</span>，就需要用decode()方法</span><br><span class="line"><span class="string">b&#x27;ABC&#x27;</span>.decode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;中文&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>个中文字符经过UTF-<span class="number">8</span>编码后通常会占用<span class="number">3</span>个字节，而<span class="number">1</span>个英文字符只占用<span class="number">1</span>个字节</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Python3</category>
