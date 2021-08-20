@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Python3-argparse</title>
-    <url>//560821a385be.html</url>
+    <url>//1737262da5ee.html</url>
     <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
 <h3 id="ArgumentParser"><a href="#ArgumentParser" class="headerlink" title="ArgumentParser"></a>ArgumentParser</h3><p>作为解析器，用来包含将命令行解析成Python数据类型的全部信息</p>
 <p>语法：</p>
@@ -33,7 +33,7 @@
   </entry>
   <entry>
     <title>Python3-urllib</title>
-    <url>//e28b0e650137.html</url>
+    <url>//3e40412aecd2.html</url>
     <content><![CDATA[<h1 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h1><p>urllib是Python自带模块，通过该模块可以实现HTTP网络请求</p>
 <h2 id="urllib-request"><a href="#urllib-request" class="headerlink" title="urllib.request"></a>urllib.request</h2><p><code>urllib.request</code>子模块定义了请求HTTP的方法和类</p>
 <h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h3><p><code>urllib.request.urlope()</code>参数用于对目标<code>URL</code>的访问</p>
@@ -179,6 +179,136 @@
 
 
 <h2 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">urls = [<span class="string">&#x27;url1&#x27;</span>,<span class="string">&#x27;url2&#x27;</span>...]</span><br><span class="line">start = time.perf_counter()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_image</span>(<span class="params">url</span>):</span></span><br><span class="line">    <span class="comment"># 获取图片的字节</span></span><br><span class="line">    img_bytes = requests.get(url).content</span><br><span class="line">    <span class="comment"># 获取图片名字</span></span><br><span class="line">    <span class="comment"># 也可以写成xxx.split(&#x27;/&#x27;)[-1],这样就永远获取最后一个</span></span><br><span class="line">    <span class="comment"># https://xxx.com/[3]/[4]/[5]</span></span><br><span class="line">    img_name = url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">5</span>]</span><br><span class="line">    <span class="comment"># 如果url后面没有带格式，可以用如下代码为文件添加后缀</span></span><br><span class="line">    <span class="comment"># img_name = f&#x27;&#123;img_name&#125;.jpg&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(img_name,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> img_file:</span><br><span class="line">        img_file.write(img_bytes)</span><br><span class="line">        <span class="built_in">print</span>(img_name,<span class="string">&quot;downloading...&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    executor.<span class="built_in">map</span>(download_image,urls)</span><br><span class="line"></span><br><span class="line">finish = time.perf_counter()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;结束在&quot;</span>, <span class="built_in">round</span>(finish - start, <span class="number">2</span>), <span class="string">&quot;秒&quot;</span>)</span><br><span class="line"></span><br><span class="line">wallhaven-gj977q.png downloading...</span><br><span class="line">wallhaven-zm23vw.jpg downloading...</span><br><span class="line">结束在 <span class="number">1.62</span> 秒</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3进阶</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-网络编程</title>
+    <url>//3452c4b59247.html</url>
+    <content><![CDATA[<h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><p>​        计算机网络就是把各个计算机连接到一起，让网络中的计算机可以互相通信。</p>
+<p>​        网络编程就是如何在程序中实现两台计算机的通信</p>
+<h2 id="Socket-简介"><a href="#Socket-简介" class="headerlink" title="Socket 简介"></a>Socket 简介</h2><p>​        为了让两个程序通过网络进行通信，二者均比需使用Socket套接字。Socket用于描述IP地址和端口，是一个通信链的句柄，可以用来实现不同虚拟机或不同计算机之间的通信。</p>
+<p>​        在Internet上的主机上一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。</p>
+<p>Python 提供了两个级别访问的网络服务：</p>
+<ul>
+<li>低级别的网络服务支持基本的 Socket，它提供了标准的 BSD Sockets API，可以访问底层操作系统Socket接口的全部方法。</li>
+<li>高级别的网络服务模块 SocketServer， 它提供了服务器中心类，可以简化网络服务器的开发。</li>
+</ul>
+<h2 id="Socket-模块"><a href="#Socket-模块" class="headerlink" title="Socket 模块"></a>Socket 模块</h2><p>语法：</p>
+<p>socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)</p>
+<ul>
+<li>family：地址族，默认为<code>AF_INET</code>（Internet进程间通信）,或者<code>AF_UNIX</code>（用于同一台机器进程间通信）</li>
+<li>type：套接字类型，默认为<code>SOCK_STREAM</code>（流式套接字，用于TCP协议），或者SOCK_DGRAM（数据报套接字，用于UDP协议）</li>
+<li>proto：协议号，通常可以省略</li>
+<li>fileno：如果指定了fileno，会自动检测<code>family</code>,<code>type</code>,<code>proto</code>的值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">sock = socket.socket()</span><br><span class="line"><span class="comment"># AF_INET,SOCK_STREAM是默认值，也可以不写</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Socket对象的内置方法"><a href="#Socket对象的内置方法" class="headerlink" title="Socket对象的内置方法"></a>Socket对象的内置方法</h3><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">s.bind()</td>
+<td align="center">绑定地址（host，port），在<code>AF_INET</code>下以元组的形式表示</td>
+</tr>
+<tr>
+<td align="center">s.listen()</td>
+<td align="center">开始TCP监听，backlog指定拒绝连接之前，挂起的最大数量（平均设置为5，最小为1）</td>
+</tr>
+<tr>
+<td align="center">s.accept()</td>
+<td align="center">被动接收TCP客户端连接，并以阻塞的方式等待连接的到来</td>
+</tr>
+<tr>
+<td align="center">s.connect()</td>
+<td align="center">主动初始化TCP服务的连接，如果连接出错，则返回<code>socket.error</code>错误</td>
+</tr>
+<tr>
+<td align="center">s.recv()</td>
+<td align="center">接收TCP数据，数据以字符串形式返回，bufsize指定接收的最大数据量</td>
+</tr>
+<tr>
+<td align="center">s.send()</td>
+<td align="center">发送TCP数据，将string中的数据发送到连接的套接字。返回值是要发送的字节数量</td>
+</tr>
+<tr>
+<td align="center">s.sendall()</td>
+<td align="center">完整发送TCP数据，将string中的数据发送到连接的套接字，但是在返回之前尝试发送所有数据。成功则返回None，失败则抛出异常</td>
+</tr>
+<tr>
+<td align="center">s.recvfrom()</td>
+<td align="center">接收UDP数据，与recv()类似，但返回值是（data,address）data是包含接收数据的字符串，address是发送数据的套接字地址</td>
+</tr>
+<tr>
+<td align="center">s.sendo()</td>
+<td align="center">发送UDP数据，将数据发送到套接字，address是形式为(ipaddr,port)的元组，指定远程地址。返回值是发送的字节数</td>
+</tr>
+<tr>
+<td align="center">s.close()</td>
+<td align="center">关闭套接字</td>
+</tr>
+</tbody></table>
+<h2 id="TCP连接"><a href="#TCP连接" class="headerlink" title="TCP连接"></a>TCP连接</h2><p>由于TCP连接具有安全可靠的特性，所以TCP应用更为广泛。创建TCP连接时，主动发起连接的叫客户端，被动响应连接的叫服务器。</p>
+<p>TCP连接过程如下</p>
+<ol>
+<li>使用Socket创建一个套接字</li>
+<li>使用bind绑定IP和端口</li>
+<li>使用listen使套接字变为被动连接，开始监听</li>
+<li>使用accept等待客户端连接</li>
+<li>使用recv/send接收和发送数据</li>
+</ol>
+<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">TCP服务端</button></li><li class="tab"><button type="button" data-href="#-2">TCP客户端</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">host = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">port = <span class="number">8888</span></span><br><span class="line">web = socket.socket()</span><br><span class="line">web.bind((host,port))</span><br><span class="line"><span class="comment"># 绑定IP和端口</span></span><br><span class="line">web.listen(<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 开始监听</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 等待客户端连接，以元组的形式包含了socket连接信息和监听信息</span></span><br><span class="line">    conn,addr = web.accept()</span><br><span class="line">    <span class="comment"># 接收客户端的数据</span></span><br><span class="line">    data = conn.recv(<span class="number">1024</span>).decode()</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    <span class="comment"># 向客户端发送数据,&quot;HTTP/1.1 200 OK\r\n\r\n&quot;为返回头部,没有则无法在浏览器中显示</span></span><br><span class="line">    conn.sendall(<span class="string">b&quot;HTTP/1.1 200 OK\r\n\r\nhello,client&quot;</span>)</span><br><span class="line">    <span class="comment"># 关闭套接字</span></span><br><span class="line">    conn.close()</span><br><span class="line">    </span><br><span class="line">hello,server</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">web = socket.socket()</span><br><span class="line">http = (<span class="string">&quot;127.0.0.1&quot;</span>,<span class="number">8888</span>)</span><br><span class="line"><span class="comment"># 初始化连接</span></span><br><span class="line">web.connect(http)</span><br><span class="line">send_data = <span class="built_in">input</span>(<span class="string">&quot;请输入要发送的数据：&quot;</span>)</span><br><span class="line"><span class="comment"># 发送数据</span></span><br><span class="line">web.send(send_data.encode())</span><br><span class="line"><span class="comment"># 接收数据</span></span><br><span class="line">recv_data = web.recv(<span class="number">1024</span>).decode()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;接收到的数据为：\r\n&quot;</span>,recv_data)</span><br><span class="line"><span class="comment"># 关闭套接字</span></span><br><span class="line">web.close()</span><br><span class="line"></span><br><span class="line">请输入要发送的数据：hello,server</span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">hello,client</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="UDP连接"><a href="#UDP连接" class="headerlink" title="UDP连接"></a>UDP连接</h2><p>使用UDP编写简易聊天，只能在一方发送消息后另一方才能回复</p>
+<p>使用TCP也可以达到同样的效果，只是使用函数不同</p>
+<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">UDP服务端</button></li><li class="tab"><button type="button" data-href="#-2">UDP客户端</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">web = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)</span><br><span class="line">HTTP = (<span class="string">&quot;127.0.0.1&quot;</span>,<span class="number">8888</span>)</span><br><span class="line">web.bind(HTTP)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data,addr = web.recvfrom(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> data:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;你收到了消息：&quot;</span>,data.decode())</span><br><span class="line">        sand_data = <span class="built_in">input</span>(<span class="string">&quot;请输入你发送的消息：&quot;</span>)</span><br><span class="line">        web.sendto(sand_data.encode(),addr)</span><br><span class="line">        <span class="keyword">if</span> sand_data == <span class="string">&quot;quit&quot;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;断开连接&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;消息发送失败，连接已断开&quot;</span>)</span><br><span class="line">web.close()</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">web = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)</span><br><span class="line">HTTP = (<span class="string">&quot;127.0.0.1&quot;</span>,<span class="number">8888</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        sand_data = <span class="built_in">input</span>(<span class="string">&quot;请输入你发送的消息：&quot;</span>)</span><br><span class="line">        web.sendto(sand_data.encode(),HTTP)</span><br><span class="line">        <span class="keyword">if</span> sand_data == <span class="string">&quot;quit&quot;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;断开连接&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        data,addr = web.recvfrom(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> data:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;你收到了消息：&quot;</span>,data.decode())</span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;消息发送失败，连接已断开&quot;</span>)</span><br><span class="line"></span><br><span class="line">web.close()</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ]]></content>
       <categories>
