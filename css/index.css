@@ -3420,13 +3420,19 @@ li.categoryBar-list-item:nth-child(1) {
   background: url('https://ae04.alicdn.com/kf/H78c9c2dfa1da4563b98284701496ffecx.png');
 }
 li.categoryBar-list-item:nth-child(2) {
-  background: url('https://w.wallhaven.cc/full/zm/wallhaven-zm23vw.jpg');
+  background: url('https://inews.gtimg.com/newsapp_ls/0/13914795751/0');
+}
+li.categoryBar-list-item:nth-child(3) {
+  background: url('https://inews.gtimg.com/newsapp_ls/0/13900923432/0');
 }
 li.categoryBar-list-item:nth-child(1)>span::after {
   content: '人生苦短，我用Python' !important;
 }
 li.categoryBar-list-item:nth-child(2)>span::after {
   content: '记录美好生活' !important;
+}
+li.categoryBar-list-item:nth-child(3)>span::after {
+  content: '学习永无止境' !important;
 }
 li.categoryBar-list-item {
   width: 32.3% !important;

