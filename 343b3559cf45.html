@@ -1,0 +1,478 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PHP-类型 | BaiKer</title><meta name="keywords" content="PHP"><meta name="author" content="BaiKer"><meta name="copyright" content="BaiKer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="类型PHP有十种原始数据类型 四种标量类型：  Bool（布尔型）  int （整型）  float （浮点型，double）  string （字符串）   四种复合类型：  array（数组） object （对象） callable （可调用） iterable （可迭代）  两种特殊类型：  resource （资源） NULL （无类型）  类型声明只在PHP 7. 4.0以及之后的版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP-类型">
+<meta property="og:url" content="http://baiker.top/343b3559cf45.html">
+<meta property="og:site_name" content="BaiKer">
+<meta property="og:description" content="类型PHP有十种原始数据类型 四种标量类型：  Bool（布尔型）  int （整型）  float （浮点型，double）  string （字符串）   四种复合类型：  array（数组） object （对象） callable （可调用） iterable （可迭代）  两种特殊类型：  resource （资源） NULL （无类型）  类型声明只在PHP 7. 4.0以及之后的版本">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://baiker.top/img/wallhaven-gj977q.png">
+<meta property="article:published_time" content="2021-10-18T06:39:00.000Z">
+<meta property="article:modified_time" content="2021-10-25T14:58:09.942Z">
+<meta property="article:author" content="BaiKer">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://baiker.top/img/wallhaven-gj977q.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://baiker.top/343b3559cf45"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"TWYY6OLZHR","apiKey":"55f52a4f27b68086a202f7f911366f0d","indexName":"boke","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'PHP-类型',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-25 22:58:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><link rel="stylesheet" href="https://baiker.top/css/essay.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.css"/><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">BaiKer</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">PHP-类型</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-18T06:39:00.000Z" title="发表于 2021-10-18 14:39:00">2021-10-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-25T14:58:09.942Z" title="更新于 2021-10-25 22:58:09">2021-10-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/PHP/">PHP</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/PHP/PHP%E5%9F%BA%E7%A1%80/">PHP基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PHP-类型"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>PHP有十种原始数据类型</p>
+<p>四种标量类型：</p>
+<ul>
+<li><p>Bool（布尔型）</p>
+</li>
+<li><p>int （整型）</p>
+</li>
+<li><p>float （浮点型，double）</p>
+</li>
+<li><p>string （字符串）</p>
+</li>
+</ul>
+<p>四种复合类型：</p>
+<ul>
+<li>array（数组）</li>
+<li>object （对象）</li>
+<li>callable （可调用）</li>
+<li>iterable （可迭代）</li>
+</ul>
+<p>两种特殊类型：</p>
+<ul>
+<li>resource （资源）</li>
+<li>NULL （无类型）</li>
+</ul>
+<h2 id="类型声明"><a href="#类型声明" class="headerlink" title="类型声明"></a>类型声明</h2><p>只在PHP 7. 4.0以及之后的版本有效</p>
+<p>类型声明可以用于声明参数的类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">类/接口/名称</td>
+<td align="center">值为指定类和接口的实例化对象</td>
+</tr>
+<tr>
+<td align="center">self</td>
+<td align="center">值必定是所在方法的类的一个</td>
+</tr>
+<tr>
+<td align="center">array</td>
+<td align="center">值必须为array</td>
+</tr>
+<tr>
+<td align="center">callable</td>
+<td align="center">值必定为一个有效的callable，不能用于类属性的类型声明</td>
+</tr>
+<tr>
+<td align="center">bool</td>
+<td align="center">值必须为一个布尔值</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">值必须为一个浮点数</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">值必须为一个整型数字</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">值必须是字符串</td>
+</tr>
+<tr>
+<td align="center">iterable</td>
+<td align="center">值必须为array或者instanceof  Traversable，可迭代对象</td>
+</tr>
+<tr>
+<td align="center">object</td>
+<td align="center">值必须为对象</td>
+</tr>
+<tr>
+<td align="center">mixed</td>
+<td align="center">值可以是任何类型</td>
+</tr>
+</tbody></table>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><table>
+<thead>
+<tr>
+<th align="center">转换语句</th>
+<th align="center">转换类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">（Boolean）</td>
+<td align="center">转换成布尔型</td>
+</tr>
+<tr>
+<td align="center">（string）</td>
+<td align="center">转换成字符串</td>
+</tr>
+<tr>
+<td align="center">（integer）</td>
+<td align="center">转换成整型</td>
+</tr>
+<tr>
+<td align="center">（float）</td>
+<td align="center">转换成浮点型</td>
+</tr>
+<tr>
+<td align="center">（array）</td>
+<td align="center">转换成数组</td>
+</tr>
+<tr>
+<td align="center">（object）</td>
+<td align="center">转换成对象</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$foo</span> = <span class="number">10</span>;</span><br><span class="line"><span class="variable">$bar</span> = (<span class="keyword">string</span>) <span class="variable">$foo</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$foo</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过settype()函数转换</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$foo</span> = <span class="number">10</span>;</span><br><span class="line"><span class="variable">$bar</span> = settype(<span class="variable">$for</span>,<span class="string">&#x27;string&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$foo</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="类型比较"><a href="#类型比较" class="headerlink" title="类型比较"></a>类型比较</h2><p>松散比较：使用两个等号<code>==</code>，只比较值，不比较类型</p>
+<p>严格比较：使用三个等号<code>===</code>，比较值和类型</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="number">10</span> === <span class="string">&quot;10&quot;</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;类型相等&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;类型不相等&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="检查数据类型"><a href="#检查数据类型" class="headerlink" title="检查数据类型"></a>检查数据类型</h2><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">检测类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">is_bool(x)</td>
+<td align="center">检测变量是否为布尔类型</td>
+</tr>
+<tr>
+<td align="center">is_string(x)</td>
+<td align="center">检测变量是否为字符串</td>
+</tr>
+<tr>
+<td align="center">is_float/is_double</td>
+<td align="center">检测变量是否为浮点型</td>
+</tr>
+<tr>
+<td align="center">is_int/is_integer</td>
+<td align="center">检测变量是否为整型</td>
+</tr>
+<tr>
+<td align="center">is_null()</td>
+<td align="center">检测变量是否为NULL</td>
+</tr>
+<tr>
+<td align="center">is_array()</td>
+<td align="center">检测变量是否为数组</td>
+</tr>
+<tr>
+<td align="center">is_object()</td>
+<td align="center">检测变量是否为对象类型</td>
+</tr>
+<tr>
+<td align="center">is_numeric()</td>
+<td align="center">检测变量是否为数字或者数字组成的字符串</td>
+</tr>
+</tbody></table>
+<h2 id="Boolean布尔类型"><a href="#Boolean布尔类型" class="headerlink" title="Boolean布尔类型"></a>Boolean布尔类型</h2><p>Boolean 表达了真值，可以为<code>True</code>或者<code>False</code></p>
+<p>两者在PHP中不区分大小写</p>
+<p>要明确的将一个值转换成Boolean，用<code>Bool</code>或者<code>Boolean</code>来强制转换</p>
+<p>当转换为Boolean时，以下值被认为是False：</p>
+<ul>
+<li>布尔值<code>False</code>本身</li>
+<li>整型值<code>0</code>以及<code>-0</code></li>
+<li>浮点型值<code>0.0</code>以及<code>-0.0</code></li>
+<li>空字符串，以及字符串<code>&quot;0&quot;</code></li>
+<li>不包括任何元素的数组</li>
+<li>特殊类型<code>NULL</code>（包括尚未赋值的变量）</li>
+<li>从空标记生成的<code>simpleXML</code>对象</li>
+</ul>
+<p>所有其他值都被认为是True</p>
+<h2 id="integer整型"><a href="#integer整型" class="headerlink" title="integer整型"></a>integer整型</h2><p>整型值int可以用十进制，十六进制，八进制，二进制表示</p>
+<p>要使用八进制表达，数字前必须加上<code>0</code></p>
+<p>要使用十六进制表达，数字前必须加上<code>0x</code></p>
+<p>要使用二进制表达，数字前必须加上<code>0b</code></p>
+<p>当给定的数超出了int的范围，将会被解析为float</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 32位</span></span><br><span class="line">max_number = <span class="number">2147483647</span></span><br><span class="line"><span class="comment"># 64位</span></span><br><span class="line">max_number = <span class="number">9223372036854775807</span></span><br><span class="line"><span class="comment"># 当数字超出了max_number,就会被PHP解析为float</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Float浮点型"><a href="#Float浮点型" class="headerlink" title="Float浮点型"></a>Float浮点型</h2><p>通常最大值是1.8e308并且具有14位十进制数字的精度</p>
+<p>转换浮点数</p>
+<p>如果字符串是数字或前导数字，则它将解析为相应的浮点值，否则将转换为零</p>
+<p>对于其他类型，要先转换成int，在转换为float</p>
+<h2 id="String字符串"><a href="#String字符串" class="headerlink" title="String字符串"></a>String字符串</h2><p>一个字符串 string 就是由一系列的字符组成，其中每个字符等同于一个字节。这意味着 PHP 只能支持 256 的字符集，因此不支持 Unicode 。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单引号</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 双引号</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;hello&quot;</span>:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Heredoc结构</span></span><br><span class="line"><span class="keyword">echo</span> &lt;&lt;&lt;EOT</span><br><span class="line">我是字符串</span><br><span class="line">EOT;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Nowdoc结构,不解析中间的PHP代码</span></span><br><span class="line"><span class="keyword">echo</span> &lt;&lt;&lt;<span class="string">&#x27;EOT&#x27;</span></span><br><span class="line">我是字符串</span><br><span class="line">EOT;</span><br></pre></td></tr></table></figure>
+
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>\n</code></td>
+<td align="center">换行</td>
+</tr>
+<tr>
+<td align="center"><code>\r</code></td>
+<td align="center">回车</td>
+</tr>
+<tr>
+<td align="center"><code>\t</code></td>
+<td align="center">水平制表符</td>
+</tr>
+<tr>
+<td align="center"><code>\v</code></td>
+<td align="center">垂直制表符</td>
+</tr>
+<tr>
+<td align="center"><code>\e</code></td>
+<td align="center">Escape</td>
+</tr>
+<tr>
+<td align="center"><code>\f</code></td>
+<td align="center">换页</td>
+</tr>
+<tr>
+<td align="center"><code>\\</code></td>
+<td align="center">反斜线</td>
+</tr>
+<tr>
+<td align="center"><code>\$</code></td>
+<td align="center">美元标记</td>
+</tr>
+<tr>
+<td align="center"><code>\&quot;</code></td>
+<td align="center">双引号</td>
+</tr>
+<tr>
+<td align="center"><code>\&#39;</code></td>
+<td align="center">单引号</td>
+</tr>
+<tr>
+<td align="center"><code>\[0-7]&#123;1,3&#125;</code></td>
+<td align="center">符合该正则表达式序列的是一个以八进制方式来表达的字符</td>
+</tr>
+<tr>
+<td align="center"><code>\x[0-9A-Fa-f]&#123;1,2&#125;</code></td>
+<td align="center">符合该正则表达式序列的是一个以十六进制方式来表达的字符</td>
+</tr>
+<tr>
+<td align="center"><code>\u&#123;[0-9A-Fa-f]+&#125;</code></td>
+<td align="center">匹配正则表达式的字符序列是 unicode 码位， 该码位能作为 UTF-8 的表达方式输出字符串</td>
+</tr>
+</tbody></table>
+<h2 id="数字字符串"><a href="#数字字符串" class="headerlink" title="数字字符串"></a>数字字符串</h2><p>如果一个PHP String可以被解释为 int 或者 float 类型，则被定义为数字字符串</p>
+<h2 id="Array数组"><a href="#Array数组" class="headerlink" title="Array数组"></a>Array数组</h2><p>PHP 中的 array 实际上是一个有序映射，映射是一种把<code>value</code>关联到<code>keys</code>的类型</p>
+<p>它可以被视为数组，列表（向量），哈希表（映射的实现），字典，集合，堆栈，队列等等</p>
+<p>由于 array 的值可以是其它 array 所以树形结构和多维 array 也是允许的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义数组array()</span></span><br><span class="line"><span class="variable">$array</span> = <span class="keyword">array</span>(</span><br><span class="line">	key =&gt; value,</span><br><span class="line">	key1 =&gt; value1,</span><br><span class="line">	key2 =&gt; value2,</span><br><span class="line">    ...</span><br><span class="line">);</span><br><span class="line"><span class="variable">$array</span> = [</span><br><span class="line">    key =&gt; value,</span><br><span class="line">    key2 =&gt; value2,</span><br><span class="line">];</span><br><span class="line"><span class="variable">$array1</span> = <span class="keyword">array</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;第一个: <span class="subst">$array1</span>[0]&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;第二个: <span class="subst">$array1</span>[1]&lt;br&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中的<code>key</code>会被强制转换</p>
+<ul>
+<li>string中包含十进制int，除非数字前面有<code>+</code>，否则会被转换为int类型，<code>08</code>不会被强制转换</li>
+<li>floa也会被转换为Int，小数部分会被直接舍去</li>
+<li>Bool也会被转换成int，True会被转换为1，False会被转换为0</li>
+<li>NULL会被转换为空字符串</li>
+<li>Array和object不能被用为键名</li>
+</ul>
+<p>如果在数组定义时多个元素都使用相同键名，那么只有最后一个会被使用，其它的元素都会被覆盖</p>
+<h2 id="Iterable可迭代对象"><a href="#Iterable可迭代对象" class="headerlink" title="Iterable可迭代对象"></a>Iterable可迭代对象</h2><p>Iterable 是PHP 7.1 中引入的一个伪类型，它接受任何<code>array</code>或者实现了<code>Traversable</code>接口的对象</p>
+<p>这些类型都能用<code>foreach</code>迭代，也可以和生成器里的<code>yield from</code>一起使用</p>
+<p>所有可以被迭代的对象都是可迭代对象，它是一个形式上的说法</p>
+<h2 id="Object对象"><a href="#Object对象" class="headerlink" title="Object对象"></a>Object对象</h2><p>对象是存储数据和有关如何处理数据的数据类型，是系统中描述客观事物的实体</p>
+<p>一个对象由一组属性和对这组属性进行操作的一组服务组成</p>
+<p>在PHP中，必须先声明对象</p>
+<p>必须声明对象的类，类里面包含了属性和方法</p>
+<p>使用关键字Var来声明变量，即创建了类的属性，也叫类的成员属性</p>
+<p>通过在类定义中声明函数，即创建了类的方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">&quot;content-type:text/html;charset=utf-8&quot;</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">class_name</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">function_name</span>(<span class="params">arg1,arg2...</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 实例化对象</span></span><br><span class="line"><span class="variable">$test</span> = <span class="keyword">new</span> class_name();</span><br><span class="line"><span class="comment"># 访问成员属性和方法</span></span><br><span class="line"><span class="variable">$test</span>-&gt;name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line"><span class="variable">$test</span>-&gt;function_name;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Resource资源类型"><a href="#Resource资源类型" class="headerlink" title="Resource资源类型"></a>Resource资源类型</h2><p>资源resource是一种特殊变量，保存了到外部资源的引用，资源是通过专门的函数来建立和使用的</p>
+<p>由于资源类型变量保存是为打开文件，数据库链接，图形画布等特殊句柄，因此将其他类型转换为资源没有意义</p>
+<h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><p>NULL值表示一个没有变量的值，NULL类型唯一的值就是null</p>
+<p>在下列情况下变量被认为是null：</p>
+<ul>
+<li>被赋值为null</li>
+<li>尚未被赋值</li>
+<li>被unset()释放</li>
+</ul>
+<h2 id="Callback-Callable类型"><a href="#Callback-Callable类型" class="headerlink" title="Callback / Callable类型"></a>Callback / Callable类型</h2><p>回调函数就是通过函数参数传递到其他代码的，某一块可执行代码的引用</p>
+<p>也就是将函数作为参数传到另一个函数里面，当那个函数执行结束之后，再执行传过去的那个函数</p>
+<p>可以使用<code>callable</code>类型指定回调类型<code>callback</code></p>
+<p>一些函数如<code>call_user_func()</code>或<code>usort()</code>可以接受用户自定义的回调作为参数</p>
+<p>回调函数不止可以是简单函数，还可以是对象方法，包括静态类方法</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">BaiKer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://baiker.top/343b3559cf45.html">http://baiker.top/343b3559cf45.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://baiker.top" target="_blank">BaiKer</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PHP/">PHP</a></div><div class="post_share"><div class="social-share" data-image="https://baiker.top/img/wallhaven-gj977q.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/df16336bdf60.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">PHP-常量与变量</div></div></a></div><div class="next-post pull-right"><a href="/53ecadd1c0fc.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python模块-sys</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a target="_blank" rel="noopener" href="//df16336bdf60.html" title="PHP-常量与变量"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-21</div><div class="title">PHP-常量与变量</div></div></a></div><div><a target="_blank" rel="noopener" href="//918598c96c41.html" title="PHP-基本语法"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-12</div><div class="title">PHP-基本语法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">BaiKer</div><div class="author-info__description">网络安全</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Baikeryoyo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/baiker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2425206200@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="toc-number">2.</span> <span class="toc-text">类型声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-number">4.</span> <span class="toc-text">类型比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.</span> <span class="toc-text">检查数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boolean%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.</span> <span class="toc-text">Boolean布尔类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#integer%E6%95%B4%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">integer整型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Float%E6%B5%AE%E7%82%B9%E5%9E%8B"><span class="toc-number">8.</span> <span class="toc-text">Float浮点型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">9.</span> <span class="toc-text">String字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89"><span class="toc-number">9.1.</span> <span class="toc-text">转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">10.</span> <span class="toc-text">数字字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Array%E6%95%B0%E7%BB%84"><span class="toc-number">11.</span> <span class="toc-text">Array数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iterable%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1"><span class="toc-number">12.</span> <span class="toc-text">Iterable可迭代对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object%E5%AF%B9%E8%B1%A1"><span class="toc-number">13.</span> <span class="toc-text">Object对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resource%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B"><span class="toc-number">14.</span> <span class="toc-text">Resource资源类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NULL"><span class="toc-number">15.</span> <span class="toc-text">NULL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Callback-Callable%E7%B1%BB%E5%9E%8B"><span class="toc-number">16.</span> <span class="toc-text">Callback &#x2F; Callable类型</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By BaiKer</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'B4CWJLUwBNNEjD2SoNxuy03K-gzGzoHsz',
+      appKey: '6vo75MB0241puEkTNHhBsuv9',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回復',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><link rel="stylesheet" href="https://baiker.top/css/custom.css"><script async data-pjax src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
