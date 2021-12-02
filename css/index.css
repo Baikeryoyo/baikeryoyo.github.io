@@ -2962,6 +2962,9 @@ blockquote footer cite:before {
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
+#aside-content .card-categories .card-category-list > .parent > .child {
+  display: none;
+}
 #aside-content .card-webinfo .webinfo .webinfo-item {
   display: -webkit-box;
   display: -moz-box;
@@ -3425,14 +3428,32 @@ li.categoryBar-list-item:nth-child(2) {
 li.categoryBar-list-item:nth-child(3) {
   background: url('https://inews.gtimg.com/newsapp_ls/0/13900923432/0');
 }
+li.categoryBar-list-item:nth-child(4) {
+  background: url('https://inews.gtimg.com/newsapp_ls/0/13902399763/0');
+}
+li.categoryBar-list-item:nth-child(5) {
+  background: url('https://inews.gtimg.com/newsapp_ls/0/13902400133/0');
+}
+li.categoryBar-list-item:nth-child(6) {
+  background: url('https://inews.gtimg.com/newsapp_ls/0/13902959525/0');
+}
 li.categoryBar-list-item:nth-child(1)>span::after {
-  content: '人生苦短，我用Python' !important;
+  content: '少年，别想了，那个人不是你' !important;
 }
 li.categoryBar-list-item:nth-child(2)>span::after {
   content: '记录美好生活' !important;
 }
 li.categoryBar-list-item:nth-child(3)>span::after {
   content: '学习永无止境' !important;
+}
+li.categoryBar-list-item:nth-child(4)>span::after {
+  content: '你在乱世中独行，又是否热爱过这一切？' !important;
+}
+li.categoryBar-list-item:nth-child(5)>span::after {
+  content: '有些失误无法犯两次' !important;
+}
+li.categoryBar-list-item:nth-child(6)>span::after {
+  content: '不驰于空想，不骛于虚声' !important;
 }
 li.categoryBar-list-item {
   width: 32.3% !important;
