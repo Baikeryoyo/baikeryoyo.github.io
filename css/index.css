@@ -3445,7 +3445,7 @@ li.categoryBar-list-item {
   }
 }
 .categoryBar-list {
-  max-height: 380px;
+  max-height: 190px;
   overflow: auto;
 }
 .categoryBar-list::-webkit-scrollbar {
@@ -3453,7 +3453,7 @@ li.categoryBar-list-item {
 }
 @media screen and (max-width: 650px) {
   .categoryBar-list {
-    max-height: 320px;
+    max-height: 160px;
   }
 }
 #post-comment .comment-head {
