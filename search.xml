@@ -4794,7 +4794,7 @@
 <tr>
 <td align="center">mailto</td>
 <td align="center">邮件协议</td>
-<td align="center">url=mailto:<a href="mailto:&#120;&#x78;&#x78;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;">&#120;&#x78;&#x78;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;</a>?cc=xxx&amp;body=hello</td>
+<td align="center">url=mailto:<a href="mailto:&#x78;&#x78;&#x78;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#x78;&#x78;&#x78;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a>?cc=xxx&amp;body=hello</td>
 </tr>
 <tr>
 <td align="center">netdoc</td>
@@ -5712,8 +5712,8 @@
         <category>漏洞利用</category>
         <category>Web服务器漏洞</category>
         <category>常规漏洞</category>
-        <category>JBoss</category>
         <category>文件上传漏洞</category>
+        <category>JBoss</category>
       </categories>
       <tags>
         <tag>文件上传漏洞</tag>
@@ -6326,8 +6326,8 @@
         <category>漏洞利用</category>
         <category>Web服务器漏洞</category>
         <category>常规漏洞</category>
-        <category>JBoss</category>
         <category>文件上传漏洞</category>
+        <category>JBoss</category>
       </categories>
       <tags>
         <tag>访问控制错误漏洞</tag>
