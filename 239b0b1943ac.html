@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>SSRF服务端请求伪造漏洞 | BaiKer</title><meta name="keywords" content="SSRF"><meta name="author" content="BaiKer"><meta name="copyright" content="BaiKer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SSRF漏洞SSRF（Server-Side Request Forgery:服务器端请求伪造）是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统） 漏洞原理服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤限制。 SSRF利用存在缺陷的Web应">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>SSRF服务端请求伪造漏洞 | BaiKer</title><meta name="keywords" content="SSRF"><meta name="author" content="BaiKer"><meta name="copyright" content="BaiKer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SSRF漏洞SSRF（Server-Side Request Forgery:服务器端请求伪造）是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统） 漏洞原理服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤限制。 SSRF利用存在缺陷的Web应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSRF服务端请求伪造漏洞">
 <meta property="og:url" content="http://baiker.top/239b0b1943ac.html">
@@ -227,7 +227,7 @@
 <tr>
 <td align="center">mailto</td>
 <td align="center">邮件协议</td>
-<td align="center">url=mailto:<a href="mailto:&#120;&#120;&#x78;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#120;&#120;&#x78;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>?cc=xxx&amp;body=hello</td>
+<td align="center">url=mailto:<a href="mailto:&#120;&#x78;&#x78;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;">&#120;&#x78;&#x78;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;</a>?cc=xxx&amp;body=hello</td>
 </tr>
 <tr>
 <td align="center">netdoc</td>
